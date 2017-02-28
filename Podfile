@@ -1,10 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 inhibit_all_warnings!
 
 target 'BaseAppV2' do
     use_frameworks!
     
-    # Pods for BaseAppV2
+    pod 'Crashlytics', '~> 3.8'
     
     target 'BaseAppV2Tests' do
         inherit! :search_paths
@@ -14,7 +15,8 @@ target 'BaseAppV2' do
     
     target 'BaseAppV2UITests' do
         inherit! :search_paths
-        pod 'KIF-Kiwi'
+        pod 'OHHTTPStubs'
+        pod 'OHHTTPStubs/Swift'
     end
     
 end
