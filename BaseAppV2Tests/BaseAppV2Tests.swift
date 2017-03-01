@@ -11,26 +11,47 @@ import XCTest
 
 class BaseAppV2Tests: XCTestCase {
     
+    // MARK: - Attributes
+    // Put any variables needed for testing. This includes instances
+    // of any classes that you create
+}
+
+
+// MARK: - Setup & Tear Down
+extension BaseAppV2Tests {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+
+// MARK: - Initialization Tests
+extension BaseAppV2Tests {
+    // Here you would place test methods for testing
+    // initialization of objects. This includes
+    // testing for IBOutlets are connected, any
+    // objects that have data sources and delegates
+    // have references, etc.
+    func testIBOutletsAreConnected() {
+        XCTAssert(true, "Missing Connections")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+}
+
+
+// MARK: - Functional Tests
+extension BaseAppV2Tests {
+    // Here you would place test methods for testing
+    // functionality and behaviors of class objects.
+    // This includes testing business logic, searching,
+    // filtering, etc.
+    func testAddition() {
+        let result = 1 + 1
+        XCTAssert(result == 2, "Incorrect Answer")
     }
-    
 }

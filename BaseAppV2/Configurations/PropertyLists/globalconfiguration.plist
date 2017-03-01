@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Crashlytics</key>
+	<string>ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748</string>
+	<key>ApiUrl</key>
+	<dict>
+		<key>Local</key>
+		<string>https://api.baseapp.tsl.io/v2/</string>
+		<key>Staging</key>
+		<string>https://api.baseapp.tsl.io/v1/</string>
+		<key>Stable</key>
+		<string>https://api.baseapp.tsl.io/v3/</string>
+		<key>Production</key>
+		<string>https://api.baseapp.tsl.io/v4/</string>
+	</dict>
+</dict>
+</plist>
