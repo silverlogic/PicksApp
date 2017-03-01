@@ -1,5 +1,7 @@
 # README #
 
+[![Build Status](https://www.bitrise.io/app/3bcc27059d1191f9.svg?token=HNXmVRGxQUKeosWxMx6fmA&branch=master)](https://www.bitrise.io/app/3bcc27059d1191f9)
+
 In progress.....
 
 ### What is this repository for? ###
