@@ -1,6 +1,8 @@
 # README #
 
 [![Build Status](https://www.bitrise.io/app/3bcc27059d1191f9.svg?token=HNXmVRGxQUKeosWxMx6fmA&branch=master)](https://www.bitrise.io/app/3bcc27059d1191f9)
+[![codecov](https://codecov.io/bb/silverlogic/baseapp-ios-v2/branch/master/graph/badge.svg?token=ViORN1O4IA)](https://codecov.io/bb/silverlogic/baseapp-ios-v2)
+
 
 In progress.....
 
