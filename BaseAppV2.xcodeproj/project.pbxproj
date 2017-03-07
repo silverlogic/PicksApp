@@ -22,6 +22,8 @@
 		8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880455091E663F6100D4A499 /* ConfigurationManager.swift */; };
 		8804550C1E6641B900D4A499 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804550B1E6641B900D4A499 /* Constants.swift */; };
 		8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */; };
+		88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */; };
+		88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29A1E6EC0BF003AEEC4 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		880455091E663F6100D4A499 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = Services/Configuration/ConfigurationManager.swift; sourceTree = "<group>"; };
 		8804550B1E6641B900D4A499 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManagerTests.swift; path = Services/Configuration/ConfigurationManagerTests.swift; sourceTree = "<group>"; };
+		88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
+		88FBC29A1E6EC0BF003AEEC4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A4D5866E75C71BD2D121854E /* Pods-BaseAppV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2/Pods-BaseAppV2.release.xcconfig"; sourceTree = "<group>"; };
 		BD922A6B53627E40F775B2B4 /* Pods-BaseAppV2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				880454C41E65E32C00D4A499 /* AppDelegate.swift */,
+				88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */,
 				8804550B1E6641B900D4A499 /* Constants.swift */,
+				88FBC29A1E6EC0BF003AEEC4 /* main.swift */,
 				880454CD1E65E32C00D4A499 /* Assets.xcassets */,
 				880454D21E65E32C00D4A499 /* Info.plist */,
 				880454F41E65E3CA00D4A499 /* Models */,
@@ -650,7 +656,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8804550C1E6641B900D4A499 /* Constants.swift in Sources */,
+				88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */,
 				8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */,
+				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
 				880454C91E65E32C00D4A499 /* SecondViewController.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
 				880454C71E65E32C00D4A499 /* FirstViewController.swift in Sources */,
