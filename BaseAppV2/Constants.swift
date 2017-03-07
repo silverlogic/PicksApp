@@ -8,7 +8,10 @@
 
 import Foundation
 
-// MARK: - Configuration Constants
+/**
+    An enum that defines constants used for
+    configuration of the application.
+*/
 enum ConfigurationConstants {
     
     // MARK: - File Constants
@@ -30,4 +33,21 @@ enum ConfigurationConstants {
     // MARK: - Generic Keys
     static let apiUrl = "ApiUrl"
     static let crashlytics = "Crashlytics"
+}
+
+
+/**
+    An enum that defines constants used for
+    setting up the Core Data stack of the
+    application.
+*/
+enum CoreDataStackConstants {
+    
+    // MARK: - File Constants
+    static let model = "Model"
+    static let sqLite = "Model.sqlite"
+    
+    
+    // MARK: - File Type Constants
+    static let modelType = "momd"
 }

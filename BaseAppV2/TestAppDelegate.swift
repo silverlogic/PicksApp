@@ -19,6 +19,7 @@ final class TestAppDelegate: UIResponder {
 extension TestAppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         _ = ConfigurationManager.shared
+        _ = CoreDataStack.shared
         return true
     }
 }

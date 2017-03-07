@@ -18,7 +18,7 @@ final class ConfigurationManager {
     static let shared = ConfigurationManager()
     
     
-    // MARK: - Attributes
+    // MARK: - Private Instance Attributes
     fileprivate var _globalConfigurationDictionary = [String: Any]()
     fileprivate var _environmentMode = EnvironmentMode.staging
     
@@ -50,6 +50,7 @@ extension ConfigurationManager {
         guard let apiKey = configurationValueForKey(ConfigurationConstants.crashlytics) as? String else {
             return nil
         }
+        assert(apiKey.characters.count > 0, "Fabric/Crashlytics Key Not Provided In Global Configuration File!")
         return apiKey
     }
     
@@ -59,6 +60,7 @@ extension ConfigurationManager {
               let apiUrl = configurationValueFromEnvironmentDictionary(apiUrlDictionary) as? String else {
                 return nil
         }
+        assert(apiUrl.characters.count > 0, "API Url Not Provided In Global Configuration File!")
         return apiUrl
     }
 }

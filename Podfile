@@ -5,7 +5,10 @@ inhibit_all_warnings!
 target 'BaseAppV2' do
     use_frameworks!
     
+    pod 'AlamofireActivityLogger', '~> 2.3'
+    pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
     pod 'Crashlytics', '~> 3.8'
+    pod 'Raccoon'
     
     target 'BaseAppV2Tests' do
         inherit! :search_paths
