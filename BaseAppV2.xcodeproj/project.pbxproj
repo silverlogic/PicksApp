@@ -22,6 +22,16 @@
 		8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880455091E663F6100D4A499 /* ConfigurationManager.swift */; };
 		8804550C1E6641B900D4A499 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804550B1E6641B900D4A499 /* Constants.swift */; };
 		8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */; };
+		8878617A1E68CC2000C931FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887861791E68CC2000C931FC /* User.swift */; };
+		88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */; };
+		88F8C9671E6A4C45006D6BC9 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8C9661E6A4C45006D6BC9 /* NetworkClient.swift */; };
+		88FBC27A1E6DE299003AEEC4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 887861601E68B11E00C931FC /* Model.xcdatamodeld */; };
+		88FBC27C1E6DE36D003AEEC4 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC27B1E6DE36D003AEEC4 /* APIError.swift */; };
+		88FBC2871E6E84E1003AEEC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88FBC2861E6E84E1003AEEC4 /* Localizable.strings */; };
+		88FBC28A1E6E8788003AEEC4 /* DataRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2891E6E8788003AEEC4 /* DataRequest+Extension.swift */; };
+		88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC28B1E6E8F7A003AEEC4 /* UserTests.swift */; };
+		88FBC2941E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2931E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift */; };
+		88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */; };
 		88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */; };
 		88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29A1E6EC0BF003AEEC4 /* main.swift */; };
 /* End PBXBuildFile section */
@@ -66,9 +76,19 @@
 		880454E61E65E32C00D4A499 /* BaseAppV2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAppV2UITests.swift; sourceTree = "<group>"; };
 		880454E81E65E32C00D4A499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880454FF1E66325F00D4A499 /* globalconfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = globalconfiguration.plist; path = Configurations/PropertyLists/globalconfiguration.plist; sourceTree = "<group>"; };
-		880455091E663F6100D4A499 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = Services/Configuration/ConfigurationManager.swift; sourceTree = "<group>"; };
+		880455091E663F6100D4A499 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = CoreServices/Configuration/ConfigurationManager.swift; sourceTree = "<group>"; };
 		8804550B1E6641B900D4A499 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManagerTests.swift; path = Services/Configuration/ConfigurationManagerTests.swift; sourceTree = "<group>"; };
+		8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManagerTests.swift; path = CoreServices/Configuration/ConfigurationManagerTests.swift; sourceTree = "<group>"; };
+		887861611E68B11E00C931FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		887861791E68CC2000C931FC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreServices/LocalStorage/CoreDataStack.swift; sourceTree = "<group>"; };
+		88F8C9661E6A4C45006D6BC9 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = CoreServices/Networking/NetworkClient/NetworkClient.swift; sourceTree = "<group>"; };
+		88FBC27B1E6DE36D003AEEC4 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = Models/APIError.swift; sourceTree = "<group>"; };
+		88FBC2861E6E84E1003AEEC4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Configurations/LocalizedStrings/Localizable.strings; sourceTree = "<group>"; };
+		88FBC2891E6E8788003AEEC4 /* DataRequest+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DataRequest+Extension.swift"; path = "Extensions/DataRequest+Extension.swift"; sourceTree = "<group>"; };
+		88FBC28B1E6E8F7A003AEEC4 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Models/UserTests.swift; sourceTree = "<group>"; };
+		88FBC2931E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Extension.swift"; path = "Extensions/NSManagedObject+Extension.swift"; sourceTree = "<group>"; };
+		88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSManagedObjectExtensionTests.swift; path = Extensions/NSManagedObjectExtensionTests.swift; sourceTree = "<group>"; };
 		88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		88FBC29A1E6EC0BF003AEEC4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A4D5866E75C71BD2D121854E /* Pods-BaseAppV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2/Pods-BaseAppV2.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,19 +171,20 @@
 		880454C31E65E32C00D4A499 /* BaseAppV2 */ = {
 			isa = PBXGroup;
 			children = (
-				880454C41E65E32C00D4A499 /* AppDelegate.swift */,
-				88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */,
-				8804550B1E6641B900D4A499 /* Constants.swift */,
-				88FBC29A1E6EC0BF003AEEC4 /* main.swift */,
-				880454CD1E65E32C00D4A499 /* Assets.xcassets */,
-				880454D21E65E32C00D4A499 /* Info.plist */,
-				880454F41E65E3CA00D4A499 /* Models */,
+				880454F91E65E42200D4A499 /* Storyboards */,
 				880454F51E65E3D500D4A499 /* Views */,
 				880454F71E65E3F200D4A499 /* ViewModels */,
-				880454F81E65E3FE00D4A499 /* Services */,
 				880455081E663E6000D4A499 /* BusinessLogic */,
-				880454F91E65E42200D4A499 /* Storyboards */,
+				880454F41E65E3CA00D4A499 /* Models */,
+				880454F81E65E3FE00D4A499 /* CoreServices */,
 				880454FA1E65E43500D4A499 /* Configurations */,
+				88FBC2881E6E8737003AEEC4 /* Extensions */,
+				880454C41E65E32C00D4A499 /* AppDelegate.swift */,
+				88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */,
+				88FBC29A1E6EC0BF003AEEC4 /* main.swift */,
+				8804550B1E6641B900D4A499 /* Constants.swift */,
+				880454CD1E65E32C00D4A499 /* Assets.xcassets */,
+				880454D21E65E32C00D4A499 /* Info.plist */,
 			);
 			path = BaseAppV2;
 			sourceTree = "<group>";
@@ -171,10 +192,11 @@
 		880454DA1E65E32C00D4A499 /* BaseAppV2Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8804550D1E666FF100D4A499 /* Models */,
 				8804550F1E66701700D4A499 /* ViewModels */,
-				8804550E1E66700000D4A499 /* Services */,
 				880455101E66702D00D4A499 /* BusinessLogic */,
+				8804550D1E666FF100D4A499 /* Models */,
+				8804550E1E66700000D4A499 /* CoreServices */,
+				88FBC2951E6EAD56003AEEC4 /* Extensions */,
 				880455111E66717A00D4A499 /* Resources */,
 				880454DB1E65E32C00D4A499 /* BaseAppV2Tests.swift */,
 				880454DD1E65E32C00D4A499 /* Info.plist */,
@@ -194,6 +216,9 @@
 		880454F41E65E3CA00D4A499 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				887861601E68B11E00C931FC /* Model.xcdatamodeld */,
+				887861791E68CC2000C931FC /* User.swift */,
+				88FBC27B1E6DE36D003AEEC4 /* APIError.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -214,16 +239,15 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
-		880454F81E65E3FE00D4A499 /* Services */ = {
+		880454F81E65E3FE00D4A499 /* CoreServices */ = {
 			isa = PBXGroup;
 			children = (
 				880455021E663D7900D4A499 /* Networking */,
 				880455031E663D8500D4A499 /* LocalStorage */,
 				880455071E663E0000D4A499 /* Configuration */,
 				880455041E663D9400D4A499 /* Factories */,
-				880455061E663DD500D4A499 /* ThreadManagement */,
 			);
-			name = Services;
+			name = CoreServices;
 			sourceTree = "<group>";
 		};
 		880454F91E65E42200D4A499 /* Storyboards */ = {
@@ -238,6 +262,7 @@
 		880454FA1E65E43500D4A499 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				88FBC27D1E6E832E003AEEC4 /* LocalizedStrings */,
 				880455011E6632DC00D4A499 /* PropertyLists */,
 			);
 			name = Configurations;
@@ -254,6 +279,8 @@
 		880455021E663D7900D4A499 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				88F8C9641E6A4BF0006D6BC9 /* NetworkClient */,
+				88F8C9651E6A4BF9006D6BC9 /* Endpoints */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -261,6 +288,7 @@
 		880455031E663D8500D4A499 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
+				88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */,
 			);
 			name = LocalStorage;
 			sourceTree = "<group>";
@@ -270,13 +298,6 @@
 			children = (
 			);
 			name = Factories;
-			sourceTree = "<group>";
-		};
-		880455061E663DD500D4A499 /* ThreadManagement */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ThreadManagement;
 			sourceTree = "<group>";
 		};
 		880455071E663E0000D4A499 /* Configuration */ = {
@@ -297,20 +318,20 @@
 		8804550D1E666FF100D4A499 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				88FBC28B1E6E8F7A003AEEC4 /* UserTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		8804550E1E66700000D4A499 /* Services */ = {
+		8804550E1E66700000D4A499 /* CoreServices */ = {
 			isa = PBXGroup;
 			children = (
 				880455121E66721100D4A499 /* Networking */,
 				880455131E66721800D4A499 /* LocalStorage */,
 				880455141E66722B00D4A499 /* Configuration */,
 				880455151E66725E00D4A499 /* Factories */,
-				880455161E66726E00D4A499 /* ThreadManagement */,
 			);
-			name = Services;
+			name = CoreServices;
 			sourceTree = "<group>";
 		};
 		8804550F1E66701700D4A499 /* ViewModels */ = {
@@ -363,11 +384,44 @@
 			name = Factories;
 			sourceTree = "<group>";
 		};
-		880455161E66726E00D4A499 /* ThreadManagement */ = {
+		88F8C9641E6A4BF0006D6BC9 /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				88F8C9661E6A4C45006D6BC9 /* NetworkClient.swift */,
+			);
+			name = NetworkClient;
+			sourceTree = "<group>";
+		};
+		88F8C9651E6A4BF9006D6BC9 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = ThreadManagement;
+			name = Endpoints;
+			sourceTree = "<group>";
+		};
+		88FBC27D1E6E832E003AEEC4 /* LocalizedStrings */ = {
+			isa = PBXGroup;
+			children = (
+				88FBC2861E6E84E1003AEEC4 /* Localizable.strings */,
+			);
+			name = LocalizedStrings;
+			sourceTree = "<group>";
+		};
+		88FBC2881E6E8737003AEEC4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88FBC2891E6E8788003AEEC4 /* DataRequest+Extension.swift */,
+				88FBC2931E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		88FBC2951E6EAD56003AEEC4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +543,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FBC2871E6E84E1003AEEC4 /* Localizable.strings in Resources */,
 				880455001E66325F00D4A499 /* globalconfiguration.plist in Resources */,
 				880454D11E65E32C00D4A499 /* LaunchScreen.storyboard in Resources */,
 				880454CE1E65E32C00D4A499 /* Assets.xcassets in Resources */,
@@ -660,8 +715,15 @@
 				8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */,
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
 				880454C91E65E32C00D4A499 /* SecondViewController.swift in Sources */,
+				88FBC27C1E6DE36D003AEEC4 /* APIError.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
 				880454C71E65E32C00D4A499 /* FirstViewController.swift in Sources */,
+				88FBC2941E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift in Sources */,
+				88FBC27A1E6DE299003AEEC4 /* Model.xcdatamodeld in Sources */,
+				88F8C9671E6A4C45006D6BC9 /* NetworkClient.swift in Sources */,
+				8878617A1E68CC2000C931FC /* User.swift in Sources */,
+				88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */,
+				88FBC28A1E6E8788003AEEC4 /* DataRequest+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,8 +731,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */,
 				8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */,
 				880454DC1E65E32C00D4A499 /* BaseAppV2Tests.swift in Sources */,
+				88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +1008,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		887861601E68B11E00C931FC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				887861611E68B11E00C931FC /* Model.xcdatamodel */,
+			);
+			currentVersion = 887861611E68B11E00C931FC /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = Models/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 880454B91E65E32C00D4A499 /* Project object */;
 }

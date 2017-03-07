@@ -9,7 +9,7 @@
 import XCTest
 @testable import BaseAppV2
 
-class ConfigurationManagerTests: XCTestCase {
+final class ConfigurationManagerTests: BaseAppV2Tests {
     
     // MARK: - Attributes
     fileprivate var _sharedInstance: ConfigurationManager!
