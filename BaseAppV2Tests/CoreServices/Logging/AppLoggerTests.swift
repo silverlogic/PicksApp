@@ -47,7 +47,7 @@ extension AppLoggerTests {
         //    only save the message with no time stamp or level type.
         let fileManager = FileManager.default
         guard let url = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first else {
-            XCTFail("Error Validating Logger Test!")
+            XCTFail("Error Getting File For Logger Test!")
             return
         }
         let logUrl = url.appendingPathComponent("swiftybeaver.log")
