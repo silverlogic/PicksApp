@@ -9,6 +9,7 @@ target 'BaseAppV2' do
     pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
     pod 'Crashlytics', '~> 3.8'
     pod 'Raccoon'
+    pod 'SwiftyBeaver'
     
     target 'BaseAppV2Tests' do
         inherit! :search_paths

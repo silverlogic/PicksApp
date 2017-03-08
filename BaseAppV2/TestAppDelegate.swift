@@ -20,6 +20,7 @@ extension TestAppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         _ = ConfigurationManager.shared
         _ = CoreDataStack.shared
+        _ = AppLogger.shared
         return true
     }
 }

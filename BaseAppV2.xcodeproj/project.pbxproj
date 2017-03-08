@@ -34,6 +34,8 @@
 		88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */; };
 		88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */; };
 		88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29A1E6EC0BF003AEEC4 /* main.swift */; };
+		88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */; };
+		88FBC2A31E6F2DCE003AEEC4 /* AppLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSManagedObjectExtensionTests.swift; path = Extensions/NSManagedObjectExtensionTests.swift; sourceTree = "<group>"; };
 		88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		88FBC29A1E6EC0BF003AEEC4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppLogger.swift; path = CoreServices/Logging/AppLogger.swift; sourceTree = "<group>"; };
+		88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppLoggerTests.swift; path = CoreServices/Logging/AppLoggerTests.swift; sourceTree = "<group>"; };
 		A4D5866E75C71BD2D121854E /* Pods-BaseAppV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2/Pods-BaseAppV2.release.xcconfig"; sourceTree = "<group>"; };
 		BD922A6B53627E40F775B2B4 /* Pods-BaseAppV2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +249,7 @@
 				880455021E663D7900D4A499 /* Networking */,
 				880455031E663D8500D4A499 /* LocalStorage */,
 				880455071E663E0000D4A499 /* Configuration */,
+				88FBC29E1E6F1C7F003AEEC4 /* Logging */,
 				880455041E663D9400D4A499 /* Factories */,
 			);
 			name = CoreServices;
@@ -329,6 +334,7 @@
 				880455121E66721100D4A499 /* Networking */,
 				880455131E66721800D4A499 /* LocalStorage */,
 				880455141E66722B00D4A499 /* Configuration */,
+				88FBC2A11E6F2D3B003AEEC4 /* Logging */,
 				880455151E66725E00D4A499 /* Factories */,
 			);
 			name = CoreServices;
@@ -422,6 +428,22 @@
 				88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		88FBC29E1E6F1C7F003AEEC4 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		88FBC2A11E6F2D3B003AEEC4 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */,
+			);
+			name = Logging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -716,6 +738,7 @@
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
 				880454C91E65E32C00D4A499 /* SecondViewController.swift in Sources */,
 				88FBC27C1E6DE36D003AEEC4 /* APIError.swift in Sources */,
+				88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
 				880454C71E65E32C00D4A499 /* FirstViewController.swift in Sources */,
 				88FBC2941E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift in Sources */,
@@ -734,6 +757,7 @@
 				88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */,
 				8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */,
 				880454DC1E65E32C00D4A499 /* BaseAppV2Tests.swift in Sources */,
+				88FBC2A31E6F2DCE003AEEC4 /* AppLoggerTests.swift in Sources */,
 				88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
