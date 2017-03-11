@@ -53,3 +53,11 @@ extension User {
         }
     }
 }
+
+
+// MARK: - Public Instance Methods
+extension User {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
+        return NSFetchRequest<User>(entityName: "User");
+    }
+}

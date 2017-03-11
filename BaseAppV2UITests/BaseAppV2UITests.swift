@@ -7,30 +7,56 @@
 //
 
 import XCTest
+import OHHTTPStubs
 
 class BaseAppV2UITests: XCTestCase {
-        
+}
+
+
+// MARK: - Setup & Tear Down
+extension BaseAppV2UITests {
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/users/me") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("currentuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/users/210") && isMethodPATCH(), response: { _ in
+            guard let path = OHPathForFile("updateuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/login") && isMethodPOST(), response: { _ in
+            guard let path = OHPathForFile("loginuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/register") && isMethodPOST(), response: { _ in
+            guard let path = OHPathForFile("registeruser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        OHHTTPStubs.removeAllStubs()
+    }
+}
+
+
+// MARK: - Flow Tests
+extension BaseAppV2UITests {
+    func testSignupFlow() {
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLoginFlow() {
     }
-    
 }

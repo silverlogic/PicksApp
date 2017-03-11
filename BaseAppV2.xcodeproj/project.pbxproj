@@ -8,11 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		017AA4F075A83D3D85121DC1 /* Pods_BaseAppV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C1F2B92FFE60C0C4670124 /* Pods_BaseAppV2.framework */; };
+		323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323127DA1E74A642007BE4C3 /* Promise+Extension.swift */; };
 		3C804FBC18A949E496F46FDC /* Pods_BaseAppV2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A5F4DF39C3E79AE2F0DB3 /* Pods_BaseAppV2Tests.framework */; };
 		3E75A45D147B0B8ED0CA30A5 /* Pods_BaseAppV2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDA04068818566DC0655B1A /* Pods_BaseAppV2UITests.framework */; };
+		8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDDB1E71BD7900F54932 /* DynamicBinder.swift */; };
+		8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDE01E71C79C00F54932 /* LoginViewModel.swift */; };
+		8801FDE51E71E2E800F54932 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDE41E71E2E800F54932 /* Notification+Extension.swift */; };
+		8801FDED1E71F17300F54932 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDEC1E71F17300F54932 /* BaseView.swift */; };
+		8801FDF41E72016000F54932 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDF31E72016000F54932 /* BaseTextField.swift */; };
+		8801FDF71E720F4900F54932 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDF61E720F4900F54932 /* BaseButton.swift */; };
+		8801FDFB1E72310B00F54932 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDFA1E72310B00F54932 /* UIColor+Extension.swift */; };
+		8801FDFD1E72357500F54932 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDFC1E72357500F54932 /* UIViewController+Extension.swift */; };
+		8801FDFF1E723DD900F54932 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDFE1E723DD900F54932 /* UIStoryboard+Extension.swift */; };
+		8801FE011E72418E00F54932 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FE001E72418E00F54932 /* LoginViewController.swift */; };
+		8801FE031E72462B00F54932 /* UIViewControllerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FE021E72462B00F54932 /* UIViewControllerExtensionTests.swift */; };
 		880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880454C41E65E32C00D4A499 /* AppDelegate.swift */; };
-		880454C71E65E32C00D4A499 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880454C61E65E32C00D4A499 /* FirstViewController.swift */; };
-		880454C91E65E32C00D4A499 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880454C81E65E32C00D4A499 /* SecondViewController.swift */; };
 		880454CC1E65E32C00D4A499 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880454CA1E65E32C00D4A499 /* Main.storyboard */; };
 		880454CE1E65E32C00D4A499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880454CD1E65E32C00D4A499 /* Assets.xcassets */; };
 		880454D11E65E32C00D4A499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880454CF1E65E32C00D4A499 /* LaunchScreen.storyboard */; };
@@ -22,11 +32,37 @@
 		8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880455091E663F6100D4A499 /* ConfigurationManager.swift */; };
 		8804550C1E6641B900D4A499 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804550B1E6641B900D4A499 /* Constants.swift */; };
 		8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */; };
+		8817FC141E76874C007697DF /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC131E76874C007697DF /* SignupPasswordViewController.swift */; };
+		8817FC161E768CF2007697DF /* SignupOptionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC151E768CF2007697DF /* SignupOptionalInfoViewController.swift */; };
+		8817FC181E769C1B007697DF /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC171E769C1B007697DF /* CoreDataStackTests.swift */; };
+		8817FC1B1E76A2CA007697DF /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC1A1E76A2CA007697DF /* NetworkClientTests.swift */; };
+		8817FC1F1E76A541007697DF /* BaseEndpointInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC1E1E76A541007697DF /* BaseEndpointInfoTests.swift */; };
+		8817FC241E76FE9A007697DF /* currentuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC231E76FE9A007697DF /* currentuser.json */; };
+		8817FC261E770086007697DF /* registeruser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC251E770086007697DF /* registeruser.json */; };
+		8817FC281E7700DF007697DF /* loginuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC271E7700DF007697DF /* loginuser.json */; };
+		8817FC2A1E77018D007697DF /* updateuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC291E77018D007697DF /* updateuser.json */; };
+		8817FC301E7707BB007697DF /* AuthenticationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC2F1E7707BB007697DF /* AuthenticationManagerTests.swift */; };
+		8817FC341E77141E007697DF /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC331E77141E007697DF /* LoginViewModelTests.swift */; };
+		8817FC361E7716E8007697DF /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */; };
+		8817FC3A1E781223007697DF /* currentuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC391E781223007697DF /* currentuser.json */; };
+		8817FC3C1E78125C007697DF /* registeruser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC3B1E78125C007697DF /* registeruser.json */; };
+		8817FC3E1E781286007697DF /* loginuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC3D1E781286007697DF /* loginuser.json */; };
+		8817FC401E7812C7007697DF /* updateuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC3F1E7812C7007697DF /* updateuser.json */; };
+		8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC451E782C63007697DF /* BaseAlertViewController.swift */; };
+		8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC491E78BA3C007697DF /* BaseNavigationController.swift */; };
+		8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC4B1E78C59F007697DF /* BaseViewController.swift */; };
 		8878617A1E68CC2000C931FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887861791E68CC2000C931FC /* User.swift */; };
+		88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */; };
+		88F3FE0B1E7316CC003162F8 /* CaseCount+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0A1E7316CC003162F8 /* CaseCount+Extension.swift */; };
+		88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */; };
+		88F3FE131E734C94003162F8 /* UIStoryboardSegue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE121E734C94003162F8 /* UIStoryboardSegue+Extension.swift */; };
+		88F3FE161E736118003162F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE151E736118003162F8 /* SettingsViewController.swift */; };
+		88F3FE181E740741003162F8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE171E740741003162F8 /* UIView+Extension.swift */; };
+		88F3FE1B1E7679E5003162F8 /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE1A1E7679E5003162F8 /* SignupEmailViewController.swift */; };
 		88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */; };
 		88F8C9671E6A4C45006D6BC9 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8C9661E6A4C45006D6BC9 /* NetworkClient.swift */; };
 		88FBC27A1E6DE299003AEEC4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 887861601E68B11E00C931FC /* Model.xcdatamodeld */; };
-		88FBC27C1E6DE36D003AEEC4 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC27B1E6DE36D003AEEC4 /* APIError.swift */; };
+		88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC27B1E6DE36D003AEEC4 /* BaseError.swift */; };
 		88FBC2871E6E84E1003AEEC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88FBC2861E6E84E1003AEEC4 /* Localizable.strings */; };
 		88FBC28A1E6E8788003AEEC4 /* DataRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2891E6E8788003AEEC4 /* DataRequest+Extension.swift */; };
 		88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC28B1E6E8F7A003AEEC4 /* UserTests.swift */; };
@@ -36,6 +72,11 @@
 		88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29A1E6EC0BF003AEEC4 /* main.swift */; };
 		88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */; };
 		88FBC2A31E6F2DCE003AEEC4 /* AppLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */; };
+		88FBC2A51E6FFD39003AEEC4 /* BaseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A41E6FFD39003AEEC4 /* BaseErrorTests.swift */; };
+		88FBC2A81E70099A003AEEC4 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */; };
+		88FBC2AB1E701AE3003AEEC4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */; };
+		88FBC2AD1E7022F4003AEEC4 /* AuthenticationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */; };
+		88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,14 +100,25 @@
 		0143B6243C093A5109C019F7 /* Pods-BaseAppV2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2UITests/Pods-BaseAppV2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C8400FFE90CF8694A6F126D /* Pods-BaseAppV2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2E71E7C64F97E4D359C90804 /* Pods-BaseAppV2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2UITests/Pods-BaseAppV2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		323127DA1E74A642007BE4C3 /* Promise+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Promise+Extension.swift"; path = "Extensions/Promise+Extension.swift"; sourceTree = "<group>"; };
 		41C1F2B92FFE60C0C4670124 /* Pods_BaseAppV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseAppV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDA04068818566DC0655B1A /* Pods_BaseAppV2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseAppV2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		551A5F4DF39C3E79AE2F0DB3 /* Pods_BaseAppV2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseAppV2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7835E893D2CA2710B20E0AD2 /* Pods-BaseAppV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2/Pods-BaseAppV2.debug.xcconfig"; sourceTree = "<group>"; };
+		8801FDDB1E71BD7900F54932 /* DynamicBinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicBinder.swift; path = ViewModels/DynamicBinder.swift; sourceTree = "<group>"; };
+		8801FDE01E71C79C00F54932 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ViewModels/AuthenticationViewModels/LoginViewModel.swift; sourceTree = "<group>"; };
+		8801FDE41E71E2E800F54932 /* Notification+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Notification+Extension.swift"; path = "Extensions/Notification+Extension.swift"; sourceTree = "<group>"; };
+		8801FDEC1E71F17300F54932 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = Views/SubViews/UIViews/BaseView.swift; sourceTree = "<group>"; };
+		8801FDEE1E72001000F54932 /* BaseAppV2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseAppV2-Bridging-Header.h"; sourceTree = "<group>"; };
+		8801FDF31E72016000F54932 /* BaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTextField.swift; path = Views/SubViews/UITextFields/BaseTextField.swift; sourceTree = "<group>"; };
+		8801FDF61E720F4900F54932 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseButton.swift; path = Views/SubViews/UIButtons/BaseButton.swift; sourceTree = "<group>"; };
+		8801FDFA1E72310B00F54932 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "Extensions/UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8801FDFC1E72357500F54932 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Extensions/UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		8801FDFE1E723DD900F54932 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extension.swift"; path = "Extensions/UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		8801FE001E72418E00F54932 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
+		8801FE021E72462B00F54932 /* UIViewControllerExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensionTests.swift; path = Extensions/UIViewControllerExtensionTests.swift; sourceTree = "<group>"; };
 		880454C11E65E32C00D4A499 /* BaseAppV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseAppV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		880454C41E65E32C00D4A499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		880454C61E65E32C00D4A499 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = ViewModels/FirstViewController.swift; sourceTree = "<group>"; };
-		880454C81E65E32C00D4A499 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ViewModels/SecondViewController.swift; sourceTree = "<group>"; };
 		880454CB1E65E32C00D4A499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		880454CD1E65E32C00D4A499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		880454D01E65E32C00D4A499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,11 +133,37 @@
 		880455091E663F6100D4A499 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = CoreServices/Configuration/ConfigurationManager.swift; sourceTree = "<group>"; };
 		8804550B1E6641B900D4A499 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManagerTests.swift; path = CoreServices/Configuration/ConfigurationManagerTests.swift; sourceTree = "<group>"; };
+		8817FC131E76874C007697DF /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupPasswordViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupPasswordViewController.swift; sourceTree = "<group>"; };
+		8817FC151E768CF2007697DF /* SignupOptionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupOptionalInfoViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupOptionalInfoViewController.swift; sourceTree = "<group>"; };
+		8817FC171E769C1B007697DF /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStackTests.swift; path = CoreServices/LocalStorage/CoreDataStackTests.swift; sourceTree = "<group>"; };
+		8817FC1A1E76A2CA007697DF /* NetworkClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClientTests.swift; path = CoreServices/Networking/NetworkClient/NetworkClientTests.swift; sourceTree = "<group>"; };
+		8817FC1E1E76A541007697DF /* BaseEndpointInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEndpointInfoTests.swift; path = CoreServices/Networking/Endpoints/BaseEndpointInfoTests.swift; sourceTree = "<group>"; };
+		8817FC231E76FE9A007697DF /* currentuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currentuser.json; path = Resources/TestJSON/currentuser.json; sourceTree = "<group>"; };
+		8817FC251E770086007697DF /* registeruser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = registeruser.json; path = Resources/TestJSON/registeruser.json; sourceTree = "<group>"; };
+		8817FC271E7700DF007697DF /* loginuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuser.json; path = Resources/TestJSON/loginuser.json; sourceTree = "<group>"; };
+		8817FC291E77018D007697DF /* updateuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = updateuser.json; path = Resources/TestJSON/updateuser.json; sourceTree = "<group>"; };
+		8817FC2F1E7707BB007697DF /* AuthenticationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationManagerTests.swift; path = BusinessLogic/AuthenticationManagerTests.swift; sourceTree = "<group>"; };
+		8817FC331E77141E007697DF /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = ViewModels/AuthenticationViewModels/LoginViewModelTests.swift; sourceTree = "<group>"; };
+		8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = ViewModels/AuthenticationViewModels/SignUpViewModelTests.swift; sourceTree = "<group>"; };
+		8817FC391E781223007697DF /* currentuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currentuser.json; path = Resources/TestJSON/currentuser.json; sourceTree = "<group>"; };
+		8817FC3B1E78125C007697DF /* registeruser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = registeruser.json; path = Resources/TestJSON/registeruser.json; sourceTree = "<group>"; };
+		8817FC3D1E781286007697DF /* loginuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuser.json; path = Resources/TestJSON/loginuser.json; sourceTree = "<group>"; };
+		8817FC3F1E7812C7007697DF /* updateuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = updateuser.json; path = Resources/TestJSON/updateuser.json; sourceTree = "<group>"; };
+		8817FC451E782C63007697DF /* BaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAlertViewController.swift; path = Views/SubViews/UIAlertViewControllers/BaseAlertViewController.swift; sourceTree = "<group>"; };
+		8817FC491E78BA3C007697DF /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = Views/ViewControllers/BaseNavigationController.swift; sourceTree = "<group>"; };
+		8817FC4B1E78C59F007697DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
 		887861611E68B11E00C931FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		887861791E68CC2000C931FC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationNavigationController.swift; path = Views/ViewControllers/AuthenticationViewControllers/AuthenticationNavigationController.swift; sourceTree = "<group>"; };
+		88F3FE0A1E7316CC003162F8 /* CaseCount+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CaseCount+Extension.swift"; path = "Extensions/CaseCount+Extension.swift"; sourceTree = "<group>"; };
+		88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModels/AuthenticationViewModels/SignUpViewModel.swift; sourceTree = "<group>"; };
+		88F3FE121E734C94003162F8 /* UIStoryboardSegue+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboardSegue+Extension.swift"; path = "Extensions/UIStoryboardSegue+Extension.swift"; sourceTree = "<group>"; };
+		88F3FE151E736118003162F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/ViewControllers/SettingViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
+		88F3FE171E740741003162F8 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "Extensions/UIView+Extension.swift"; sourceTree = "<group>"; };
+		88F3FE1A1E7679E5003162F8 /* SignupEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupEmailViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupEmailViewController.swift; sourceTree = "<group>"; };
 		88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreServices/LocalStorage/CoreDataStack.swift; sourceTree = "<group>"; };
 		88F8C9661E6A4C45006D6BC9 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = CoreServices/Networking/NetworkClient/NetworkClient.swift; sourceTree = "<group>"; };
-		88FBC27B1E6DE36D003AEEC4 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = Models/APIError.swift; sourceTree = "<group>"; };
+		88FBC27B1E6DE36D003AEEC4 /* BaseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseError.swift; path = Models/BaseError.swift; sourceTree = "<group>"; };
 		88FBC2861E6E84E1003AEEC4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Configurations/LocalizedStrings/Localizable.strings; sourceTree = "<group>"; };
 		88FBC2891E6E8788003AEEC4 /* DataRequest+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DataRequest+Extension.swift"; path = "Extensions/DataRequest+Extension.swift"; sourceTree = "<group>"; };
 		88FBC28B1E6E8F7A003AEEC4 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Models/UserTests.swift; sourceTree = "<group>"; };
@@ -95,6 +173,11 @@
 		88FBC29A1E6EC0BF003AEEC4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppLogger.swift; path = CoreServices/Logging/AppLogger.swift; sourceTree = "<group>"; };
 		88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppLoggerTests.swift; path = CoreServices/Logging/AppLoggerTests.swift; sourceTree = "<group>"; };
+		88FBC2A41E6FFD39003AEEC4 /* BaseErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseErrorTests.swift; path = Models/BaseErrorTests.swift; sourceTree = "<group>"; };
+		88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEndpoint.swift; path = CoreServices/Networking/Endpoints/BaseEndpoint.swift; sourceTree = "<group>"; };
+		88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = BusinessLogic/Singletons/SessionManager.swift; sourceTree = "<group>"; };
+		88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationEndpoint.swift; path = CoreServices/Networking/NetworkClient/AuthenticationEndpoint.swift; sourceTree = "<group>"; };
+		88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationManager.swift; path = BusinessLogic/Singletons/AuthenticationManager.swift; sourceTree = "<group>"; };
 		A4D5866E75C71BD2D121854E /* Pods-BaseAppV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2/Pods-BaseAppV2.release.xcconfig"; sourceTree = "<group>"; };
 		BD922A6B53627E40F775B2B4 /* Pods-BaseAppV2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +233,86 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8801FDD91E71BC5A00F54932 /* AuthenticationViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8801FDE01E71C79C00F54932 /* LoginViewModel.swift */,
+				88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */,
+			);
+			name = AuthenticationViewModels;
+			sourceTree = "<group>";
+		};
+		8801FDDA1E71BC6800F54932 /* ProfileViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProfileViewModels;
+			sourceTree = "<group>";
+		};
+		8801FDDD1E71C5EF00F54932 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88F3FE141E735FE7003162F8 /* SettingViewControllers */,
+				8801FDF91E722E1600F54932 /* ProfileViewControllers */,
+				8801FDF81E722DFE00F54932 /* AuthenticationViewControllers */,
+				8817FC491E78BA3C007697DF /* BaseNavigationController.swift */,
+				8817FC4B1E78C59F007697DF /* BaseViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8801FDEA1E71F12C00F54932 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC441E7829B8007697DF /* UIAlertControllers */,
+				8801FDF51E720ED200F54932 /* UIButtons */,
+				8801FDF21E72012500F54932 /* UITextFields */,
+				8801FDEB1E71F13200F54932 /* UIViews */,
+			);
+			name = SubViews;
+			sourceTree = "<group>";
+		};
+		8801FDEB1E71F13200F54932 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				8801FDEC1E71F17300F54932 /* BaseView.swift */,
+			);
+			name = UIViews;
+			sourceTree = "<group>";
+		};
+		8801FDF21E72012500F54932 /* UITextFields */ = {
+			isa = PBXGroup;
+			children = (
+				8801FDF31E72016000F54932 /* BaseTextField.swift */,
+			);
+			name = UITextFields;
+			sourceTree = "<group>";
+		};
+		8801FDF51E720ED200F54932 /* UIButtons */ = {
+			isa = PBXGroup;
+			children = (
+				8801FDF61E720F4900F54932 /* BaseButton.swift */,
+			);
+			name = UIButtons;
+			sourceTree = "<group>";
+		};
+		8801FDF81E722DFE00F54932 /* AuthenticationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88F3FE191E767951003162F8 /* SignupViewControllers */,
+				8801FE001E72418E00F54932 /* LoginViewController.swift */,
+				88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */,
+			);
+			name = AuthenticationViewControllers;
+			sourceTree = "<group>";
+		};
+		8801FDF91E722E1600F54932 /* ProfileViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProfileViewControllers;
+			sourceTree = "<group>";
+		};
 		880454B81E65E32C00D4A499 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +352,7 @@
 				8804550B1E6641B900D4A499 /* Constants.swift */,
 				880454CD1E65E32C00D4A499 /* Assets.xcassets */,
 				880454D21E65E32C00D4A499 /* Info.plist */,
+				8801FDEE1E72001000F54932 /* BaseAppV2-Bridging-Header.h */,
 			);
 			path = BaseAppV2;
 			sourceTree = "<group>";
@@ -211,6 +375,8 @@
 		880454E51E65E32C00D4A499 /* BaseAppV2UITests */ = {
 			isa = PBXGroup;
 			children = (
+				8817FC411E7812ED007697DF /* ViewControllers */,
+				8817FC371E7811DA007697DF /* Resources */,
 				880454E61E65E32C00D4A499 /* BaseAppV2UITests.swift */,
 				880454E81E65E32C00D4A499 /* Info.plist */,
 			);
@@ -222,7 +388,7 @@
 			children = (
 				887861601E68B11E00C931FC /* Model.xcdatamodeld */,
 				887861791E68CC2000C931FC /* User.swift */,
-				88FBC27B1E6DE36D003AEEC4 /* APIError.swift */,
+				88FBC27B1E6DE36D003AEEC4 /* BaseError.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -230,6 +396,8 @@
 		880454F51E65E3D500D4A499 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8801FDEA1E71F12C00F54932 /* SubViews */,
+				8801FDDD1E71C5EF00F54932 /* ViewControllers */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -237,8 +405,9 @@
 		880454F71E65E3F200D4A499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				880454C81E65E32C00D4A499 /* SecondViewController.swift */,
-				880454C61E65E32C00D4A499 /* FirstViewController.swift */,
+				8801FDDA1E71BC6800F54932 /* ProfileViewModels */,
+				8801FDD91E71BC5A00F54932 /* AuthenticationViewModels */,
+				8801FDDB1E71BD7900F54932 /* DynamicBinder.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -248,6 +417,7 @@
 			children = (
 				880455021E663D7900D4A499 /* Networking */,
 				880455031E663D8500D4A499 /* LocalStorage */,
+				88FBC2A61E7008F9003AEEC4 /* PushNotification */,
 				880455071E663E0000D4A499 /* Configuration */,
 				88FBC29E1E6F1C7F003AEEC4 /* Logging */,
 				880455041E663D9400D4A499 /* Factories */,
@@ -316,6 +486,7 @@
 		880455081E663E6000D4A499 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				88FBC2A91E701AB6003AEEC4 /* Singletons */,
 			);
 			name = BusinessLogic;
 			sourceTree = "<group>";
@@ -324,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				88FBC28B1E6E8F7A003AEEC4 /* UserTests.swift */,
+				88FBC2A41E6FFD39003AEEC4 /* BaseErrorTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -343,6 +515,8 @@
 		8804550F1E66701700D4A499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8817FC311E7713C4007697DF /* ProfileViewModels */,
+				8817FC321E7713D2007697DF /* AuthenticationViewModels */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -350,6 +524,7 @@
 		880455101E66702D00D4A499 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				8817FC2F1E7707BB007697DF /* AuthenticationManagerTests.swift */,
 			);
 			name = BusinessLogic;
 			sourceTree = "<group>";
@@ -357,6 +532,7 @@
 		880455111E66717A00D4A499 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8817FC221E76FE60007697DF /* TestJSON */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -364,6 +540,8 @@
 		880455121E66721100D4A499 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				8817FC191E76A296007697DF /* NetworkClient */,
+				8817FC1D1E76A510007697DF /* Endpoints */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -371,6 +549,7 @@
 		880455131E66721800D4A499 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
+				8817FC171E769C1B007697DF /* CoreDataStackTests.swift */,
 			);
 			name = LocalStorage;
 			sourceTree = "<group>";
@@ -390,6 +569,133 @@
 			name = Factories;
 			sourceTree = "<group>";
 		};
+		8817FC191E76A296007697DF /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC1A1E76A2CA007697DF /* NetworkClientTests.swift */,
+			);
+			name = NetworkClient;
+			sourceTree = "<group>";
+		};
+		8817FC1D1E76A510007697DF /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC1E1E76A541007697DF /* BaseEndpointInfoTests.swift */,
+			);
+			name = Endpoints;
+			sourceTree = "<group>";
+		};
+		8817FC221E76FE60007697DF /* TestJSON */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC231E76FE9A007697DF /* currentuser.json */,
+				8817FC251E770086007697DF /* registeruser.json */,
+				8817FC271E7700DF007697DF /* loginuser.json */,
+				8817FC291E77018D007697DF /* updateuser.json */,
+			);
+			name = TestJSON;
+			sourceTree = "<group>";
+		};
+		8817FC311E7713C4007697DF /* ProfileViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProfileViewModels;
+			sourceTree = "<group>";
+		};
+		8817FC321E7713D2007697DF /* AuthenticationViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC331E77141E007697DF /* LoginViewModelTests.swift */,
+				8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */,
+			);
+			name = AuthenticationViewModels;
+			sourceTree = "<group>";
+		};
+		8817FC371E7811DA007697DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC381E7811F1007697DF /* TestJSON */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8817FC381E7811F1007697DF /* TestJSON */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC391E781223007697DF /* currentuser.json */,
+				8817FC3B1E78125C007697DF /* registeruser.json */,
+				8817FC3D1E781286007697DF /* loginuser.json */,
+				8817FC3F1E7812C7007697DF /* updateuser.json */,
+			);
+			name = TestJSON;
+			sourceTree = "<group>";
+		};
+		8817FC411E7812ED007697DF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC4D1E78C854007697DF /* SettingViewControllers */,
+				8817FC4E1E78C85E007697DF /* ProfileViewControllers */,
+				8817FC4F1E78C86E007697DF /* AuthenticationViewControllers */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8817FC441E7829B8007697DF /* UIAlertControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC451E782C63007697DF /* BaseAlertViewController.swift */,
+			);
+			name = UIAlertControllers;
+			sourceTree = "<group>";
+		};
+		8817FC4D1E78C854007697DF /* SettingViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SettingViewControllers;
+			sourceTree = "<group>";
+		};
+		8817FC4E1E78C85E007697DF /* ProfileViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProfileViewControllers;
+			sourceTree = "<group>";
+		};
+		8817FC4F1E78C86E007697DF /* AuthenticationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC501E78C88B007697DF /* SignupViewControllers */,
+			);
+			name = AuthenticationViewControllers;
+			sourceTree = "<group>";
+		};
+		8817FC501E78C88B007697DF /* SignupViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SignupViewControllers;
+			sourceTree = "<group>";
+		};
+		88F3FE141E735FE7003162F8 /* SettingViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88F3FE151E736118003162F8 /* SettingsViewController.swift */,
+			);
+			name = SettingViewControllers;
+			sourceTree = "<group>";
+		};
+		88F3FE191E767951003162F8 /* SignupViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88F3FE1A1E7679E5003162F8 /* SignupEmailViewController.swift */,
+				8817FC131E76874C007697DF /* SignupPasswordViewController.swift */,
+				8817FC151E768CF2007697DF /* SignupOptionalInfoViewController.swift */,
+			);
+			name = SignupViewControllers;
+			sourceTree = "<group>";
+		};
 		88F8C9641E6A4BF0006D6BC9 /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +707,8 @@
 		88F8C9651E6A4BF9006D6BC9 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */,
+				88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */,
 			);
 			name = Endpoints;
 			sourceTree = "<group>";
@@ -418,6 +726,14 @@
 			children = (
 				88FBC2891E6E8788003AEEC4 /* DataRequest+Extension.swift */,
 				88FBC2931E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift */,
+				8801FDE41E71E2E800F54932 /* Notification+Extension.swift */,
+				8801FDFA1E72310B00F54932 /* UIColor+Extension.swift */,
+				8801FDFC1E72357500F54932 /* UIViewController+Extension.swift */,
+				8801FDFE1E723DD900F54932 /* UIStoryboard+Extension.swift */,
+				88F3FE0A1E7316CC003162F8 /* CaseCount+Extension.swift */,
+				88F3FE121E734C94003162F8 /* UIStoryboardSegue+Extension.swift */,
+				323127DA1E74A642007BE4C3 /* Promise+Extension.swift */,
+				88F3FE171E740741003162F8 /* UIView+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				88FBC2961E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift */,
+				8801FE021E72462B00F54932 /* UIViewControllerExtensionTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +761,22 @@
 				88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */,
 			);
 			name = Logging;
+			sourceTree = "<group>";
+		};
+		88FBC2A61E7008F9003AEEC4 /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PushNotification;
+			sourceTree = "<group>";
+		};
+		88FBC2A91E701AB6003AEEC4 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */,
+				88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */,
+			);
+			name = Singletons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,6 +857,7 @@
 					880454C01E65E32C00D4A499 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4SB3F2S2K3;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					880454D61E65E32C00D4A499 = {
@@ -577,6 +911,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8817FC241E76FE9A007697DF /* currentuser.json in Resources */,
+				8817FC2A1E77018D007697DF /* updateuser.json in Resources */,
+				8817FC281E7700DF007697DF /* loginuser.json in Resources */,
+				8817FC261E770086007697DF /* registeruser.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +922,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8817FC3A1E781223007697DF /* currentuser.json in Resources */,
+				8817FC401E7812C7007697DF /* updateuser.json in Resources */,
+				8817FC3E1E781286007697DF /* loginuser.json in Resources */,
+				8817FC3C1E78125C007697DF /* registeruser.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,21 +1074,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8801FE011E72418E00F54932 /* LoginViewController.swift in Sources */,
 				8804550C1E6641B900D4A499 /* Constants.swift in Sources */,
+				88F3FE161E736118003162F8 /* SettingsViewController.swift in Sources */,
+				88F3FE1B1E7679E5003162F8 /* SignupEmailViewController.swift in Sources */,
 				88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */,
+				8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */,
 				8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */,
+				8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */,
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
-				880454C91E65E32C00D4A499 /* SecondViewController.swift in Sources */,
-				88FBC27C1E6DE36D003AEEC4 /* APIError.swift in Sources */,
+				8801FDF41E72016000F54932 /* BaseTextField.swift in Sources */,
+				88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */,
+				88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */,
 				88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
-				880454C71E65E32C00D4A499 /* FirstViewController.swift in Sources */,
+				8801FDF71E720F4900F54932 /* BaseButton.swift in Sources */,
+				88FBC2A81E70099A003AEEC4 /* BaseEndpoint.swift in Sources */,
+				88F3FE131E734C94003162F8 /* UIStoryboardSegue+Extension.swift in Sources */,
+				8817FC161E768CF2007697DF /* SignupOptionalInfoViewController.swift in Sources */,
+				88FBC2AD1E7022F4003AEEC4 /* AuthenticationEndpoint.swift in Sources */,
+				88F3FE0B1E7316CC003162F8 /* CaseCount+Extension.swift in Sources */,
 				88FBC2941E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift in Sources */,
+				8801FDFD1E72357500F54932 /* UIViewController+Extension.swift in Sources */,
 				88FBC27A1E6DE299003AEEC4 /* Model.xcdatamodeld in Sources */,
 				88F8C9671E6A4C45006D6BC9 /* NetworkClient.swift in Sources */,
+				8801FDFB1E72310B00F54932 /* UIColor+Extension.swift in Sources */,
 				8878617A1E68CC2000C931FC /* User.swift in Sources */,
+				8801FDFF1E723DD900F54932 /* UIStoryboard+Extension.swift in Sources */,
+				8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */,
+				88F3FE181E740741003162F8 /* UIView+Extension.swift in Sources */,
+				8817FC141E76874C007697DF /* SignupPasswordViewController.swift in Sources */,
 				88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */,
+				88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */,
 				88FBC28A1E6E8788003AEEC4 /* DataRequest+Extension.swift in Sources */,
+				88FBC2AB1E701AE3003AEEC4 /* SessionManager.swift in Sources */,
+				88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */,
+				8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */,
+				8801FDED1E71F17300F54932 /* BaseView.swift in Sources */,
+				8801FDE51E71E2E800F54932 /* Notification+Extension.swift in Sources */,
+				8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */,
+				323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,11 +1121,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8817FC341E77141E007697DF /* LoginViewModelTests.swift in Sources */,
 				88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */,
 				8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */,
+				8801FE031E72462B00F54932 /* UIViewControllerExtensionTests.swift in Sources */,
+				8817FC361E7716E8007697DF /* SignUpViewModelTests.swift in Sources */,
+				8817FC1F1E76A541007697DF /* BaseEndpointInfoTests.swift in Sources */,
 				880454DC1E65E32C00D4A499 /* BaseAppV2Tests.swift in Sources */,
+				88FBC2A51E6FFD39003AEEC4 /* BaseErrorTests.swift in Sources */,
+				8817FC1B1E76A2CA007697DF /* NetworkClientTests.swift in Sources */,
 				88FBC2A31E6F2DCE003AEEC4 /* AppLoggerTests.swift in Sources */,
 				88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */,
+				8817FC301E7707BB007697DF /* AuthenticationManagerTests.swift in Sources */,
+				8817FC181E769C1B007697DF /* CoreDataStackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +1278,7 @@
 			baseConfigurationReference = 7835E893D2CA2710B20E0AD2 /* Pods-BaseAppV2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = BaseAppV2/Info.plist;
@@ -910,6 +1286,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.BaseAppV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BaseAppV2/BaseAppV2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -919,6 +1297,7 @@
 			baseConfigurationReference = A4D5866E75C71BD2D121854E /* Pods-BaseAppV2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = BaseAppV2/Info.plist;
@@ -926,6 +1305,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.BaseAppV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BaseAppV2/BaseAppV2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

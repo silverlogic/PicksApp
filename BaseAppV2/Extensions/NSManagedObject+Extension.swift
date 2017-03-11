@@ -11,7 +11,7 @@ import CoreData
 
 extension NSManagedObject {
     
-    /// The string representation of the class name.
+    /// The `String` representation of the class name.
     static var entityName: String {
         return String(describing: self)
     }

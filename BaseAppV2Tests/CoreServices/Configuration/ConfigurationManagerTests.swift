@@ -25,6 +25,7 @@ extension ConfigurationManagerTests {
     
     override func tearDown() {
         super.tearDown()
+        _sharedInstance.environmentMode = .staging
         _sharedInstance = nil
     }
 }

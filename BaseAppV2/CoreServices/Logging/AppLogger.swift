@@ -55,7 +55,7 @@ extension AppLogger {
 
 
 // MARK: - Private Instance Methods
-extension AppLogger {
+fileprivate extension AppLogger {
     
     /**
         Configures logging for the application at launch.

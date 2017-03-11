@@ -11,19 +11,19 @@ import CoreData
 @testable import BaseAppV2
 
 final class UserTests: BaseAppV2Tests {
-    
-    // MARK: - Private Instance Attributes
-    fileprivate var _user: User!
 }
 
 
-// MARK: - Setup & Tear Down
+// MARK: - Functionality Tests
 extension UserTests {
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
+    func testAvatarUrl() {
+        guard let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: CoreDataStack.shared.managedObjectContext) as? User else {
+            XCTFail("Failed To Test CoreDataStack!")
+            return
+        }
+        user.userId = 50
+        let url = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Apple_Computer_Logo_rainbow.svg/931px-Apple_Computer_Logo_rainbow.svg.png")!
+        user.avatarUrl = url
+        XCTAssertEqual(user.avatarUrl, url, "Formatting Not Correct!")
     }
 }
