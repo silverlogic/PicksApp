@@ -67,7 +67,7 @@ extension ConfigurationManager {
 
 
 // MARK: - Private Instance Methods
-extension ConfigurationManager {
+fileprivate extension ConfigurationManager {
     
     /**
         Loads the global configuration property list file from

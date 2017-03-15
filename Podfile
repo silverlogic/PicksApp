@@ -8,8 +8,13 @@ target 'BaseAppV2' do
     pod 'AlamofireActivityLogger', '~> 2.3'
     pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
     pod 'Crashlytics', '~> 3.8'
+    pod 'Dodo', '~> 7.0'
+    pod 'IQKeyboardManager'
     pod 'Raccoon'
+    pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
+    pod 'SVProgressHUD'
     pod 'SwiftyBeaver'
+    pod 'UITextField+Shake', '~> 1.1'
     
     target 'BaseAppV2Tests' do
         inherit! :search_paths

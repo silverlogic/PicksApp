@@ -51,3 +51,47 @@ enum CoreDataStackConstants {
     // MARK: - File Type Constants
     static let modelType = "momd"
 }
+
+
+/**
+    An enum that defines constants used
+    for managing the session of the current
+    user.
+*/
+enum SessionConstants {
+    
+    // MARK: - User Constants
+    static let userId = "userId"
+    
+    
+    // MARK: - Authorization Token Constants
+    static let authorizationToken = "authorizationToken"
+}
+
+
+/**
+    An enum that defines constants used for
+    styling the application.
+*/
+enum StyleConstants {
+    
+    // MARK: - Color Constants
+    static let colorValueBaseAppBlue: UInt = 0x3D8DD4
+    
+    
+    // MARK: - Font Size Constants
+    static let defaultBaseAppFontSizeSmall: CGFloat = 10.0
+    static let defaultBaseAppFontSizeMedium: CGFloat = 17.0
+    static let defaultBaseAppFontSizeLarge: CGFloat = 25.0
+}
+
+
+/**
+    An enum that defines the indexes
+    of the tabbar.
+*/
+enum TabbarIndex: Int {
+    case profile
+    case users
+    case settings
+}

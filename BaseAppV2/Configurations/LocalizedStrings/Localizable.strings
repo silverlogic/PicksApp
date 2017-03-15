@@ -6,5 +6,7 @@
   Copyright © 2017 SilverLogic. All rights reserved.
 */
 
-// APIError
-"APIError.DefaultErrorDescription" = "Oh no, an unknown error occured. 😞";
+// BaseError
+"BaseError.DefaultErrorDescription" = "Oh no, an unknown error occured. 😞";
+"BaseError.FieldsMissing" = "Oops, not all fields enterd. 😞";
+"BaseError.PasswordsDoNotMatch" = "Oops, passwords entered don't match. 😞";

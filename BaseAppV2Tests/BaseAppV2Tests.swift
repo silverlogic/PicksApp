@@ -7,13 +7,10 @@
 //
 
 import XCTest
+import OHHTTPStubs
 @testable import BaseAppV2
 
 class BaseAppV2Tests: XCTestCase {
-    
-    // MARK: - Attributes
-    // Put any variables needed for testing. This includes instances
-    // of any classes that you create
 }
 
 
@@ -21,12 +18,35 @@ class BaseAppV2Tests: XCTestCase {
 extension BaseAppV2Tests {
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users/me") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("currentuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users/210") && isMethodPATCH(), response: { _ in
+            guard let path = OHPathForFile("updateuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/login") && isMethodPOST(), response: { _ in
+            guard let path = OHPathForFile("loginuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/register") && isMethodPOST(), response: { _ in
+            guard let path = OHPathForFile("registeruser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
     }
     
     override func tearDown() {
         super.tearDown()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        OHHTTPStubs.removeAllStubs()
     }
 }
 

@@ -35,8 +35,8 @@ extension DataRequest {
                   let errorDictionary = dictionary else {
                 return .failure(AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: statusCode)))
             }
-            let errorDescription = APIError.errorDescriptionFromErrorDictionary(errorDictionary)
-            let apiError = APIError(statusCode: statusCode, errorDescription: errorDescription)
+            let errorDescription = BaseError.errorDescriptionFromErrorDictionary(errorDictionary)
+            let apiError = BaseError(statusCode: statusCode, errorDescription: errorDescription)
             return .failure(apiError)
         })
     }

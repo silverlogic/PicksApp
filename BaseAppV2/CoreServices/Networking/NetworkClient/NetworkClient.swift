@@ -23,6 +23,7 @@ final class NetworkClient: Raccoon.Client {
     public var baseURL: String
     public var context: NSManagedObjectContext
     
+    
     // MARK: - Initializers
     
     /**
@@ -48,7 +49,7 @@ final class NetworkClient: Raccoon.Client {
         #if DEBUG
             return request
                    .validateResponse()
-                   .log(level: .all)
+                   .log(level: .all, printer: NetworkLogger())
         #else
             return request.validateResponse()
         #endif
@@ -58,6 +59,22 @@ final class NetworkClient: Raccoon.Client {
         return promise.then { (item) -> T in
             try? self.context.save()
             return item
+        }
+    }
+}
+
+
+/**
+    A class responsible for printing
+    to `AppLogger`.
+*/
+private class NetworkLogger: Printer {
+    fileprivate func print(_ string: String, phase: Phase) {
+        if phase.isError {
+            AppLogger.shared.logMessage(string, for: .error)
+        }
+        else {
+            AppLogger.shared.logMessage(string, for: .debug)
         }
     }
 }
