@@ -10,3 +10,12 @@
 "BaseError.DefaultErrorDescription" = "Oh no, an unknown error occured. 😞";
 "BaseError.FieldsMissing" = "Oops, not all fields enterd. 😞";
 "BaseError.PasswordsDoNotMatch" = "Oops, passwords entered don't match. 😞";
+
+// Settings View Controller
+"SettingsViewController.InviteCode" = "Invite Code";
+"SettingsViewController.Version" = "Version";
+"SettingsViewController.SendFeedback" = "Send Feedback";
+"SettingsViewController.TermsOfUse" = "Terms of Use";
+"SettingsViewController.PrivacyPolicy" = "Privacy Policy";
+"SettingsViewController.ChangePassword" = "Change Password";
+"SettingsViewController.Logout" = "Logout";

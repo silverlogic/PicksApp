@@ -18,32 +18,34 @@ final class ConfigurationManager {
     static let shared = ConfigurationManager()
     
     
+    // MARK: - Public Instance Attributes
+    var environmentMode = EnvironmentMode.staging
+    lazy var versionNumber: String = {
+        guard let infoDictionary = Bundle.main.infoDictionary,
+              let shortVersionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "" }
+        return "v\(shortVersionNumber)"
+    }()
+    
+    
     // MARK: - Private Instance Attributes
-    fileprivate var _globalConfigurationDictionary = [String: Any]()
-    fileprivate var _environmentMode = EnvironmentMode.staging
+    fileprivate lazy var _globalConfigurationDictionary: [String: Any] = {
+        guard let localizedFilePath = Bundle.main.path(forResource: ConfigurationConstants.globalConfiguration, ofType: ConfigurationConstants.propertyListType),
+            let propertyListDictionary = NSDictionary(contentsOfFile: localizedFilePath) as? [String: Any] else {
+                return [String: Any]()
+        }
+        return propertyListDictionary
+    }()
     
     
     // MARK: - Initializers
     
     /// Initializes a shared instance of `ConfigurationManager`.
-    private init() {
-        loadGlobalConfigurationFile()
-    }
+    private init() {}
 }
 
 
 // MARK: - Getters & Setters
 extension ConfigurationManager {
-    
-    /// The current environment mode state the application is running as.
-    var environmentMode: EnvironmentMode {
-        get {
-            return _environmentMode
-        }
-        set {
-            _environmentMode = newValue
-        }
-    }
     
     /// The current API key used for Fabric and Crashlytics.
     var crashlyticsApiKey: String? {
@@ -68,18 +70,6 @@ extension ConfigurationManager {
 
 // MARK: - Private Instance Methods
 fileprivate extension ConfigurationManager {
-    
-    /**
-        Loads the global configuration property list file from
-        the main bundle.
-    */
-    fileprivate func loadGlobalConfigurationFile() {
-        guard let localizedFilePath = Bundle.main.path(forResource: ConfigurationConstants.globalConfiguration, ofType: ConfigurationConstants.propertyListType),
-              let propertyListDictionary = NSDictionary(contentsOfFile: localizedFilePath) as? [String: Any] else {
-                return
-        }
-        _globalConfigurationDictionary = propertyListDictionary
-    }
     
     /**
         Gets the value from the global configuration dictionary based on a given key.
@@ -110,7 +100,7 @@ fileprivate extension ConfigurationManager {
         if environmentDictionary.count != 4 {
             return nil
         }
-        switch _environmentMode {
+        switch environmentMode {
         case .local:
             return environmentDictionary[ConfigurationConstants.local]
         case .staging:
