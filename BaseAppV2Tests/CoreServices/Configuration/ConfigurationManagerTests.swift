@@ -44,14 +44,6 @@ extension ConfigurationManagerTests {
         XCTAssertEqual(_sharedInstance.environmentMode, .production, "Environment Mode Not Correct!")
     }
     
-    func testCrashlyticsApiKey() {
-        guard let crashlyticsApiKey = _sharedInstance.crashlyticsApiKey else {
-            XCTFail("Error Getting Crashlytics Key From Global Configuration!")
-            return
-        }
-        XCTAssertEqual(crashlyticsApiKey, "ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748", "Wrong Value Retrived!")
-    }
-    
     func testApiUrl() {
         _sharedInstance.environmentMode = .local
         guard let localApiUrl = _sharedInstance.apiUrl else {

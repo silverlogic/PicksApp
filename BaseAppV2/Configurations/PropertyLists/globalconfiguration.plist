@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Crashlytics</key>
-	<string>ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748</string>
 	<key>ApiUrl</key>
 	<dict>
 		<key>Local</key>
