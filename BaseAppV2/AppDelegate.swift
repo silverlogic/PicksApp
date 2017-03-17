@@ -11,6 +11,8 @@ import SVProgressHUD
 import AlamofireNetworkActivityIndicator
 import IQKeyboardManager
 import Dodo
+import Fabric
+import Crashlytics
 
 final class AppDelegate: UIResponder {
     
@@ -34,6 +36,7 @@ extension AppDelegate: UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(loadApplicationFlow), name: .UserLoggedIn, object: nil)
         window = UIWindow(frame: UIScreen.main.bounds)
         setInitialFlow()
+        configureBusinessLogic()
         configureUIComponents()
         window?.makeKeyAndVisible()
         return true
@@ -81,6 +84,15 @@ fileprivate extension AppDelegate {
         window?.rootViewController?.view.dodo.bottomLayoutGuide = window?.rootViewController?.bottomLayoutGuide
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                             NSFontAttributeName: font]
+    }
+    
+    fileprivate func configureBusinessLogic() {
+        Fabric.sharedSDK().debug = false
+        Fabric.with([Crashlytics.self()])
+        guard let _ = SessionManager.shared.authorizationToken,
+              let user = SessionManager.shared.currentUser else { return }
+        Crashlytics.sharedInstance().setUserIdentifier("\(user.userId)")
+        Crashlytics.sharedInstance().setUserEmail(user.email)
     }
     
     /// Loads the authentication flow.

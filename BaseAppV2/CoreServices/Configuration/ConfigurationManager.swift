@@ -47,15 +47,6 @@ final class ConfigurationManager {
 // MARK: - Getters & Setters
 extension ConfigurationManager {
     
-    /// The current API key used for Fabric and Crashlytics.
-    var crashlyticsApiKey: String? {
-        guard let apiKey = configurationValueForKey(ConfigurationConstants.crashlytics) as? String else {
-            return nil
-        }
-        assert(apiKey.characters.count > 0, "Fabric/Crashlytics Key Not Provided In Global Configuration File!")
-        return apiKey
-    }
-    
     /// The current base api url to use for perfoming network requests.
     var apiUrl: String? {
         guard let apiUrlDictionary = configurationValueForKey(ConfigurationConstants.apiUrl) as? [String: Any],

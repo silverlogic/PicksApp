@@ -58,6 +58,8 @@
 		88AF2E111E7BB2A400F93A50 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF2E101E7BB2A400F93A50 /* SettingsTableViewCell.swift */; };
 		88AF2E131E7BB2D000F93A50 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF2E121E7BB2D000F93A50 /* BaseTableViewCell.swift */; };
 		88AF2E161E7BBA7C00F93A50 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF2E151E7BBA7C00F93A50 /* SettingViewModel.swift */; };
+		88AF2E1C1E7C222400F93A50 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AF2E1B1E7C222400F93A50 /* Fabric.framework */; };
+		88AF2E1E1E7C223E00F93A50 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AF2E1D1E7C223E00F93A50 /* Crashlytics.framework */; };
 		88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */; };
 		88F3FE0B1E7316CC003162F8 /* CaseCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0A1E7316CC003162F8 /* CaseCount.swift */; };
 		88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */; };
@@ -77,7 +79,6 @@
 		88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */; };
 		88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29A1E6EC0BF003AEEC4 /* main.swift */; };
 		88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */; };
-		88FBC2A31E6F2DCE003AEEC4 /* AppLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */; };
 		88FBC2A51E6FFD39003AEEC4 /* BaseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A41E6FFD39003AEEC4 /* BaseErrorTests.swift */; };
 		88FBC2A81E70099A003AEEC4 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */; };
 		88FBC2AB1E701AE3003AEEC4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */; };
@@ -166,6 +167,8 @@
 		88AF2E101E7BB2A400F93A50 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewCell.swift; path = Views/SubViews/UITableViewCells/SettingsTableViewCells/SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		88AF2E121E7BB2D000F93A50 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Views/SubViews/UITableViewCells/BaseTableViewCell.swift; sourceTree = "<group>"; };
 		88AF2E151E7BBA7C00F93A50 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModels/SettingViewModels/SettingViewModel.swift; sourceTree = "<group>"; };
+		88AF2E1B1E7C222400F93A50 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Pods/Fabric/Fabric.framework; sourceTree = "<group>"; };
+		88AF2E1D1E7C223E00F93A50 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Pods/Crashlytics/Crashlytics.framework; sourceTree = "<group>"; };
 		88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationNavigationController.swift; path = Views/ViewControllers/AuthenticationViewControllers/AuthenticationNavigationController.swift; sourceTree = "<group>"; };
 		88F3FE0A1E7316CC003162F8 /* CaseCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaseCount.swift; path = Protocols/CaseCount.swift; sourceTree = "<group>"; };
 		88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModels/AuthenticationViewModels/SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -184,7 +187,6 @@
 		88FBC2981E6EBF7A003AEEC4 /* TestAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		88FBC29A1E6EC0BF003AEEC4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		88FBC29F1E6F1D15003AEEC4 /* AppLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppLogger.swift; path = CoreServices/Logging/AppLogger.swift; sourceTree = "<group>"; };
-		88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppLoggerTests.swift; path = CoreServices/Logging/AppLoggerTests.swift; sourceTree = "<group>"; };
 		88FBC2A41E6FFD39003AEEC4 /* BaseErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseErrorTests.swift; path = Models/BaseErrorTests.swift; sourceTree = "<group>"; };
 		88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEndpoint.swift; path = CoreServices/Networking/Endpoints/BaseEndpoint.swift; sourceTree = "<group>"; };
 		88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = BusinessLogic/Singletons/SessionManager.swift; sourceTree = "<group>"; };
@@ -199,6 +201,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88AF2E1E1E7C223E00F93A50 /* Crashlytics.framework in Frameworks */,
+				88AF2E1C1E7C222400F93A50 /* Fabric.framework in Frameworks */,
 				017AA4F075A83D3D85121DC1 /* Pods_BaseAppV2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +229,8 @@
 		1A3D5C9DAFB7204C2B75B57C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88AF2E1D1E7C223E00F93A50 /* Crashlytics.framework */,
+				88AF2E1B1E7C222400F93A50 /* Fabric.framework */,
 				41C1F2B92FFE60C0C4670124 /* Pods_BaseAppV2.framework */,
 				551A5F4DF39C3E79AE2F0DB3 /* Pods_BaseAppV2Tests.framework */,
 				4CDA04068818566DC0655B1A /* Pods_BaseAppV2UITests.framework */,
@@ -521,7 +527,6 @@
 				880455121E66721100D4A499 /* Networking */,
 				880455131E66721800D4A499 /* LocalStorage */,
 				880455141E66722B00D4A499 /* Configuration */,
-				88FBC2A11E6F2D3B003AEEC4 /* Logging */,
 				880455151E66725E00D4A499 /* Factories */,
 			);
 			name = CoreServices;
@@ -813,14 +818,6 @@
 			name = Logging;
 			sourceTree = "<group>";
 		};
-		88FBC2A11E6F2D3B003AEEC4 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				88FBC2A21E6F2DCE003AEEC4 /* AppLoggerTests.swift */,
-			);
-			name = Logging;
-			sourceTree = "<group>";
-		};
 		88FBC2A61E7008F9003AEEC4 /* PushNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -850,6 +847,7 @@
 				880454BF1E65E32C00D4A499 /* Resources */,
 				A870280927E2B993CEBB30D5 /* [CP] Embed Pods Frameworks */,
 				29F28D865F3F85729A4DC707 /* [CP] Copy Pods Resources */,
+				88AF2E1A1E7C110E00F93A50 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1050,6 +1048,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaseAppV2UITests/Pods-BaseAppV2UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		88AF2E1A1E7C110E00F93A50 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748 07b07385e052fb585322f9720d20640fb02764329cf8a6da6f325bdb56e9a254";
+		};
 		9E34B173FECABF59BF269FAD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1194,7 +1205,6 @@
 				880454DC1E65E32C00D4A499 /* BaseAppV2Tests.swift in Sources */,
 				88FBC2A51E6FFD39003AEEC4 /* BaseErrorTests.swift in Sources */,
 				8817FC1B1E76A2CA007697DF /* NetworkClientTests.swift in Sources */,
-				88FBC2A31E6F2DCE003AEEC4 /* AppLoggerTests.swift in Sources */,
 				88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */,
 				8817FC301E7707BB007697DF /* AuthenticationManagerTests.swift in Sources */,
 				8817FC181E769C1B007697DF /* CoreDataStackTests.swift in Sources */,
@@ -1343,8 +1353,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Fabric",
+					"$(PROJECT_DIR)/Pods/Crashlytics",
+				);
 				INFOPLIST_FILE = BaseAppV2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1364,6 +1380,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Fabric",
+					"$(PROJECT_DIR)/Pods/Crashlytics",
+				);
 				INFOPLIST_FILE = BaseAppV2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1381,6 +1402,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Fabric",
+					"$(PROJECT_DIR)/Pods/Crashlytics",
+				);
 				INFOPLIST_FILE = BaseAppV2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.BaseAppV2Tests;
@@ -1397,6 +1423,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Fabric",
+					"$(PROJECT_DIR)/Pods/Crashlytics",
+				);
 				INFOPLIST_FILE = BaseAppV2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.BaseAppV2Tests;
