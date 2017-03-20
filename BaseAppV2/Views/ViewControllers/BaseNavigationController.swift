@@ -10,7 +10,7 @@ import Foundation
 import KYNavigationProgress
 
 /**
-    A base class for having suclasses
+    A base class for having subclasses
     of `UINavigationController`. It also
     defines and sets default attributes for
     an instance.
@@ -21,6 +21,10 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         let navigationBarBackgroundImage = #imageLiteral(resourceName: "background-baseapp")
         navigationBar.setBackgroundImage(navigationBarBackgroundImage, for: .default)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
+        imageView.image = #imageLiteral(resourceName: "icon-baseappnavigationbar")
+        imageView.contentMode = .scaleAspectFit
+        navigationBar.topItem?.titleView = imageView
         progressTintColor = .white
     }
 }

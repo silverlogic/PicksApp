@@ -26,4 +26,16 @@ extension UserTests {
         user.avatarUrl = url
         XCTAssertEqual(user.avatarUrl, url, "Formatting Not Correct!")
     }
+    
+    func testFullName() {
+        guard let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: CoreDataStack.shared.managedObjectContext) as? User else {
+            XCTFail("Failed To Test CoreDataStack!")
+            return
+        }
+        user.userId = 52
+        user.firstName = "Bob"
+        user.lastName = "Saget"
+        let fullName = user.fullName
+        XCTAssertEqual(fullName, "Bob Saget", "Formatting Not Correct!")
+    }
 }

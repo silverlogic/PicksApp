@@ -55,29 +55,3 @@ extension BaseAppV2Tests {
         OHHTTPStubs.removeAllStubs()
     }
 }
-
-
-// MARK: - Initialization Tests
-extension BaseAppV2Tests {
-    // Here you would place test methods for testing
-    // initialization of objects. This includes
-    // testing for IBOutlets are connected, any
-    // objects that have data sources and delegates
-    // have references, etc.
-    func testIBOutletsAreConnected() {
-        XCTAssert(true, "Missing Connections")
-    }
-}
-
-
-// MARK: - Functional Tests
-extension BaseAppV2Tests {
-    // Here you would place test methods for testing
-    // functionality and behaviors of class objects.
-    // This includes testing business logic, searching,
-    // filtering, etc.
-    func testAddition() {
-        let result = 1 + 1
-        XCTAssert(result == 2, "Incorrect Answer")
-    }
-}

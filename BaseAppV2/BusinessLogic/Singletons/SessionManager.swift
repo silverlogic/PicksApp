@@ -18,7 +18,7 @@ final class SessionManager {
     
     
     // MARK: - Private Instance Attributes
-    fileprivate var _currentUser: User?
+    fileprivate var _currentUser: DynamicBinder<User?>
     fileprivate var _authorizationToken: String?
     
     
@@ -26,6 +26,11 @@ final class SessionManager {
     
     /// Initializes a shared instance of `SessionManager`.
     private init() {
+        _currentUser = DynamicBinder(nil)
+        // Check if running in Unit Tests Or UI Tests
+        if ProcessInfo.isRunningUnitTests || ProcessInfo.isRunningUITests{
+            return
+        }
         loadSession()
     }
 }
@@ -35,13 +40,13 @@ final class SessionManager {
 extension SessionManager {
     
     /// The current user.
-    var currentUser: User? {
+    var currentUser: DynamicBinder<User?> {
         get {
             return _currentUser
         }
         set {
             _currentUser = newValue
-            UserDefaults.standard.set(_currentUser?.userId, forKey: SessionConstants.userId)
+            UserDefaults.standard.set(_currentUser.value?.userId, forKey: SessionConstants.userId)
         }
     }
     
@@ -62,14 +67,43 @@ extension SessionManager {
 extension SessionManager {
     
     /**
+        Updates the current user.
+     
+        - Parameters:
+            - updateInfo: A `UpdateInfo` representing the information needed
+                          for updating the current user.
+            - success: A closure that gets invoked when updating the current
+                       user was successful.
+            - failure: A closure that gets invoked when updating the current
+                       user failed. Passes a `BaseError` object that contains
+                       the error that occured.
+    */
+    func update(_ updateInfo: UpdateInfo, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInteractive)
+        let userId = _currentUser.value?.userId
+        dispatchQueue.async {
+            let networdClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networdClient.enqueue(AuthenticationEndpoint.update(updateInfo: updateInfo, userId: Int(userId!)))
+            .then(on: DispatchQueue.main, execute: { [weak self] (user: User) -> Void in
+                guard let strongSelf = self else { return }
+                strongSelf._currentUser.value = user
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+    
+    /**
         Logs out the current user and terminates their
         session.
     */
     func logout() {
-        guard let user = _currentUser else { return }
+        guard let user = _currentUser.value else { return }
         CoreDataStack.shared.deleteObject(user, success: { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf._currentUser = nil
+            strongSelf._currentUser.value = nil
             strongSelf._authorizationToken = nil
             UserDefaults.standard.removeObject(forKey: SessionConstants.authorizationToken)
             UserDefaults.standard.removeObject(forKey: SessionConstants.userId)
@@ -90,25 +124,20 @@ fileprivate extension SessionManager {
         for the current session.
     */
     fileprivate func loadSession() {
-        // Check if running in UI test target
-        if ProcessInfo.isRunningUITests {
-            return
-        } else {
-            guard let token = UserDefaults.standard.value(forKey: SessionConstants.authorizationToken) as? String,
-                let userId = UserDefaults.standard.value(forKey: SessionConstants.userId) as? Int else { return }
-            _authorizationToken = token
-            let predicate = NSPredicate(format: "userId == %d", userId)
-            CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in
-                if users.count != 1 {
-                    self.loadUser()
-                } else {
-                    guard let user = users.first else { return }
-                    self._currentUser = user
-                }
-            }, failure: {
+        guard let token = UserDefaults.standard.value(forKey: SessionConstants.authorizationToken) as? String,
+              let userId = UserDefaults.standard.value(forKey: SessionConstants.userId) as? Int else { return }
+        _authorizationToken = token
+        let predicate = NSPredicate(format: "userId == %d", userId)
+        CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in
+            if users.count != 1 {
                 self.loadUser()
-            })
-        }
+            } else {
+                guard let user = users.first else { return }
+                self._currentUser.value = user
+            }
+        }, failure: {
+            self.loadUser()
+        })
     }
     
     /**
@@ -119,7 +148,7 @@ fileprivate extension SessionManager {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.currentUser)
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                self._currentUser = user
+                self._currentUser.value = user
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
             })

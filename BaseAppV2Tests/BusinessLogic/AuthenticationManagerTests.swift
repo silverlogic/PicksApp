@@ -36,7 +36,7 @@ extension AuthenticationManagerTests {
         let loginExpectation = expectation(description: "Test Login")
         sharedManager.login(email: "testuser@tsl.io", password: "1234", success: {
             XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
-            XCTAssertEqual(SessionManager.shared.currentUser?.userId, 210, "Wrong User Loaded!")
+            XCTAssertEqual(SessionManager.shared.currentUser.value?.userId, 210, "Wrong User Loaded!")
             loginExpectation.fulfill()
         }) { (error: BaseError) in
             XCTFail("Error Logging In!")
@@ -51,10 +51,10 @@ extension AuthenticationManagerTests {
         let signupExpectation = expectation(description: "Test Signup")
         sharedManager.signup(signupInfo, updateInfo: updateIndo, success: {
             XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
-            XCTAssertEqual(SessionManager.shared.currentUser?.userId, 210, "Signing Up User Failed!")
-            XCTAssertEqual(SessionManager.shared.currentUser?.email, "testuser@tsl.io", "Signing Up User Failed!")
-            XCTAssertEqual(SessionManager.shared.currentUser?.firstName, "Bob", "Signing Up User Failed!")
-            XCTAssertEqual(SessionManager.shared.currentUser?.lastName, "Saget", "Signing Up User Failed!")
+            XCTAssertEqual(SessionManager.shared.currentUser.value?.userId, 210, "Signing Up User Failed!")
+            XCTAssertEqual(SessionManager.shared.currentUser.value?.email, "testuser@tsl.io", "Signing Up User Failed!")
+            XCTAssertEqual(SessionManager.shared.currentUser.value?.firstName, "Bob", "Signing Up User Failed!")
+            XCTAssertEqual(SessionManager.shared.currentUser.value?.lastName, "Saget", "Signing Up User Failed!")
             signupExpectation.fulfill()
         }) { (error: BaseError) in
             XCTFail("Error Signing Up!")

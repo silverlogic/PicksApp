@@ -52,6 +52,11 @@ extension User {
             avatar = url.absoluteString
         }
     }
+    
+    /// The full name of the user.
+    var fullName: String {
+        return "\(firstName != nil ? firstName! : "") \(lastName != nil ? lastName! : "")"
+    }
 }
 
 

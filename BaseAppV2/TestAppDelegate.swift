@@ -21,6 +21,7 @@ extension TestAppDelegate: UIApplicationDelegate {
         _ = ConfigurationManager.shared
         _ = CoreDataStack.shared
         _ = AppLogger.shared
+        _ = SessionManager.shared
         return true
     }
 }

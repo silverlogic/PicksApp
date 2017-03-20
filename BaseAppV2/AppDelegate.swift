@@ -93,7 +93,7 @@ fileprivate extension AppDelegate {
         Fabric.sharedSDK().debug = false
         Fabric.with([Crashlytics.self()])
         guard let _ = SessionManager.shared.authorizationToken,
-              let user = SessionManager.shared.currentUser else { return }
+              let user = SessionManager.shared.currentUser.value else { return }
         Crashlytics.sharedInstance().setUserIdentifier("\(user.userId)")
         Crashlytics.sharedInstance().setUserEmail(user.email)
     }
