@@ -10,6 +10,7 @@ import Foundation
 import SVProgressHUD
 import IQKeyboardManager
 import Dodo
+import KYNavigationProgress
 
 // MARK: - Public Instance Methods For SVProgressHUD
 extension UIViewController {
@@ -110,6 +111,38 @@ extension UIViewController {
             view.dodo.error(message)
             break
         }
+    }
+}
+
+
+// MARK: - Public Instance Methods For KYNavigationProgress
+extension UIViewController {
+    
+    /**
+        Sets the progress bar of the navigation controller
+        with a given progress.
+     
+        - Parameter progress: A `Float` representing the current
+                              progress of a task.
+    */
+    func setProgressForNavigationBar(progress: Float) {
+        navigationController?.setProgress(progress, animated: true)
+    }
+    
+    /**
+        Animates the finishing of the progress bar
+        in the navigation controller.
+    */
+    func finishProgressBar() {
+        navigationController?.finishProgress()
+    }
+    
+    /**
+        Animates the canceling of the progress bar
+        in the navigation controller.
+    */
+    func cancelProgressBar() {
+        navigationController?.cancelProgress()
     }
 }
 

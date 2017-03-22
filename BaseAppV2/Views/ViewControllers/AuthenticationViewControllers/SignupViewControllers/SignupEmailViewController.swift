@@ -9,7 +9,7 @@
 import Foundation
 
 /**
-    A `UIViewController` responsible for handling
+    A `BaseViewController` responsible for handling
     interaction from the sign up view for entering
     an email.
 */

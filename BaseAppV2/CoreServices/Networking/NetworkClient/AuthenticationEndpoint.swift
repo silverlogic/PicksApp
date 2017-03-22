@@ -19,6 +19,7 @@ enum AuthenticationEndpoint: BaseEndpoint {
     case signUp(signUpInfo: SignUpInfo)
     case update(updateInfo: UpdateInfo, userId: Int)
     case currentUser
+    case oauth2(oauth2Info: OAuth2Info)
     
     var endpointInfo: BaseEndpointInfo {
         let path: String
@@ -54,6 +55,13 @@ enum AuthenticationEndpoint: BaseEndpoint {
             parameters = nil
             parameterEncoding = nil
             requiresAuthorization = true
+            break
+        case let .oauth2(oauth2Info):
+            path = "social-auth"
+            requestMethod = .post
+            parameters = oauth2Info.parameters
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
             break
         }
         return BaseEndpointInfo(path: path, requestMethod: requestMethod, parameters: parameters, parameterEncoding: parameterEncoding, requiresAuthorization: requiresAuthorization)
@@ -163,6 +171,71 @@ struct UpdateInfo {
     }
 }
 
+/**
+    A struct encapsulating what information is needed
+    when doing OAuth2 Authentication.
+*/
+struct OAuth2Info {
+    
+    // MARK: - Public Instance Methods
+    let provider: String
+    let oauthCode: String
+    let redirectUri: String
+    let email: String?
+    let referralCodeOfReferrer: String?
+    
+    
+    // MARK: - Getters & Setters
+    var parameters: Alamofire.Parameters {
+        var params: Parameters = [
+            "provider": provider,
+            "code": oauthCode,
+            "redirect_uri": redirectUri
+        ]
+        if let userEmail = email {
+            params["email"] = userEmail
+        }
+        if let referralCode = referralCodeOfReferrer {
+            params["referral_code"] = referralCode
+        }
+        return params
+    }
+    
+    
+    // MARK: - Initializers
+    
+    /**
+        Initializes an instance of `OAuth2Info`.
+     
+        - Parameters:
+            - provider: An `OAuth2Provider` representing the type of
+                        OAuth provider used.
+            - oauthCode: A `String` representing the OAuth authorization
+                         code that is received from an OAuth2 provider.
+            - redirectUri: A `String` representing the redirect used
+                           for the provider.
+            - email: A `String` representing the email of the user used
+                     for logining in to the provider. This value would be 
+                     filled if an error occured due to an email not being 
+                     used for login. `nil` can be passed as a parameter.
+            - referralCodeOfReferrer: A `String` representing the referral code of
+                                      another user that the referred the current user
+                                      to the application. In some situations, if the
+                                      referral code can't be supplied due to the
+                                      `oauthCode` expiring, the `UpdateInfo` can be used
+                                      to pass the referral code. This only avaliable for
+                                      twenty four hours after the user logged in. `nil`
+                                      can be passed as a parameter.
+    */
+    init(provider: OAuth2Provider, oauthCode: String, redirectUri: String, email: String?, referralCodeOfReferrer: String?) {
+        self.provider = provider.rawValue
+        self.oauthCode = oauthCode
+        self.redirectUri = redirectUri
+        self.email = email
+        self.referralCodeOfReferrer = referralCodeOfReferrer
+    }
+}
+
 
 /**
     A struct representing the object sent back
@@ -187,4 +260,42 @@ struct LoginResponse: Wrapper {
     mutating func map(_ map: Map) {
         token <- map["token"]
     }
+}
+
+
+/**
+    A struct representing the object sent back
+    from the API when logging in a user using OAuth.
+*/
+struct OAuthResponse: Wrapper {
+    
+    // MARK: - Public Instance Attributes
+    var token: String!
+    var isNewUser: Bool!
+    
+    
+    // MARK: - Initializers
+    
+    /**
+        Initializes an instance of `OAuthResponse`. This
+        is used to conform to the protocol `Wrapper`.
+    */
+    init() {}
+    
+    
+    // MARK: - Wrapper
+    mutating func map(_ map: Map) {
+        token <- map["token"]
+        isNewUser <- map["is_new"]
+    }
+}
+
+
+/**
+    An enum that specifies the
+    type of OAuth provider.
+*/
+enum OAuth2Provider: String {
+    case facebook = "facebook"
+    case linkedIn = "linkedin-oauth2"
 }

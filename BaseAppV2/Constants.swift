@@ -29,10 +29,15 @@ enum ConfigurationConstants {
     static let production = "Production"
     
     
+    // MARK: - OAuth Keys
+    static let appId = "AppId"
+    static let redirectUri = "RedirectUri"
+    
     
     // MARK: - Generic Keys
     static let apiUrl = "ApiUrl"
     static let crashlytics = "Crashlytics"
+    static let facebook = "Facebook"
 }
 
 
@@ -83,6 +88,18 @@ enum StyleConstants {
     static let defaultBaseAppFontSizeSmall: CGFloat = 10.0
     static let defaultBaseAppFontSizeMedium: CGFloat = 17.0
     static let defaultBaseAppFontSizeLarge: CGFloat = 25.0
+}
+
+/**
+    An enum that defines constants used
+    for identifying OAuth errors that
+    can occur.
+*/
+enum OAuthErrorConstants {
+    static let invalidProvider = "Invalid provider"
+    static let invalidCredentials = "invalid_credentials"
+    static let noEmailProvided = "no_email_provided"
+    static let emailAlreadyInUse = "email_already_in_use"
 }
 
 
