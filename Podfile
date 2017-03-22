@@ -10,6 +10,7 @@ target 'BaseAppV2' do
     pod 'Crashlytics', '~> 3.8'
     pod 'Dodo', '~> 7.0'
     pod 'IQKeyboardManager'
+    pod 'KYNavigationProgress'
     pod 'Raccoon'
     pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
     pod 'SVProgressHUD'

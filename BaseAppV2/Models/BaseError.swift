@@ -113,6 +113,10 @@ extension BaseError {
            let imageError = imageErrors.first {
             return imageError + " 😞"
         }
+        if let providerErrors = errorDictionary["provider"] as? [String],
+           let providerError = providerErrors.first {
+            return providerError
+        }
         return NSLocalizedString("BaseError.DefaultErrorDescription", comment: "Default Error")
     }
 }
@@ -130,5 +134,13 @@ extension BaseError {
     
     static var passwordsDoNotMatch: BaseError {
         return BaseError(statusCode: 102, errorDescription: NSLocalizedString("BaseError.PasswordsDoNotMatch", comment: "Default Error"))
+    }
+    
+    static var emailNeededForOAuth: BaseError {
+        return BaseError(statusCode: 103, errorDescription: NSLocalizedString("BaseError.EmailNeededForOAuth", comment: "Default Error"))
+    }
+    
+    static var emailAlreadyInUseForOAuth: BaseError {
+        return BaseError(statusCode: 104, errorDescription: NSLocalizedString("BaseError.EmailAlreadyInUseForOAuth", comment: "Default Error"))
     }
 }

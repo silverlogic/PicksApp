@@ -9,7 +9,7 @@
 import Foundation
 
 /**
-    A `UIViewController` responsible for handling interaction
+    A `BaseViewController` responsible for handling interaction
     from the login view.
 */
 final class LoginViewController: BaseViewController {
@@ -73,6 +73,15 @@ fileprivate extension LoginViewController {
             loginWithEmail()
             break
         case .facebook:
+            let socialAuthWebViewController = SocialAuthWebViewController(redirectUri: (loginViewModel?.facebookRedirectUri)!, oauthUrl: (loginViewModel?.facebookOAuthUrl)!)
+            socialAuthWebViewController.redirectUrlWithQueryParametersRecievedClosure = { [weak self] (redirectUrlWithQueryParameters: URL) in
+                guard let strongSelf = self else { return }
+                strongSelf.loginViewModel?.redirectUrlWithQueryParameters = redirectUrlWithQueryParameters
+                strongSelf.showProgresHud()
+                strongSelf.loginViewModel?.loginWithFacebook(email: nil)
+            }
+            let baseNavigationController = BaseNavigationController(rootViewController: socialAuthWebViewController)
+            present(baseNavigationController, animated: true, completion: nil)
             break
         case .twitter:
             break
@@ -134,6 +143,7 @@ fileprivate extension LoginViewController {
                 if (strongSelf.passwordTextField.text?.isEmpty)! {
                     strongSelf.passwordTextField.performShakeAnimation()
                 }
+            } else if loginError.statusCode == 103 {
             } else {
                 strongSelf.dismissProgressHudWithMessage(loginError.errorDescription, iconType: .error, duration: nil)
             }

@@ -42,6 +42,12 @@ extension BaseAppV2Tests {
             }
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
         })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/social-auth") && isMethodPOST(), response: { _ in
+            guard let path = OHPathForFile("loginuseroauth.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
     }
     
     override func tearDown() {

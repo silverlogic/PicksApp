@@ -84,8 +84,11 @@ fileprivate extension AppDelegate {
         window?.rootViewController?.view.dodo.bottomLayoutGuide = window?.rootViewController?.bottomLayoutGuide
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                             NSFontAttributeName: font]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white,
+                                                             NSFontAttributeName: font], for: .normal)
     }
     
+    /// Configures default business logic used universally.
     fileprivate func configureBusinessLogic() {
         Fabric.sharedSDK().debug = false
         Fabric.with([Crashlytics.self()])

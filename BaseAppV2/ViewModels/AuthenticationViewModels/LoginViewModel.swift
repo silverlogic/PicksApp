@@ -17,13 +17,17 @@ protocol LoginViewModelProtocol {
     // MARK: - Instance Attributes
     var email: String { get set }
     var password: String { get set }
+    var facebookRedirectUri: String { get }
+    var facebookOAuthUrl: URL { get }
+    var redirectUrlWithQueryParameters: URL? { get set }
     var loginError: DynamicBinder<BaseError?> { get }
     var loginSuccess: DynamicBinder<Bool> { get }
     
     
     // MARK: - Instance Methods
     func loginWithEmail()
-    // @TODO: Add method declarations for social auth once implemented.
+    func loginWithFacebook(email: String?)
+    // @TODO: Add method declarations for LinkedIn and Twitter
 }
 
 
@@ -36,6 +40,9 @@ final class LoginViewModel: LoginViewModelProtocol {
     // MARK: - LoginViewModelProtocol Attributes
     var email: String
     var password: String
+    var facebookRedirectUri: String
+    var facebookOAuthUrl: URL
+    var redirectUrlWithQueryParameters: URL?
     var loginError: DynamicBinder<BaseError?>
     var loginSuccess: DynamicBinder<Bool>
     
@@ -46,6 +53,9 @@ final class LoginViewModel: LoginViewModelProtocol {
     init() {
         email = ""
         password = ""
+        facebookRedirectUri = ConfigurationManager.shared.facebookRedirectUri
+        facebookOAuthUrl = ConfigurationManager.shared.facebookOAuthUrl!
+        redirectUrlWithQueryParameters = nil
         loginError = DynamicBinder(nil)
         loginSuccess = DynamicBinder(false)
     }
@@ -54,7 +64,7 @@ final class LoginViewModel: LoginViewModelProtocol {
     // MARK: LoginViewModelProtocol Methods
     func loginWithEmail() {
         if email.isEmpty || password.isEmpty {
-            loginError.value = BaseError(statusCode: 101, errorDescription: "")
+            loginError.value = BaseError.fieldsEmpty
             return
         }
         AuthenticationManager.shared.login(email: email, password: password, success: { [weak self] in
@@ -62,6 +72,21 @@ final class LoginViewModel: LoginViewModelProtocol {
             strongSelf.loginSuccess.value = true
             NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
         }) {  [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            strongSelf.loginError.value = error
+        }
+    }
+    
+    func loginWithFacebook(email: String?) {
+        guard let urlWithQueryParameters = redirectUrlWithQueryParameters else {
+            loginError.value = BaseError.generic
+            return
+        }
+        AuthenticationManager.shared.loginWithOAuth2(redirectUrlWithQueryParameters: urlWithQueryParameters, redirectUri: facebookRedirectUri, provider: .facebook, email: email, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.loginSuccess.value = true
+            NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
+        }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
             strongSelf.loginError.value = error
         }

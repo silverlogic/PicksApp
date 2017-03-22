@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KYNavigationProgress
 
 /**
     A base class for having suclasses
@@ -20,5 +21,6 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         let navigationBarBackgroundImage = #imageLiteral(resourceName: "background-baseapp")
         navigationBar.setBackgroundImage(navigationBarBackgroundImage, for: .default)
+        progressTintColor = .white
     }
 }

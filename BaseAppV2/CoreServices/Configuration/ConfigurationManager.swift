@@ -25,12 +25,20 @@ final class ConfigurationManager {
               let shortVersionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "" }
         return "v\(shortVersionNumber)"
     }()
+    lazy var facebookRedirectUri: String = { [weak self] in
+        guard let strongSelf = self,
+              let facebookDictionary = strongSelf.configurationValueForKey(ConfigurationConstants.facebook) as? [String: Any],
+              let environmentDictionary = strongSelf.configurationValueFromEnvironmentDictionary(facebookDictionary) as? [String: Any],
+              let redirectUri = environmentDictionary[ConfigurationConstants.redirectUri] as? String else { return "" }
+        assert(redirectUri.characters.count > 0, "Redirect Uri Not Provided In Global Configuration File!")
+        return redirectUri
+    }()
     
     
     // MARK: - Private Instance Attributes
     fileprivate lazy var _globalConfigurationDictionary: [String: Any] = {
         guard let localizedFilePath = Bundle.main.path(forResource: ConfigurationConstants.globalConfiguration, ofType: ConfigurationConstants.propertyListType),
-            let propertyListDictionary = NSDictionary(contentsOfFile: localizedFilePath) as? [String: Any] else {
+              let propertyListDictionary = NSDictionary(contentsOfFile: localizedFilePath) as? [String: Any] else {
                 return [String: Any]()
         }
         return propertyListDictionary
@@ -55,6 +63,15 @@ extension ConfigurationManager {
         }
         assert(apiUrl.characters.count > 0, "API Url Not Provided In Global Configuration File!")
         return apiUrl
+    }
+    
+    /// The url to use for performing Facebook OAuth.
+    var facebookOAuthUrl: URL? {
+        guard let facebookDictionary = configurationValueForKey(ConfigurationConstants.facebook) as? [String: Any],
+              let environmentDictionary = configurationValueFromEnvironmentDictionary(facebookDictionary) as? [String: Any],
+              let appId = environmentDictionary[ConfigurationConstants.appId] as? String,
+              let url = URL(string: "https://www.facebook.com/dialog/oauth?client_id=\(appId)&redirect_uri=\(facebookRedirectUri)&scope=email,public_profile") else { return nil }
+        return url
     }
 }
 

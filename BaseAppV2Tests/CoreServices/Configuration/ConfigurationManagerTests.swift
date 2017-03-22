@@ -44,6 +44,12 @@ extension ConfigurationManagerTests {
         XCTAssertEqual(_sharedInstance.environmentMode, .production, "Environment Mode Not Correct!")
     }
     
+    func testFacebookRedirectUri() {
+        let redirectUrl = _sharedInstance.facebookRedirectUri
+        XCTAssertNotNil(redirectUrl, "Value Should Not Be Nil!")
+        XCTAssertEqual(redirectUrl, "https://app.baseapp.tsl.io/", "Getting Redirect Failed!")
+    }
+    
     func testApiUrl() {
         _sharedInstance.environmentMode = .local
         guard let localApiUrl = _sharedInstance.apiUrl else {
@@ -69,5 +75,11 @@ extension ConfigurationManagerTests {
             return
         }
         XCTAssertEqual(productionApiUrl, "https://api.baseapp.tsl.io/v4/", "Wrong Value Retrived!")
+    }
+    
+    func testFacebookOAuthUrl() {
+        let url = _sharedInstance.facebookOAuthUrl
+        XCTAssertNotNil(url, "Value Should Not Be Nil!")
+        XCTAssertEqual(url, URL(string:"https://www.facebook.com/dialog/oauth?client_id=973634146036464&redirect_uri=https://app.baseapp.tsl.io/&scope=email,public_profile"), "Getting Url Failed!")
     }
 }
