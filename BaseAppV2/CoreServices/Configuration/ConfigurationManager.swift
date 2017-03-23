@@ -33,6 +33,14 @@ final class ConfigurationManager {
         assert(redirectUri.characters.count > 0, "Redirect Uri Not Provided In Global Configuration File!")
         return redirectUri
     }()
+    lazy var linkedInRedirectUri: String = { [weak self] in
+        guard let strongSelf = self,
+              let linkedInDictionary = strongSelf.configurationValueForKey(ConfigurationConstants.linkedIn) as? [String: Any],
+              let environmentDictionary = strongSelf.configurationValueFromEnvironmentDictionary(linkedInDictionary) as? [String: Any],
+              let redirectUri = environmentDictionary[ConfigurationConstants.redirectUri] as? String else { return "" }
+        assert(redirectUri.characters.count > 0, "Redirect Uri Not Provided In Global Configuration File!")
+        return redirectUri
+    }()
     
     
     // MARK: - Private Instance Attributes
@@ -72,6 +80,17 @@ extension ConfigurationManager {
               let appId = environmentDictionary[ConfigurationConstants.appId] as? String,
               let url = URL(string: "https://www.facebook.com/dialog/oauth?client_id=\(appId)&redirect_uri=\(facebookRedirectUri)&scope=email,public_profile") else { return nil }
         return url
+    }
+    
+    /// The url to use for performing LinkedIn OAuth.
+    var linkedInOAuthUrl: URL? {
+        guard let linkedInDictionary = configurationValueForKey(ConfigurationConstants.linkedIn) as? [String: Any],
+              let environmentDictionary = configurationValueFromEnvironmentDictionary(linkedInDictionary) as? [String: Any],
+              let appId = environmentDictionary[ConfigurationConstants.appId] as? String else { return nil }
+        if ProcessInfo.isRunningUnitTests {
+            return URL(string: "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=\(appId)&redirect_uri=\(linkedInRedirectUri)&scope=r_basicprofile%20r_emailaddress")!
+        }
+        return URL(string: "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=\(appId)&redirect_uri=\(linkedInRedirectUri)&state=\(String.randomStateString(20))&scope=r_basicprofile%20r_emailaddress")!
     }
 }
 

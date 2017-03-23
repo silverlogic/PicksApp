@@ -64,15 +64,36 @@ extension AuthenticationManagerTests {
     }
     
     func testLoginWithOAuth2() {
-        let redirectUrlWithQueryParameters = URL(string: "https://app.baseapp.tsl.io/?code=AQAf7IEllTmPlGXimVmK4A7ksXxRLU75FoiXO7lmc7sncGGvHG-o2_73Y5S2FrhPQvKicHm3kByu--Ou0hk2eRp9jFwArTrkbpXn2CljaG3BFWwNC6aSnruJmt-dHv1_9u-54xRYTSelP89WOqWGewEPWD5Sw1TgPiOXTHPebz3eiH43PTwm0KQhp2AFWSl7Q2zbkF0186yInZVL7JS4ms9phm8k7FF5OiEGBPMUFHMDzpCGewGmTAU5XJwGtZBiEitpftI6UmblIQQ0GuACm0S8qRTM_F5Xg2RBHFhZdw4-EgQ3qlQSxqfcwKZ9OxH4PP0#_=_")!
+        let redirectUrlWithQueryParametersFacebook = URL(string: "https://app.baseapp.tsl.io/?code=AQAf7IEllTmPlGXimVmK4A7ksXxRLU75FoiXO7lmc7sncGGvHG-o2_73Y5S2FrhPQvKicHm3kByu--Ou0hk2eRp9jFwArTrkbpXn2CljaG3BFWwNC6aSnruJmt-dHv1_9u-54xRYTSelP89WOqWGewEPWD5Sw1TgPiOXTHPebz3eiH43PTwm0KQhp2AFWSl7Q2zbkF0186yInZVL7JS4ms9phm8k7FF5OiEGBPMUFHMDzpCGewGmTAU5XJwGtZBiEitpftI6UmblIQQ0GuACm0S8qRTM_F5Xg2RBHFhZdw4-EgQ3qlQSxqfcwKZ9OxH4PP0#_=_")!
+        let redirectUrlWithQuertParametersLinkedIn = URL(string: "https://app.baseapp.tsl.io/?code=AQREi3AZUQ0FEruGOrZwk8mtuaw7EnAr6S0XiAlMQT3lXi4J8pt7xD5ebEUye8PQwQY0FbdFK5NeFOmHyrW4w72SrNyCWQOujYtqXjx1G1IIDzjI4Ak&state=Av4WcUi9bZqFr1Ajk9GBBeLcVawFwqdi5MQaRtzTTitBta9WBMCJE2Qv1IwnNS")!
         let redirectUrl = "https://app.baseapp.tsl.io/"
         let loginWithFacebookExpectation = expectation(description: "Test OAuth Login For Facebook")
-        sharedManager.loginWithOAuth2(redirectUrlWithQueryParameters: redirectUrlWithQueryParameters, redirectUri: redirectUrl, provider: .facebook, email: nil, success: { 
-            XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
-            loginWithFacebookExpectation.fulfill()
-        }) { (error: BaseError) in
-            XCTFail("Error Logging In With OAuth2!")
-            loginWithFacebookExpectation.fulfill()
+        let loginWithLinkedInExpectation = expectation(description: "Test OAuth Login For LinkedIn")
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        operationQueue.addOperation {
+            operationQueue.isSuspended = true
+            self.sharedManager.loginWithOAuth2(redirectUrlWithQueryParameters: redirectUrlWithQueryParametersFacebook, redirectUri: redirectUrl, provider: .facebook, email: nil, success: {
+                XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
+                loginWithFacebookExpectation.fulfill()
+                operationQueue.isSuspended = false
+            }) { (error: BaseError) in
+                XCTFail("Error Logging In With OAuth2!")
+                loginWithFacebookExpectation.fulfill()
+                operationQueue.isSuspended = false
+            }
+        }
+        operationQueue.addOperation {
+            operationQueue.isSuspended = true
+            self.sharedManager.loginWithOAuth2(redirectUrlWithQueryParameters: redirectUrlWithQuertParametersLinkedIn, redirectUri: redirectUrl, provider: .linkedIn, email: nil, success: {
+                XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
+                loginWithLinkedInExpectation.fulfill()
+                operationQueue.isSuspended = false
+            }, failure: { (error: BaseError) in
+                XCTFail("Error Logging In With OAuth2!")
+                loginWithLinkedInExpectation.fulfill()
+                operationQueue.isSuspended = false
+            })
         }
         waitForExpectations(timeout: 10, handler: nil)
     }

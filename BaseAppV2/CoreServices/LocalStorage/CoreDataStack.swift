@@ -155,8 +155,7 @@ fileprivate extension CoreDataStack {
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         _managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         // Check if running in unit test target
-        let environmentDictionary = ProcessInfo.processInfo.environment
-        if environmentDictionary["RUNNING_UNIT_TESTS"] == "TRUE" || environmentDictionary["RUNNING_UI_TESTS"] == "TRUE" {
+        if ProcessInfo.isRunningUnitTests || ProcessInfo.isRunningUITests {
             do {
                 try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
             } catch {

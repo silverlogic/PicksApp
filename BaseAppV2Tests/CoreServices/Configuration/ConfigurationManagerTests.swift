@@ -50,6 +50,12 @@ extension ConfigurationManagerTests {
         XCTAssertEqual(redirectUrl, "https://app.baseapp.tsl.io/", "Getting Redirect Failed!")
     }
     
+    func testLinkedInRedirectUri() {
+        let redirectUrl = _sharedInstance.linkedInRedirectUri
+        XCTAssertNotNil(redirectUrl, "Value Should Not Be Nil!")
+        XCTAssertEqual(redirectUrl, "https://app.baseapp.tsl.io/", "Getting Redirect Failed!")
+    }
+    
     func testApiUrl() {
         _sharedInstance.environmentMode = .local
         guard let localApiUrl = _sharedInstance.apiUrl else {
@@ -81,5 +87,11 @@ extension ConfigurationManagerTests {
         let url = _sharedInstance.facebookOAuthUrl
         XCTAssertNotNil(url, "Value Should Not Be Nil!")
         XCTAssertEqual(url, URL(string:"https://www.facebook.com/dialog/oauth?client_id=973634146036464&redirect_uri=https://app.baseapp.tsl.io/&scope=email,public_profile"), "Getting Url Failed!")
+    }
+    
+    func testLinkedInOAuthUrl() {
+        let url = _sharedInstance.linkedInOAuthUrl
+        XCTAssertNotNil(url, "Value Should Not Be Nil!")
+        XCTAssertEqual(url, URL(string: "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781ehwqhni34oe&redirect_uri=https://app.baseapp.tsl.io/&scope=r_basicprofile%20r_emailaddress"), "Getting Url Falied!")
     }
 }

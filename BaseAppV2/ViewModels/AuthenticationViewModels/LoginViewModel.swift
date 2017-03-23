@@ -19,6 +19,8 @@ protocol LoginViewModelProtocol {
     var password: String { get set }
     var facebookRedirectUri: String { get }
     var facebookOAuthUrl: URL { get }
+    var linkedInRedirectUri: String { get }
+    var linkedInOAuthUrl: URL { get }
     var redirectUrlWithQueryParameters: URL? { get set }
     var loginError: DynamicBinder<BaseError?> { get }
     var loginSuccess: DynamicBinder<Bool> { get }
@@ -27,7 +29,8 @@ protocol LoginViewModelProtocol {
     // MARK: - Instance Methods
     func loginWithEmail()
     func loginWithFacebook(email: String?)
-    // @TODO: Add method declarations for LinkedIn and Twitter
+    func loginWithLinkedIn(email: String?)
+    // @TODO: Add method declarations for Twitter
 }
 
 
@@ -42,6 +45,8 @@ final class LoginViewModel: LoginViewModelProtocol {
     var password: String
     var facebookRedirectUri: String
     var facebookOAuthUrl: URL
+    var linkedInRedirectUri: String
+    var linkedInOAuthUrl: URL
     var redirectUrlWithQueryParameters: URL?
     var loginError: DynamicBinder<BaseError?>
     var loginSuccess: DynamicBinder<Bool>
@@ -55,6 +60,8 @@ final class LoginViewModel: LoginViewModelProtocol {
         password = ""
         facebookRedirectUri = ConfigurationManager.shared.facebookRedirectUri
         facebookOAuthUrl = ConfigurationManager.shared.facebookOAuthUrl!
+        linkedInRedirectUri = ConfigurationManager.shared.linkedInRedirectUri
+        linkedInOAuthUrl = ConfigurationManager.shared.linkedInOAuthUrl!
         redirectUrlWithQueryParameters = nil
         loginError = DynamicBinder(nil)
         loginSuccess = DynamicBinder(false)
@@ -88,6 +95,29 @@ final class LoginViewModel: LoginViewModelProtocol {
             NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
+            if error.statusCode == 103 {
+                strongSelf.loginError.value = BaseError.emailNeededForOAuthFacebook
+                return
+            }
+            strongSelf.loginError.value = error
+        }
+    }
+    
+    func loginWithLinkedIn(email: String?) {
+        guard let urlWithQueryParameters = redirectUrlWithQueryParameters else {
+            loginError.value = BaseError.generic
+            return
+        }
+        AuthenticationManager.shared.loginWithOAuth2(redirectUrlWithQueryParameters: urlWithQueryParameters, redirectUri: linkedInRedirectUri, provider: .linkedIn, email: email, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.loginSuccess.value = true
+            NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
+        }) { [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            if error.statusCode == 103 {
+                strongSelf.loginError.value = BaseError.emailNeededForOAuthLinkedIn
+                return
+            }
             strongSelf.loginError.value = error
         }
     }

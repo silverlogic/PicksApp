@@ -9,8 +9,7 @@
 import UIKit
 
 private func delegateClassName() -> String? {
-    let environmentDictionary = ProcessInfo.processInfo.environment
-    if environmentDictionary["RUNNING_UNIT_TESTS"] == "TRUE" {
+    if ProcessInfo.isRunningUnitTests {
         // Use test AppDelegate for unit tests
         return NSStringFromClass(TestAppDelegate.self)
     }

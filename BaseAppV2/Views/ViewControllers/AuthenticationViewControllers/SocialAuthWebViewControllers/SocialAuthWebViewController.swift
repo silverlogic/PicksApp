@@ -108,7 +108,7 @@ extension SocialAuthWebViewController {
 // MARK: - Private Instance Methods
 fileprivate extension SocialAuthWebViewController {
     
-    /// Sets up the default login for the view.
+    /// Sets up the default logic for the view.
     fileprivate func setup() {
         if !isViewLoaded { return }
         webView = WKWebView()
