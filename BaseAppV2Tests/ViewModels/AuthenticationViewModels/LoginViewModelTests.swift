@@ -60,4 +60,20 @@ extension LoginViewModelTests {
         loginViewModel.loginWithFacebook(email: nil)
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testLoginWithLinkedIn() {
+        let loginWithLinkedInExpectation = expectation(description: "Test Login With LinkedIn")
+        let loginViewModel = LoginViewModel()
+        loginViewModel.loginError.bind { (error: BaseError?) in
+            XCTFail("Error Logging In With LinkedIn!")
+            loginWithLinkedInExpectation.fulfill()
+        }
+        loginViewModel.loginSuccess.bind { (success: Bool) in
+            loginWithLinkedInExpectation.fulfill()
+        }
+        let redirectUrlWithQueryParameters = URL(string: "https://app.baseapp.tsl.io/?code=AQREi3AZUQ0FEruGOrZwk8mtuaw7EnAr6S0XiAlMQT3lXi4J8pt7xD5ebEUye8PQwQY0FbdFK5NeFOmHyrW4w72SrNyCWQOujYtqXjx1G1IIDzjI4Ak&state=Av4WcUi9bZqFr1Ajk9GBBeLcVawFwqdi5MQaRtzTTitBta9WBMCJE2Qv1IwnNS")!
+        loginViewModel.redirectUrlWithQueryParameters = redirectUrlWithQueryParameters
+        loginViewModel.loginWithLinkedIn(email: nil)
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

@@ -44,5 +44,36 @@
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>
 	</dict>
+	<key>LinkedIn</key>
+	<dict>
+		<key>Local</key>
+		<dict>
+			<key>AppId</key>
+			<string>781ehwqhni34oe</string>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+		<key>Staging</key>
+		<dict>
+			<key>AppId</key>
+			<string>781ehwqhni34oe</string>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+		<key>Stable</key>
+		<dict>
+			<key>AppId</key>
+			<string>781ehwqhni34oe</string>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+		<key>Production</key>
+		<dict>
+			<key>AppId</key>
+			<string>781ehwqhni34oe</string>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

@@ -91,12 +91,11 @@ fileprivate extension SessionManager {
     */
     fileprivate func loadSession() {
         // Check if running in UI test target
-        let environmentDictionary = ProcessInfo.processInfo.environment
-        if environmentDictionary["RUNNING_UI_TESTS"] == "TRUE" {
+        if ProcessInfo.isRunningUITests {
             return
         } else {
             guard let token = UserDefaults.standard.value(forKey: SessionConstants.authorizationToken) as? String,
-                  let userId = UserDefaults.standard.value(forKey: SessionConstants.userId) as? Int else { return }
+                let userId = UserDefaults.standard.value(forKey: SessionConstants.userId) as? Int else { return }
             _authorizationToken = token
             let predicate = NSPredicate(format: "userId == %d", userId)
             CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in

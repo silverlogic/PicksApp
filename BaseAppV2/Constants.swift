@@ -38,6 +38,7 @@ enum ConfigurationConstants {
     static let apiUrl = "ApiUrl"
     static let crashlytics = "Crashlytics"
     static let facebook = "Facebook"
+    static let linkedIn = "LinkedIn"
 }
 
 

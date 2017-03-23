@@ -143,7 +143,7 @@ fileprivate extension LoginViewController {
                 if (strongSelf.passwordTextField.text?.isEmpty)! {
                     strongSelf.passwordTextField.performShakeAnimation()
                 }
-            } else if loginError.statusCode == 103 {
+            } else if loginError.statusCode == 105 {
             } else {
                 strongSelf.dismissProgressHudWithMessage(loginError.errorDescription, iconType: .error, duration: nil)
             }

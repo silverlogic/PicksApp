@@ -139,10 +139,15 @@ extension AuthenticationManager {
             failure(BaseError.generic)
             return
         }
-        let newRange = range.upperBound
-        let code = absoluteString.substring(from: newRange)
+        var newRange = range.upperBound
+        var code = absoluteString.substring(from: newRange)
         if provider == .linkedIn {
-            // @TODO: Do additional parsing for when the provider is LinkedIn
+            guard let linkedInRange = code.range(of: "&state=") else {
+                failure(BaseError.generic)
+                return
+            }
+            newRange = linkedInRange.lowerBound
+            code = code.substring(to: newRange)
         }
         let oauth2Info = OAuth2Info(provider: provider, oauthCode: code, redirectUri: redirectUri, email: email, referralCodeOfReferrer: nil)
         let dispatchQueue = DispatchQueue.global(qos: .userInteractive)

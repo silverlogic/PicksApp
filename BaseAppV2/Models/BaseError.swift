@@ -143,4 +143,12 @@ extension BaseError {
     static var emailAlreadyInUseForOAuth: BaseError {
         return BaseError(statusCode: 104, errorDescription: NSLocalizedString("BaseError.EmailAlreadyInUseForOAuth", comment: "Default Error"))
     }
+    
+    static var emailNeededForOAuthFacebook: BaseError {
+        return BaseError(statusCode: 105, errorDescription: NSLocalizedString("BaseError.EmailNeededForOAuth", comment: "Default Error"))
+    }
+    
+    static var emailNeededForOAuthLinkedIn: BaseError {
+        return BaseError(statusCode: 106, errorDescription: NSLocalizedString("BaseError.EmailNeededForOAuth", comment: "Default Error"))
+    }
 }

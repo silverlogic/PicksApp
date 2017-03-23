@@ -69,8 +69,7 @@ fileprivate extension AppLogger {
         fileDestinationOne.format = loggingFormat
         _swiftyLogger.addDestination(fileDestinationOne)
         // Check if running in unit test target
-        let environmentDictionary = ProcessInfo.processInfo.environment
-        if environmentDictionary["RUNNING_UNIT_TESTS"] == "TRUE" {
+        if ProcessInfo.isRunningUnitTests {
             // Only need standard cache directory
             // with special formatting
             fileDestinationOne.format = "$M"

@@ -64,6 +64,7 @@
 		88AF2E1E1E7C223E00F93A50 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AF2E1D1E7C223E00F93A50 /* Crashlytics.framework */; };
 		88BFD8D31E831FC9000C8A61 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFD8D21E831FC9000C8A61 /* Array+Extension.swift */; };
 		88BFD8D51E8320D3000C8A61 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFD8D41E8320D3000C8A61 /* ArrayExtensionTests.swift */; };
+		88BFD8D71E83B04A000C8A61 /* ProcessInfo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFD8D61E83B04A000C8A61 /* ProcessInfo+Extension.swift */; };
 		88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */; };
 		88F3FE0B1E7316CC003162F8 /* CaseCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0A1E7316CC003162F8 /* CaseCount.swift */; };
 		88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */; };
@@ -179,6 +180,7 @@
 		88AF2E1D1E7C223E00F93A50 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Pods/Crashlytics/Crashlytics.framework; sourceTree = "<group>"; };
 		88BFD8D21E831FC9000C8A61 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Extension.swift"; path = "Extensions/Array+Extension.swift"; sourceTree = "<group>"; };
 		88BFD8D41E8320D3000C8A61 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensionTests.swift; path = Extensions/ArrayExtensionTests.swift; sourceTree = "<group>"; };
+		88BFD8D61E83B04A000C8A61 /* ProcessInfo+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProcessInfo+Extension.swift"; path = "Extensions/ProcessInfo+Extension.swift"; sourceTree = "<group>"; };
 		88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationNavigationController.swift; path = Views/ViewControllers/AuthenticationViewControllers/AuthenticationNavigationController.swift; sourceTree = "<group>"; };
 		88F3FE0A1E7316CC003162F8 /* CaseCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaseCount.swift; path = Protocols/CaseCount.swift; sourceTree = "<group>"; };
 		88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModels/AuthenticationViewModels/SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				88AF2E0C1E7B9CFD00F93A50 /* UITableView+Extension.swift */,
 				88FB72421E8180B00056BCDF /* String+Extension.swift */,
 				88BFD8D21E831FC9000C8A61 /* Array+Extension.swift */,
+				88BFD8D61E83B04A000C8A61 /* ProcessInfo+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */,
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
 				8801FDF41E72016000F54932 /* BaseTextField.swift in Sources */,
+				88BFD8D71E83B04A000C8A61 /* ProcessInfo+Extension.swift in Sources */,
 				88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */,
 				88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */,
 				88AF2E131E7BB2D000F93A50 /* BaseTableViewCell.swift in Sources */,
