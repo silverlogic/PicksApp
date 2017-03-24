@@ -19,12 +19,16 @@ final class ConfigurationManager {
     
     
     // MARK: - Public Instance Attributes
+    
+    /// The current environment mode of the application.
     var environmentMode = EnvironmentMode.staging
     lazy var versionNumber: String = {
         guard let infoDictionary = Bundle.main.infoDictionary,
               let shortVersionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "" }
         return "v\(shortVersionNumber)"
     }()
+    
+    /// The redirect uri to use for Facebook OAuth.
     lazy var facebookRedirectUri: String = { [weak self] in
         guard let strongSelf = self,
               let facebookDictionary = strongSelf.configurationValueForKey(ConfigurationConstants.facebook) as? [String: Any],
@@ -33,10 +37,22 @@ final class ConfigurationManager {
         assert(redirectUri.characters.count > 0, "Redirect Uri Not Provided In Global Configuration File!")
         return redirectUri
     }()
+    
+    /// The redirect uri to use for LinkedIn OAuth.
     lazy var linkedInRedirectUri: String = { [weak self] in
         guard let strongSelf = self,
               let linkedInDictionary = strongSelf.configurationValueForKey(ConfigurationConstants.linkedIn) as? [String: Any],
               let environmentDictionary = strongSelf.configurationValueFromEnvironmentDictionary(linkedInDictionary) as? [String: Any],
+              let redirectUri = environmentDictionary[ConfigurationConstants.redirectUri] as? String else { return "" }
+        assert(redirectUri.characters.count > 0, "Redirect Uri Not Provided In Global Configuration File!")
+        return redirectUri
+    }()
+    
+    /// The redirect uri to use for Twitter OAuth.
+    lazy var twitterRedirectUri: String = { [weak self] in
+        guard let strongSelf = self,
+              let twitterDictionary = strongSelf.configurationValueForKey(ConfigurationConstants.twitter) as? [String: Any],
+              let environmentDictionary = strongSelf.configurationValueFromEnvironmentDictionary(twitterDictionary) as? [String: Any],
               let redirectUri = environmentDictionary[ConfigurationConstants.redirectUri] as? String else { return "" }
         assert(redirectUri.characters.count > 0, "Redirect Uri Not Provided In Global Configuration File!")
         return redirectUri

@@ -56,6 +56,12 @@ extension ConfigurationManagerTests {
         XCTAssertEqual(redirectUrl, "https://app.baseapp.tsl.io/", "Getting Redirect Failed!")
     }
     
+    func testTwitterRedirectUri() {
+        let redirectUrl = _sharedInstance.twitterRedirectUri
+        XCTAssertNotNil(redirectUrl, "Value Should Not Be Nil!")
+        XCTAssertEqual(redirectUrl, "https://app.baseapp.tsl.io/", "Getting Redirect Failed!")
+    }
+    
     func testApiUrl() {
         _sharedInstance.environmentMode = .local
         guard let localApiUrl = _sharedInstance.apiUrl else {

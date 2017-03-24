@@ -39,6 +39,7 @@ enum ConfigurationConstants {
     static let crashlytics = "Crashlytics"
     static let facebook = "Facebook"
     static let linkedIn = "LinkedIn"
+    static let twitter = "Twitter"
 }
 
 
@@ -89,6 +90,10 @@ enum StyleConstants {
     static let defaultBaseAppFontSizeSmall: CGFloat = 10.0
     static let defaultBaseAppFontSizeMedium: CGFloat = 17.0
     static let defaultBaseAppFontSizeLarge: CGFloat = 25.0
+    
+    
+    // MARK: - Keyboard Constants
+    static let keyboardStyle: UIKeyboardAppearance = .default
 }
 
 /**
@@ -97,10 +102,10 @@ enum StyleConstants {
     can occur.
 */
 enum OAuthErrorConstants {
-    static let invalidProvider = "Invalid provider"
-    static let invalidCredentials = "invalid_credentials"
-    static let noEmailProvided = "no_email_provided"
-    static let emailAlreadyInUse = "email_already_in_use"
+    static let invalidProvider = "Invalid provider 😞"
+    static let invalidCredentials = "invalid_credentials 😞"
+    static let noEmailProvided = "no_email_provided 😞"
+    static let emailAlreadyInUse = "email_already_in_use 😞"
 }
 
 

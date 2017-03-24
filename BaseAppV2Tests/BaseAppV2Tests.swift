@@ -48,6 +48,21 @@ extension BaseAppV2Tests {
             }
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
         })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/social-auth") && isMethodPOST()) { (request: URLRequest) -> OHHTTPStubsResponse in
+            let nsUrlRequest = request as NSURLRequest
+            let requestBody = nsUrlRequest.ohhttpStubs_HTTPBody()!
+            let bodyString = String(data: requestBody, encoding: .utf8)!
+            if bodyString == "{\"provider\":\"twitter\",\"redirect_uri\":\"https:\\/\\/app.baseapp.tsl.io\\/\"}" {
+                guard let path = OHPathForFile("oauth1response.json", type(of: self)) else {
+                    preconditionFailure("Could Not Find Test File!")
+                }
+                return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+            }
+            guard let path = OHPathForFile("loginuseroauth.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        }
     }
     
     override func tearDown() {

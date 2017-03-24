@@ -76,4 +76,44 @@ extension LoginViewModelTests {
         loginViewModel.loginWithLinkedIn(email: nil)
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testOauth1InfoForTwitter() {
+        let oauth1InfoForTwitterExpectation = expectation(description: "Test OAuth1 Info Twitter")
+        let loginViewModel = LoginViewModel()
+        loginViewModel.oauthStep1Error.bind { (error: BaseError?) in
+            XCTFail("Error Getting OAuth1 Info!")
+            oauth1InfoForTwitterExpectation.fulfill()
+        }
+        loginViewModel.twitterOAuthUrl.bind { (url: URL?) in
+            oauth1InfoForTwitterExpectation.fulfill()
+        }
+        loginViewModel.oauth1InfoForTwitter()
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testLoginWithTwitter() {
+        let oauth1InfoForTwitterExpectation = expectation(description: "Test OAuth1 Info Twitter")
+        let loginWithTwitterExpectation = expectation(description: "Test Login With Twitter")
+        let loginViewModel = LoginViewModel()
+        loginViewModel.oauthStep1Error.bind { (error: BaseError?) in
+            XCTFail("Error Getting OAuth1 Info!")
+            oauth1InfoForTwitterExpectation.fulfill()
+            loginWithTwitterExpectation.fulfill()
+        }
+        loginViewModel.twitterOAuthUrl.bind { (url: URL?) in
+            let redirectUrlWithQueryParameters = URL(string: "https://app.baseapp.tsl.io/?redirect_state=hpZksuzwUGU04qHo4LjQJdoXCtt6mupP&oauth_token=0MxsWgAAAAAAwS-_AAABVld_DHo&oauth_verifier=qeXqTX5DrLTYstNiIKF62NHRUZwnepEu")!
+            loginViewModel.redirectUrlWithQueryParameters = redirectUrlWithQueryParameters
+            loginViewModel.loginWithTwitter(email: nil)
+            oauth1InfoForTwitterExpectation.fulfill()
+        }
+        loginViewModel.loginSuccess.bind { (success: Bool) in
+            loginWithTwitterExpectation.fulfill()
+        }
+        loginViewModel.loginError.bind { (error: BaseError?) in
+            XCTFail("Error Logging In With Twitter!")
+            loginWithTwitterExpectation.fulfill()
+        }
+        loginViewModel.oauth1InfoForTwitter()
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

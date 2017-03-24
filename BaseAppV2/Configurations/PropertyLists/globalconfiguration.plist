@@ -75,5 +75,28 @@
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>
 	</dict>
+	<key>Twitter</key>
+	<dict>
+		<key>Local</key>
+		<dict>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+		<key>Staging</key>
+		<dict>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+		<key>Stable</key>
+		<dict>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+		<key>Production</key>
+		<dict>
+			<key>RedirectUri</key>
+			<string>https://app.baseapp.tsl.io/</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

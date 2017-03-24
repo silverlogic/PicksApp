@@ -10,7 +10,8 @@ import Foundation
 
 /**
     A class entity representing an error that
-    the API would return.
+    the API would return or an internal error
+    in the application.
 */
 final class BaseError: Error {
     
@@ -85,6 +86,9 @@ extension BaseError {
            let emailError = emailErrors.first {
             return emailError + " 😞"
         }
+        if let emailError = errorDictionary["email"] as? String {
+            return emailError + " 😞"
+        }
         if let genderErrors = errorDictionary["gender"] as? [String],
            let genderError = genderErrors.first {
             return genderError + " 😞"
@@ -150,5 +154,9 @@ extension BaseError {
     
     static var emailNeededForOAuthLinkedIn: BaseError {
         return BaseError(statusCode: 106, errorDescription: NSLocalizedString("BaseError.EmailNeededForOAuth", comment: "Default Error"))
+    }
+    
+    static var emailNeededForOAuthTwitter: BaseError {
+        return BaseError(statusCode: 107, errorDescription: NSLocalizedString("BaseError.EmailNeededForOAuth", comment: "Default Error"))
     }
 }
