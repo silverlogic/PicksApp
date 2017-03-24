@@ -14,7 +14,7 @@ extension UIStoryboard {
     // MARK: - UIViewController Loaders
     static func loadInitializeViewController() -> UITabBarController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        return storyboard.instantiateInitialViewController() as! UITabBarController
+        return storyboard.instantiateInitialViewController() as! BaseTabBarController
     }
     
     static func loadLoginViewController() -> LoginViewController {

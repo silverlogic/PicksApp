@@ -9,10 +9,10 @@
 import Foundation
 
 /**
-    A `UIViewController` responsible for
+    A `BaseViewController` responsible for
     managing the settings of the application
 */
-final class SettingsViewController: UIViewController {
+final class SettingsViewController: BaseViewController {
     
     // MARK: - IBOutlets
     @IBOutlet fileprivate weak var tableView: UITableView!

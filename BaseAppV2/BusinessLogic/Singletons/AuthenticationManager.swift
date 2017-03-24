@@ -39,7 +39,7 @@ extension AuthenticationManager {
             - success: A closure that gets invoked when logging in a user
                        was successful.
             - failure: A closure that gets invoked when logging in a user
-                       failed. Passes an `APIError` object that contains the
+                       failed. Passes a `BaseError` object that contains the
                        error that occured.
     */
     func login(email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
@@ -52,7 +52,7 @@ extension AuthenticationManager {
                 return networkClient.enqueue(AuthenticationEndpoint.currentUser)
             })
             .then(on: dispatchQueue, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = user
+                SessionManager.shared.currentUser = DynamicBinder(user)
             })
             .then(on: DispatchQueue.main, execute: {
                 success()
@@ -74,7 +74,7 @@ extension AuthenticationManager {
                           an authorization token.
             - success: A closure that gets invoked when signing up the user was successful.
             - failure: A closure that gets invoked when signing up the user failed. Passes
-                       an `APIError` object that contains the error that occured.
+                       a `BaseError` object that contains the error that occured.
     */
     func signup(_ signupInfo: SignUpInfo, updateInfo: UpdateInfo, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
         let dispatchQueue = DispatchQueue.global(qos: .userInteractive)
@@ -82,15 +82,15 @@ extension AuthenticationManager {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.signUp(signUpInfo: signupInfo))
             .then(on: dispatchQueue, execute: { (user: User) in
-                SessionManager.shared.currentUser = user
+                SessionManager.shared.currentUser.value = user
                 return networkClient.enqueue(AuthenticationEndpoint.login(email: signupInfo.email, password: signupInfo.password))
             })
             .then(on: dispatchQueue, execute: { (loginResponse: LoginResponse) in
                 SessionManager.shared.authorizationToken = loginResponse.token
-                return networkClient.enqueue(AuthenticationEndpoint.update(updateInfo: updateInfo, userId: Int((SessionManager.shared.currentUser?.userId)!)))
+                return networkClient.enqueue(AuthenticationEndpoint.update(updateInfo: updateInfo, userId: Int((SessionManager.shared.currentUser.value?.userId)!)))
             })
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = user
+                SessionManager.shared.currentUser = DynamicBinder(user)
                 success()
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
@@ -159,7 +159,7 @@ extension AuthenticationManager {
                 return networkClient.enqueue(AuthenticationEndpoint.currentUser)
             })
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = user
+                SessionManager.shared.currentUser = DynamicBinder(user)
                 success()
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in

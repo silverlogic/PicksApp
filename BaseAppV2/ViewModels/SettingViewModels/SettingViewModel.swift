@@ -41,7 +41,7 @@ final class SettingViewModel: SettingViewModelProtocol {
     /// Initializes an instance of `SettingViewModel`.
     init() {
         applicationVersion = ConfigurationManager.shared.versionNumber
-        guard let referralCode = SessionManager.shared.currentUser?.referralCode else {
+        guard let referralCode = SessionManager.shared.currentUser.value?.referralCode else {
             inviteCode = ""
             return
         }

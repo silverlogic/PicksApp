@@ -48,7 +48,7 @@ class DynamicBinder<T> {
                               closure that gets invoked when
                               the value changes.
     */
-    func bind(listener: Listener?) {
+    func bind(_ listener: Listener?) {
         self.listener = listener
     }
     
@@ -60,7 +60,7 @@ class DynamicBinder<T> {
                               closure that gets invoked when
                               the value changes.
     */
-    func bindAndFire(listener: Listener?) {
+    func bindAndFire(_ listener: Listener?) {
         self.listener = listener
         listener?(value)
     }
