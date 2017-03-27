@@ -20,6 +20,10 @@ final class SettingsTableViewCell: BaseTableViewCell {
     @IBOutlet fileprivate weak var settingsOptionalInfoLabel: UILabel!
     
     
+    // MARK: - Private Instance Methods
+    fileprivate var optionalInfo: DynamicBinder<String>!
+    
+    
     // MARK: - Private Class Attributes
     fileprivate static let cellHeight: CGFloat = 50.0
 }
@@ -36,18 +40,22 @@ extension SettingsTableViewCell {
                              image to use for a setting.
             - settingName: A `String` representing the name
                            of a setting.
-            - optionalInfo: A `String` representing optional
+            - optionalInfo: A `DynamicBinder<String>` representing optional
                             info to display on the right side
                             of the cell. It could be the invite
                             code of the current user or the
-                            version of the app. `nil` can be passed
-                            as a parameter.
+                            version of the app. When changes to this
+                            value happen, the UI updates accordingly.
     */
-    func configure(settingImage: UIImage, settingName: String, optionalInfo: String?) {
+    func configure(settingImage: UIImage, settingName: String, optionalInfo: DynamicBinder<String>) {
         settingsImageView.image = settingImage
         settingsTypeLabel.text = settingName
-        guard let text = optionalInfo else { return }
-        settingsOptionalInfoLabel.text = text
+        settingsOptionalInfoLabel.text = optionalInfo.value
+        self.optionalInfo = optionalInfo
+        self.optionalInfo.bind { [weak self] (info: String) in
+            guard let strongSelf = self else { return }
+            strongSelf.settingsOptionalInfoLabel.text = info
+        }
     }
 }
 

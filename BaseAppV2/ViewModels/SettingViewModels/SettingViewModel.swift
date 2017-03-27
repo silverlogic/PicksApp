@@ -15,8 +15,8 @@ import Foundation
 protocol SettingViewModelProtocol {
     
     // MARK: - Instance Attributes
-    var applicationVersion: String { get }
-    var inviteCode: String { get }
+    var applicationVersion: DynamicBinder<String> { get }
+    var inviteCode: DynamicBinder<String> { get }
     
     
     // MARK: - Instance Methods
@@ -32,25 +32,25 @@ protocol SettingViewModelProtocol {
 final class SettingViewModel: SettingViewModelProtocol {
     
     // MARK: - SettingViewModelProtocol Attributes
-    var applicationVersion: String
-    var inviteCode: String
+    var applicationVersion: DynamicBinder<String>
+    var inviteCode: DynamicBinder<String>
     
     
     // MARK: - Initializers
     
     /// Initializes an instance of `SettingViewModel`.
     init() {
-        applicationVersion = ConfigurationManager.shared.versionNumber
+        applicationVersion = DynamicBinder(ConfigurationManager.shared.versionNumber)
         if let referralCode = SessionManager.shared.currentUser.value?.referralCode {
-            inviteCode = referralCode
+            inviteCode = DynamicBinder(referralCode)
         } else {
-            inviteCode = ""
+            inviteCode = DynamicBinder("")
         }
         SessionManager.shared.currentUser.bindAndFire { [weak self] (user: User?) in
             guard let strongSelf = self,
-                let currentUser = user else { return }
-            guard let referralCode = currentUser.referralCode else { return }
-            strongSelf.inviteCode = referralCode
+                  let currentUser = user,
+                  let referralCode = currentUser.referralCode else { return }
+            strongSelf.inviteCode.value = referralCode
         }
     }
     
