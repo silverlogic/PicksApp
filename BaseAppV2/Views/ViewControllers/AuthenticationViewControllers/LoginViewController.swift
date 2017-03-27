@@ -15,8 +15,8 @@ import Foundation
 final class LoginViewController: BaseViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var emailTextField: BaseTextField!
-    @IBOutlet weak var passwordTextField: BaseTextField!
+    @IBOutlet fileprivate weak var emailTextField: BaseTextField!
+    @IBOutlet fileprivate weak var passwordTextField: BaseTextField!
     
     
     // MARK: - Public Instance Attributes
@@ -84,6 +84,8 @@ fileprivate extension LoginViewController {
             present(baseNavigationController, animated: true, completion: nil)
             break
         case .twitter:
+            showProgresHud()
+            loginViewModel?.oauth1InfoForTwitter()
             break
         case .createAccount:
             performSegue(withIdentifier: UIStoryboardSegue.goToSignupEmailSegue, sender: nil)
@@ -132,7 +134,7 @@ fileprivate extension LoginViewController {
     fileprivate func setup() {
         if !isViewLoaded { return }
         guard let viewModel = loginViewModel else { return }
-        viewModel.loginError.bindAndFire { [weak self] (error: BaseError?) in
+        viewModel.loginError.bind { [weak self] (error: BaseError?) in
             guard let strongSelf = self,
                   let loginError = error else { return }
             if loginError.statusCode == 101 {
@@ -144,13 +146,47 @@ fileprivate extension LoginViewController {
                     strongSelf.passwordTextField.performShakeAnimation()
                 }
             } else if loginError.statusCode == 105 {
+                strongSelf.dismissProgressHud()
+                strongSelf.showEditAlert(title: NSLocalizedString("Miscellaneous.EmailMissing", comment: "alert title"), subtitle: loginError.errorDescription, textFieldAttributes: [AlertTextFieldAttributes(placeholder: NSLocalizedString("Miscellaneous.Email", comment: "placeholder"), isSecureTextEntry: false, keyboardType: .emailAddress, autocorrectionType: .no, autocapitalizationType: .none, spellCheckingType: .no, returnKeyType: .done)], submitButtonTapped: { [weak self] (enteredValues: [String : String]) in
+                    guard let strongSelf = self else { return }
+                    let email = enteredValues[NSLocalizedString("Miscellaneous.Email", comment: "alert title")]
+                    strongSelf.showProgresHud()
+                    viewModel.loginWithFacebook(email: email)
+                })
+            } else if loginError.statusCode == 107 {
+                strongSelf.dismissProgressHud()
+                strongSelf.showEditAlert(title: NSLocalizedString("Miscellaneous.EmailMissing", comment: "alert title"), subtitle: loginError.errorDescription, textFieldAttributes: [AlertTextFieldAttributes(placeholder: NSLocalizedString("Miscellaneous.Email", comment: "placeholder"), isSecureTextEntry: false, keyboardType: .emailAddress, autocorrectionType: .no, autocapitalizationType: .none, spellCheckingType: .no, returnKeyType: .done)], submitButtonTapped: { [weak self] (enteredValues: [String : String]) in
+                    guard let strongSelf = self else { return }
+                    let email = enteredValues[NSLocalizedString("Miscellaneous.Email", comment: "alert title")]
+                    strongSelf.showProgresHud()
+                    viewModel.loginWithTwitter(email: email)
+                })
             } else {
                 strongSelf.dismissProgressHudWithMessage(loginError.errorDescription, iconType: .error, duration: nil)
             }
         }
-        viewModel.loginSuccess.bindAndFire { [weak self] (loginSuccesful: Bool) in
+        viewModel.loginSuccess.bind { [weak self] (loginSuccesful: Bool) in
             guard let strongSelf = self else { return }
             strongSelf.dismissProgressHud()
+        }
+        viewModel.oauthStep1Error.bind { [weak self] (error: BaseError?) in
+            guard let strongSelf = self,
+                  let step1Error = error else { return }
+            strongSelf.dismissProgressHudWithMessage(step1Error.errorDescription, iconType: .error, duration: nil)
+        }
+        viewModel.twitterOAuthUrl.bind { [weak self] (url: URL?) in
+            guard let strongSelf = self,
+                  let oauthUrl = url else { return }
+            strongSelf.dismissProgressHud()
+            let socialAuthWebViewController = SocialAuthWebViewController(redirectUri: viewModel.twitterRedirectUri, oauthUrl: oauthUrl)
+            socialAuthWebViewController.redirectUrlWithQueryParametersRecievedClosure = { [weak self] (redirectUrlWithQueryParameters: URL) in
+                guard let strongSelf = self else { return }
+                viewModel.redirectUrlWithQueryParameters = redirectUrlWithQueryParameters
+                strongSelf.showProgresHud()
+                viewModel.loginWithTwitter(email: nil)
+            }
+            let baseNavigationController = BaseNavigationController(rootViewController: socialAuthWebViewController)
+            strongSelf.present(baseNavigationController, animated: true, completion: nil)
         }
         emailTextField.delegate = self
         passwordTextField.delegate = self

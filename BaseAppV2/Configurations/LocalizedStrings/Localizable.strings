@@ -24,3 +24,6 @@
 
 // Miscellaneous
 "Miscellaneous.Cancel" = "Cancel";
+"Miscellaneous.Submit" = "Submit";
+"Miscellaneous.EmailMissing" = "Email Missing";
+"Miscellaneous.Email" = "Email";

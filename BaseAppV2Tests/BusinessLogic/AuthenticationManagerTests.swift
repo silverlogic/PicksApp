@@ -97,4 +97,37 @@ extension AuthenticationManagerTests {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testOauth1Step1() {
+        let redirectUrl = "https://app.baseapp.tsl.io/"
+        let oauth1StepOneExpectation = expectation(description: "Test OAuth1 Step One")
+        sharedManager.oauth1Step1(redirectUri: redirectUrl, provider: .twitter, success: { (response: OAuth1Step1Response) in
+            XCTAssertNotNil(response, "Value Should Not Be Nil!")
+            XCTAssertEqual(response.oauthTokenSecret, "cYwcHxWW7OSnqY5W3FTZPvCJQNPfPX4N", "Error Getting OAuth1 Info!")
+            XCTAssertEqual(response.oauthCallBackConfirmed, "true", "Error Getting OAuth1 Info!")
+            XCTAssertEqual(response.oauthToken, "0MxsWgAAAAAAwS-_AAABVld_DHo", "Error Getting OAuth1 Info!")
+            oauth1StepOneExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Getting Info For OAuth1!")
+            oauth1StepOneExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testLoginWithOAuth1() {
+        let redirectUrlWithQueryParametersTwitter = URL(string: "https://app.baseapp.tsl.io/?redirect_state=hpZksuzwUGU04qHo4LjQJdoXCtt6mupP&oauth_token=BJgZrwAAAAAAwS-_AAABWwwTJVQ&oauth_verifier=qeXqTX5DrLTYstNiIKF62NHRUZwnepEu")!
+        var oauth1Response = OAuth1Step1Response()
+        oauth1Response.oauthToken = "BJgZrwAAAAAAwS-_AAABWwwTJVQ"
+        oauth1Response.oauthTokenSecret = "hREBrTNPesd2HCvRD8V9eyFS3s8MK8G9"
+        oauth1Response.oauthCallBackConfirmed = "true"
+        let loginWithTwitterExpectation = expectation(description: "Test Login With Twitter")
+        sharedManager.loginWithOAuth1(redirectUrlWithQueryParameters: redirectUrlWithQueryParametersTwitter, provider: .twitter, oauth1Response: oauth1Response, email: nil, success: { 
+            XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
+            loginWithTwitterExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Logging With Twitter!")
+            loginWithTwitterExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

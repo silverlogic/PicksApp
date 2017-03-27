@@ -147,6 +147,97 @@ extension UIViewController {
 }
 
 
+// MARK: - Public Instance Methods For SCLAlertView
+extension UIViewController {
+    
+    /**
+        Shows an error alert that auto dismisses.
+     
+        - Parameters:
+            - title: A `String` representing the title to show
+                     in the alert.
+            - subTitle: A `String` representing the subtitle to
+                        show in the alert.
+    */
+    func showErrorAlert(title: String, subTitle: String) {
+        let alert = BaseAlertViewController(shouldAutoDismiss: true, shouldShowCloseButton: false)
+        alert.showErrorAlert(title: title, subtitle: subTitle)
+    }
+    
+    /**
+        Shows an info alert that auto dismisses.
+     
+        - Parameters:
+            - title: A `String` representing the title to show
+                     in the alert.
+            - subTitle: A `String` representing the subtitle to
+                        show in the alert.
+    */
+    func showInfoAlert(title: String, subTitle: String) {
+        let alert = BaseAlertViewController(shouldAutoDismiss: true, shouldShowCloseButton: false)
+        alert.showInfoAlert(title: title, subtitle: subTitle)
+    }
+    
+    /**
+        Shows an edit alert.
+     
+        - Note: When the user taps on the submit button,
+                validation occurs to ensure each textfield
+                has a value before `submitButtonTapped` is
+                invoked. If a textfield is empty, a shake animation
+                will occur on the textfield and the alert stays in
+                the view allowing the user to fill all missing
+                textfields and then trying again.
+     
+        - Warning: If `textFieldAttributes.count` is not greater
+                   than zero, the alert will not show.
+     
+        - Precondition: `textFieldAttributes.count` should be
+                        greater than zero.
+     
+        - Parameters:
+            - title: A `String` representing the title to show in
+                     the alert.
+            - subtitle: A `String` representing the subtitle to show
+                        in the alert.
+            - textFieldAttributes: An `[AlertTextFieldAttributes]`
+                                   representing the attributes of each textfield
+                                   in the alert. The number of dictionaries
+                                   determines the number of textfields to show
+                                   in the alert.
+            - submitButtonTapped: A closure that gets invoked when the user taps
+                                  the submit button. A `[String: String]` gets passed
+                                  that contains the values entered from the textfields.
+                                  The keys for each value are the
+                                  `placeholder` property from `AlertTextFieldAttributes` 
+                                  provided in `textFieldAttributes`.
+    */
+    func showEditAlert(title: String, subtitle: String, textFieldAttributes: [AlertTextFieldAttributes], submitButtonTapped: @escaping (_ enteredValues: [String: String]) -> Void) {
+        let alert = BaseAlertViewController(shouldAutoDismiss: false, shouldShowCloseButton: false)
+        if textFieldAttributes.count == 0 { return }
+        var textFields = [UITextField]()
+        textFieldAttributes.forEach({ textFields.append(alert.addTextField(textfieldAttributes: $0)) })
+        alert.addActionButton(title: NSLocalizedString("Miscellaneous.Submit", comment: "button title")) {
+            textFields.forEach({ $0.resignFirstResponder() })
+            let emptyTextFields = textFields.filter({ ($0.text?.isEmpty)! })
+            if emptyTextFields.count > 0 {
+                emptyTextFields.forEach({ $0.shake() })
+                return
+            }
+            var enteredValues = [String: String]()
+            textFields.forEach({ enteredValues[$0.placeholder!] = $0.text })
+            submitButtonTapped(enteredValues)
+            alert.hideView()
+        }
+        alert.addActionButton(title: NSLocalizedString("Miscellaneous.Cancel", comment: "alert title")) {
+            textFields.forEach({ $0.resignFirstResponder() })
+            alert.hideView()
+        }
+        alert.showEditAlert(title: title, subtitle: subtitle)
+    }
+}
+
+
 // MARK: - Public Class Methods
 extension UIViewController {
     

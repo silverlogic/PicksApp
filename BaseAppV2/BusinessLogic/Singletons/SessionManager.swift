@@ -79,7 +79,7 @@ extension SessionManager {
                        the error that occured.
     */
     func update(_ updateInfo: UpdateInfo, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
-        let dispatchQueue = DispatchQueue.global(qos: .userInteractive)
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
         let userId = _currentUser.value?.userId
         dispatchQueue.async {
             let networdClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
@@ -144,7 +144,7 @@ fileprivate extension SessionManager {
         Loads the current user from the API.
     */
     fileprivate func loadUser() {
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.currentUser)
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in

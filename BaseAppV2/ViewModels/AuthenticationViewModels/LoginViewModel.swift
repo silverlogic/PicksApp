@@ -21,16 +21,20 @@ protocol LoginViewModelProtocol {
     var facebookOAuthUrl: URL { get }
     var linkedInRedirectUri: String { get }
     var linkedInOAuthUrl: URL { get }
+    var twitterRedirectUri: String { get }
+    var twitterOAuthUrl: DynamicBinder<URL?> { get }
     var redirectUrlWithQueryParameters: URL? { get set }
     var loginError: DynamicBinder<BaseError?> { get }
     var loginSuccess: DynamicBinder<Bool> { get }
+    var oauthStep1Error: DynamicBinder<BaseError?> { get }
     
     
     // MARK: - Instance Methods
     func loginWithEmail()
     func loginWithFacebook(email: String?)
     func loginWithLinkedIn(email: String?)
-    // @TODO: Add method declarations for Twitter
+    func oauth1InfoForTwitter()
+    func loginWithTwitter(email: String?)
 }
 
 
@@ -47,9 +51,16 @@ final class LoginViewModel: LoginViewModelProtocol {
     var facebookOAuthUrl: URL
     var linkedInRedirectUri: String
     var linkedInOAuthUrl: URL
+    var twitterRedirectUri: String
+    var twitterOAuthUrl: DynamicBinder<URL?>
     var redirectUrlWithQueryParameters: URL?
     var loginError: DynamicBinder<BaseError?>
     var loginSuccess: DynamicBinder<Bool>
+    var oauthStep1Error: DynamicBinder<BaseError?>
+    
+    
+    // MARK: - Private Instance Attributes
+    private var twitterOAuth1Step1Resonse: OAuth1Step1Response?
     
     
     // MARK: - Initializers
@@ -62,9 +73,12 @@ final class LoginViewModel: LoginViewModelProtocol {
         facebookOAuthUrl = ConfigurationManager.shared.facebookOAuthUrl!
         linkedInRedirectUri = ConfigurationManager.shared.linkedInRedirectUri
         linkedInOAuthUrl = ConfigurationManager.shared.linkedInOAuthUrl!
+        twitterRedirectUri = ConfigurationManager.shared.twitterRedirectUri
+        twitterOAuthUrl = DynamicBinder(nil)
         redirectUrlWithQueryParameters = nil
         loginError = DynamicBinder(nil)
         loginSuccess = DynamicBinder(false)
+        oauthStep1Error = DynamicBinder(nil)
     }
     
     
@@ -116,6 +130,39 @@ final class LoginViewModel: LoginViewModelProtocol {
             guard let strongSelf = self else { return }
             if error.statusCode == 103 {
                 strongSelf.loginError.value = BaseError.emailNeededForOAuthLinkedIn
+                return
+            }
+            strongSelf.loginError.value = error
+        }
+    }
+    
+    func oauth1InfoForTwitter() {
+        AuthenticationManager.shared.oauth1Step1(redirectUri: twitterRedirectUri, provider: .twitter, success: { [weak self] (response: OAuth1Step1Response) in
+            guard let strongSelf = self else { return }
+            strongSelf.twitterOAuth1Step1Resonse = response
+            let escapedString = response.oauthToken.utf8
+            let twitterOAuthUrl = URL(string: "https://api.twitter.com/oauth/authenticate?oauth_token=\(escapedString)")
+            strongSelf.twitterOAuthUrl.value = twitterOAuthUrl
+        }) { [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            strongSelf.oauthStep1Error.value = error
+        }
+    }
+    
+    func loginWithTwitter(email: String?) {
+        guard let urlWithQueryParameters = redirectUrlWithQueryParameters,
+              let oauth1Step1Resonse = twitterOAuth1Step1Resonse else {
+            loginError.value = BaseError.generic
+            return
+        }
+        AuthenticationManager.shared.loginWithOAuth1(redirectUrlWithQueryParameters: urlWithQueryParameters, provider: .twitter, oauth1Response: oauth1Step1Resonse, email: email, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.loginSuccess.value = true
+            NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
+        }) { [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            if error.statusCode == 103 {
+                strongSelf.loginError.value = BaseError.emailNeededForOAuthTwitter
                 return
             }
             strongSelf.loginError.value = error

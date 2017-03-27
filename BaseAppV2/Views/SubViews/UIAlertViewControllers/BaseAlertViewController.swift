@@ -41,7 +41,18 @@ class BaseAlertViewController: SCLAlertView {
     
     
     // MARK: - Initializers
-    init(_ shouldAutoDismiss: Bool, shouldShowCloseButton: Bool) {
+    
+    /**
+        Initializes an instance of `BaseAlertViewController`.
+     
+        - Parameters:
+            - shouldAutoDismiss: A `Bool` that determines if the
+                                instance will dismiss on its own.
+            - shouldShowCloseButton: A `Bool` that determines if
+                                     the instance will show a
+                                     dismiss button on its own.
+    */
+    init(shouldAutoDismiss: Bool, shouldShowCloseButton: Bool) {
         let appearance = SCLAppearance(
             kTitleFont: titleFont,
             kTextFont: defaultFont,
@@ -54,10 +65,12 @@ class BaseAlertViewController: SCLAlertView {
         super.init(appearance: appearance)
     }
     
+    /// Required initializer.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    /// Required initializer.
     required init() {
         super.init()
     }
@@ -66,36 +79,137 @@ class BaseAlertViewController: SCLAlertView {
 
 // MARK: - Public Instance Methods
 extension BaseAlertViewController {
-    func addTextField(_ title: String?, isSecure: Bool) -> UITextField {
+    
+    /**
+        Addes a textfield to an instance.
+     
+        - Parameter textfieldAttributes: An `AlertTextFieldAttributes`
+                                         containing the attributes that
+                                         the textfield will have.
+     
+        - Returns: An `UITextField` representing the textfield added.
+    */
+    func addTextField(textfieldAttributes: AlertTextFieldAttributes) -> UITextField {
         let textField = super.addTextField(title)
-        textField.isSecureTextEntry = isSecure
         textField.layer.cornerRadius = cornerRadius
         textField.layer.borderColor = borderColor
         textField.layer.borderWidth = borderWidth
         textField.textColor = UIColor.black
         textField.tintColor = UIColor.black
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        guard let placeholderText = textField.placeholder else { return textField }
+        textField.autocorrectionType = textfieldAttributes.autocorrectionType
+        textField.autocapitalizationType = textfieldAttributes.autocapitalizationType
+        textField.isSecureTextEntry = textfieldAttributes.isSecureTextEntry
+        textField.keyboardType = textfieldAttributes.keyboardType
+        textField.spellCheckingType = textfieldAttributes.spellCheckingType
+        textField.returnKeyType = textfieldAttributes.returnKeyType
+        textField.keyboardAppearance = StyleConstants.keyboardStyle
+        let placeholderText = textfieldAttributes.placeholder
         textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSForegroundColorAttributeName : placeHolderAndTintTextColor])
         return textField
     }
     
-    func addActionButton(_ title: String, buttonTapped: @escaping () -> Void) {
+    /**
+        Adds a button to an instance.
+     
+        - Parameters:
+            - title: A `String` representing the text
+                     that will be displayed in the alert.
+            - buttonTapped: A `() -> Void` that gets invoked
+                            when the user taps on the button.
+    */
+    func addActionButton(title: String, buttonTapped: @escaping () -> Void) {
         _ = addButton(title, backgroundColor: UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue), textColor: .white, showDurationStatus: false, action: buttonTapped)
     }
     
-    func showEditAlert(_ title: String, subtitle: String) {
+    /**
+        Displays an instance in an edit style.
+     
+        - Parameters:
+            - title: A `String` representing the title
+                     to show.
+            - subtitle: A `String` representing the
+                        subtitle to show.
+    */
+    func showEditAlert(title: String, subtitle: String) {
         _ = showEdit(title, subTitle: subtitle, closeButtonTitle: nil, duration: noDurationInterval, colorStyle: StyleConstants.colorValueBaseAppBlue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
     }
     
-    func showErrorAlert(_ title: String, subtitle: String) {
+    /**
+        Displays an instance in an error style.
+     
+        - Parameters:
+            - title: A `String` representing the title
+                     to show.
+            - subtitle: A `String` representing the
+                        subtitle to show.
+    */
+    func showErrorAlert(title: String, subtitle: String) {
         let duration = shouldAutoDismiss ? defaultDurationInterval : noDurationInterval
         _ = showError(title, subTitle: subtitle, closeButtonTitle: NSLocalizedString("Alert.Close", comment: "close"), duration: duration, colorStyle: StyleConstants.colorValueBaseAppBlue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
     }
     
-    func showInfoAlert(_ title: String, subtitle: String) {
+    /**
+        Displays an instance in an info style.
+     
+        - Parameters:
+            - title: A `String` representing the title
+                     to show.
+            - subtitle: A `String` representing the
+                        subtitle to show.
+    */
+    func showInfoAlert(title: String, subtitle: String) {
         let duration = shouldAutoDismiss ? defaultDurationInterval : noDurationInterval
         _ = showInfo(title, subTitle: subtitle, closeButtonTitle: NSLocalizedString("Alert.Close", comment: "close"), duration: duration, colorStyle: StyleConstants.colorValueBaseAppBlue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
+    }
+}
+
+
+/**
+    A struct that encapsulates info
+    needed for creating a textfield
+    in an `SCLAlertView` alert.
+*/
+struct AlertTextFieldAttributes {
+    
+    // MARK: - Public Attributes
+    let placeholder: String
+    let isSecureTextEntry: Bool
+    let keyboardType: UIKeyboardType
+    let autocorrectionType: UITextAutocorrectionType
+    let autocapitalizationType: UITextAutocapitalizationType
+    let spellCheckingType: UITextSpellCheckingType
+    let returnKeyType: UIReturnKeyType
+    
+    
+    // MARK: - Initializers
+    
+    /**
+        Initializes an instance of `AlertTextFieldAttributes`.
+     
+        - Parameters:
+            - placeholder: A `String` representing the placeholder text in
+                           the textfield.
+            - isSecureTextEntry: A `Bool` indicating if the text should be shown
+                                 or not.
+            - keyboardType: An `UIKeyboardType` representing the type of keyboard
+                            to use.
+            - autocorrectionType: An `UITextAutocorrectionType` that determines the
+                                  type of auto correction the textfield will have.
+            - autocapitalizationType: An `UITextAutocapitalizationType` that determines
+                                      the type of auto capitalization the textfield will
+                                      have.
+            - spellCheckType: An `UITextSpellCheckingType` representing the type of spell
+                              check the textfield will use.
+            - returnKeyType: An `UIReturnKeyType` representing the type of return key to use
+                             for the textfield.
+    */
+    init(placeholder: String, isSecureTextEntry: Bool, keyboardType: UIKeyboardType, autocorrectionType: UITextAutocorrectionType, autocapitalizationType: UITextAutocapitalizationType, spellCheckingType: UITextSpellCheckingType, returnKeyType: UIReturnKeyType) {
+        self.placeholder = placeholder
+        self.isSecureTextEntry = isSecureTextEntry
+        self.keyboardType = keyboardType
+        self.autocorrectionType = autocorrectionType
+        self.autocapitalizationType = autocapitalizationType
+        self.spellCheckingType = spellCheckingType
+        self.returnKeyType = returnKeyType
     }
 }

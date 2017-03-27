@@ -57,6 +57,7 @@
 		889AA30B1E851278005100EE /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AA30A1E851278005100EE /* ProfileViewModelTests.swift */; };
 		889AA30D1E852C1B005100EE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AA30C1E852C1B005100EE /* ProfileViewController.swift */; };
 		889AA30F1E853533005100EE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AA30E1E853533005100EE /* BaseTabBarController.swift */; };
+		889AA3111E86C6FA005100EE /* oauth1response.json in Resources */ = {isa = PBXBuildFile; fileRef = 889AA3101E86C6FA005100EE /* oauth1response.json */; };
 		88AF2E091E7B972900F93A50 /* ReuseableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF2E081E7B972900F93A50 /* ReuseableView.swift */; };
 		88AF2E0B1E7B9B0300F93A50 /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF2E0A1E7B9B0300F93A50 /* NibLoadableView.swift */; };
 		88AF2E0D1E7B9CFD00F93A50 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF2E0C1E7B9CFD00F93A50 /* UITableView+Extension.swift */; };
@@ -183,6 +184,7 @@
 		889AA30A1E851278005100EE /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewModelTests.swift; path = ViewModels/ProfileViewModels/ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		889AA30C1E852C1B005100EE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Views/ViewControllers/ProfileViewControllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		889AA30E1E853533005100EE /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTabBarController.swift; path = Views/ViewControllers/BaseTabBarController.swift; sourceTree = "<group>"; };
+		889AA3101E86C6FA005100EE /* oauth1response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = oauth1response.json; path = Resources/TestJSON/oauth1response.json; sourceTree = "<group>"; };
 		88AF2E081E7B972900F93A50 /* ReuseableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReuseableView.swift; path = Protocols/ReuseableView.swift; sourceTree = "<group>"; };
 		88AF2E0A1E7B9B0300F93A50 /* NibLoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadableView.swift; path = Protocols/NibLoadableView.swift; sourceTree = "<group>"; };
 		88AF2E0C1E7B9CFD00F93A50 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Extension.swift"; path = "Extensions/UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				8817FC271E7700DF007697DF /* loginuser.json */,
 				8817FC291E77018D007697DF /* updateuser.json */,
 				8833F63B1E827D990035975C /* loginuseroauth.json */,
+				889AA3101E86C6FA005100EE /* oauth1response.json */,
 			);
 			name = TestJSON;
 			sourceTree = "<group>";
@@ -1054,6 +1057,7 @@
 				8817FC241E76FE9A007697DF /* currentuser.json in Resources */,
 				8817FC2A1E77018D007697DF /* updateuser.json in Resources */,
 				8817FC281E7700DF007697DF /* loginuser.json in Resources */,
+				889AA3111E86C6FA005100EE /* oauth1response.json in Resources */,
 				8817FC261E770086007697DF /* registeruser.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
