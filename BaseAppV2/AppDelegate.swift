@@ -84,6 +84,7 @@ fileprivate extension AppDelegate {
         window?.rootViewController?.view.dodo.bottomLayoutGuide = window?.rootViewController?.bottomLayoutGuide
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                             NSFontAttributeName: font]
+        UINavigationBar.appearance().tintColor = .white
         UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white,
                                                              NSFontAttributeName: font], for: .normal)
     }

@@ -102,6 +102,8 @@
 		88FBC2AB1E701AE3003AEEC4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */; };
 		88FBC2AD1E7022F4003AEEC4 /* AuthenticationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */; };
 		88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */; };
+		88FD2CE41E89BBD0002D1D00 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FD2CE31E89BBD0002D1D00 /* CircleView.swift */; };
+		88FD2CE61E89CCDE002D1D00 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FD2CE51E89CCDE002D1D00 /* UpdateProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +230,8 @@
 		88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = BusinessLogic/Singletons/SessionManager.swift; sourceTree = "<group>"; };
 		88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationEndpoint.swift; path = CoreServices/Networking/NetworkClient/AuthenticationEndpoint.swift; sourceTree = "<group>"; };
 		88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationManager.swift; path = BusinessLogic/Singletons/AuthenticationManager.swift; sourceTree = "<group>"; };
+		88FD2CE31E89BBD0002D1D00 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleView.swift; path = Views/SubViews/UIViews/CircleView.swift; sourceTree = "<group>"; };
+		88FD2CE51E89CCDE002D1D00 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateProfileViewController.swift; path = Views/ViewControllers/ProfileViewControllers/UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		A4D5866E75C71BD2D121854E /* Pods-BaseAppV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2/Pods-BaseAppV2.release.xcconfig"; sourceTree = "<group>"; };
 		BD922A6B53627E40F775B2B4 /* Pods-BaseAppV2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -334,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				8801FDEC1E71F17300F54932 /* BaseView.swift */,
+				88FD2CE31E89BBD0002D1D00 /* CircleView.swift */,
 			);
 			name = UIViews;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				889AA30C1E852C1B005100EE /* ProfileViewController.swift */,
+				88FD2CE51E89CCDE002D1D00 /* UpdateProfileViewController.swift */,
 			);
 			name = ProfileViewControllers;
 			sourceTree = "<group>";
@@ -1281,12 +1287,14 @@
 				88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */,
 				88FBC28A1E6E8788003AEEC4 /* DataRequest+Extension.swift in Sources */,
 				88FB72431E8180B00056BCDF /* String+Extension.swift in Sources */,
+				88FD2CE41E89BBD0002D1D00 /* CircleView.swift in Sources */,
 				88FBC2AB1E701AE3003AEEC4 /* SessionManager.swift in Sources */,
 				88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */,
 				88BFD8DE1E842E74000C8A61 /* ProfileInfoTableViewCell.swift in Sources */,
 				8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */,
 				8801FDED1E71F17300F54932 /* BaseView.swift in Sources */,
 				8801FDE51E71E2E800F54932 /* Notification+Extension.swift in Sources */,
+				88FD2CE61E89CCDE002D1D00 /* UpdateProfileViewController.swift in Sources */,
 				8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */,
 				323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */,
 			);

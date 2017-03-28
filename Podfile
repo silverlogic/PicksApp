@@ -9,6 +9,7 @@ target 'BaseAppV2' do
     pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
     pod 'Crashlytics', '~> 3.8'
     pod 'Dodo', '~> 7.0'
+    pod 'ImagePicker', :git => 'https://github.com/hyperoslo/ImagePicker'
     pod 'IQKeyboardManager'
     pod 'Kingfisher', '~> 3.0'
     pod 'KYNavigationProgress'
