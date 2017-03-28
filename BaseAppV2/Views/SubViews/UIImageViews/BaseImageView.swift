@@ -76,7 +76,7 @@ extension BaseImageView {
                          path of the image resource.
     */
     public func setImageWithUrl(_ url: URL) {
-        kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "icon-imageplaceholder"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil) { [weak self] (image: Image?, error: NSError?, type: CacheType, url: URL?) in
+        kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "icon-imageplaceholder-blue"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil) { [weak self] (image: Image?, error: NSError?, type: CacheType, url: URL?) in
             guard let strongSelf = self,
                   let downloadedImage = image else { return }
             strongSelf.image = downloadedImage

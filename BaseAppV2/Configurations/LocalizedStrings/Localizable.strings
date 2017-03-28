@@ -27,3 +27,9 @@
 "Miscellaneous.Submit" = "Submit";
 "Miscellaneous.EmailMissing" = "Email Missing";
 "Miscellaneous.Email" = "Email";
+"Miscellaneous.Finish" = "Finish";
+
+// ImagePicker
+"ImagePicker.NoImages" = "Looks like there aren't any images here. 😜";
+"ImagePicker.RequestPermission.Title" = "Media Access Required";
+"ImagePicker.RequestPermission.Message" = "Please, we need access your photo library. 📷";

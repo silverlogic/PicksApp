@@ -11,6 +11,7 @@ import SVProgressHUD
 import IQKeyboardManager
 import Dodo
 import KYNavigationProgress
+import ImagePicker
 
 // MARK: - Public Instance Methods For SVProgressHUD
 extension UIViewController {
@@ -202,7 +203,7 @@ extension UIViewController {
                         in the alert.
             - textFieldAttributes: An `[AlertTextFieldAttributes]`
                                    representing the attributes of each textfield
-                                   in the alert. The number of dictionaries
+                                   in the alert. The size of the array
                                    determines the number of textfields to show
                                    in the alert.
             - submitButtonTapped: A closure that gets invoked when the user taps
@@ -234,6 +235,63 @@ extension UIViewController {
             alert.hideView()
         }
         alert.showEditAlert(title: title, subtitle: subtitle)
+    }
+}
+
+
+// MARK: - Public Instance Methods For ImagePicker
+extension UIViewController {
+    
+    /// Internal helper for getting the selected images from the delegate.
+    fileprivate static var userSelectedImages: ((_ images: [UIImage]) -> Void)!
+    
+    /**
+        Shows the image picker to the user.
+     
+        - Parameters:
+            - numberOfImages: An `Int` representing the amount of images
+                              the user is allowed to select.
+            - imagesSelected: A closure that gets invoked when images have
+                              been selected. Passes an `[UIImage]` containing
+                              the selected images.
+    */
+    func showImagePicker(numberOfImages: Int, imagesSelected: @escaping (_ images: [UIImage]) -> Void) {
+        var imagePickerConfiguration = Configuration()
+        imagePickerConfiguration.backgroundColor = .white
+        imagePickerConfiguration.gallerySeparatorColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        imagePickerConfiguration.mainColor = .white
+        imagePickerConfiguration.settingsColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        imagePickerConfiguration.bottomContainerColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        imagePickerConfiguration.doneButtonTitle = NSLocalizedString("Miscellaneous.Finish", comment: "button title")
+        imagePickerConfiguration.noImagesTitle = NSLocalizedString("ImagePicker.NoImages", comment: "no images title")
+        imagePickerConfiguration.requestPermissionTitle = NSLocalizedString("ImagePicker.RequestPermission.Title", comment: "Request title")
+        imagePickerConfiguration.requestPermissionMessage = NSLocalizedString("ImagePicker.RequestPermission.Message", comment: "Request message")
+        imagePickerConfiguration.recordLocation = false
+        imagePickerConfiguration.allowMultiplePhotoSelection = false
+        let imagePicker = ImagePickerController(configuration: imagePickerConfiguration)
+        imagePicker.delegate = self
+        imagePicker.imageLimit = numberOfImages
+        present(imagePicker, animated: true, completion: nil)
+        UIViewController.userSelectedImages = { (images: [UIImage]) in
+            imagesSelected(images)
+        }
+    }
+}
+
+
+// MARK: - ImagePickerDelegate
+extension UIViewController: ImagePickerDelegate {
+    public func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    public func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        // No implementation
+    }
+    
+    public func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        UIViewController.userSelectedImages(images)
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }
 

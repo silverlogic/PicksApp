@@ -19,6 +19,7 @@ final class ProfileViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
+    var hideEditButton = false
     var profileViewModel: ProfileViewModel? {
         didSet {
             setup()
@@ -41,12 +42,22 @@ extension ProfileViewController {
         super.viewDidLoad()
         setup()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
+}
+
+
+// MARK: - Navigation
+extension ProfileViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let updateProfileViewController = segue.destination as? UpdateProfileViewController else { return }
+        updateProfileViewController.profileViewModel = profileViewModel
+    }
+}
+
+
+// MARK: - IBActions
+fileprivate extension ProfileViewController {
+    @IBAction private func editProfileButtonTapped(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: UIStoryboardSegue.goToUpdateProfileSegue, sender: nil)
     }
 }
 
@@ -110,5 +121,8 @@ fileprivate extension ProfileViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
+        if hideEditButton {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
 }

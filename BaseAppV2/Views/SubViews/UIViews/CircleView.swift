@@ -1,18 +1,18 @@
 //
-//  CircleImageView.swift
+//  CircleView.swift
 //  BaseAppV2
 //
-//  Created by Emanuel  Guerrero on 3/17/17.
+//  Created by Emanuel  Guerrero on 3/27/17.
 //  Copyright © 2017 SilverLogic. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 /**
-    A subclass of `BaseImageView`. It
-    makes an instance a perfect circle.
+    A subclass of `BaseView`. It makes
+    an instance a perfect cicle.
 */
-@IBDesignable class CircleImageView: BaseImageView {
+@IBDesignable class CircleView: BaseView {
     
     // MARK: - Lifcycle
     override func awakeFromNib() {
@@ -28,7 +28,7 @@ import UIKit
 
 
 // MARK: - Private Instance Methods
-fileprivate extension CircleImageView {
+fileprivate extension CircleView {
     
     /// Configures the view to be a circle.
     fileprivate func setup() {
