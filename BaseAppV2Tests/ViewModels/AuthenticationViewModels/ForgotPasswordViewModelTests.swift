@@ -10,11 +10,20 @@ import XCTest
 @testable import BaseAppV2
 
 final class ForgotPasswordViewModelTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension ForgotPasswordViewModelTests {
+    
+    // MARK: - Initialization Tests
+    func testInit() {
+        let forgotPasswordViewModel = ForgotPasswordViewModel(token: nil)
+        XCTAssertNotNil(forgotPasswordViewModel, "Value Should Not Be Nil!")
+        XCTAssertEqual(forgotPasswordViewModel.email, "", "Initialization Failed!")
+        XCTAssertEqual(forgotPasswordViewModel.newPassword, "", "Initialization Failed!")
+        XCTAssertNil(forgotPasswordViewModel.forgotPasswordError.value, "Initialization Failed!")
+        XCTAssertFalse(forgotPasswordViewModel.forgotPasswordRequestSuccess.value, "Initialization Failed!")
+        XCTAssertFalse(forgotPasswordViewModel.forgotPasswordResetSuccess.value, "Initialization Failed!")
+    }
+    
+    
+    // MARK: - Functional Tests
     func testForgotPasswordRequest() {
         let forgotPasswordViewModel = ForgotPasswordViewModel(token: nil)
         let forgotPasswordRequestExpectation = expectation(description: "Test Forgot Password Expectation")
@@ -45,5 +54,10 @@ extension ForgotPasswordViewModelTests {
         }
         forgotPasswordViewModel.forgotPasswordReset()
         waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testCancelResetPassword() {
+        let forgotPasswordViewModel = ForgotPasswordViewModel(token: "AAADCC32jjsxndiehroens38er8f8wyq3rg32")
+        forgotPasswordViewModel.cancelResetPassword()
     }
 }

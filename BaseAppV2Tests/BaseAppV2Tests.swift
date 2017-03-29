@@ -11,11 +11,8 @@ import OHHTTPStubs
 @testable import BaseAppV2
 
 class BaseAppV2Tests: XCTestCase {
-}
-
-
-// MARK: - Setup & Tear Down
-extension BaseAppV2Tests {
+    
+    // MARK: - Setup & Tear Down
     override func setUp() {
         super.setUp()
         stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users/me") && isMethodGET(), response: { _ in
@@ -68,6 +65,18 @@ extension BaseAppV2Tests {
         })
         stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/forgot-password/reset") && isMethodPOST(), response: { _ in
             return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("userlistpage1.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users") && isMethodGET() && containsQueryParams(["page": "2"]), response: { _ in
+            guard let path = OHPathForFile("userlistpage2.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
         })
     }
     

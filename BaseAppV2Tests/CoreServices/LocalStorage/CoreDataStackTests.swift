@@ -11,17 +11,15 @@ import CoreData
 @testable import BaseAppV2
 
 final class CoreDataStackTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension CoreDataStackTests {
+    
+    // MARK: - Functional Tests
     func testFetchObjects() {
         guard let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: CoreDataStack.shared.managedObjectContext) as? User else {
             XCTFail("Failed To Test CoreDataStack!")
             return
         }
         user.userId = 1
+        
         let predicate = NSPredicate(format: "userId == %d", user.userId)
         let fetchExpectation = expectation(description: "Test Fetching Objects")
         CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in

@@ -10,11 +10,8 @@ import XCTest
 @testable import BaseAppV2
 
 final class ArrayExtensionTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension ArrayExtensionTests {
+    
+    // MARK: - Functional Tests
     func testStringWithSeparator() {
         let numberArray = [1,2,3,4,5,6,7,8,9]
         let string = numberArray.stringWithSeparator(",")

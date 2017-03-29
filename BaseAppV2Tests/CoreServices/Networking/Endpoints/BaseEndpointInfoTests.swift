@@ -11,11 +11,8 @@ import Alamofire
 @testable import BaseAppV2
 
 final class BaseEndpointInfoTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Initialization Tests
-extension BaseEndpointInfoTests {
+    
+    // MARK: - Initialization Tests
     func testInit() {
         let baseEndpointInfo = BaseEndpointInfo(path: "users/me", requestMethod: .get, parameters: nil, parameterEncoding: nil, requiresAuthorization: true)
         XCTAssertNotNil(baseEndpointInfo, "Value Should Not Be Nil!")

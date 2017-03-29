@@ -11,11 +11,8 @@ import CoreData
 @testable import BaseAppV2
 
 final class NSManagedObjectExtensionTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension NSManagedObjectExtensionTests {
+    
+    // MARK: - Functional Tests
     func testEntityName() {
         XCTAssertEqual(NSManagedObject.entityName, "NSManagedObject", "Incorrect Format!")
         XCTAssertEqual(User.entityName, "User", "Incorrect Format!")

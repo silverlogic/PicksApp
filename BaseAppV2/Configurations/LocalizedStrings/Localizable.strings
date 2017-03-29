@@ -12,6 +12,8 @@
 "BaseError.PasswordsDoNotMatch" = "Oops, passwords entered don't match. 😞";
 "BaseError.EmailNeededForOAuth" = "Please enter an email to continue. 🤔";
 "BaseError.EmailAlreadyInUseForOAuth" = "Oops, the email associated is already in use. 😞";
+"BaseError.EndOfPagination" = "Looks like there aren't anymore. 😜";
+"BaseError.StillLoadingResults" = "Results Are Still Loading. 😜";
 
 // Settings View Controller
 "SettingsViewController.InviteCode" = "Invite Code";

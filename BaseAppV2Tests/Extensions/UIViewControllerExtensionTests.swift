@@ -10,11 +10,8 @@ import XCTest
 @testable import BaseAppV2
 
 final class UIViewControllerExtensionTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension UIViewControllerExtensionTests {
+    
+    // MARK: - Functional Tests
     func testStoryboardIdentifier() {
         XCTAssertEqual(LoginViewController.storyboardIdentifier, "LoginViewController", "Incorrect Format!")
         XCTAssertEqual(UITabBarController.storyboardIdentifier, "UITabBarController", "Incorrect Format!")
