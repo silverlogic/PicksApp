@@ -130,4 +130,26 @@ extension AuthenticationManagerTests {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testForgotPasswordRequest() {
+        let forgotPasswordRequestExpectation = expectation(description: "Test Forgot Password Expectation")
+        sharedManager.forgotPasswordRequest(email: "testuser@tsl.io", success: { 
+            forgotPasswordRequestExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Sending Forgot Password Request!")
+            forgotPasswordRequestExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testForgotPasswordReset() {
+        let forgotPasswordRestExpectation = expectation(description: "Test Forgot Password Reset Expectation")
+        sharedManager.forgotPasswordReset(token: "AAAGGYY3254fdfdqwee434e3rfdfd", newPassword: "1235", success: { 
+            forgotPasswordRestExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Sending Forgot Password Reset!")
+            forgotPasswordRestExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

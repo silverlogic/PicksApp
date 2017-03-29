@@ -10,7 +10,7 @@ import Foundation
 
 /**
     A singleton responsible for login, signup,
-    and social authentication operations.
+    social authentication and forgot password operations.
 */
 final class AuthenticationManager {
     
@@ -287,6 +287,61 @@ extension AuthenticationManager {
                 } else {
                     failure(error)
                 }
+            })
+        }
+    }
+    
+    /**
+        Sends a forgot password request for an email.
+     
+        - Parameters
+            - email: A `String` representing the email
+                     to send a forgot password link to.
+            - success: A closure that gets invoked when
+                       sending the link to the email was
+                       successful.
+            - failure: A closure that gets invoked when
+                       sending the link to the email failed.
+                       Passes a `BaseError` object that contains
+                       the error that occured.
+    */
+    func forgotPasswordRequest(email: String, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.forgotPasswordRequest(email: email))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+    
+    /**
+        Sends a forgot password reset.
+     
+        - Parameters:
+            - token: A `String` representing the verification token received from
+                     from the deep link forgot password.
+            - newPassword: A `String` representing the new password the user will
+                           use for login.
+            - success: A closure that gets invoked when reseting the password
+                       was successful.
+            - faliure: A closure that gets invoked when reseting the password failed.
+                       Passes a `BaseError` object that contains the error that occured.
+    */
+    func forgotPasswordReset(token: String, newPassword: String, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.forgotPasswordReset(token: token, newPassword: newPassword))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
             })
         }
     }

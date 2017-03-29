@@ -15,4 +15,5 @@ extension UIStoryboardSegue {
     static let goToSignupPasswordSegue = "goToSignupPasswordSegue"
     static let goToSignupOptionalInfoSegue = "goToSignupOptionalInfoSegue"
     static let goToUpdateProfileSegue = "goToUpdateProfileSegue"
+    static let goToForgotPasswordRequestSegue = "goToForgotPasswordRequestSegue"
 }

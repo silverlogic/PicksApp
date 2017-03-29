@@ -20,6 +20,10 @@ extension UIStoryboard {
     static func loadLoginViewController() -> LoginViewController {
         return loadControllerFromMain(type: LoginViewController.self)
     }
+    
+    static func loadForgotPasswordResetViewController() -> ForgotPasswordResetViewController {
+        return loadControllerFromMain(type: ForgotPasswordResetViewController.self)
+    }
 }
 
 

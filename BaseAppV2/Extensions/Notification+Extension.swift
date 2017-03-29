@@ -13,4 +13,6 @@ extension Notification.Name {
     // MARK: - Internal Notifications
     static let UserLoggedIn = Notification.Name("UserLoggedIn")
     static let UserLoggedOut = Notification.Name("UserLoggedOut")
+    static let PasswordReset = Notification.Name("PasswordReset")
+    static let NotifyUserOfPasswordResetSuccess = Notification.Name("NotifyUserOfPasswordResetSuccess")
 }

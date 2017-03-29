@@ -22,6 +22,11 @@
 		8801FDFF1E723DD900F54932 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDFE1E723DD900F54932 /* UIStoryboard+Extension.swift */; };
 		8801FE011E72418E00F54932 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FE001E72418E00F54932 /* LoginViewController.swift */; };
 		8801FE031E72462B00F54932 /* UIViewControllerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FE021E72462B00F54932 /* UIViewControllerExtensionTests.swift */; };
+		8802C2A21E8B21AE00600EB1 /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802C2A11E8B21AE00600EB1 /* DeepLinkManager.swift */; };
+		880413FF1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880413FE1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift */; };
+		880414011E8C08D800ABF4D4 /* ForgotPasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880414001E8C08D800ABF4D4 /* ForgotPasswordViewModelTests.swift */; };
+		880414041E8C0D1300ABF4D4 /* ForgotPasswordRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880414031E8C0D1300ABF4D4 /* ForgotPasswordRequestViewController.swift */; };
+		880414061E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880414051E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift */; };
 		880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880454C41E65E32C00D4A499 /* AppDelegate.swift */; };
 		880454CC1E65E32C00D4A499 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880454CA1E65E32C00D4A499 /* Main.storyboard */; };
 		880454CE1E65E32C00D4A499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880454CD1E65E32C00D4A499 /* Assets.xcassets */; };
@@ -144,6 +149,12 @@
 		8801FDFE1E723DD900F54932 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extension.swift"; path = "Extensions/UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		8801FE001E72418E00F54932 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
 		8801FE021E72462B00F54932 /* UIViewControllerExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensionTests.swift; path = Extensions/UIViewControllerExtensionTests.swift; sourceTree = "<group>"; };
+		8802C29F1E8B20FD00600EB1 /* BaseAppV2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BaseAppV2.entitlements; sourceTree = "<group>"; };
+		8802C2A11E8B21AE00600EB1 /* DeepLinkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeepLinkManager.swift; path = CoreServices/DeepLinking/DeepLinkManager.swift; sourceTree = "<group>"; };
+		880413FE1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewModel.swift; path = ViewModels/AuthenticationViewModels/ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		880414001E8C08D800ABF4D4 /* ForgotPasswordViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewModelTests.swift; path = ViewModels/AuthenticationViewModels/ForgotPasswordViewModelTests.swift; sourceTree = "<group>"; };
+		880414031E8C0D1300ABF4D4 /* ForgotPasswordRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordRequestViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/ForgotPasswordViewControllers/ForgotPasswordRequestViewController.swift; sourceTree = "<group>"; };
+		880414051E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordResetViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/ForgotPasswordViewControllers/ForgotPasswordResetViewController.swift; sourceTree = "<group>"; };
 		880454C11E65E32C00D4A499 /* BaseAppV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseAppV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		880454C41E65E32C00D4A499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		880454CB1E65E32C00D4A499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -228,7 +239,7 @@
 		88FBC2A41E6FFD39003AEEC4 /* BaseErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseErrorTests.swift; path = Models/BaseErrorTests.swift; sourceTree = "<group>"; };
 		88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEndpoint.swift; path = CoreServices/Networking/Endpoints/BaseEndpoint.swift; sourceTree = "<group>"; };
 		88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = BusinessLogic/Singletons/SessionManager.swift; sourceTree = "<group>"; };
-		88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationEndpoint.swift; path = CoreServices/Networking/NetworkClient/AuthenticationEndpoint.swift; sourceTree = "<group>"; };
+		88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationEndpoint.swift; path = CoreServices/Networking/Endpoints/AuthenticationEndpoint.swift; sourceTree = "<group>"; };
 		88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationManager.swift; path = BusinessLogic/Singletons/AuthenticationManager.swift; sourceTree = "<group>"; };
 		88FD2CE31E89BBD0002D1D00 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleView.swift; path = Views/SubViews/UIViews/CircleView.swift; sourceTree = "<group>"; };
 		88FD2CE51E89CCDE002D1D00 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateProfileViewController.swift; path = Views/ViewControllers/ProfileViewControllers/UpdateProfileViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +307,7 @@
 			children = (
 				8801FDE01E71C79C00F54932 /* LoginViewModel.swift */,
 				88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */,
+				880413FE1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift */,
 			);
 			name = AuthenticationViewModels;
 			sourceTree = "<group>";
@@ -362,6 +374,7 @@
 		8801FDF81E722DFE00F54932 /* AuthenticationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				880414021E8C0C9700ABF4D4 /* ForgotPasswordViewControllers */,
 				8833F63D1E8290290035975C /* SocialAuthWebViewControllers */,
 				88F3FE191E767951003162F8 /* SignupViewControllers */,
 				8801FE001E72418E00F54932 /* LoginViewController.swift */,
@@ -377,6 +390,23 @@
 				88FD2CE51E89CCDE002D1D00 /* UpdateProfileViewController.swift */,
 			);
 			name = ProfileViewControllers;
+			sourceTree = "<group>";
+		};
+		8802C2A01E8B215D00600EB1 /* DeepLinking */ = {
+			isa = PBXGroup;
+			children = (
+				8802C2A11E8B21AE00600EB1 /* DeepLinkManager.swift */,
+			);
+			name = DeepLinking;
+			sourceTree = "<group>";
+		};
+		880414021E8C0C9700ABF4D4 /* ForgotPasswordViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				880414031E8C0D1300ABF4D4 /* ForgotPasswordRequestViewController.swift */,
+				880414051E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift */,
+			);
+			name = ForgotPasswordViewControllers;
 			sourceTree = "<group>";
 		};
 		880454B81E65E32C00D4A499 = {
@@ -420,6 +450,7 @@
 				8804550B1E6641B900D4A499 /* Constants.swift */,
 				880454CD1E65E32C00D4A499 /* Assets.xcassets */,
 				880454D21E65E32C00D4A499 /* Info.plist */,
+				8802C29F1E8B20FD00600EB1 /* BaseAppV2.entitlements */,
 				8801FDEE1E72001000F54932 /* BaseAppV2-Bridging-Header.h */,
 			);
 			path = BaseAppV2;
@@ -485,6 +516,7 @@
 			children = (
 				880455021E663D7900D4A499 /* Networking */,
 				880455031E663D8500D4A499 /* LocalStorage */,
+				8802C2A01E8B215D00600EB1 /* DeepLinking */,
 				88FBC2A61E7008F9003AEEC4 /* PushNotification */,
 				880455071E663E0000D4A499 /* Configuration */,
 				88FBC29E1E6F1C7F003AEEC4 /* Logging */,
@@ -680,6 +712,7 @@
 			children = (
 				8817FC331E77141E007697DF /* LoginViewModelTests.swift */,
 				8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */,
+				880414001E8C08D800ABF4D4 /* ForgotPasswordViewModelTests.swift */,
 			);
 			name = AuthenticationViewModels;
 			sourceTree = "<group>";
@@ -1007,6 +1040,11 @@
 						DevelopmentTeam = 4SB3F2S2K3;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					880454D61E65E32C00D4A499 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1245,6 +1283,7 @@
 				88F3FE1B1E7679E5003162F8 /* SignupEmailViewController.swift in Sources */,
 				88AF2E231E7C3CA100F93A50 /* BaseImageView.swift in Sources */,
 				88BFD8E01E845746000C8A61 /* ProfileViewModel.swift in Sources */,
+				880414061E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift in Sources */,
 				88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */,
 				8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */,
 				889AA30D1E852C1B005100EE /* ProfileViewController.swift in Sources */,
@@ -1259,8 +1298,10 @@
 				88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */,
 				88AF2E131E7BB2D000F93A50 /* BaseTableViewCell.swift in Sources */,
 				88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */,
+				880414041E8C0D1300ABF4D4 /* ForgotPasswordRequestViewController.swift in Sources */,
 				88AF2E251E7C3E3F00F93A50 /* CircleImageView.swift in Sources */,
 				88AF2E161E7BBA7C00F93A50 /* SettingViewModel.swift in Sources */,
+				880413FF1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
 				88AF2E0D1E7B9CFD00F93A50 /* UITableView+Extension.swift in Sources */,
 				8833F6411E8290EB0035975C /* SocialAuthWebViewController.swift in Sources */,
@@ -1284,6 +1325,7 @@
 				88AF2E0B1E7B9B0300F93A50 /* NibLoadableView.swift in Sources */,
 				8817FC141E76874C007697DF /* SignupPasswordViewController.swift in Sources */,
 				88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */,
+				8802C2A21E8B21AE00600EB1 /* DeepLinkManager.swift in Sources */,
 				88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */,
 				88FBC28A1E6E8788003AEEC4 /* DataRequest+Extension.swift in Sources */,
 				88FB72431E8180B00056BCDF /* String+Extension.swift in Sources */,
@@ -1311,6 +1353,7 @@
 				8817FC361E7716E8007697DF /* SignUpViewModelTests.swift in Sources */,
 				88FB72451E8183780056BCDF /* StringExtensionTests.swift in Sources */,
 				889AA30B1E851278005100EE /* ProfileViewModelTests.swift in Sources */,
+				880414011E8C08D800ABF4D4 /* ForgotPasswordViewModelTests.swift in Sources */,
 				8817FC1F1E76A541007697DF /* BaseEndpointInfoTests.swift in Sources */,
 				880454DC1E65E32C00D4A499 /* BaseAppV2Tests.swift in Sources */,
 				88FBC2A51E6FFD39003AEEC4 /* BaseErrorTests.swift in Sources */,
@@ -1465,6 +1508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BaseAppV2/BaseAppV2.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
@@ -1490,6 +1534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BaseAppV2/BaseAppV2.entitlements;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				FRAMEWORK_SEARCH_PATHS = (

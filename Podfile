@@ -7,6 +7,7 @@ target 'BaseAppV2' do
     
     pod 'AlamofireActivityLogger', '~> 2.3'
     pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
+    pod 'Branch'
     pod 'Crashlytics', '~> 3.8'
     pod 'Dodo', '~> 7.0'
     pod 'ImagePicker', :git => 'https://github.com/hyperoslo/ImagePicker'

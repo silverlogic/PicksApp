@@ -22,6 +22,8 @@ enum AuthenticationEndpoint: BaseEndpoint {
     case oauth2(oauth2Info: OAuth2Info)
     case oauth1Step1(oauth1Step1Info: OAuth1Step1Info)
     case oauth1Step2(oauth1Step2Info: OAuth1Step2Info)
+    case forgotPasswordRequest(email: String)
+    case forgotPasswordReset(token: String, newPassword: String)
     
     var endpointInfo: BaseEndpointInfo {
         let path: String
@@ -76,6 +78,20 @@ enum AuthenticationEndpoint: BaseEndpoint {
             path = "social-auth"
             requestMethod = .post
             parameters = oauth1Step2Info.parameters
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
+            break
+        case let .forgotPasswordRequest(email):
+            path = "forgot-password"
+            requestMethod = .post
+            parameters = ["email": email]
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
+            break
+        case let .forgotPasswordReset(token, newPassword):
+            path = "forgot-password/reset"
+            requestMethod = .post
+            parameters = ["token": token, "new_password": newPassword]
             parameterEncoding = JSONEncoding()
             requiresAuthorization = false
             break
