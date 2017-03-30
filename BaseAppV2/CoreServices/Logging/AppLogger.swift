@@ -46,8 +46,14 @@ extension AppLogger {
                        log file of SwiftyBeaver.
             - logLevelType: A `LogLevelType` representing the log
                             level type to use when logging.
+            - debugOnly: A `Bool` indicating if it should log only
+                         when the application is running in `DEBUG`
+                         or not.
     */
-    func logMessage(_ message: String, for logLevelType: LogLevelType) {
+    func logMessage(_ message: String, for logLevelType: LogLevelType, debugOnly: Bool = false) {
+        #if !DEBUG
+            if debugOnly { return }
+        #endif
         guard let logLevel = SwiftyBeaver.Level(rawValue: logLevelType.rawValue) else { return }
         _swiftyLogger.custom(level: logLevel, message: message)
     }

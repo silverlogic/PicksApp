@@ -72,9 +72,8 @@ private class NetworkLogger: Printer {
     fileprivate func print(_ string: String, phase: Phase) {
         if phase.isError {
             AppLogger.shared.logMessage(string, for: .error)
-        }
-        else {
-            AppLogger.shared.logMessage(string, for: .debug)
+        } else {
+            AppLogger.shared.logMessage(string, for: .debug, debugOnly: true)
         }
     }
 }

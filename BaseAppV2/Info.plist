@@ -18,10 +18,41 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>io.branch.sdk</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>baseappv2-deeplinking</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME:rfc1034identifier) uses the photo library for quick, easy selection</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME:rfc1034identifier) uses the camera for in app picture taking</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -46,23 +77,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>Fabric</key>
+	<key>branch_app_domain</key>
+	<string>p1pj.app.link</string>
+	<key>branch_key</key>
 	<dict>
-		<key>APIKey</key>
-		<string>ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
+		<key>live</key>
+		<string>key_live_gdBgWRBgl35u3KZVla8sGdcitApkOlr9</string>
+		<key>test</key>
+		<string>key_test_pmEf8Pqmg05t4N1MamZw4egeyxahRfTj</string>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME:rfc1034identifier) uses the photo library for quick, easy selection</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME:rfc1034identifier) uses the camera for in app picture taking</string>
 </dict>
 </plist>

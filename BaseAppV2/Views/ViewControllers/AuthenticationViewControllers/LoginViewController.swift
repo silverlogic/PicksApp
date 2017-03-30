@@ -58,8 +58,14 @@ extension LoginViewController {
 // MARK: - Navigation
 extension LoginViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let signupEmailViewController = segue.destination as? SignupEmailViewController else { return }
-        signupEmailViewController.signUpViewModel = SignUpViewModel()
+        guard let segueIdentifier = segue.identifier else { return }
+        if segueIdentifier == UIStoryboardSegue.goToSignupEmailSegue {
+            guard let signupEmailViewController = segue.destination as? SignupEmailViewController else { return }
+            signupEmailViewController.signUpViewModel = SignUpViewModel()
+        } else {
+            guard let forgotPasswordRequestViewController = segue.destination as? ForgotPasswordRequestViewController else { return }
+            forgotPasswordRequestViewController.forgotPasswordViewModel = ForgotPasswordViewModel(token: nil)
+        }
     }
 }
 
@@ -91,6 +97,7 @@ fileprivate extension LoginViewController {
             performSegue(withIdentifier: UIStoryboardSegue.goToSignupEmailSegue, sender: nil)
             break
         case .forgotPassword:
+            performSegue(withIdentifier: UIStoryboardSegue.goToForgotPasswordRequestSegue, sender: nil)
             break
         }
     }
