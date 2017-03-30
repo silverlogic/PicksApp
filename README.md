@@ -21,6 +21,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * App logging with [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver)
 * OAuth1 Authentication support for Twitter
 * OAuth2 Authentication support for Facebook and LinkedIn
+* Deep Link support for forgot password using [BranchIO](https://github.com/BranchMetrics/ios-branch-deep-linking)
 * Email login
 * Email signup
 * Session management
@@ -33,14 +34,14 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * Show alerts with [Dodo](https://github.com/marketplacer/Dodo) or [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift)
 * Keyboard management with [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
 * Dynamic binding of values for real time updates without the need for using `Notification` or KVO
-* Unit tests for app logic used.
-* MVVM (Model-View-View Model) Architecture for easy maintenance and scalability.
+* Unit tests for app logic used
+* MVVM (Model-View-View Model) Architecture for easy maintenance, scalability, and testing
 
 ## Requirements ##
 
 * iOS 9.0+
 * Xcode 8.2+
-* Cocoapods 1.2.0
+* CocoaPods 1.2.0
 * Swift 3.0+
 
 ## Communication ##
@@ -57,7 +58,7 @@ $ gem install cocoapods
 ```
 
 ### Setup ###
-After installing Cocoapods, use the following command to clone the repo:
+After installing CocoaPods, use the following command to clone the repo:
 ```
 $ git clone git@bitbucket.org:silverlogic/baseapp-ios-v2.git
 ```
