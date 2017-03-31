@@ -10,11 +10,8 @@ import XCTest
 @testable import BaseAppV2
 
 final class LoginViewModelTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Initialization Tests
-extension LoginViewModelTests {
+    
+    // MARK: - Initialization Tests
     func testInit() {
         let loginViewModel = LoginViewModel()
         XCTAssertNotNil(loginViewModel, "Value Should Not Be Nil!")
@@ -23,11 +20,9 @@ extension LoginViewModelTests {
         XCTAssertNil(loginViewModel.loginError.value, "Initialization Falied")
         XCTAssertFalse(loginViewModel.loginSuccess.value, "Initialization Falied")
     }
-}
-
-
-// MARK: - Functional Tests
-extension LoginViewModelTests {
+    
+    
+    // MARK: - Functional Tests
     func testLoginWithEmail() {
         let loginErrorExpectation = expectation(description: "Test Login Error")
         let loginExpectation = expectation(description: "Test Login")

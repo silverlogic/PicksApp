@@ -10,22 +10,17 @@ import XCTest
 @testable import BaseAppV2
 
 final class APIErrorTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Initialization Tests
-extension APIErrorTests {
+    
+    // MARK: - Initialization Tests
     func testInit() {
         let apiError = BaseError(statusCode: 400, errorDescription: "Email entered not correct!")
         XCTAssertNotNil(apiError, "Value Should Not Be Nil!")
         XCTAssertEqual(apiError.statusCode, 400, "Initialization Failed!")
         XCTAssertEqual(apiError.errorDescription, "Email entered not correct!", "Initialization Failed!")
     }
-}
-
-
-// MARK: - Functional Tests
-extension APIErrorTests {
+    
+    
+    // MARK: - Functional Tests
     func testErrorDescriptionFromErrorDictionary() {
         let usernameError = BaseError.errorDescriptionFromErrorDictionary(["username":["Username already in use."]])
         XCTAssertEqual(usernameError, "Username already in use. 😞", "Getting Error Description Failed!")

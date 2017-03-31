@@ -27,3 +27,24 @@ extension UIView {
         });
     }
 }
+
+
+// MARK: - Show/Hide Animation
+extension UIView {
+    
+    /// Animates showing an instance.
+    func animateShow() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.alpha = 1
+        }
+    }
+    
+    /// Animates hiding an instance.
+    func animateHide() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.alpha = 0
+        }
+    }
+}

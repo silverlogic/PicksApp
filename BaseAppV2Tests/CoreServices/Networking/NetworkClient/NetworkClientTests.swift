@@ -10,11 +10,8 @@ import XCTest
 @testable import BaseAppV2
 
 final class NetworkClientTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Initialization Tests
-extension NetworkClientTests {
+    
+    // MARK: - Initialization Tests
     func testInit() {
         let client = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
         XCTAssertNotNil(client, "Value Should Not Be Nil!")

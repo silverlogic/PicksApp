@@ -159,4 +159,12 @@ extension BaseError {
     static var emailNeededForOAuthTwitter: BaseError {
         return BaseError(statusCode: 107, errorDescription: NSLocalizedString("BaseError.EmailNeededForOAuth", comment: "Default Error"))
     }
+    
+    static var endOfPagination: BaseError {
+        return BaseError(statusCode: 108, errorDescription: NSLocalizedString("BaseError.EndOfPagination", comment: "Default Error"))
+    }
+    
+    static var stillLoadingResults: BaseError {
+        return BaseError(statusCode: 109, errorDescription: NSLocalizedString("BaseError.StillLoadingResults", comment: "Default Error"))
+    }
 }

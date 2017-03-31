@@ -11,11 +11,8 @@ import CoreData
 @testable import BaseAppV2
 
 final class ProfileViewModelTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension ProfileViewModelTests {
+    
+    // MARK: - Functional Tests
     func testUpdateProfile() {
         guard let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: CoreDataStack.shared.managedObjectContext) as? User else {
             XCTFail("Error Creating Test User Model!")

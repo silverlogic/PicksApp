@@ -10,11 +10,8 @@ import XCTest
 @testable import BaseAppV2
 
 final class StringExtensionTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Functional Tests
-extension StringExtensionTests {
+    
+    // MARK: - Functional Tests
     func testTruncate() {
         let shortSentence = "Short sentence"
         let longSentence = "This is a sentence longer than 20 characters"

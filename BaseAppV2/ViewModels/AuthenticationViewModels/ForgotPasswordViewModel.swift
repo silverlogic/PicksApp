@@ -99,6 +99,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModelProtocol {
     }
     
     func cancelResetPassword() {
+        if ProcessInfo.isRunningUnitTests { return }
         NotificationCenter.default.post(name: .UserLoggedOut, object: nil)
     }
 }

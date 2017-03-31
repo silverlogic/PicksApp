@@ -10,11 +10,8 @@ import XCTest
 @testable import BaseAppV2
 
 final class SignUpViewModelTests: BaseAppV2Tests {
-}
-
-
-// MARK: - Initialization Tests
-extension SignUpViewModelTests {
+    
+    // MARK: - Initialization Tests
     func testInit() {
         let signUpViewModel = SignUpViewModel()
         XCTAssertNotNil(signUpViewModel, "Value Should Not Be Nil!")
@@ -26,11 +23,9 @@ extension SignUpViewModelTests {
         XCTAssertNil(signUpViewModel.signUpError.value, "Initialization Failed!")
         XCTAssertFalse(signUpViewModel.signUpSuccess.value, "Initialization Failed!")
     }
-}
-
-
-// MARK: - Functional Tests
-extension SignUpViewModelTests {
+    
+    
+    // MARK: - Functional Tests
     func testSignup() {
         let signUpErrorExpectation = expectation(description: "Test Signup Error")
         let signupSuccessExpectation = expectation(description: "Test Signup")

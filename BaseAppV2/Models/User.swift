@@ -55,7 +55,19 @@ extension User {
     
     /// The full name of the user.
     var fullName: String {
-        return "\(firstName != nil ? firstName! : "") \(lastName != nil ? lastName! : "")"
+        let partOne: String
+        if let nameFirst = firstName, !nameFirst.isEmpty {
+            partOne = nameFirst
+        } else {
+            partOne = "Unidentified"
+        }
+        let partTwo: String
+        if let nameLast = lastName, !nameLast.isEmpty {
+            partTwo = nameLast
+        } else {
+            partTwo = "Name"
+        }
+        return "\(partOne) \(partTwo)"
     }
 }
 

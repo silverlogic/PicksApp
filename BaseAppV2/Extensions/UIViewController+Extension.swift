@@ -296,6 +296,37 @@ extension UIViewController: ImagePickerDelegate {
 }
 
 
+// MARK: - Public Instance Methods For UIActivityIndicatorView
+extension UIViewController {
+    
+    /**
+        Shows a native activity indicator in the center
+        of the view. This would be used when loading 
+        content for an `UITableView` or `UICollectionView`.
+    */
+    func showActivityIndicator() {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicatorView.color = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        activityIndicatorView.tag = 99
+        activityIndicatorView.center = view.center
+        activityIndicatorView.alpha = 0
+        activityIndicatorView.startAnimating()
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.animateShow()
+    }
+    
+    /**
+        Dismisses the native activity indicator from
+        the center of the view.
+    */
+    func dismissActivityIndicator() {
+        guard let activityIndicatorView = view.subviews.filter({ $0.tag == 99 }).first else { return }
+        activityIndicatorView.animateHide()
+        activityIndicatorView.removeFromSuperview()
+    }
+}
+
+
 // MARK: - Public Class Methods
 extension UIViewController {
     

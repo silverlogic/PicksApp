@@ -109,12 +109,14 @@ extension CoreDataStack {
         - Parameters: 
             - object: A `T` indicating the entity to delete.
             - success: A closure that gets invoked when deleting
-                       was successful.
+                       was successful. `nil` can be passed as a
+                       parameter.
             - failure: A closure that gets invoked when deleting
                        failed. The object space doesn't change if
-                       deleting failed.
+                       deleting failed. `nil` can be passed as a
+                       parameter.
     */
-    func deleteObject<T: NSManagedObject>(_ object: T, success: @escaping () -> Void, failure: @escaping () -> Void) {
+    func deleteObject<T: NSManagedObject>(_ object: T, success: (() -> Void)?, failure: (() -> Void)?) {
         _managedObjectContext.perform { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf._managedObjectContext.delete(object)
@@ -122,13 +124,15 @@ extension CoreDataStack {
                 if strongSelf._managedObjectContext.hasChanges {
                     try strongSelf._managedObjectContext.save()
                     DispatchQueue.main.async {
-                        success()
+                        guard let closure = success else { return }
+                        closure()
                     }
                 }
             } catch {
                 AppLogger.shared.logMessage(error.localizedDescription, for: .error)
                 DispatchQueue.main.async {
-                    failure()
+                    guard let closure = failure else { return }
+                    closure()
                 }
             }
         }
