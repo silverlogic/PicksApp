@@ -15,4 +15,5 @@ extension Notification.Name {
     static let UserLoggedOut = Notification.Name("UserLoggedOut")
     static let PasswordReset = Notification.Name("PasswordReset")
     static let NotifyUserOfPasswordResetSuccess = Notification.Name("NotifyUserOfPasswordResetSuccess")
+    static let ShowTutorial = Notification.Name("ShowTutorial")
 }

@@ -72,7 +72,7 @@ final class SignUpViewModel: SignUpViewModelProtocol {
         AuthenticationManager.shared.signup(signupInfo, updateInfo: updateInfo, success: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.signUpSuccess.value = true
-            NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
+            NotificationCenter.default.post(name: .ShowTutorial, object: nil)
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
             strongSelf.signUpError.value = error

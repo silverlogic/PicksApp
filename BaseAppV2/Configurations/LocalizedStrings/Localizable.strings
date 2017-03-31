@@ -35,3 +35,14 @@
 "ImagePicker.NoImages" = "Looks like there aren't any images here. 😜";
 "ImagePicker.RequestPermission.Title" = "Media Access Required";
 "ImagePicker.RequestPermission.Message" = "Please, we need access your photo library. 📷";
+
+// Tutorial
+"Tutorial.PartOne.Title" = "Get Notifed";
+"Tutorial.PartOne.Body" = "Enable push notifications so you can always stay update to date.";
+"Tutorial.PartOne.ButtonText" = "Enable Push Notifications";
+"Tutorial.PartTwo.Title" = "Near You";
+"Tutorial.PartTwo.Body" = "Enable location updates so you can get the best deals near you.";
+"Tutorial.PartTwo.ButtonText" = "Enable Location Updates";
+"Tutorial.PartThree.Title" = "Look For Friends";
+"Tutorial.PartThree.Body" = "Discover new friends everyday here.";
+"Tutorial.PartThree.ButtonText" = "Get Started";
