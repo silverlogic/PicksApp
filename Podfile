@@ -41,6 +41,7 @@ post_install do |installer|
         target.build_configurations.each do |config|
             config.build_settings['ENABLE_STRICT_OBJC_MSGSEND'] = "NO"
             config.build_settings['SWIFT_VERSION'] = '3.0'
+            config.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = "NO"
         end
     end
 end
