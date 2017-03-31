@@ -31,6 +31,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * Basic settings view that can be customized
 * Basic profile view that can be customized
 * Basic update profile view that can be customized
+* Show basic tutorial flow to new users that can be customized with [Onboard](https://github.com/mamaral/Onboard)
 * Show progress indicators with [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD)
 * Show navigation bar progress with [KYNavigationProgress](https://github.com/ykyouhei/KYNavigationProgress)
 * Show alerts with [Dodo](https://github.com/marketplacer/Dodo) or [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift)
