@@ -27,8 +27,8 @@ final class SessionManager {
     /// Initializes a shared instance of `SessionManager`.
     private init() {
         _currentUser = DynamicBinder(nil)
-        // Check if running in Unit Tests Or UI Tests
-        if ProcessInfo.isRunningUnitTests || ProcessInfo.isRunningUITests{
+        // Check if running in Unit Tests
+        if ProcessInfo.isRunningUnitTests {
             return
         }
         loadSession()
