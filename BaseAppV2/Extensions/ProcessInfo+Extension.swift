@@ -15,10 +15,4 @@ extension ProcessInfo {
         let environmentDictionary = processInfo.environment
         return environmentDictionary["RUNNING_UNIT_TESTS"] == "TRUE"
     }
-    
-    /// Determines if the application is running UI tests.
-    static var isRunningUITests: Bool {
-        let environmentDictionary = processInfo.environment
-        return environmentDictionary["RUNNING_UI_TESTS"] == "TRUE"
-    }
 }

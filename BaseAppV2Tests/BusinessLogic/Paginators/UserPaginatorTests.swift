@@ -18,7 +18,7 @@ final class UserPaginatorTests: BaseAppV2Tests {
         let fetchUsersTestOneExpectation = expectation(description: "Test Fetch Users One")
         let fetchUsersTestTwoExpectation = expectation(description: "Test Fetch Users Two")
         // Test getting first page of results
-        userPaginator.fetchUsers(clean: false, success: { (fetchedUsers: [User]) in
+        userPaginator.fetchUsers(clean: true, success: { (fetchedUsers: [User]) in
             users.append(contentsOf: fetchedUsers)
             XCTAssertTrue(users.count == 30, "Incorrect Count Of Users!")
             // Test getting second page of results
