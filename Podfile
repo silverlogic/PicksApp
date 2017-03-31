@@ -15,6 +15,7 @@ target 'BaseAppV2' do
     pod 'IQKeyboardManager'
     pod 'Kingfisher', '~> 3.0'
     pod 'KYNavigationProgress'
+    pod 'Onboard'
     pod 'Raccoon'
     pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
     pod 'SVProgressHUD'

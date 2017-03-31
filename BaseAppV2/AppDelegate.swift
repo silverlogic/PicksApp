@@ -13,6 +13,7 @@ import IQKeyboardManager
 import Dodo
 import Fabric
 import Crashlytics
+import Onboard
 
 final class AppDelegate: UIResponder {
     
@@ -36,6 +37,7 @@ extension AppDelegate: UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(loadAuthenticationFlow), name: .UserLoggedOut, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadApplicationFlow), name: .UserLoggedIn, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadForgotPasswordResetFlow(notification:)), name: .PasswordReset, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadTutorialFlow), name: .ShowTutorial, object: nil)
         window = UIWindow(frame: UIScreen.main.bounds)
         setInitialFlow()
         configureBusinessLogic(launchOptions: launchOptions)
@@ -159,6 +161,33 @@ fileprivate extension AppDelegate {
         let snapshot = (self.window?.snapshotView(afterScreenUpdates: true))!
         navigationController.view.addSubview(snapshot)
         window?.rootViewController = navigationController
+        UIView.performRootViewControllerAnimation(snapshot: snapshot)
+    }
+    
+    /// Loads the tutorial flow.
+    @objc fileprivate func loadTutorialFlow() {
+        let firstPageTutorialViewController = OnboardingContentViewController(title: NSLocalizedString("Tutorial.PartOne.Title", comment: "title"), body: NSLocalizedString("Tutorial.PartOne.Body", comment: "title"), image: #imageLiteral(resourceName: "icon-pushnotificationtutorial"), buttonText: NSLocalizedString("Tutorial.PartOne.ButtonText", comment: "title")) {
+            // @TODO: Prompt for push notification permission
+        }
+        let secondPageTutorialViewController = OnboardingContentViewController(title: NSLocalizedString("Tutorial.PartTwo.Title", comment: "title"), body: NSLocalizedString("Tutorial.PartTwo.Body", comment: "title"), image: #imageLiteral(resourceName: "icon-locationupdatetutorial"), buttonText: NSLocalizedString("Tutorial.PartTwo.ButtonText", comment: "title")) {
+            // @TODO: Prompt for location update permission
+        }
+        let thirdPageTutorialViewController = OnboardingContentViewController(title: NSLocalizedString("Tutorial.PartThree.Title", comment: "title"), body: NSLocalizedString("Tutorial.PartThree.Body", comment: "title"), image: #imageLiteral(resourceName: "icon-friendstutorial"), buttonText: NSLocalizedString("Tutorial.PartThree.ButtonText", comment: "title")) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.loadApplicationFlow()
+        }
+        let onboardViewController = OnboardingViewController(backgroundImage: #imageLiteral(resourceName: "background-baseapp"), contents: [firstPageTutorialViewController, secondPageTutorialViewController, thirdPageTutorialViewController])
+        onboardViewController?.shouldFadeTransitions = true
+        onboardViewController?.shouldMaskBackground = false
+        onboardViewController?.fadeSkipButtonOnLastPage = true
+        onboardViewController?.allowSkipping = true
+        onboardViewController?.skipHandler = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.loadApplicationFlow()
+        }
+        let snapshot = (self.window?.snapshotView(afterScreenUpdates: true))!
+        onboardViewController?.view.addSubview(snapshot)
+        window?.rootViewController = onboardViewController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)
     }
 }
