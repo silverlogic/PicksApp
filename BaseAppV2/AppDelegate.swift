@@ -30,6 +30,7 @@ extension AppDelegate: UIApplicationDelegate {
         _ = AppLogger.shared
         _ = SessionManager.shared
         _ = DeepLinkManager.shared
+        _ = PushNotificationManager.shared
         return true
     }
     
@@ -58,6 +59,35 @@ extension AppDelegate: UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        // @TODO: Uncomment if implementing Push Notifications in your application.
+//        PushNotificationManager.shared.handleRegistrationOfUserNotificationSettings(notificationSettings)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // @TODO: Uncomment if implementing Push Notifications in your application.
+//        PushNotificationManager.shared.handleRegistrationOfRemoteNotificationsWithDeviceToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // @TODO: Uncomment if implementing Push Notifications in your application.
+//        PushNotificationManager.shared.handleRegistrationOfRemoteNotificationsWithError(error)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        // @TODO: Uncomment if implementing Push Notifications in your application.
+//        guard let notificationPayload = userInfo as? [String: Any] else { return }
+//        PushNotificationManager.shared.handleIncomingPushNotification(notificationPayload: notificationPayload)
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        // @TODO: Uncomment if implementing Push Notifications in your application.
+//        guard let notificationPayload = userInfo as? [String: Any],
+//              let actionIdentifier = identifier else { return }
+//        PushNotificationManager.shared.handleIncomingPushNotificationWithAction(notificationPayload: notificationPayload, identifier: actionIdentifier)
+//        completionHandler()
     }
 }
 
@@ -114,6 +144,13 @@ fileprivate extension AppDelegate {
         Fabric.sharedSDK().debug = false
         Fabric.with([Crashlytics.self()])
         DeepLinkManager.shared.initializeBranchIOSession(launchOptions: launchOptions)
+        // @TODO: Uncomment if implementing Push Notifications in your application.
+//        if PushNotificationManager.shared.isRegistered {
+//            PushNotificationManager.shared.registerForPushNotifications()
+//        }
+//        if let notificationPayload = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+//            PushNotificationManager.shared.handleIncomingPushNotification(notificationPayload: notificationPayload)
+//        }
         guard let _ = SessionManager.shared.authorizationToken,
               let user = SessionManager.shared.currentUser.value else { return }
         Crashlytics.sharedInstance().setUserIdentifier("\(user.userId)")
@@ -167,7 +204,8 @@ fileprivate extension AppDelegate {
     /// Loads the tutorial flow.
     @objc fileprivate func loadTutorialFlow() {
         let firstPageTutorialViewController = OnboardingContentViewController(title: NSLocalizedString("Tutorial.PartOne.Title", comment: "title"), body: NSLocalizedString("Tutorial.PartOne.Body", comment: "title"), image: #imageLiteral(resourceName: "icon-pushnotificationtutorial"), buttonText: NSLocalizedString("Tutorial.PartOne.ButtonText", comment: "title")) {
-            // @TODO: Prompt for push notification permission
+            // @TODO: Uncomment if implementing Push Notifications in your application.
+//            PushNotificationManager.shared.registerForPushNotifications()
         }
         let secondPageTutorialViewController = OnboardingContentViewController(title: NSLocalizedString("Tutorial.PartTwo.Title", comment: "title"), body: NSLocalizedString("Tutorial.PartTwo.Body", comment: "title"), image: #imageLiteral(resourceName: "icon-locationupdatetutorial"), buttonText: NSLocalizedString("Tutorial.PartTwo.ButtonText", comment: "title")) {
             // @TODO: Prompt for location update permission

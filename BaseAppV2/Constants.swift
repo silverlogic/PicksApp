@@ -77,6 +77,18 @@ enum SessionConstants {
 
 
 /**
+    An enum that defines constants used
+    for knowing the registration status
+    of push notifications.
+*/
+enum PushNotificationConstants {
+    
+    // MARK: - Registration Constants
+    static let isRegistered = "isRegistered"
+}
+
+
+/**
     An enum that defines constants used for
     styling the application.
 */

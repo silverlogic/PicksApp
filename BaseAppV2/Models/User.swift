@@ -59,13 +59,13 @@ extension User {
         if let nameFirst = firstName, !nameFirst.isEmpty {
             partOne = nameFirst
         } else {
-            partOne = "Unidentified"
+            partOne = NSLocalizedString("User.Unidentified", comment: "default value")
         }
         let partTwo: String
         if let nameLast = lastName, !nameLast.isEmpty {
             partTwo = nameLast
         } else {
-            partTwo = "Name"
+            partTwo = NSLocalizedString("User.Name", comment: "default value")
         }
         return "\(partOne) \(partTwo)"
     }
