@@ -46,3 +46,7 @@
 "Tutorial.PartThree.Title" = "Look For Friends";
 "Tutorial.PartThree.Body" = "Discover new friends everyday here.";
 "Tutorial.PartThree.ButtonText" = "Get Started";
+
+// User
+"User.Unidentified" = "Unidentified";
+"User.Name" = "Name";
