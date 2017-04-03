@@ -125,7 +125,7 @@ fileprivate extension AppDelegate {
         let loginViewController = UIStoryboard.loadLoginViewController()
         loginViewController.loginViewModel = LoginViewModel()
         let navigationController = AuthenticationNavigationController(rootViewController: loginViewController)
-        let snapshot = (self.window?.snapshotView(afterScreenUpdates: true))!
+        let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
         navigationController.view.addSubview(snapshot)
         window?.rootViewController = navigationController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)
@@ -133,9 +133,9 @@ fileprivate extension AppDelegate {
     
     /// Loads the application flow.
     @objc fileprivate func loadApplicationFlow() {
-        let rootController = UIStoryboard.loadInitializeViewController()
+        let rootController = UIStoryboard.loadInitialViewController()
         rootController.selectedIndex = TabbarIndex.users.rawValue
-        let snapshot = (self.window?.snapshotView(afterScreenUpdates: true))!
+        let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
         rootController.view.addSubview(snapshot)
         window?.rootViewController = rootController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)
@@ -158,7 +158,7 @@ fileprivate extension AppDelegate {
         let forgotPasswordViewModel = ForgotPasswordViewModel(token: token)
         rootViewController.forgotPasswordViewModel = forgotPasswordViewModel
         let navigationController = AuthenticationNavigationController(rootViewController: rootViewController)
-        let snapshot = (self.window?.snapshotView(afterScreenUpdates: true))!
+        let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
         navigationController.view.addSubview(snapshot)
         window?.rootViewController = navigationController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)
@@ -185,7 +185,7 @@ fileprivate extension AppDelegate {
             guard let strongSelf = self else { return }
             strongSelf.loadApplicationFlow()
         }
-        let snapshot = (self.window?.snapshotView(afterScreenUpdates: true))!
+        let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
         onboardViewController?.view.addSubview(snapshot)
         window?.rootViewController = onboardViewController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)

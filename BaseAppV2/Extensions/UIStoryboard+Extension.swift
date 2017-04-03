@@ -12,17 +12,17 @@ import Foundation
 extension UIStoryboard {
     
     // MARK: - UIViewController Loaders
-    static func loadInitializeViewController() -> UITabBarController {
+    static func loadInitialViewController() -> BaseTabBarController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateInitialViewController() as! BaseTabBarController
     }
     
     static func loadLoginViewController() -> LoginViewController {
-        return loadControllerFromMain(type: LoginViewController.self)
+        return loadControllerFromAuthenticaton(type: LoginViewController.self)
     }
     
     static func loadForgotPasswordResetViewController() -> ForgotPasswordResetViewController {
-        return loadControllerFromMain(type: ForgotPasswordResetViewController.self)
+        return loadControllerFromAuthenticaton(type: ForgotPasswordResetViewController.self)
     }
 }
 
@@ -41,6 +41,18 @@ fileprivate extension UIStoryboard {
     */
     fileprivate static func loadControllerFromMain<T: UIViewController>(type: T.Type) -> T {
         return loadControllerFrom(.main, type: type)
+    }
+    
+    /**
+        Loads a view controller from the authentication
+        storyboard.
+     
+        - Parameter type: A `UIViewController.Type` indicating what type to load.
+     
+        - Returns: A `T` representing the view controller to load.
+    */
+    fileprivate static func loadControllerFromAuthenticaton<T: UIViewController>(type: T.Type) -> T {
+        return loadControllerFrom(.authentication, type: type)
     }
     
     /**
@@ -66,4 +78,5 @@ fileprivate extension UIStoryboard {
 */
 fileprivate enum Storyboard: String {
     case main = "Main"
+    case authentication = "Authentication"
 }
