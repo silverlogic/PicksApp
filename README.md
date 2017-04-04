@@ -44,9 +44,10 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 ## Requirements ##
 
 * iOS 9.0+
-* Xcode 8.2+
+* Xcode 8.3+
 * CocoaPods 1.2.0
-* Swift 3.0+
+* Swift 3.1+
+* Ruby 2.3.1
 
 ## Communication ##
 
@@ -54,6 +55,28 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * For immediate help, contact one of our [Authors](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-authors)
 
 ## Installation ##
+
+### Ruby ###
+Before installing CocoaPods, you will need the correct version of Ruby. For installing and managing different versions of Ruby on your local machine, we recommend using [Ruby Version Manager (RVM)](https://rvm.io/). Begin with the following command:
+```
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+```
+Then run the following command to install RVM:
+```
+$ \curl -sSL https://get.rvm.io | bash -s stable
+```
+If the previous step is successful, run the following command to install Ruby 2.3.1:
+```
+$ rvm install ruby-2.3.1
+```
+Now run the following command to check that the correct version is being used:
+```
+$ ruby -v
+```
+The version reported should look like this:
+```
+ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]
+```
 
 ### CocoaPods ###
 [CocoaPods](https://cocoapods.org/) is a dependency manager for Cocoa projects. You can install it with the following command:
