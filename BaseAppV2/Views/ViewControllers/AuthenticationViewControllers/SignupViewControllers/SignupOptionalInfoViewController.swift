@@ -26,11 +26,9 @@ final class SignupOptionalInfoViewController: BaseViewController {
             setup()
         }
     }
-}
-
-
-// MARK: - Lifecycle
-extension SignupOptionalInfoViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         firstNameTextField.delegate = self

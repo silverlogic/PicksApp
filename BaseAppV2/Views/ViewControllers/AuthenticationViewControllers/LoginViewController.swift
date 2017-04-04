@@ -36,11 +36,9 @@ final class LoginViewController: BaseViewController {
         case forgotPassword
         static let caseCount = LoginButtons.numberOfCases()
     }
-}
-
-
-// MARK: - Lifecycle
-extension LoginViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

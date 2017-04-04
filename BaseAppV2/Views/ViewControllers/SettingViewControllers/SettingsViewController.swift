@@ -30,11 +30,9 @@ final class SettingsViewController: BaseViewController {
         case logout
         static let caseCount = Settings.numberOfCases()
     }
-}
-
-
-// MARK: - Lifecycle
-extension SettingsViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

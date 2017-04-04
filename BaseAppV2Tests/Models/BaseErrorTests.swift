@@ -9,7 +9,7 @@
 import XCTest
 @testable import BaseAppV2
 
-final class APIErrorTests: BaseAppV2Tests {
+final class BaseErrorTests: BaseAppV2Tests {
     
     // MARK: - Initialization Tests
     func testInit() {
@@ -47,5 +47,54 @@ final class APIErrorTests: BaseAppV2Tests {
         XCTAssertNotNil(passwordsDoNotMatchError, "Value Should Not Be Nil!")
         XCTAssertEqual(passwordsDoNotMatchError.statusCode, 102, "Getting Error Failed!")
         XCTAssertEqual(passwordsDoNotMatchError.errorDescription, "Oops, passwords entered don't match. 😞", "Getting Error Failed!")
+    }
+    
+    func testEmailNeededForOAuth() {
+        let emailNeededForOAuthError = BaseError.emailNeededForOAuth
+        XCTAssertNotNil(emailNeededForOAuthError, "Value Should Not Be Nil!")
+        XCTAssertEqual(emailNeededForOAuthError.statusCode, 103, "Getting Error Failed!")
+        XCTAssertEqual(emailNeededForOAuthError.errorDescription, "Please enter an email to continue. 🤔", "Getting Error Failed!")
+    }
+    
+    func testEmailAlreadyInUseForOAuth() {
+        let emailAlreadyInUseForOAuthError = BaseError.emailAlreadyInUseForOAuth
+        XCTAssertNotNil(emailAlreadyInUseForOAuthError, "Value Should Not Be Nil!")
+        XCTAssertEqual(emailAlreadyInUseForOAuthError.statusCode, 104, "Getting Error Failed!")
+        XCTAssertEqual(emailAlreadyInUseForOAuthError.errorDescription, "Oops, the email associated is already in use. 😞", "Getting Error Failed!")
+    }
+    
+    func testEmailNeededForOAuthFacebook() {
+        let emailNeededForOAuthFacebookError = BaseError.emailNeededForOAuthFacebook
+        XCTAssertNotNil(emailNeededForOAuthFacebookError, "Value Should Not Be Nil!")
+        XCTAssertEqual(emailNeededForOAuthFacebookError.statusCode, 105, "Getting Error Failed!")
+        XCTAssertEqual(emailNeededForOAuthFacebookError.errorDescription, "Please enter an email to continue. 🤔", "Getting Error Failed!")
+    }
+    
+    func testEmailNeededForOAuthLinkedIn() {
+        let emailNeededForOAuthLinkedInError = BaseError.emailNeededForOAuthLinkedIn
+        XCTAssertNotNil(emailNeededForOAuthLinkedInError, "Value Should Not Be Nil!")
+        XCTAssertEqual(emailNeededForOAuthLinkedInError.statusCode, 106, "Getting Error Failed!")
+        XCTAssertEqual(emailNeededForOAuthLinkedInError.errorDescription, "Please enter an email to continue. 🤔", "Getting Error Failed!")
+    }
+    
+    func testEmailNeededForOAuthTwitter() {
+        let emailNeededForOAuthTwitterError = BaseError.emailNeededForOAuthTwitter
+        XCTAssertNotNil(emailNeededForOAuthTwitterError, "Value Should Not Be Nil!")
+        XCTAssertEqual(emailNeededForOAuthTwitterError.statusCode, 107, "Getting Error Failed!")
+        XCTAssertEqual(emailNeededForOAuthTwitterError.errorDescription, "Please enter an email to continue. 🤔", "Getting Error Failed!")
+    }
+    
+    func testEndOfPagination() {
+        let endOfPaginationError = BaseError.endOfPagination
+        XCTAssertNotNil(endOfPaginationError, "Value Should Not Be Nil!")
+        XCTAssertEqual(endOfPaginationError.statusCode, 108, "Getting Error Failed!")
+        XCTAssertEqual(endOfPaginationError.errorDescription, "Looks like there aren't anymore. 😜", "Getting Error Failed!")
+    }
+    
+    func testStillLoadingResults() {
+        let stillLoadingResultsError = BaseError.stillLoadingResults
+        XCTAssertNotNil(stillLoadingResultsError, "Value Should Not Be Nil!")
+        XCTAssertEqual(stillLoadingResultsError.statusCode, 109, "Getting Error Failed!")
+        XCTAssertEqual(stillLoadingResultsError.errorDescription, "Results Are Still Loading. 😜", "Getting Error Failed!")
     }
 }

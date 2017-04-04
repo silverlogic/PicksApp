@@ -13,11 +13,9 @@ final class PushNotificationManagerTests: BaseAppV2Tests {
     
     // MARK: - Private Attributes
     fileprivate var sharedManager: PushNotificationManager!
-}
-
-
-// MARK: - Setup & Tear Down
-extension PushNotificationManagerTests {
+    
+    
+    // MARK: - Setup & Tear Down
     override func setUp() {
         super.setUp()
         sharedManager = PushNotificationManager.shared

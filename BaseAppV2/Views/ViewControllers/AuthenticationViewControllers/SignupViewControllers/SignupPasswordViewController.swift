@@ -26,11 +26,9 @@ final class SignupPasswordViewController: BaseViewController {
             setup()
         }
     }
-}
-
-
-// MARK: - Lifecycle
-extension SignupPasswordViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate = self
