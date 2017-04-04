@@ -24,11 +24,9 @@ final class ForgotPasswordRequestViewController: BaseViewController {
             setup()
         }
     }
-}
-
-
-// MARK: - Lifecycle
-extension ForgotPasswordRequestViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

@@ -26,11 +26,9 @@ final class UpdateProfileViewController: BaseViewController {
             setup()
         }
     }
-}
-
-
-// MARK: - Lifecycle
-extension UpdateProfileViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -39,7 +37,7 @@ extension UpdateProfileViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isMovingToParentViewController {
-           enableKeyboardManagement(false)
+            enableKeyboardManagement(false)
         }
     }
 }
@@ -127,7 +125,7 @@ fileprivate extension UpdateProfileViewController {
         profileImageView.setImageWithUrl(url)
     }
     
-    /// Updates the user's profile
+    /// Updates the user's profile.
     fileprivate func updateProfile() {
         view.endEditing(true)
         showProgresHud()

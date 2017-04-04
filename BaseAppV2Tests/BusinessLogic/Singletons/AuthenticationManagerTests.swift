@@ -13,11 +13,9 @@ final class AuthenticationManagerTests: BaseAppV2Tests {
     
     // MARK: - Attributes
     fileprivate var sharedManager: AuthenticationManager!
-}
-
-
-// MARK: - Setup & Tear Down
-extension AuthenticationManagerTests {
+    
+    
+    // MARK: - Setup & Tear Down
     override func setUp() {
         super.setUp()
         sharedManager = AuthenticationManager.shared

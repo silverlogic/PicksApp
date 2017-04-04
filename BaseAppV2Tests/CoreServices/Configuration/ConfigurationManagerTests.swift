@@ -13,11 +13,9 @@ final class ConfigurationManagerTests: BaseAppV2Tests {
     
     // MARK: - Attributes
     fileprivate var _sharedInstance: ConfigurationManager!
-}
-
-
-// MARK: - Setup & Tear Down
-extension ConfigurationManagerTests {
+    
+    
+    // MARK: - Setup & Tear Down
     override func setUp() {
         super.setUp()
         _sharedInstance = ConfigurationManager.shared

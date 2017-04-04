@@ -20,11 +20,9 @@ final class UserFeedViewController: BaseViewController {
     
     // MARK: - Pirvate Instance Attributes
     fileprivate var userFeedViewModel = UserFeedViewModel()
-}
-
-
-// MARK: - Lifecycle
-extension UserFeedViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

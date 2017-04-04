@@ -14,11 +14,9 @@ final class SessionManagerTests: BaseAppV2Tests {
     
     // MARK: - Private Instance Attributes
     fileprivate var sharedManager: SessionManager!
-}
-
-
-// MARK: - Setup & Tear Down
-extension SessionManagerTests {
+    
+    
+    // MARK: - Setup & Tear Down
     override func setUp() {
         super.setUp()
         sharedManager = SessionManager.shared

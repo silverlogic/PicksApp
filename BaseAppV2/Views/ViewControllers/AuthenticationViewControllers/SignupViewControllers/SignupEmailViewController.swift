@@ -25,11 +25,9 @@ final class SignupEmailViewController: BaseViewController {
             setup()
         }
     }
-}
-
-
-// MARK: - Lifecycle
-extension SignupEmailViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self

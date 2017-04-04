@@ -25,11 +25,9 @@ final class ForgotPasswordResetViewController: BaseViewController {
             setup()
         }
     }
-}
-
-
-// MARK: - Lifecycle
-extension ForgotPasswordResetViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

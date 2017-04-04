@@ -33,11 +33,9 @@ final class ProfileViewController: BaseViewController {
         case info
         static let caseCount = Profile.numberOfCases()
     }
-}
-
-
-// MARK: - Lifecycle
-extension ProfileViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

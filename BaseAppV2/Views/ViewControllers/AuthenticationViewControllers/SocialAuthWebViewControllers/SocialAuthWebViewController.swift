@@ -58,11 +58,9 @@ final class SocialAuthWebViewController: BaseViewController {
     deinit {
         webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
     }
-}
-
-
-// MARK: - Lifecycle
-extension SocialAuthWebViewController {
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
