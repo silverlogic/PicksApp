@@ -23,6 +23,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * OAuth2 Authentication support for Facebook and LinkedIn
 * Deep Link support for forgot password using [BranchIO](https://github.com/BranchMetrics/ios-branch-deep-linking)
 * Pagination
+* Push Notification registration and management
 * Email login
 * Email signup
 * Session management
