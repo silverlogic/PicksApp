@@ -21,7 +21,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * App logging with [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver)
 * OAuth1 Authentication support for Twitter
 * OAuth2 Authentication support for Facebook and LinkedIn
-* Deep Link support for forgot password using [BranchIO](https://github.com/BranchMetrics/ios-branch-deep-linking)
+* Deep Link support for forgot password and change email using [BranchIO](https://github.com/BranchMetrics/ios-branch-deep-linking)
 * Pagination
 * Push Notification registration and management
 * Email login
