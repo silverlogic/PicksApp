@@ -26,7 +26,7 @@ protocol ProfileViewModelProtocol {
     
     
     // MARK: - Initializers
-    init(user: DynamicBinder<User?>)
+    init(user: MultiDynamicBinder<User?>)
     
     
     // MARK: - Instance Methods
@@ -41,7 +41,7 @@ protocol ProfileViewModelProtocol {
 final class ProfileViewModel: ProfileViewModelProtocol {
     
     // MARK: - Private Instance Attributes
-    fileprivate var user: DynamicBinder<User?>
+    fileprivate var user: MultiDynamicBinder<User?>
     
     
     // MARK: - ProfileViewModelProtocol Attributes
@@ -56,7 +56,7 @@ final class ProfileViewModel: ProfileViewModelProtocol {
     
     
     // MARK: - ProfileViewModelProtocol Initializers
-    init(user: DynamicBinder<User?>) {
+    init(user: MultiDynamicBinder<User?>) {
         self.user = user
         if let name = self.user.value?.fullName {
             fullName = DynamicBinder(name)
@@ -86,7 +86,7 @@ final class ProfileViewModel: ProfileViewModelProtocol {
             lastName = ""
         }
         profileImage = nil
-        user.bind { [weak self] (user: User?) in
+        user.bind({ [weak self] (user: User?) in
             guard let strongSelf = self,
                   let newUser = user else { return }
             strongSelf.fullName.value = newUser.fullName
@@ -111,7 +111,15 @@ final class ProfileViewModel: ProfileViewModelProtocol {
                 strongSelf.lastName = ""
             }
             strongSelf.profileImage = nil
-        }
+        }, for: self)
+    }
+    
+    
+    // MARK: - Deinitializers
+    
+    /// Deinitializes an instance of `ProfileViewModel`.
+    deinit {
+        user.removeListener(for: self)
     }
     
     

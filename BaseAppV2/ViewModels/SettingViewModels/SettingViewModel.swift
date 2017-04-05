@@ -52,12 +52,20 @@ final class SettingViewModel: SettingViewModelProtocol {
         }
         changeEmailRequestError = DynamicBinder(nil)
         changeEmailRequestSuccess = DynamicBinder(false)
-        SessionManager.shared.currentUser.bindAndFire { [weak self] (user: User?) in
+        SessionManager.shared.currentUser.bindAndFire({ [weak self] (user: User?) in
             guard let strongSelf = self,
                   let currentUser = user,
                   let referralCode = currentUser.referralCode else { return }
             strongSelf.inviteCode.value = referralCode
-        }
+        }, for: self)
+    }
+    
+    
+    // MARK: - Deinitializers
+    
+    /// Deinitializes an instance of `SettingViewModel`.
+    deinit {
+        SessionManager.shared.currentUser.removeListener(for: self)
     }
     
     

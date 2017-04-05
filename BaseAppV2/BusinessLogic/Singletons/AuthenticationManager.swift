@@ -52,7 +52,7 @@ extension AuthenticationManager {
                 return networkClient.enqueue(AuthenticationEndpoint.currentUser)
             })
             .then(on: dispatchQueue, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = DynamicBinder(user)
+                SessionManager.shared.currentUser = MultiDynamicBinder(user)
             })
             .then(on: DispatchQueue.main, execute: {
                 success()
@@ -90,7 +90,7 @@ extension AuthenticationManager {
                 return networkClient.enqueue(AuthenticationEndpoint.update(updateInfo: updateInfo, userId: Int((SessionManager.shared.currentUser.value?.userId)!)))
             })
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = DynamicBinder(user)
+                SessionManager.shared.currentUser = MultiDynamicBinder(user)
                 success()
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
@@ -184,7 +184,7 @@ extension AuthenticationManager {
                 return networkClient.enqueue(AuthenticationEndpoint.currentUser)
             })
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = DynamicBinder(user)
+                SessionManager.shared.currentUser = MultiDynamicBinder(user)
                 success()
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
@@ -299,7 +299,7 @@ extension AuthenticationManager {
                 return networkClient.enqueue(AuthenticationEndpoint.currentUser)
             })
             .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = DynamicBinder(user)
+                SessionManager.shared.currentUser = MultiDynamicBinder(user)
                 success()
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
