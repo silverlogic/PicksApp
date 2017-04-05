@@ -18,7 +18,7 @@ final class SessionManager {
     
     
     // MARK: - Private Instance Attributes
-    fileprivate var _currentUser: DynamicBinder<User?>
+    fileprivate var _currentUser: MultiDynamicBinder<User?>
     fileprivate var _authorizationToken: String?
     
     
@@ -26,7 +26,7 @@ final class SessionManager {
     
     /// Initializes a shared instance of `SessionManager`.
     private init() {
-        _currentUser = DynamicBinder(nil)
+        _currentUser = MultiDynamicBinder(nil)
         // Check if running in Unit Tests
         if ProcessInfo.isRunningUnitTests {
             return
@@ -40,7 +40,7 @@ final class SessionManager {
 extension SessionManager {
     
     /// The current user.
-    var currentUser: DynamicBinder<User?> {
+    var currentUser: MultiDynamicBinder<User?> {
         get {
             return _currentUser
         }

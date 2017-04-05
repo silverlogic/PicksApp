@@ -36,7 +36,7 @@ extension SessionManagerTests {
             XCTFail("Error Creating Test User Model!")
             return
         }
-        sharedManager.currentUser = DynamicBinder(user)
+        sharedManager.currentUser = MultiDynamicBinder(user)
         sharedManager.currentUser.value?.userId = 210
         let updateInfo = UpdateInfo(referralCodeOfReferrer: nil, avatarBaseString: nil, firstName: "Bob", lastName: "Saget")
         let updateUserExpectation = expectation(description: "Test Updating User")
@@ -56,14 +56,19 @@ extension SessionManagerTests {
             XCTFail("Error Creating Test User Model!")
             return
         }
-        sharedManager.currentUser = DynamicBinder(user)
+        sharedManager.currentUser = MultiDynamicBinder(user)
         sharedManager.currentUser.value?.userId = 211
         let logoutExpectation = expectation(description: "Test Logout")
         sharedManager.logout()
-        sharedManager.currentUser.bind { (user: User?) in
+        sharedManager.currentUser.bind({ [weak self] (user: User?) in
+            guard let strongSelf = self else {
+                logoutExpectation.fulfill()
+                return
+            }
             XCTAssertNil(user, "Value Should Be Nil!")
+            strongSelf.sharedManager.currentUser.removeListener(for: strongSelf)
             logoutExpectation.fulfill()
-        }
+        }, for: self)
         waitForExpectations(timeout: 10, handler: nil)
     }
 }

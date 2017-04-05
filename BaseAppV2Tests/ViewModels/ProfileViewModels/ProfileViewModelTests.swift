@@ -18,7 +18,7 @@ final class ProfileViewModelTests: BaseAppV2Tests {
             XCTFail("Error Creating Test User Model!")
             return
         }
-        SessionManager.shared.currentUser = DynamicBinder(user)
+        SessionManager.shared.currentUser = MultiDynamicBinder(user)
         SessionManager.shared.currentUser.value?.userId = 210
         let updateProfileErrorExpectation = expectation(description: "Test Update Profile Error")
         let updateProfileSuccessExpectation = expectation(description: "Tests Update Profile")
