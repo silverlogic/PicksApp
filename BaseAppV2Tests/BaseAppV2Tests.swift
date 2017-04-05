@@ -78,6 +78,15 @@ class BaseAppV2Tests: XCTestCase {
             }
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
         })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/change-email") && isMethodPOST(), response: { _ in
+            return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/change-email/1/confirm") && isMethodPOST(), response: { _ in
+            return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/change-email/1/verify") && isMethodPOST(), response: { _ in
+            return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
     }
     
     override func tearDown() {

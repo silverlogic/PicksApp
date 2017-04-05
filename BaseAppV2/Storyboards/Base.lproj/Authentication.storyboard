@@ -62,14 +62,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-fU-FFR" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
-                                        <rect key="frame" x="101.5" y="50.5" width="56" height="64.5"/>
+                                        <rect key="frame" x="102" y="50.5" width="55.5" height="64.5"/>
                                         <state key="normal" backgroundImage="icon-facebookloginbutton"/>
                                         <connections>
                                             <action selector="baseButtonTapped:" destination="73G-au-cez" eventType="touchUpInside" id="LUi-FW-zAi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-em-MOp" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
-                                        <rect key="frame" x="218.5" y="50.5" width="56" height="64.5"/>
+                                        <rect key="frame" x="218.5" y="50.5" width="56.5" height="64.5"/>
                                         <state key="normal" backgroundImage="icon-twitterloginbutton"/>
                                         <connections>
                                             <action selector="baseButtonTapped:" destination="73G-au-cez" eventType="touchUpInside" id="6GB-fY-OIP"/>
@@ -151,7 +151,7 @@
                                 <rect key="frame" x="26" y="228.5" width="323" height="253.5"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CWh-9U-s3J" customClass="BaseTextField" customModule="BaseAppV2" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="307" height="63.5"/>
+                                        <rect key="frame" x="8" y="8" width="307" height="63"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="next"/>
@@ -160,7 +160,7 @@
                                         </variation>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Pa-aC-rf9" customClass="BaseTextField" customModule="BaseAppV2" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="84.5" width="307" height="63.5"/>
+                                        <rect key="frame" x="8" y="84" width="307" height="64"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="go" secureTextEntry="YES"/>
@@ -169,7 +169,7 @@
                                         </variation>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6K-S2-wDy" userLabel="Divider">
-                                        <rect key="frame" x="18" y="75.5" width="287" height="1"/>
+                                        <rect key="frame" x="18" y="75" width="287" height="1"/>
                                         <color key="backgroundColor" red="0.75414899130000002" green="0.74675537380000001" blue="0.74675537380000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="O5v-gC-O7S"/>
@@ -741,9 +741,6 @@
                     <navigationItem key="navigationItem" id="ydv-jY-1Nb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dAE-id-Y2A">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="gB5-Uv-iJe" id="WsX-R9-99h"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -753,6 +750,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aV-B3-fyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1689" y="-2248"/>
+        </scene>
+        <!--Change Email Verify View Controller-->
+        <scene sceneID="bWu-bZ-fX0">
+            <objects>
+                <viewController storyboardIdentifier="ChangeEmailVerifyViewController" id="tlp-ye-AHZ" customClass="ChangeEmailVerifyViewController" customModule="BaseAppV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S9p-Vl-Qsz"/>
+                        <viewControllerLayoutGuide type="bottom" id="lFc-uv-Cqm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2as-QU-dw1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-baseapp" translatesAutoresizingMaskIntoConstraints="NO" id="Q81-O9-JfJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-baseapp" translatesAutoresizingMaskIntoConstraints="NO" id="dNU-Yr-U0e">
+                                <rect key="frame" x="121.5" y="35" width="132" height="127.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bII-G4-Oef" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
+                                <rect key="frame" x="43" y="307" width="289" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Verify New Email">
+                                    <color key="titleColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="verifyEmailButtonTapped:" destination="tlp-ye-AHZ" eventType="touchUpInside" id="CIC-zC-Bc6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap bellow to verify your new email" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-0h-93T">
+                                <rect key="frame" x="43" y="232" width="289" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Q81-O9-JfJ" secondAttribute="trailing" id="3tk-eg-dvW"/>
+                            <constraint firstItem="Q81-O9-JfJ" firstAttribute="top" secondItem="2as-QU-dw1" secondAttribute="top" id="8JJ-xe-huw"/>
+                            <constraint firstItem="bII-G4-Oef" firstAttribute="height" secondItem="2as-QU-dw1" secondAttribute="height" multiplier="0.093" id="Apa-BL-rcw"/>
+                            <constraint firstItem="dNU-Yr-U0e" firstAttribute="centerX" secondItem="2as-QU-dw1" secondAttribute="centerX" id="B1O-4S-DzP"/>
+                            <constraint firstItem="bII-G4-Oef" firstAttribute="leading" secondItem="2as-QU-dw1" secondAttribute="leadingMargin" constant="27" id="RiU-Xb-PQg"/>
+                            <constraint firstItem="Q81-O9-JfJ" firstAttribute="leading" secondItem="2as-QU-dw1" secondAttribute="leading" id="Sw2-RQ-237"/>
+                            <constraint firstItem="lFc-uv-Cqm" firstAttribute="top" secondItem="Q81-O9-JfJ" secondAttribute="bottom" id="V84-vk-fPU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dUs-0h-93T" secondAttribute="trailing" constant="27" id="bJr-T5-pVw"/>
+                            <constraint firstItem="dUs-0h-93T" firstAttribute="height" secondItem="2as-QU-dw1" secondAttribute="height" multiplier="0.09" id="bLx-uB-k7o"/>
+                            <constraint firstItem="dNU-Yr-U0e" firstAttribute="width" secondItem="2as-QU-dw1" secondAttribute="width" multiplier="0.353" id="eQV-a8-6Ym"/>
+                            <constraint firstItem="bII-G4-Oef" firstAttribute="top" secondItem="dUs-0h-93T" secondAttribute="bottom" constant="15" id="hJb-Ss-Okf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bII-G4-Oef" secondAttribute="trailing" constant="27" id="mFD-NC-X0k"/>
+                            <constraint firstItem="dNU-Yr-U0e" firstAttribute="height" secondItem="2as-QU-dw1" secondAttribute="height" multiplier="0.191" id="oSR-bG-cGO"/>
+                            <constraint firstItem="dUs-0h-93T" firstAttribute="leading" secondItem="2as-QU-dw1" secondAttribute="leadingMargin" constant="27" id="oot-g4-aUx"/>
+                            <constraint firstItem="dUs-0h-93T" firstAttribute="centerY" secondItem="2as-QU-dw1" secondAttribute="centerY" multiplier="0.785" id="sOI-vo-auN"/>
+                            <constraint firstItem="dNU-Yr-U0e" firstAttribute="top" secondItem="2as-QU-dw1" secondAttribute="topMargin" constant="35" id="wcn-yg-TQU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VQs-7G-uu5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XHN-Qn-KUR">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yW6-OB-MYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685.625" y="-2983.75"/>
         </scene>
     </scenes>
     <resources>

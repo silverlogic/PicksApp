@@ -61,6 +61,17 @@ extension AuthenticationManagerTests {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func testCurrentUser() {
+        let currentUserExpectation = expectation(description: "Test Current User")
+        sharedManager.currentUser(success: { 
+            currentUserExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Getting Current User!")
+            currentUserExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
     func testLoginWithOAuth2() {
         let redirectUrlWithQueryParametersFacebook = URL(string: "https://app.baseapp.tsl.io/?code=AQAf7IEllTmPlGXimVmK4A7ksXxRLU75FoiXO7lmc7sncGGvHG-o2_73Y5S2FrhPQvKicHm3kByu--Ou0hk2eRp9jFwArTrkbpXn2CljaG3BFWwNC6aSnruJmt-dHv1_9u-54xRYTSelP89WOqWGewEPWD5Sw1TgPiOXTHPebz3eiH43PTwm0KQhp2AFWSl7Q2zbkF0186yInZVL7JS4ms9phm8k7FF5OiEGBPMUFHMDzpCGewGmTAU5XJwGtZBiEitpftI6UmblIQQ0GuACm0S8qRTM_F5Xg2RBHFhZdw4-EgQ3qlQSxqfcwKZ9OxH4PP0#_=_")!
         let redirectUrlWithQuertParametersLinkedIn = URL(string: "https://app.baseapp.tsl.io/?code=AQREi3AZUQ0FEruGOrZwk8mtuaw7EnAr6S0XiAlMQT3lXi4J8pt7xD5ebEUye8PQwQY0FbdFK5NeFOmHyrW4w72SrNyCWQOujYtqXjx1G1IIDzjI4Ak&state=Av4WcUi9bZqFr1Ajk9GBBeLcVawFwqdi5MQaRtzTTitBta9WBMCJE2Qv1IwnNS")!
@@ -147,6 +158,39 @@ extension AuthenticationManagerTests {
         }) { (error: BaseError) in
             XCTFail("Error Sending Forgot Password Reset!")
             forgotPasswordRestExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testChangeEmailRequest() {
+        let changeEmailRequestExpectation = expectation(description: "Test Change Email Request Expectation")
+        sharedManager.changeEmailRequest(newEmail: "testuser@tsl.io", success: { 
+            changeEmailRequestExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Doing Change Email Request!")
+            changeEmailRequestExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testChangeEmailConfirm() {
+        let changeEmailConfirmExpectation = expectation(description: "Test Change Email Confirm Expectation")
+        sharedManager.changeEmailConfirm(token: "HG@#@BKJBHbJ@Bhuihuhgig23223243", userId: 1, success: { 
+            changeEmailConfirmExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Doing Change Email Confirm!")
+            changeEmailConfirmExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testChangeEmailVerify() {
+        let changeEmailVerifyExpectation = expectation(description: "Test Change Email Verify Expectation")
+        sharedManager.changeEmailVerify(token: "HG@#@BKJBHbJ@Bhuihuhgig23223243", userId: 1, success: { 
+            changeEmailVerifyExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Doing Change Email Verify!")
+            changeEmailVerifyExpectation.fulfill()
         }
         waitForExpectations(timeout: 10, handler: nil)
     }

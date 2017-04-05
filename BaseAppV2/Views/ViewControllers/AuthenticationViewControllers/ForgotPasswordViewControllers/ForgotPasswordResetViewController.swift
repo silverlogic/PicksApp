@@ -47,10 +47,6 @@ fileprivate extension ForgotPasswordResetViewController {
     @IBAction private func resetButtonTapped(_ sender: BaseButton) {
         forgotPasswordReset()
     }
-    
-    @IBAction private func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        forgotPasswordViewModel?.cancelResetPassword()
-    }
 }
 
 
@@ -99,6 +95,7 @@ fileprivate extension ForgotPasswordResetViewController {
         }
         newPasswordTextField.delegate = self
         enableKeyboardManagement(true)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Miscellaneous.Cancel", comment: "button"), style: .plain, target: self, action: #selector(cancelResetPassword))
     }
     
     /// Resets the password of the user.
@@ -106,5 +103,10 @@ fileprivate extension ForgotPasswordResetViewController {
         view.endEditing(true)
         showProgresHud()
         forgotPasswordViewModel?.forgotPasswordReset()
+    }
+    
+    /// Cancels reset password.
+    @objc fileprivate func cancelResetPassword() {
+        forgotPasswordViewModel?.cancelResetPassword()
     }
 }

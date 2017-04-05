@@ -24,6 +24,10 @@ extension UIStoryboard {
     static func loadForgotPasswordResetViewController() -> ForgotPasswordResetViewController {
         return loadControllerFromAuthenticaton(type: ForgotPasswordResetViewController.self)
     }
+    
+    static func loadChangeEmailVerifyViewController() -> ChangeEmailVerifyViewController {
+        return loadControllerFromAuthenticaton(type: ChangeEmailVerifyViewController.self)
+    }
 }
 
 

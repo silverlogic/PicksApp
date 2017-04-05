@@ -17,11 +17,13 @@ protocol SettingViewModelProtocol {
     // MARK: - Instance Attributes
     var applicationVersion: DynamicBinder<String> { get }
     var inviteCode: DynamicBinder<String> { get }
+    var changeEmailRequestError: DynamicBinder<BaseError?> { get }
+    var changeEmailRequestSuccess: DynamicBinder<Bool> { get }
     
     
     // MARK: - Instance Methods
     func logout()
-    // @TODO: Add behavior for differnt setting when implemented.
+    func changeEmailRequest(newEmail: String)
 }
 
 
@@ -34,6 +36,8 @@ final class SettingViewModel: SettingViewModelProtocol {
     // MARK: - SettingViewModelProtocol Attributes
     var applicationVersion: DynamicBinder<String>
     var inviteCode: DynamicBinder<String>
+    var changeEmailRequestError: DynamicBinder<BaseError?>
+    var changeEmailRequestSuccess: DynamicBinder<Bool>
     
     
     // MARK: - Initializers
@@ -46,6 +50,8 @@ final class SettingViewModel: SettingViewModelProtocol {
         } else {
             inviteCode = DynamicBinder("")
         }
+        changeEmailRequestError = DynamicBinder(nil)
+        changeEmailRequestSuccess = DynamicBinder(false)
         SessionManager.shared.currentUser.bindAndFire { [weak self] (user: User?) in
             guard let strongSelf = self,
                   let currentUser = user,
@@ -57,6 +63,21 @@ final class SettingViewModel: SettingViewModelProtocol {
     
     // MARK: - SettingViewModelProtocol Methods
     func logout() {
+        if ProcessInfo.isRunningUnitTests { return }
         SessionManager.shared.logout()
+    }
+    
+    func changeEmailRequest(newEmail: String) {
+        if newEmail.isEmpty {
+            changeEmailRequestError.value = BaseError.fieldsEmpty
+            return
+        }
+        AuthenticationManager.shared.changeEmailRequest(newEmail: newEmail, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.changeEmailRequestSuccess.value = true
+        }) { [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            strongSelf.changeEmailRequestError.value = error
+        }
     }
 }

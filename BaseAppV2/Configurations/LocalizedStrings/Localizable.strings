@@ -14,6 +14,7 @@
 "BaseError.EmailAlreadyInUseForOAuth" = "Oops, the email associated is already in use. 😞";
 "BaseError.EndOfPagination" = "Looks like there aren't anymore. 😜";
 "BaseError.StillLoadingResults" = "Results Are Still Loading. 😜";
+"BaseError.NewEmailConfirmed" = "You need to check your email. 😜";
 
 // Settings View Controller
 "SettingsViewController.InviteCode" = "Invite Code";
@@ -23,6 +24,8 @@
 "SettingsViewController.PrivacyPolicy" = "Privacy Policy";
 "SettingsViewController.ChangePassword" = "Change Password";
 "SettingsViewController.Logout" = "Logout";
+"SettingsViewController.ChangeEmail" = "Change Email";
+"SettingsViewController.ChangeEmailAlert.Message" = "An email will be sent your original email for confirmation. 📥";
 
 // Miscellaneous
 "Miscellaneous.Cancel" = "Cancel";
@@ -30,6 +33,7 @@
 "Miscellaneous.EmailMissing" = "Email Missing";
 "Miscellaneous.Email" = "Email";
 "Miscellaneous.Finish" = "Finish";
+"Miscellaneous.NewEmail" = "New Email";
 
 // ImagePicker
 "ImagePicker.NoImages" = "Looks like there aren't any images here. 😜";

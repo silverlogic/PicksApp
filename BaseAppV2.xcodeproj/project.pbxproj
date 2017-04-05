@@ -57,8 +57,12 @@
 		8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC451E782C63007697DF /* BaseAlertViewController.swift */; };
 		8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC491E78BA3C007697DF /* BaseNavigationController.swift */; };
 		8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC4B1E78C59F007697DF /* BaseViewController.swift */; };
+		88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */; };
 		8833F63C1E827D990035975C /* loginuseroauth.json in Resources */ = {isa = PBXBuildFile; fileRef = 8833F63B1E827D990035975C /* loginuseroauth.json */; };
 		8833F6411E8290EB0035975C /* SocialAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */; };
+		884851361E9450260088A3C2 /* ChangeEmailVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884851351E9450260088A3C2 /* ChangeEmailVerifyViewModel.swift */; };
+		884851381E9456440088A3C2 /* ChangeEmailVerifyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884851371E9456440088A3C2 /* ChangeEmailVerifyViewModelTests.swift */; };
+		8848513B1E945A420088A3C2 /* ChangeEmailVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848513A1E945A420088A3C2 /* ChangeEmailVerifyViewController.swift */; };
 		885514C51E8D5DD8008A82CC /* UserEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885514C41E8D5DD8008A82CC /* UserEndpointTests.swift */; };
 		885514C71E8D6768008A82CC /* AuthenticationEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885514C61E8D6768008A82CC /* AuthenticationEndpointTests.swift */; };
 		885514CB1E8D822C008A82CC /* UserPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885514CA1E8D822C008A82CC /* UserPaginator.swift */; };
@@ -211,8 +215,12 @@
 		8817FC451E782C63007697DF /* BaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAlertViewController.swift; path = Views/SubViews/UIAlertViewControllers/BaseAlertViewController.swift; sourceTree = "<group>"; };
 		8817FC491E78BA3C007697DF /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = Views/ViewControllers/BaseNavigationController.swift; sourceTree = "<group>"; };
 		8817FC4B1E78C59F007697DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
+		88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModelTests.swift; path = ViewModels/SettingViewModels/SettingViewModelTests.swift; sourceTree = "<group>"; };
 		8833F63B1E827D990035975C /* loginuseroauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuseroauth.json; path = Resources/TestJSON/loginuseroauth.json; sourceTree = "<group>"; };
 		8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialAuthWebViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SocialAuthWebViewControllers/SocialAuthWebViewController.swift; sourceTree = "<group>"; };
+		884851351E9450260088A3C2 /* ChangeEmailVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeEmailVerifyViewModel.swift; path = ViewModels/AuthenticationViewModels/ChangeEmailVerifyViewModel.swift; sourceTree = "<group>"; };
+		884851371E9456440088A3C2 /* ChangeEmailVerifyViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeEmailVerifyViewModelTests.swift; path = ViewModels/AuthenticationViewModels/ChangeEmailVerifyViewModelTests.swift; sourceTree = "<group>"; };
+		8848513A1E945A420088A3C2 /* ChangeEmailVerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeEmailVerifyViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/ChangeEmailViewControllers/ChangeEmailVerifyViewController.swift; sourceTree = "<group>"; };
 		885514C41E8D5DD8008A82CC /* UserEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserEndpointTests.swift; path = CoreServices/Networking/Endpoints/UserEndpointTests.swift; sourceTree = "<group>"; };
 		885514C61E8D6768008A82CC /* AuthenticationEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationEndpointTests.swift; path = CoreServices/Networking/Endpoints/AuthenticationEndpointTests.swift; sourceTree = "<group>"; };
 		885514CA1E8D822C008A82CC /* UserPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPaginator.swift; path = BusinessLogic/Paginators/UserPaginator.swift; sourceTree = "<group>"; };
@@ -348,6 +356,7 @@
 				8801FDE01E71C79C00F54932 /* LoginViewModel.swift */,
 				88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */,
 				880413FE1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift */,
+				884851351E9450260088A3C2 /* ChangeEmailVerifyViewModel.swift */,
 			);
 			name = AuthenticationViewModels;
 			sourceTree = "<group>";
@@ -417,6 +426,7 @@
 		8801FDF81E722DFE00F54932 /* AuthenticationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				884851391E9459FF0088A3C2 /* ChangeEmailViewControllers */,
 				880414021E8C0C9700ABF4D4 /* ForgotPasswordViewControllers */,
 				8833F63D1E8290290035975C /* SocialAuthWebViewControllers */,
 				88F3FE191E767951003162F8 /* SignupViewControllers */,
@@ -758,6 +768,7 @@
 				8817FC331E77141E007697DF /* LoginViewModelTests.swift */,
 				8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */,
 				880414001E8C08D800ABF4D4 /* ForgotPasswordViewModelTests.swift */,
+				884851371E9456440088A3C2 /* ChangeEmailVerifyViewModelTests.swift */,
 			);
 			name = AuthenticationViewModels;
 			sourceTree = "<group>";
@@ -834,6 +845,14 @@
 				8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */,
 			);
 			name = SocialAuthWebViewControllers;
+			sourceTree = "<group>";
+		};
+		884851391E9459FF0088A3C2 /* ChangeEmailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8848513A1E945A420088A3C2 /* ChangeEmailVerifyViewController.swift */,
+			);
+			name = ChangeEmailViewControllers;
 			sourceTree = "<group>";
 		};
 		885514C91E8D81E6008A82CC /* Paginators */ = {
@@ -951,6 +970,7 @@
 		88AF2E171E7BCE3300F93A50 /* SettingViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */,
 			);
 			name = SettingViewModels;
 			sourceTree = "<group>";
@@ -1427,6 +1447,7 @@
 				88AF2E111E7BB2A400F93A50 /* SettingsTableViewCell.swift in Sources */,
 				885514DE1E8DB57C008A82CC /* BaseCollectionViewCell.swift in Sources */,
 				8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */,
+				8848513B1E945A420088A3C2 /* ChangeEmailVerifyViewController.swift in Sources */,
 				8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */,
 				88BFD8DC1E842A9D000C8A61 /* ImageAccess.swift in Sources */,
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
@@ -1474,6 +1495,7 @@
 				88FD2CE41E89BBD0002D1D00 /* CircleView.swift in Sources */,
 				885514E91E8DBDBE008A82CC /* UserFeedViewController.swift in Sources */,
 				88FBC2AB1E701AE3003AEEC4 /* SessionManager.swift in Sources */,
+				884851361E9450260088A3C2 /* ChangeEmailVerifyViewModel.swift in Sources */,
 				88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */,
 				88BFD8DE1E842E74000C8A61 /* ProfileInfoTableViewCell.swift in Sources */,
 				8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */,
@@ -1495,6 +1517,7 @@
 				8817FC341E77141E007697DF /* LoginViewModelTests.swift in Sources */,
 				88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */,
 				8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */,
+				88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */,
 				8801FE031E72462B00F54932 /* UIViewControllerExtensionTests.swift in Sources */,
 				885514D91E8DAECF008A82CC /* UserFeedViewModelTests.swift in Sources */,
 				8817FC361E7716E8007697DF /* SignUpViewModelTests.swift in Sources */,
@@ -1514,6 +1537,7 @@
 				88F5BBA51E92C56D00B79683 /* UIStoryboardExtensionTests.swift in Sources */,
 				8817FC301E7707BB007697DF /* AuthenticationManagerTests.swift in Sources */,
 				8817FC181E769C1B007697DF /* CoreDataStackTests.swift in Sources */,
+				884851381E9456440088A3C2 /* ChangeEmailVerifyViewModelTests.swift in Sources */,
 				88BFD8D51E8320D3000C8A61 /* ArrayExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
