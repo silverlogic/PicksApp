@@ -52,6 +52,18 @@ extension DeepLinkManager {
                 NotificationCenter.default.post(name: .PasswordReset, object: token)
                 return
             }
+            if let type = parameters["type"] as? String, type == "change-email-confirm" {
+                guard let token = parameters["token"] as? String,
+                      let userId = parameters["user"] as? Int else { return }
+                NotificationCenter.default.post(name: .ChangeEmailConfirm, object: ["token": token, "userId": userId])
+                return
+            }
+            if let type = parameters["type"] as? String, type == "change-email-verify" {
+                guard let token = parameters["token"] as? String,
+                      let userId = parameters["user"] as? Int else { return }
+                NotificationCenter.default.post(name: .ChangeEmailVerify, object: ["token": token, "userId": userId])
+                return
+            }
         }
     }
     

@@ -137,6 +137,23 @@ extension CoreDataStack {
             }
         }
     }
+    
+    /**
+        Saves the current state of the
+        object space.
+     
+        - Parameters:
+            - success: A closure that gets invoked when successful.
+            - failure: A closure that gets invoked when saving fails.
+    */
+    func saveCurrentState(success: @escaping () -> Void, failure: @escaping () -> Void) {
+        do {
+            try _managedObjectContext.save()
+            success()
+        } catch {
+            failure()
+        }
+    }
 }
 
 

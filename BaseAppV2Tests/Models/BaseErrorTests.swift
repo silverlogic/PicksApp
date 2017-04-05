@@ -97,4 +97,11 @@ final class BaseErrorTests: BaseAppV2Tests {
         XCTAssertEqual(stillLoadingResultsError.statusCode, 109, "Getting Error Failed!")
         XCTAssertEqual(stillLoadingResultsError.errorDescription, "Results Are Still Loading. 😜", "Getting Error Failed!")
     }
+    
+    func testNewEmailConfirmed() {
+        let newEmailConfirmedError = BaseError.newEmailConfirmed
+        XCTAssertNotNil(newEmailConfirmedError, "Value Should Not Be Nil!")
+        XCTAssertEqual(newEmailConfirmedError.statusCode, 110, "Getting Error Failed!")
+        XCTAssertEqual(newEmailConfirmedError.errorDescription, "You need to check your email. 😜", "Getting Error Failed!")
+    }
 }

@@ -100,6 +100,31 @@ extension AuthenticationManager {
     }
     
     /**
+        Gets the current user.
+        
+        - Parameters:
+            - success: A closure that gets invoked when getting
+                       the current user was successful.
+            - failure: A closure that gets invoked when getting
+                       the current user failed. Passes a `BaseError`
+                       object containing the error that occured.
+    */
+    func currentUser(success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.currentUser)
+            .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
+                SessionManager.shared.currentUser.value = user
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+    
+    /**
         Logs in a user using OAuth2 authentication.
      
         ## Possible Errors
@@ -324,7 +349,7 @@ extension AuthenticationManager {
      
         - Parameters:
             - token: A `String` representing the verification token received from
-                     from the deep link forgot password.
+                     from the deep link for forgot password.
             - newPassword: A `String` representing the new password the user will
                            use for login.
             - success: A closure that gets invoked when reseting the password
@@ -337,6 +362,95 @@ extension AuthenticationManager {
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.forgotPasswordReset(token: token, newPassword: newPassword))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+    
+    /**
+        Sends a change email request for a new email.
+     
+        - Parameters:
+            - newEmail: A `String` representing the new email the
+                        user wants to use for login.
+            - success: A closure that gets invoked when sending the
+                       request was successful.
+            - failure: A closure that gets invoked when sending the
+                       request failed. Passes a `BaseError` object that
+                       contains the error that occured.
+    */
+    func changeEmailRequest(newEmail: String, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.changeEmailRequest(newEmail: newEmail))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+    
+    /**
+        Sends a confirm change email.
+     
+        - Parameters:
+            - token: A `String` representing the vertification token recevied from
+                     the deep link for change email request.
+            - userId: An `Int` representing the user Id of the user that is changing their
+                      email.
+            - success: A closure that gets invoked when confirming was successful.
+                       'nil` can be passed as a parameter.
+            - failure: A closure that gets invoked when confirming failed. Passes
+                       a `BaseError` object that contains the error that occured.
+                       `nil` can be passed as a parameter.
+    */
+    func changeEmailConfirm(token: String, userId: Int, success: (() -> Void)?, failure: ((_ error: BaseError) -> Void)?) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.changeEmailConfirm(token: token, userId: userId))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                SessionManager.shared.currentUser.value?.newEmailConfirmed = true
+                CoreDataStack.shared.saveCurrentState(success: { 
+                    guard let closure = success else { return }
+                    closure()
+                }, failure: {
+                    guard let closure = failure else { return }
+                    closure(BaseError.generic)
+                })
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                guard let closure = failure else { return }
+                closure(error)
+            })
+        }
+    }
+    
+    /**
+        Sends a verify new email.
+     
+        - Parameters:
+            - token: A `String` representing the token received from the
+                     deep link for confirm email.
+            - userId: An `Int` representing the user Id of the user that is changing
+                      their email.
+            - success: A closure that gets invoked when verifying was succesful. When
+                       this occurs, the user can now use the new email for login.
+            - failure: A closure that gets invoked when verifying failed. Passes a
+                       `BaseError` object that contains the error that occured.
+    */
+    func changeEmailVerify(token: String, userId: Int, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.changeEmailVerify(token: token, userId: userId))
             .then(on: DispatchQueue.main, execute: { () -> Void in
                 success()
             })

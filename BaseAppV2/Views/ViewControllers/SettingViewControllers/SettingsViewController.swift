@@ -27,6 +27,7 @@ final class SettingsViewController: BaseViewController {
         case privacyPolicy
         case sendFeedback
         case changePassword
+        case changeEmail
         case logout
         static let caseCount = Settings.numberOfCases()
     }
@@ -72,6 +73,9 @@ extension SettingsViewController: UITableViewDataSource {
         case .changePassword:
             settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-changepassword"), settingName: NSLocalizedString("SettingsViewController.ChangePassword", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
             break
+        case .changeEmail:
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-sendfeedback"), settingName: NSLocalizedString("SettingsViewController.ChangeEmail", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            break
         case .logout:
             settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-logout"), settingName: NSLocalizedString("SettingsViewController.Logout", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
             break
@@ -114,6 +118,13 @@ extension SettingsViewController: UITableViewDelegate {
         case .changePassword:
             // @TODO: Call method on view model for chaning password
             break
+        case .changeEmail:
+            showEditAlert(title: NSLocalizedString("SettingsViewController.ChangeEmail", comment: "subtitle"), subtitle: NSLocalizedString("SettingsViewController.ChangeEmailAlert.Message", comment: "subtitle"), textFieldAttributes: [AlertTextFieldAttributes(placeholder: NSLocalizedString("Miscellaneous.NewEmail", comment: "placeholder"), isSecureTextEntry: false, keyboardType: .emailAddress, autocorrectionType: .no, autocapitalizationType: .none, spellCheckingType: .no, returnKeyType: .done)], submitButtonTapped: { [weak self] (enterdValues: [String : String]) in
+                guard let strongSelf = self,
+                      let newEmail = enterdValues[NSLocalizedString("Miscellaneous.NewEmail", comment: "placeholder")] else { return }
+                strongSelf.settingViewModel.changeEmailRequest(newEmail: newEmail)
+            })
+            break
         case .logout:
             settingViewModel.logout()
             break
@@ -131,6 +142,11 @@ fileprivate extension SettingsViewController {
     
     /// Sets up the default logic for the view.
     fileprivate func setup() {
+        settingViewModel.changeEmailRequestError.bind { [weak self] (error: BaseError?) in
+            guard let strongSelf = self,
+                  let emailRequestError = error else { return }
+            strongSelf.showDodoAlert(message: emailRequestError.errorDescription, alertType: .error)
+        }
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()

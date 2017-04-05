@@ -26,4 +26,9 @@ final class UIStoryboardExtensionTests: BaseAppV2Tests {
         let forgotPasswordViewController = UIStoryboard.loadForgotPasswordResetViewController()
         XCTAssertNotNil(forgotPasswordViewController, "Value Should Not Be Nil!")
     }
+    
+    func testLoadChangeEmailVerifyViewController() {
+        let changeEmailVerifyViewController = UIStoryboard.loadChangeEmailVerifyViewController
+        XCTAssertNotNil(changeEmailVerifyViewController, "Value Should Not Be Nil!")
+    }
 }

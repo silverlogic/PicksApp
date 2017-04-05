@@ -39,6 +39,8 @@ extension AppDelegate: UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(loadApplicationFlow), name: .UserLoggedIn, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadForgotPasswordResetFlow(notification:)), name: .PasswordReset, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadTutorialFlow), name: .ShowTutorial, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeEmailConfirm(notification:)), name: .ChangeEmailConfirm, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadChangeEmailVerifyFlow(notification:)), name: .ChangeEmailVerify, object: nil)
         window = UIWindow(frame: UIScreen.main.bounds)
         setInitialFlow()
         configureBusinessLogic(launchOptions: launchOptions)
@@ -181,8 +183,8 @@ fileprivate extension AppDelegate {
     /**
         Loads the forgot password reset flow.
      
-        - Note: In `notification` it contains the token
-                received from forgot password deeplinking
+        - Note: In `notification`, it contains the token
+                received from forgot password deepl inking
                 in the property `object`.
      
         - Parameter notification: A `Notification` representing
@@ -226,6 +228,49 @@ fileprivate extension AppDelegate {
         let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
         onboardViewController?.view.addSubview(snapshot)
         window?.rootViewController = onboardViewController
+        UIView.performRootViewControllerAnimation(snapshot: snapshot)
+    }
+    
+    /**
+        Performs part two of change email.
+     
+        - Note: In `notification`, it contains the token
+                and the user Id received from change email
+                request deep linking.
+     
+        - Parameter notification: A `Notification` representing
+                                  the notification that was fired
+                                  for change email request deep linking.
+    */
+    @objc fileprivate func changeEmailConfirm(notification: Notification) {
+        guard let parameters = notification.object as? [String: Any],
+              let token = parameters["token"] as? String,
+              let userId = parameters["userId"] as? Int else { return }
+        AuthenticationManager.shared.changeEmailConfirm(token: token, userId: userId, success: nil, failure: nil)
+    }
+    
+    /**
+        Loads the change email verify flow.
+     
+        - Note: In `notification`, it contains the token
+                and the user Id received from change email
+                confirm deep linking.
+     
+        - Parameter notification: A `Notification` representing
+                                  the notification that was fired
+                                  for change email confirm deep linking.
+    */
+    @objc fileprivate func loadChangeEmailVerifyFlow(notification: Notification) {
+        guard let parameters = notification.object as? [String: Any],
+              let token = parameters["token"] as? String,
+              let userId = parameters["userId"] as? Int else { return }
+        let rootViewController = UIStoryboard.loadChangeEmailVerifyViewController()
+        let changeEmailVerifyViewModel = ChangeEmailVerifyViewModel(token: token, userId: userId)
+        rootViewController.changeEmailVerifyViewModel = changeEmailVerifyViewModel
+        let navigationController = AuthenticationNavigationController(rootViewController: rootViewController)
+        let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
+        navigationController.view.addSubview(snapshot)
+        window?.rootViewController = navigationController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)
     }
 }

@@ -24,6 +24,9 @@ enum AuthenticationEndpoint: BaseEndpoint {
     case oauth1Step2(oauth1Step2Info: OAuth1Step2Info)
     case forgotPasswordRequest(email: String)
     case forgotPasswordReset(token: String, newPassword: String)
+    case changeEmailRequest(newEmail: String)
+    case changeEmailConfirm(token: String, userId: Int)
+    case changeEmailVerify(token: String, userId: Int)
     
     var endpointInfo: BaseEndpointInfo {
         let path: String
@@ -92,6 +95,27 @@ enum AuthenticationEndpoint: BaseEndpoint {
             path = "forgot-password/reset"
             requestMethod = .post
             parameters = ["token": token, "new_password": newPassword]
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
+            break
+        case let .changeEmailRequest(newEmail):
+            path = "change-email"
+            requestMethod = .post
+            parameters = ["new_email": newEmail]
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = true
+            break
+        case let .changeEmailConfirm(token, userId):
+            path = "change-email/\(userId)/confirm"
+            requestMethod = .post
+            parameters = ["token": token]
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
+            break
+        case let .changeEmailVerify(token, userId):
+            path = "change-email/\(userId)/verify"
+            requestMethod = .post
+            parameters = ["token": token]
             parameterEncoding = JSONEncoding()
             requiresAuthorization = false
             break

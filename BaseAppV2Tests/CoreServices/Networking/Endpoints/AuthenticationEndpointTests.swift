@@ -92,7 +92,7 @@ final class AuthenticationEndpointTests: BaseAppV2Tests {
         let forgotPasswordRequestEndpoint = AuthenticationEndpoint.forgotPasswordRequest(email: "testuser@tsl.io")
         XCTAssertNotNil(forgotPasswordRequestEndpoint, "Value Should Not Be Nil!")
         XCTAssertEqual(forgotPasswordRequestEndpoint.endpointInfo.path, "forgot-password", "Path Not Correct!")
-        XCTAssertEqual(forgotPasswordRequestEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Nil!")
+        XCTAssertEqual(forgotPasswordRequestEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
         XCTAssertNotNil(forgotPasswordRequestEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
         XCTAssertTrue(forgotPasswordRequestEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
         XCTAssertFalse(forgotPasswordRequestEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
@@ -102,9 +102,39 @@ final class AuthenticationEndpointTests: BaseAppV2Tests {
         let forgotPasswordResetEndpoint = AuthenticationEndpoint.forgotPasswordReset(token: "bjdhdhehru3r3iu4gyf", newPassword: "1235")
         XCTAssertNotNil(forgotPasswordResetEndpoint, "Value Should Not Be Nil!")
         XCTAssertEqual(forgotPasswordResetEndpoint.endpointInfo.path, "forgot-password/reset", "Path Not Correct!")
-        XCTAssertEqual(forgotPasswordResetEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Nil!")
+        XCTAssertEqual(forgotPasswordResetEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
         XCTAssertNotNil(forgotPasswordResetEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
         XCTAssertTrue(forgotPasswordResetEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
         XCTAssertFalse(forgotPasswordResetEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
+    }
+    
+    func testChangeEmailRequestEndpoint() {
+        let changeEmailRequestEndpoint = AuthenticationEndpoint.changeEmailRequest(newEmail: "testuser@tsl.io")
+        XCTAssertNotNil(changeEmailRequestEndpoint, "Value Should Not Be Nil!")
+        XCTAssertEqual(changeEmailRequestEndpoint.endpointInfo.path, "change-email", "Path Not Correct!")
+        XCTAssertEqual(changeEmailRequestEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(changeEmailRequestEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(changeEmailRequestEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
+        XCTAssertTrue(changeEmailRequestEndpoint.endpointInfo.requiresAuthorization, "Value Should Be True!")
+    }
+    
+    func testChangeEmailConfirmEndpoint() {
+        let changeEmailConfirmEndpoint = AuthenticationEndpoint.changeEmailConfirm(token: "fjfheahduianSAZUJNFJFRITHUGRUEHGNJTNGOIETU849R574WHGNRJOGNAH789Yy9ushforwuht98374qty", userId: 1)
+        XCTAssertNotNil(changeEmailConfirmEndpoint, "Value Should Not Be Nil!")
+        XCTAssertEqual(changeEmailConfirmEndpoint.endpointInfo.path, "change-email/1/confirm", "Path Not Correct!")
+        XCTAssertEqual(changeEmailConfirmEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(changeEmailConfirmEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(changeEmailConfirmEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
+        XCTAssertFalse(changeEmailConfirmEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
+    }
+    
+    func testChangeEmailVerifyEndpoint() {
+        let changeEmailVerifyEndpoint = AuthenticationEndpoint.changeEmailVerify(token: "fjfheahduianSAZUJNFJFRITHUGRUEHGNJTNGOIETU849R574WHGNRJOGNAH789Yy9ushforwuht98374qty", userId: 1)
+        XCTAssertNotNil(changeEmailVerifyEndpoint, "Value Should Not Be Nil!")
+        XCTAssertEqual(changeEmailVerifyEndpoint.endpointInfo.path, "change-email/1/verify", "Paht Not Correct!")
+        XCTAssertEqual(changeEmailVerifyEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(changeEmailVerifyEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(changeEmailVerifyEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding No Correct!")
+        XCTAssertFalse(changeEmailVerifyEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
     }
 }
