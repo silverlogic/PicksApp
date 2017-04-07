@@ -119,7 +119,7 @@ final class ProfileViewModel: ProfileViewModelProtocol {
     
     /// Deinitializes an instance of `ProfileViewModel`.
     deinit {
-        user.removeListener(for: self)
+        user.removeListeners(for: self)
     }
     
     

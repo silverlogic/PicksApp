@@ -66,7 +66,7 @@ extension SessionManagerTests {
                 return
             }
             XCTAssertNil(user, "Value Should Be Nil!")
-            strongSelf.sharedManager.currentUser.removeListener(for: strongSelf)
+            strongSelf.sharedManager.currentUser.removeListeners(for: strongSelf)
             logoutExpectation.fulfill()
         }, for: self)
         waitForExpectations(timeout: 10, handler: nil)

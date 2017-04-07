@@ -65,7 +65,7 @@ final class SettingViewModel: SettingViewModelProtocol {
     
     /// Deinitializes an instance of `SettingViewModel`.
     deinit {
-        SessionManager.shared.currentUser.removeListener(for: self)
+        SessionManager.shared.currentUser.removeListeners(for: self)
     }
     
     

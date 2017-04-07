@@ -77,12 +77,21 @@ class MultiDynamicBinder<T> {
     typealias Listener = (T) -> Void
     
     
+    /**
+        A struct representing an observer
+        and their registered listener.
+    */
+    struct Observer {
+        var observer: Any
+        var listener: Listener?
+    }
+    
+    
     // MARK: - Public Instance Attributes
-    var listeners: [Listener?]
-    var observers: [Any]
+    var observers: [Observer]
     var value: T {
         didSet {
-            listeners.forEach({ $0?(value) })
+            observers.forEach({ $0.listener?(value) })
         }
     }
     
@@ -97,8 +106,7 @@ class MultiDynamicBinder<T> {
     */
     init(_ value: T) {
         self.value = value
-        listeners = [Listener?]()
-        observers = [Any]()
+        observers = [Observer]()
     }
     
     
@@ -116,8 +124,8 @@ class MultiDynamicBinder<T> {
                         that registered the listener.
     */
     func bind(_ listener: Listener?, for observer: Any) {
-        listeners.append(listener)
-        observers.append(observer)
+        let observe = Observer(observer: observer, listener: listener)
+        observers.append(observe)
     }
     
     /**
@@ -132,8 +140,8 @@ class MultiDynamicBinder<T> {
                         that registered the listener.
     */
     func bindAndFire(_ listener: Listener?, for observer: Any) {
-        listeners.append(listener)
-        observers.append(observer)
+        let observe = Observer(observer: observer, listener: listener)
+        observers.append(observe)
         listener?(value)
     }
     
@@ -143,13 +151,11 @@ class MultiDynamicBinder<T> {
         - Parameter observer: An `Any` representing the object
                               that has a listener registered.
     */
-    func removeListener(for observer: Any) {
-        guard let index = observers.index(where: { (object: Any) -> Bool in
-            guard let object1 = object as? NSObject,
-                  let object2 = observer as? NSObject else { return false }
-            return object1 === object2
-        }) else { return }
-        _ = observers.remove(at: index)
-        _ = listeners.remove(at: index)
+    func removeListeners(for observer: Any) {
+        let object1 = observer as AnyObject
+        observers = observers.filter({ (observe: Observer) -> Bool in
+            let object2 = observe.observer as AnyObject
+            return object1 !== object2
+        })
     }
 }
