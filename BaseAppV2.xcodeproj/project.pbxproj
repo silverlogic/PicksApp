@@ -57,6 +57,7 @@
 		8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC451E782C63007697DF /* BaseAlertViewController.swift */; };
 		8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC491E78BA3C007697DF /* BaseNavigationController.swift */; };
 		8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC4B1E78C59F007697DF /* BaseViewController.swift */; };
+		8823A1CA1E9835B300060EDB /* DynamicBinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */; };
 		88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */; };
 		8833F63C1E827D990035975C /* loginuseroauth.json in Resources */ = {isa = PBXBuildFile; fileRef = 8833F63B1E827D990035975C /* loginuseroauth.json */; };
 		8833F6411E8290EB0035975C /* SocialAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */; };
@@ -215,6 +216,7 @@
 		8817FC451E782C63007697DF /* BaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAlertViewController.swift; path = Views/SubViews/UIAlertViewControllers/BaseAlertViewController.swift; sourceTree = "<group>"; };
 		8817FC491E78BA3C007697DF /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = Views/ViewControllers/BaseNavigationController.swift; sourceTree = "<group>"; };
 		8817FC4B1E78C59F007697DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
+		8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicBinderTests.swift; path = Helpers/DynamicBinderTests.swift; sourceTree = "<group>"; };
 		88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModelTests.swift; path = ViewModels/SettingViewModels/SettingViewModelTests.swift; sourceTree = "<group>"; };
 		8833F63B1E827D990035975C /* loginuseroauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuseroauth.json; path = Resources/TestJSON/loginuseroauth.json; sourceTree = "<group>"; };
 		8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialAuthWebViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SocialAuthWebViewControllers/SocialAuthWebViewController.swift; sourceTree = "<group>"; };
@@ -498,8 +500,8 @@
 				880454F91E65E42200D4A499 /* Storyboards */,
 				880454F51E65E3D500D4A499 /* Views */,
 				880454F71E65E3F200D4A499 /* ViewModels */,
-				880455081E663E6000D4A499 /* BusinessLogic */,
 				880454F41E65E3CA00D4A499 /* Models */,
+				880455081E663E6000D4A499 /* BusinessLogic */,
 				880454F81E65E3FE00D4A499 /* CoreServices */,
 				880454FA1E65E43500D4A499 /* Configurations */,
 				88FBC2881E6E8737003AEEC4 /* Extensions */,
@@ -521,10 +523,11 @@
 			isa = PBXGroup;
 			children = (
 				8804550F1E66701700D4A499 /* ViewModels */,
-				880455101E66702D00D4A499 /* BusinessLogic */,
 				8804550D1E666FF100D4A499 /* Models */,
+				880455101E66702D00D4A499 /* BusinessLogic */,
 				8804550E1E66700000D4A499 /* CoreServices */,
 				88FBC2951E6EAD56003AEEC4 /* Extensions */,
+				8823A1C61E98352F00060EDB /* Helpers */,
 				880455111E66717A00D4A499 /* Resources */,
 				880454DB1E65E32C00D4A499 /* BaseAppV2Tests.swift */,
 				880454DD1E65E32C00D4A499 /* Info.plist */,
@@ -837,6 +840,14 @@
 			children = (
 			);
 			name = SignupViewControllers;
+			sourceTree = "<group>";
+		};
+		8823A1C61E98352F00060EDB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		8833F63D1E8290290035975C /* SocialAuthWebViewControllers */ = {
@@ -1531,6 +1542,7 @@
 				88FBC2A51E6FFD39003AEEC4 /* BaseErrorTests.swift in Sources */,
 				88F5BBAE1E93058E00B79683 /* PushNotificationManagerTests.swift in Sources */,
 				8817FC1B1E76A2CA007697DF /* NetworkClientTests.swift in Sources */,
+				8823A1CA1E9835B300060EDB /* DynamicBinderTests.swift in Sources */,
 				885514D31E8D970A008A82CC /* UserPaginatorTests.swift in Sources */,
 				88AF2E281E7C5E2D00F93A50 /* SessionManagerTests.swift in Sources */,
 				88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */,
