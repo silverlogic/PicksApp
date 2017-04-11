@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior
     for settings.
 */
-protocol SettingViewModelProtocol {
+protocol SettingViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var applicationVersion: DynamicBinder<String> { get }

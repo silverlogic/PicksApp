@@ -131,10 +131,20 @@ final class AuthenticationEndpointTests: BaseAppV2Tests {
     func testChangeEmailVerifyEndpoint() {
         let changeEmailVerifyEndpoint = AuthenticationEndpoint.changeEmailVerify(token: "fjfheahduianSAZUJNFJFRITHUGRUEHGNJTNGOIETU849R574WHGNRJOGNAH789Yy9ushforwuht98374qty", userId: 1)
         XCTAssertNotNil(changeEmailVerifyEndpoint, "Value Should Not Be Nil!")
-        XCTAssertEqual(changeEmailVerifyEndpoint.endpointInfo.path, "change-email/1/verify", "Paht Not Correct!")
+        XCTAssertEqual(changeEmailVerifyEndpoint.endpointInfo.path, "change-email/1/verify", "Path Not Correct!")
         XCTAssertEqual(changeEmailVerifyEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
         XCTAssertNotNil(changeEmailVerifyEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
-        XCTAssertTrue(changeEmailVerifyEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding No Correct!")
+        XCTAssertTrue(changeEmailVerifyEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
         XCTAssertFalse(changeEmailVerifyEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
+    }
+    
+    func testChangePasswordEndpoint() {
+        let changePasswordEndpoint = AuthenticationEndpoint.changePassword(currentPassword: "1234", newPassword: "1235")
+        XCTAssertNotNil(changePasswordEndpoint, "Valie Should Not Be Nil!")
+        XCTAssertEqual(changePasswordEndpoint.endpointInfo.path, "users/change-password", "Path Not Correct!")
+        XCTAssertEqual(changePasswordEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(changePasswordEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(changePasswordEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
+        XCTAssertTrue(changePasswordEndpoint.endpointInfo.requiresAuthorization, "Value Should Be True!")
     }
 }

@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior
     for the user's profile.
 */
-protocol ProfileViewModelProtocol {
+protocol ProfileViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var fullName: DynamicBinder<String> { get }

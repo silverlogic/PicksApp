@@ -41,6 +41,15 @@ final class SettingsViewController: BaseViewController {
 }
 
 
+// MARK: - Navigation
+extension SettingsViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let changePasswordViewController = segue.destination as? ChangePasswordViewController else { return }
+        changePasswordViewController.changePasswordViewModel = ChangePasswordViewModel()
+    }
+}
+
+
 // MARK: - UITableViewDataSource
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -116,12 +125,13 @@ extension SettingsViewController: UITableViewDelegate {
             // @TODO: Call method on view model for sending feedback
             break
         case .changePassword:
-            // @TODO: Call method on view model for chaning password
+            performSegue(withIdentifier: UIStoryboardSegue.goToChangePasswordSegue, sender: nil)
             break
         case .changeEmail:
             showEditAlert(title: NSLocalizedString("SettingsViewController.ChangeEmail", comment: "subtitle"), subtitle: NSLocalizedString("SettingsViewController.ChangeEmailAlert.Message", comment: "subtitle"), textFieldAttributes: [AlertTextFieldAttributes(placeholder: NSLocalizedString("Miscellaneous.NewEmail", comment: "placeholder"), isSecureTextEntry: false, keyboardType: .emailAddress, autocorrectionType: .no, autocapitalizationType: .none, spellCheckingType: .no, returnKeyType: .done)], submitButtonTapped: { [weak self] (enterdValues: [String : String]) in
                 guard let strongSelf = self,
                       let newEmail = enterdValues[NSLocalizedString("Miscellaneous.NewEmail", comment: "placeholder")] else { return }
+                strongSelf.showProgresHud()
                 strongSelf.settingViewModel.changeEmailRequest(newEmail: newEmail)
             })
             break
@@ -145,7 +155,7 @@ fileprivate extension SettingsViewController {
         settingViewModel.changeEmailRequestError.bind { [weak self] (error: BaseError?) in
             guard let strongSelf = self,
                   let emailRequestError = error else { return }
-            strongSelf.showDodoAlert(message: emailRequestError.errorDescription, alertType: .error)
+            strongSelf.dismissProgressHudWithMessage(emailRequestError.errorDescription, iconType: .error, duration: nil)
         }
         tableView.dataSource = self
         tableView.delegate = self

@@ -18,8 +18,8 @@ import SCLAlertView
 class BaseAlertViewController: SCLAlertView {
     
     // MARK: - Attributes
-    fileprivate let titleFont = UIFont.systemFont(ofSize: StyleConstants.defaultBaseAppFontSizeMedium)
-    fileprivate let defaultFont = UIFont.systemFont(ofSize: StyleConstants.defaultBaseAppFontSizeSmall)
+    fileprivate let titleFont: UIFont = .mainMedium
+    fileprivate let defaultFont: UIFont = .mainSmall
     fileprivate let cornerRadius: CGFloat = 3.0
     fileprivate let borderColor = UIColor.lightGray.cgColor
     fileprivate let borderWidth: CGFloat = 1.0
@@ -118,7 +118,7 @@ extension BaseAlertViewController {
                             when the user taps on the button.
     */
     func addActionButton(title: String, buttonTapped: @escaping () -> Void) {
-        _ = addButton(title, backgroundColor: UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue), textColor: .white, showDurationStatus: false, action: buttonTapped)
+        _ = addButton(title, backgroundColor: .main, textColor: .white, showDurationStatus: false, action: buttonTapped)
     }
     
     /**
@@ -131,7 +131,7 @@ extension BaseAlertViewController {
                         subtitle to show.
     */
     func showEditAlert(title: String, subtitle: String) {
-        _ = showEdit(title, subTitle: subtitle, closeButtonTitle: nil, duration: noDurationInterval, colorStyle: StyleConstants.colorValueBaseAppBlue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
+        _ = showEdit(title, subTitle: subtitle, closeButtonTitle: nil, duration: noDurationInterval, colorStyle: UIColor.mainHexValue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
     }
     
     /**
@@ -145,7 +145,7 @@ extension BaseAlertViewController {
     */
     func showErrorAlert(title: String, subtitle: String) {
         let duration = shouldAutoDismiss ? defaultDurationInterval : noDurationInterval
-        _ = showError(title, subTitle: subtitle, closeButtonTitle: NSLocalizedString("Alert.Close", comment: "close"), duration: duration, colorStyle: StyleConstants.colorValueBaseAppBlue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
+        _ = showError(title, subTitle: subtitle, closeButtonTitle: NSLocalizedString("Alert.Close", comment: "close"), duration: duration, colorStyle: UIColor.mainHexValue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
     }
     
     /**
@@ -159,7 +159,7 @@ extension BaseAlertViewController {
     */
     func showInfoAlert(title: String, subtitle: String) {
         let duration = shouldAutoDismiss ? defaultDurationInterval : noDurationInterval
-        _ = showInfo(title, subTitle: subtitle, closeButtonTitle: NSLocalizedString("Alert.Close", comment: "close"), duration: duration, colorStyle: StyleConstants.colorValueBaseAppBlue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
+        _ = showInfo(title, subTitle: subtitle, closeButtonTitle: NSLocalizedString("Alert.Close", comment: "close"), duration: duration, colorStyle: UIColor.mainHexValue, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
     }
 }
 

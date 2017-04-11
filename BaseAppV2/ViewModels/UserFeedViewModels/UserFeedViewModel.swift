@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior
     for displaying users in a feed.
 */
-protocol UserFeedViewModelProtocol {
+protocol UserFeedViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var numberOfUsers: DynamicBinder<Int> { get }

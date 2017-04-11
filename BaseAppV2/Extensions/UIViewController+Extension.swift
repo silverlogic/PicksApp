@@ -258,10 +258,10 @@ extension UIViewController {
     func showImagePicker(numberOfImages: Int, imagesSelected: @escaping (_ images: [UIImage]) -> Void) {
         var imagePickerConfiguration = Configuration()
         imagePickerConfiguration.backgroundColor = .white
-        imagePickerConfiguration.gallerySeparatorColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        imagePickerConfiguration.gallerySeparatorColor = .main
         imagePickerConfiguration.mainColor = .white
-        imagePickerConfiguration.settingsColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
-        imagePickerConfiguration.bottomContainerColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        imagePickerConfiguration.settingsColor = .main
+        imagePickerConfiguration.bottomContainerColor = .main
         imagePickerConfiguration.doneButtonTitle = NSLocalizedString("Miscellaneous.Finish", comment: "button title")
         imagePickerConfiguration.noImagesTitle = NSLocalizedString("ImagePicker.NoImages", comment: "no images title")
         imagePickerConfiguration.requestPermissionTitle = NSLocalizedString("ImagePicker.RequestPermission.Title", comment: "Request title")
@@ -306,7 +306,7 @@ extension UIViewController {
     */
     func showActivityIndicator() {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicatorView.color = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        activityIndicatorView.color = .main
         activityIndicatorView.tag = 99
         activityIndicatorView.center = view.center
         activityIndicatorView.alpha = 0

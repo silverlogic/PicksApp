@@ -58,7 +58,11 @@
 		8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC491E78BA3C007697DF /* BaseNavigationController.swift */; };
 		8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC4B1E78C59F007697DF /* BaseViewController.swift */; };
 		88226DD01E9C0A5B00C6BA85 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */; };
+		88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */; };
+		88226DD51E9C508500C6BA85 /* ChangePasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */; };
 		8823A1CA1E9835B300060EDB /* DynamicBinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */; };
+		882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */; };
+		882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */; };
 		88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */; };
 		8833F63C1E827D990035975C /* loginuseroauth.json in Resources */ = {isa = PBXBuildFile; fileRef = 8833F63B1E827D990035975C /* loginuseroauth.json */; };
 		8833F6411E8290EB0035975C /* SocialAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */; };
@@ -218,7 +222,11 @@
 		8817FC4B1E78C59F007697DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
 		88226DCF1E9C0A5B00C6BA85 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-1.xcdatamodel"; sourceTree = "<group>"; };
+		88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModel.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModelTests.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModelTests.swift; sourceTree = "<group>"; };
 		8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicBinderTests.swift; path = Helpers/DynamicBinderTests.swift; sourceTree = "<group>"; };
+		882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/ViewControllers/SettingViewControllers/ChangePasswordViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Extensions/UIFont+Extension.swift"; sourceTree = "<group>"; };
 		88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModelTests.swift; path = ViewModels/SettingViewModels/SettingViewModelTests.swift; sourceTree = "<group>"; };
 		8833F63B1E827D990035975C /* loginuseroauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuseroauth.json; path = Resources/TestJSON/loginuseroauth.json; sourceTree = "<group>"; };
 		8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialAuthWebViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SocialAuthWebViewControllers/SocialAuthWebViewController.swift; sourceTree = "<group>"; };
@@ -899,6 +907,14 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		882AC6701E9D3350004F85C2 /* ChangePasswordViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */,
+			);
+			name = ChangePasswordViewControllers;
+			sourceTree = "<group>";
+		};
 		8833F63D1E8290290035975C /* SocialAuthWebViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1039,7 @@
 			isa = PBXGroup;
 			children = (
 				88AF2E151E7BBA7C00F93A50 /* SettingViewModel.swift */,
+				88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */,
 			);
 			name = SettingViewModels;
 			sourceTree = "<group>";
@@ -1031,6 +1048,7 @@
 			isa = PBXGroup;
 			children = (
 				88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */,
+				88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */,
 			);
 			name = SettingViewModels;
 			sourceTree = "<group>";
@@ -1064,6 +1082,7 @@
 		88F3FE141E735FE7003162F8 /* SettingViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				882AC6701E9D3350004F85C2 /* ChangePasswordViewControllers */,
 				88F3FE151E736118003162F8 /* SettingsViewController.swift */,
 			);
 			name = SettingViewControllers;
@@ -1138,6 +1157,7 @@
 				88BFD8D21E831FC9000C8A61 /* Array+Extension.swift */,
 				88BFD8D61E83B04A000C8A61 /* ProcessInfo+Extension.swift */,
 				885514DA1E8DB1B3008A82CC /* UICollectionView+Extension.swift */,
+				882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1500,6 +1520,7 @@
 				88AF2E231E7C3CA100F93A50 /* BaseImageView.swift in Sources */,
 				88BFD8E01E845746000C8A61 /* ProfileViewModel.swift in Sources */,
 				885514DB1E8DB1B3008A82CC /* UICollectionView+Extension.swift in Sources */,
+				882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */,
 				880414061E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift in Sources */,
 				88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */,
 				8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */,
@@ -1545,6 +1566,7 @@
 				8801FDFF1E723DD900F54932 /* UIStoryboard+Extension.swift in Sources */,
 				8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */,
 				88F3FE181E740741003162F8 /* UIView+Extension.swift in Sources */,
+				88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */,
 				88AF2E0B1E7B9B0300F93A50 /* NibLoadableView.swift in Sources */,
 				8817FC141E76874C007697DF /* SignupPasswordViewController.swift in Sources */,
 				88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */,
@@ -1566,6 +1588,7 @@
 				88FD2CE61E89CCDE002D1D00 /* UpdateProfileViewController.swift in Sources */,
 				88FDF25E1E8D534C008F5395 /* UserEndpoint.swift in Sources */,
 				8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */,
+				882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */,
 				323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1575,6 +1598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8817FC341E77141E007697DF /* LoginViewModelTests.swift in Sources */,
+				88226DD51E9C508500C6BA85 /* ChangePasswordViewModelTests.swift in Sources */,
 				88FBC28C1E6E8F7A003AEEC4 /* UserTests.swift in Sources */,
 				8804551C1E667CCC00D4A499 /* ConfigurationManagerTests.swift in Sources */,
 				88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */,

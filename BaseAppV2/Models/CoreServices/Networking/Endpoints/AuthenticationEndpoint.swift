@@ -27,6 +27,7 @@ enum AuthenticationEndpoint: BaseEndpoint {
     case changeEmailRequest(newEmail: String)
     case changeEmailConfirm(token: String, userId: Int)
     case changeEmailVerify(token: String, userId: Int)
+    case changePassword(currentPassword: String, newPassword: String)
     
     var endpointInfo: BaseEndpointInfo {
         let path: String
@@ -118,6 +119,13 @@ enum AuthenticationEndpoint: BaseEndpoint {
             parameters = ["token": token]
             parameterEncoding = JSONEncoding()
             requiresAuthorization = false
+            break
+        case let .changePassword(currentPassword, newPassword):
+            path = "users/change-password"
+            requestMethod = .post
+            parameters = ["current_password": currentPassword, "new_password": newPassword]
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = true
             break
         }
         return BaseEndpointInfo(path: path, requestMethod: requestMethod, parameters: parameters, parameterEncoding: parameterEncoding, requiresAuthorization: requiresAuthorization)

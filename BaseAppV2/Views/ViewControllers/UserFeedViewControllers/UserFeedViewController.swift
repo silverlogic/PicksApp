@@ -94,7 +94,7 @@ fileprivate extension UserFeedViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue)
+        refreshControl.tintColor = .main
         refreshControl.addTarget(self, action: #selector(fetchNextPageOfUsers), for: .valueChanged)
         refreshControl.triggerVerticalOffset = 50
         collectionView.bottomRefreshControl = refreshControl

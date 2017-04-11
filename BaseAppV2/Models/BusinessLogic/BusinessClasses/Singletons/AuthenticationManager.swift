@@ -10,7 +10,8 @@ import Foundation
 
 /**
     A singleton responsible for login, signup,
-    social authentication and forgot password operations.
+    social authentication, forgot password and 
+    change password operations.
 */
 final class AuthenticationManager {
     
@@ -451,6 +452,32 @@ extension AuthenticationManager {
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.changeEmailVerify(token: token, userId: userId))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+    
+    /**
+        Changes the current user's password.
+     
+        - Parameters:
+            - currentPassword: A `String` representing the current password the user
+                               uses to login.
+            - newPassword: A `String` representing the new password the user wishes to
+                           use.
+            - success: A closure that gets invoked when changing the password was successful.
+            - failure: A closure that gets invoked when changing the password failed. Passes
+                       a `BaseError` object that contains the error that occured.
+    */
+    func changePassword(currentPassword: String, newPassword: String, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.changePassword(currentPassword: currentPassword, newPassword: newPassword))
             .then(on: DispatchQueue.main, execute: { () -> Void in
                 success()
             })

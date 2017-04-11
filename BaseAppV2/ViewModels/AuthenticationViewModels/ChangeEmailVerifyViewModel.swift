@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior
     for change email verify.
 */
-protocol ChangeEmailVerifyViewModelProtocol {
+protocol ChangeEmailVerifyViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var changeEmailVerifyError: DynamicBinder<BaseError?> { get }
