@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior for
     signup with email.
 */
-protocol SignUpViewModelProtocol {
+protocol SignUpViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var email: String { get set }

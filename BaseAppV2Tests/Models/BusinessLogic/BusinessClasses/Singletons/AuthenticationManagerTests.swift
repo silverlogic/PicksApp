@@ -194,4 +194,15 @@ extension AuthenticationManagerTests {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testChangePassword() {
+        let changePasswordExpectation = expectation(description: "Test Change Password Expectation")
+        sharedManager.changePassword(currentPassword: "1234", newPassword: "1235", success: { 
+            changePasswordExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Doing Change Password!")
+            changePasswordExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

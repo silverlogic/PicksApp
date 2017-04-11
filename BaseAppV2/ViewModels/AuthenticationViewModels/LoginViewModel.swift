@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior
     for login.
 */
-protocol LoginViewModelProtocol {
+protocol LoginViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var email: String { get set }

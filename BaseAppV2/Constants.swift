@@ -94,19 +94,10 @@ enum PushNotificationConstants {
 */
 enum StyleConstants {
     
-    // MARK: - Color Constants
-    static let colorValueBaseAppBlue: UInt = 0x3D8DD4
-    
-    
-    // MARK: - Font Size Constants
-    static let defaultBaseAppFontSizeSmall: CGFloat = 10.0
-    static let defaultBaseAppFontSizeMedium: CGFloat = 17.0
-    static let defaultBaseAppFontSizeLarge: CGFloat = 25.0
-    
-    
     // MARK: - Keyboard Constants
     static let keyboardStyle: UIKeyboardAppearance = .default
 }
+
 
 /**
     An enum that defines constants used

@@ -12,7 +12,7 @@ import Foundation
     A protocol for defining state and behavior
     for forgot password.
 */
-protocol ForgotPasswordViewModelProtocol {
+protocol ForgotPasswordViewModelProtocol: class {
     
     // MARK: - Instance Attributes
     var email: String { get set }

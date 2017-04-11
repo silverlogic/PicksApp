@@ -111,15 +111,14 @@ fileprivate extension AppDelegate {
     
     /// Configures default UI components used universally.
     fileprivate func configureUIComponents() {
-        var fontSize = StyleConstants.defaultBaseAppFontSizeMedium
+        var font = UIFont.mainMedium
         if UIDevice.current.userInterfaceIdiom == .pad {
-            fontSize = StyleConstants.defaultBaseAppFontSizeLarge
+            font = .mainLarge
         }
-        let font = UIFont.systemFont(ofSize: fontSize)
         SVProgressHUD.setFont(font)
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setForegroundColor(UIColor.colorFromHexValue(StyleConstants.colorValueBaseAppBlue))
+        SVProgressHUD.setForegroundColor(.main)
         SVProgressHUD.setBackgroundColor(.white)
         NetworkActivityIndicatorManager.shared.isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = false
