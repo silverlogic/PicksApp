@@ -26,6 +26,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * Push Notification registration and management
 * Email login
 * Email signup
+* Change password
 * Session management
 * Handles switching between application flow and authentication flow
 * Basic user feed that can be customized
