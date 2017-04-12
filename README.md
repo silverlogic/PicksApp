@@ -41,6 +41,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * Dynamic binding of values for real time updates without the need for using `Notification` or KVO
 * Unit tests for app logic used
 * MVVM (Model-View-View Model) Architecture for easy maintenance, scalability, and testing
+* Auto deployment to [Fabric](https://fabric.io/) and iTunes Connect using [Fastlane](https://fastlane.tools/)
 
 ## Requirements ##
 
