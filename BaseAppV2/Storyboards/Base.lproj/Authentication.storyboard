@@ -152,6 +152,7 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CWh-9U-s3J" customClass="BaseTextField" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="307" height="63"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="next"/>
@@ -161,6 +162,7 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Pa-aC-rf9" customClass="BaseTextField" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="84" width="307" height="64"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="go" secureTextEntry="YES"/>
@@ -185,7 +187,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oir-SK-Gxx" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="18" y="164" width="287" height="63.5"/>
                                         <color key="backgroundColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration" label="Login - Button"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Log On">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

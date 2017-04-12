@@ -7,56 +7,35 @@
 //
 
 import XCTest
-import OHHTTPStubs
 
 class BaseAppV2UITests: XCTestCase {
-}
-
-
-// MARK: - Setup & Tear Down
-extension BaseAppV2UITests {
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        XCUIApplication().launch()
-        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/users/me") && isMethodGET(), response: { _ in
-            guard let path = OHPathForFile("currentuser.json", type(of: self)) else {
-                preconditionFailure("Could Not Find Test File!")
-            }
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
-        })
-        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/users/210") && isMethodPATCH(), response: { _ in
-            guard let path = OHPathForFile("updateuser.json", type(of: self)) else {
-                preconditionFailure("Could Not Find Test File!")
-            }
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
-        })
-        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/login") && isMethodPOST(), response: { _ in
-            guard let path = OHPathForFile("loginuser.json", type(of: self)) else {
-                preconditionFailure("Could Not Find Test File!")
-            }
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
-        })
-        stub(condition: isHost((URL(string: "https://api.baseapp.tsl.io/v1/")?.host)!) && isPath("/v1/register") && isMethodPOST(), response: { _ in
-            guard let path = OHPathForFile("registeruser.json", type(of: self)) else {
-                preconditionFailure("Could Not Find Test File!")
-            }
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
-        })
-    }
     
-    override func tearDown() {
-        super.tearDown()
-        OHHTTPStubs.removeAllStubs()
-    }
-}
-
-
-// MARK: - Flow Tests
-extension BaseAppV2UITests {
-    func testSignupFlow() {
-    }
-    
-    func testLoginFlow() {
+    // MARK: - Fastlane Snapshot
+    func testFastlaneSnapshot() {
+        let app = XCUIApplication()
+        setupSnapshot(app)
+        app.launch()
+        
+        let emailtextfieldTextField = app.textFields["emailTextField"]
+        emailtextfieldTextField.tap()
+        emailtextfieldTextField.typeText("eg@tsl.io")
+        app.buttons["Next:"].tap()
+        let passwordtextfieldSecureTextField = app.secureTextFields["passwordTextField"]
+        let moreNumbersKey = app.keys["more, numbers"]
+        moreNumbersKey.tap()
+        passwordtextfieldSecureTextField.typeText("1235")
+        snapshot("Login")
+        app.buttons["Go"].tap()
+        
+        app.tables["Empty list"].tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 5).children(matching: .other).element.children(matching: .image).element.tap()
+        snapshot("UserFeed")
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Profile"].tap()
+        snapshot("Profile")
+        tabBarsQuery.buttons["Settings"].tap()
+        snapshot("Settings")
+        app.tables.staticTexts["Logout"].tap()
     }
 }

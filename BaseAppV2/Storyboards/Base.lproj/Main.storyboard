@@ -69,7 +69,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bob Saget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK9-4s-3bw">
-                                                    <rect key="frame" x="8" y="22" width="398" height="33"/>
+                                                    <rect key="frame" x="8" y="22" width="359" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="33" id="fRC-fV-nXb"/>
                                                     </constraints>
@@ -78,7 +78,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="testuser@tsl.io" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyb-Hw-53p">
-                                                    <rect key="frame" x="8" y="56" width="398" height="26"/>
+                                                    <rect key="frame" x="8" y="56" width="359" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="QQc-4y-p8q"/>
                                                     </constraints>
@@ -499,7 +499,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWV-p4-Jhb">
-                                                    <rect key="frame" x="44" y="8" width="283" height="29"/>
+                                                    <rect key="frame" x="44" y="8" width="244" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="T6T-ZQ-T6Z"/>
                                                     </constraints>
@@ -508,7 +508,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebs-PG-PMG">
-                                                    <rect key="frame" x="335" y="8" width="71" height="29"/>
+                                                    <rect key="frame" x="296" y="8" width="71" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="71" id="jEF-WI-9kl"/>
                                                         <constraint firstAttribute="height" constant="29" id="vbR-cB-vqF"/>
