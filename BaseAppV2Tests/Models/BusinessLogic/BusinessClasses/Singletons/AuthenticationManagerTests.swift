@@ -205,4 +205,15 @@ extension AuthenticationManagerTests {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testConfirmEmail() {
+        let confirmEmailExpectation = expectation(description: "Test Confirm Email Expectation")
+        sharedManager.confirmEmail(token: "HG@#@BKJBHbJ@Bhuihuhgig23223243", userId: 1, success: { 
+            confirmEmailExpectation.fulfill()
+        }) { (error: BaseError) in
+            XCTFail("Error Doing Confirm Email!")
+            confirmEmailExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

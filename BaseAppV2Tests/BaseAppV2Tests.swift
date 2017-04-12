@@ -90,6 +90,9 @@ class BaseAppV2Tests: XCTestCase {
         stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users/change-password") && isMethodPOST(), response: { _ in
             return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
         })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/v1/users/1/confirm-email") && isMethodPOST(), response: { _ in
+            return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
     }
     
     override func tearDown() {

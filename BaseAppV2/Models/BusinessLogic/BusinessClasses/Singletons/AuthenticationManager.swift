@@ -486,4 +486,32 @@ extension AuthenticationManager {
             })
         }
     }
+    
+    /**
+        Confirms the user's email from signup.
+     
+        - Parameters:
+            - token: A `String` representing the token received from the
+                     deep link for confirm email.
+            - userId: An `Int` representing the user Id of the user that
+                      confirmed their email.
+            - success: A closure that gets invoked when confirming was
+                       successful.
+            - failure: A closure that gets invoked when confirming failed.
+                       Passes a `BaseError` object that contains the error
+                       that occured.
+    */
+    func confirmEmail(token: String, userId: Int, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(AuthenticationEndpoint.confirmEmail(token: token, userId: userId))
+            .then(on: DispatchQueue.main, execute: { () -> Void in
+                success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
 }

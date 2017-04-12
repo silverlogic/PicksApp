@@ -28,7 +28,6 @@ class BaseAppV2UITests: XCTestCase {
         app.buttons["Go"].tap()
         
         app.tables["Empty list"].tap()
-        app.collectionViews.children(matching: .cell).element(boundBy: 5).children(matching: .other).element.children(matching: .image).element.tap()
         snapshot("UserFeed")
         
         let tabBarsQuery = app.tabBars

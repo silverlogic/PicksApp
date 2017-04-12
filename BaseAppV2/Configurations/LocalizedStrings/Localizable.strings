@@ -54,3 +54,6 @@
 // User
 "User.Unidentified" = "Unidentified";
 "User.Name" = "Name";
+
+// Confirm Email
+"ConfirmEmail.EmailConfirmed" = "Your email is now confirmed. 🎉";

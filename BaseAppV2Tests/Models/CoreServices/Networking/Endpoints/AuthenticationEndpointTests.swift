@@ -147,4 +147,14 @@ final class AuthenticationEndpointTests: BaseAppV2Tests {
         XCTAssertTrue(changePasswordEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
         XCTAssertTrue(changePasswordEndpoint.endpointInfo.requiresAuthorization, "Value Should Be True!")
     }
+    
+    func testConfirmEmailEndpoint() {
+        let confirmEmailEndpoint = AuthenticationEndpoint.confirmEmail(token: "fjfheahduianSAZUJNFJFRITHUGRUEHGNJTNGOIETU849R574WHGNRJOGNAH789Yy9ushforwuht98374qty", userId: 1)
+        XCTAssertNotNil(confirmEmailEndpoint, "Value Should Not Be Nil!")
+        XCTAssertEqual(confirmEmailEndpoint.endpointInfo.path, "users/1/confirm-email", "Path Not Correct!")
+        XCTAssertEqual(confirmEmailEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(confirmEmailEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(confirmEmailEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
+        XCTAssertFalse(confirmEmailEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
+    }
 }

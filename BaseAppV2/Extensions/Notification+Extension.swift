@@ -18,4 +18,5 @@ extension Notification.Name {
     static let ShowTutorial = Notification.Name("ShowTutorial")
     static let ChangeEmailConfirm = Notification.Name("ChangeEmailConfirm")
     static let ChangeEmailVerify = Notification.Name("ChangeEmailVerify")
+    static let ConfirmEmail = Notification.Name("ConfirmEmail")
 }
