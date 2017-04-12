@@ -151,6 +151,7 @@ extension CoreDataStack {
             try _managedObjectContext.save()
             success()
         } catch {
+            AppLogger.shared.logMessage(error.localizedDescription, for: .error)
             failure()
         }
     }

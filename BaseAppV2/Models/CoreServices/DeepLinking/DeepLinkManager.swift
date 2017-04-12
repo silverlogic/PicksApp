@@ -64,6 +64,12 @@ extension DeepLinkManager {
                 NotificationCenter.default.post(name: .ChangeEmailVerify, object: ["token": token, "userId": userId])
                 return
             }
+            if let type = parameters["type"] as? String, type == "confirm-email" {
+                guard let token = parameters["token"] as? String,
+                      let userId = parameters["user"] as? Int else { return }
+                NotificationCenter.default.post(name: .ConfirmEmail, object: ["token": token, "userId": userId])
+                return
+            }
         }
     }
     

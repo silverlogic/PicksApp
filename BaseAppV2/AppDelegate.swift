@@ -41,6 +41,7 @@ extension AppDelegate: UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(loadTutorialFlow), name: .ShowTutorial, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeEmailConfirm(notification:)), name: .ChangeEmailConfirm, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadChangeEmailVerifyFlow(notification:)), name: .ChangeEmailVerify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmEmail(notification:)), name: .ConfirmEmail, object: nil)
         window = UIWindow(frame: UIScreen.main.bounds)
         setInitialFlow()
         configureBusinessLogic(launchOptions: launchOptions)
@@ -271,5 +272,39 @@ fileprivate extension AppDelegate {
         navigationController.view.addSubview(snapshot)
         window?.rootViewController = navigationController
         UIView.performRootViewControllerAnimation(snapshot: snapshot)
+    }
+    
+    /**
+        Performs confirm email.
+     
+        - Note: In `notification`, it contains the token
+                and the user Id received from confirm email
+                deep link.
+        
+        - Parameter notification: A `Notification` representing
+                                  the notification that was fired
+                                  for confirm email deep linking.
+    */
+    @objc fileprivate func confirmEmail(notification: Notification) {
+        guard let parameters = notification.object as? [String: Any],
+              let token = parameters["token"] as? String,
+              let userId = parameters["userId"] as? Int else { return }
+        AuthenticationManager.shared.confirmEmail(token: token, userId: userId, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.window?.rootViewController?.showDodoAlert(message: NSLocalizedString("ConfirmEmail.EmailConfirmed", comment: "alert message"), alertType: .success)
+            if let _ = SessionManager.shared.authorizationToken {
+                SessionManager.shared.currentUser.value?.emailConfirmed = true
+                CoreDataStack.shared.saveCurrentState(success: {}, failure: {
+                    // Reload user
+                    AuthenticationManager.shared.currentUser(success: {}, failure: { (error: BaseError) in
+                        // Logout user
+                        SessionManager.shared.logout()
+                    })
+                })
+            }
+        }) { [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            strongSelf.window?.rootViewController?.showDodoAlert(message: error.errorDescription, alertType: .error)
+        }
     }
 }

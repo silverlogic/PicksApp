@@ -93,7 +93,7 @@ platform :ios do
 
     # Generate screenshots
     # UITest will need to change for screenshots the client wants
-    snapshot
+    snapshot(scheme: "BaseAppV2UITests")
 
     # Generate archive
     # Value scheme will need to change for the client
