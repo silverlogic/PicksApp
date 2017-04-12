@@ -1,0 +1,122 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.26.1"
+
+default_platform :ios
+
+platform :ios do
+
+  # Called before requested lane runs
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    cocoapods
+  end
+
+  # Avaliable Lanes
+  desc "Deploy Staging Build To Fabric"
+  lane :fabric do
+
+    # Create the application on Apple Developer Portal
+    # Values 'app_identifier' and 'app_name' will change for Silverlogic development
+    produce(username: "apple@tsl.io",
+            app_identifier: "com.silverlogic.BaseAppV2",
+            app_name: "BaseAppV2",
+            team_id: "4SB3F2S2K3",
+            skip_itc: true)
+
+    # Generate signing certificate
+    cert(force: true)
+
+    # Generate provisioning profiles
+    # Value 'app_identifier' will change for Silverlogic development
+    sigh(force: true,
+         adhoc: true,
+         app_identifier: "com.silverlogic.BaseAppV2")
+    sigh(force: true,
+         development: true,
+         app_identifier: "com.silverlogic.BaseAppV2")
+
+    # Generate archive
+    # Value 'scheme' will need to change for the client
+    gym(scheme: "BaseAppV2", export_method: "ad-hoc")
+
+    # Get release notes
+    # Uncomment line bellow for forks
+    # release_notes = sh("get_latest_release_notes.sh")
+
+    # Upload to Fabric
+    # Uncomment block bellow to insert release notes
+    # Value `groups` would change for client using alias
+    crashlytics(api_token: "ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748",
+                build_secret: "07b07385e052fb585322f9720d20640fb02764329cf8a6da6f325bdb56e9a254",
+                groups: ["fav","loki","sparkle"])
+    # crashlytics(api_token: "ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748",
+    #             build_secret: "07b07385e052fb585322f9720d20640fb02764329cf8a6da6f325bdb56e9a254",
+    #             notes: release_notes,
+    #             groups: "FAVIO", "LOKI", "SPARKLE")
+
+  end
+
+  desc "Deploy Production Build To iTunes Connect"
+  lane :itunes_connect do
+
+    # Create the application on iTunes Connect and Apple Developer Portal
+    # Values will need to change for the client
+    produce(username: "apple@tsl.io",
+            app_identifier: "com.silverlogic.BaseAppV2",
+            app_name: "BaseAppV2",
+            team_id: "4SB3F2S2K3")
+
+    # Generate signing certificate
+    # Values will need to change for the client
+    cert(force: true,
+         username: "apple@tsl.io",
+         team_id: "4SB3F2S2K3")
+
+    # Generate provisioning profile
+    # Values will need to change for the client
+    sigh(force: true,
+         app_identifier: "com.silverlogic.BaseAppV2",
+         username: "apple@tsl.io",
+         team_id: "4SB3F2S2K3")
+
+    # Generate screenshots
+    # UITest will need to change for screenshots the client wants
+    snapshot
+
+    # Generate archive
+    # Value scheme will need to change for the client
+    gym(scheme: "BaseAppV2")
+
+    # Send to iTunes Connect and submit for review
+    deliver(username: "apple@tsl.io",
+            app_identifier: "com.silverlogic.BaseAppV2",
+            submit_for_review: true)
+
+  end
+
+  # Called if requested lane runs successfully
+  after_all do |lane|
+    if lane == :fabric
+      slack(message: "Successfully deployed to Fabric! 🎉")
+    else
+      slack(message: "Successfully deployed to iTunes Connect and in review! 🎉")
+    end
+  end
+
+  # Called if requested lane failed
+  error do |lane, exception|
+    slack(message: exception.message, success: false)
+  end
+end

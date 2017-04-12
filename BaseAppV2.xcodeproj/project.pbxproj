@@ -50,10 +50,6 @@
 		8817FC301E7707BB007697DF /* AuthenticationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC2F1E7707BB007697DF /* AuthenticationManagerTests.swift */; };
 		8817FC341E77141E007697DF /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC331E77141E007697DF /* LoginViewModelTests.swift */; };
 		8817FC361E7716E8007697DF /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */; };
-		8817FC3A1E781223007697DF /* currentuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC391E781223007697DF /* currentuser.json */; };
-		8817FC3C1E78125C007697DF /* registeruser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC3B1E78125C007697DF /* registeruser.json */; };
-		8817FC3E1E781286007697DF /* loginuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC3D1E781286007697DF /* loginuser.json */; };
-		8817FC401E7812C7007697DF /* updateuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 8817FC3F1E7812C7007697DF /* updateuser.json */; };
 		8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC451E782C63007697DF /* BaseAlertViewController.swift */; };
 		8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC491E78BA3C007697DF /* BaseNavigationController.swift */; };
 		8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC4B1E78C59F007697DF /* BaseViewController.swift */; };
@@ -61,6 +57,7 @@
 		88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */; };
 		88226DD51E9C508500C6BA85 /* ChangePasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */; };
 		8823A1CA1E9835B300060EDB /* DynamicBinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */; };
+		882760391E9E8060000E4098 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882760381E9E8060000E4098 /* SnapshotHelper.swift */; };
 		882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */; };
 		882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */; };
 		88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */; };
@@ -213,10 +210,6 @@
 		8817FC2F1E7707BB007697DF /* AuthenticationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationManagerTests.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/AuthenticationManagerTests.swift; sourceTree = "<group>"; };
 		8817FC331E77141E007697DF /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = ViewModels/AuthenticationViewModels/LoginViewModelTests.swift; sourceTree = "<group>"; };
 		8817FC351E7716E8007697DF /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = ViewModels/AuthenticationViewModels/SignUpViewModelTests.swift; sourceTree = "<group>"; };
-		8817FC391E781223007697DF /* currentuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currentuser.json; path = Resources/TestJSON/currentuser.json; sourceTree = "<group>"; };
-		8817FC3B1E78125C007697DF /* registeruser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = registeruser.json; path = Resources/TestJSON/registeruser.json; sourceTree = "<group>"; };
-		8817FC3D1E781286007697DF /* loginuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuser.json; path = Resources/TestJSON/loginuser.json; sourceTree = "<group>"; };
-		8817FC3F1E7812C7007697DF /* updateuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = updateuser.json; path = Resources/TestJSON/updateuser.json; sourceTree = "<group>"; };
 		8817FC451E782C63007697DF /* BaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAlertViewController.swift; path = Views/SubViews/UIAlertViewControllers/BaseAlertViewController.swift; sourceTree = "<group>"; };
 		8817FC491E78BA3C007697DF /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = Views/ViewControllers/BaseNavigationController.swift; sourceTree = "<group>"; };
 		8817FC4B1E78C59F007697DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +218,7 @@
 		88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModel.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModelTests.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModelTests.swift; sourceTree = "<group>"; };
 		8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicBinderTests.swift; path = Helpers/DynamicBinderTests.swift; sourceTree = "<group>"; };
+		882760381E9E8060000E4098 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/ViewControllers/SettingViewControllers/ChangePasswordViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Extensions/UIFont+Extension.swift"; sourceTree = "<group>"; };
 		88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModelTests.swift; path = ViewModels/SettingViewModels/SettingViewModelTests.swift; sourceTree = "<group>"; };
@@ -543,9 +537,8 @@
 		880454E51E65E32C00D4A499 /* BaseAppV2UITests */ = {
 			isa = PBXGroup;
 			children = (
-				8817FC411E7812ED007697DF /* ViewControllers */,
-				8817FC371E7811DA007697DF /* Resources */,
 				880454E61E65E32C00D4A499 /* BaseAppV2UITests.swift */,
+				882760381E9E8060000E4098 /* SnapshotHelper.swift */,
 				880454E81E65E32C00D4A499 /* Info.plist */,
 			);
 			path = BaseAppV2UITests;
@@ -782,70 +775,12 @@
 			name = AuthenticationViewModels;
 			sourceTree = "<group>";
 		};
-		8817FC371E7811DA007697DF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8817FC381E7811F1007697DF /* TestJSON */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		8817FC381E7811F1007697DF /* TestJSON */ = {
-			isa = PBXGroup;
-			children = (
-				8817FC391E781223007697DF /* currentuser.json */,
-				8817FC3B1E78125C007697DF /* registeruser.json */,
-				8817FC3D1E781286007697DF /* loginuser.json */,
-				8817FC3F1E7812C7007697DF /* updateuser.json */,
-			);
-			name = TestJSON;
-			sourceTree = "<group>";
-		};
-		8817FC411E7812ED007697DF /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				8817FC4D1E78C854007697DF /* SettingViewControllers */,
-				8817FC4E1E78C85E007697DF /* ProfileViewControllers */,
-				8817FC4F1E78C86E007697DF /* AuthenticationViewControllers */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
 		8817FC441E7829B8007697DF /* UIAlertControllers */ = {
 			isa = PBXGroup;
 			children = (
 				8817FC451E782C63007697DF /* BaseAlertViewController.swift */,
 			);
 			name = UIAlertControllers;
-			sourceTree = "<group>";
-		};
-		8817FC4D1E78C854007697DF /* SettingViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SettingViewControllers;
-			sourceTree = "<group>";
-		};
-		8817FC4E1E78C85E007697DF /* ProfileViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ProfileViewControllers;
-			sourceTree = "<group>";
-		};
-		8817FC4F1E78C86E007697DF /* AuthenticationViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				8817FC501E78C88B007697DF /* SignupViewControllers */,
-			);
-			name = AuthenticationViewControllers;
-			sourceTree = "<group>";
-		};
-		8817FC501E78C88B007697DF /* SignupViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SignupViewControllers;
 			sourceTree = "<group>";
 		};
 		88226DC71E9C049100C6BA85 /* BusinessClasses */ = {
@@ -1345,10 +1280,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8817FC3A1E781223007697DF /* currentuser.json in Resources */,
-				8817FC401E7812C7007697DF /* updateuser.json in Resources */,
-				8817FC3E1E781286007697DF /* loginuser.json in Resources */,
-				8817FC3C1E78125C007697DF /* registeruser.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1632,6 +1563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				880454E71E65E32C00D4A499 /* BaseAppV2UITests.swift in Sources */,
+				882760391E9E8060000E4098 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
