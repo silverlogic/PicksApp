@@ -47,7 +47,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 
 * iOS 9.0+
 * Xcode 8.3+
-* CocoaPods 1.2.0
+* CocoaPods 1.2.1
 * Swift 3.1+
 * Ruby 2.3.1
 
