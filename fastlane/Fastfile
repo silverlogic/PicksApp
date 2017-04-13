@@ -37,7 +37,7 @@ platform :ios do
 
     # Generate provisioning profiles
     # Value 'app_identifier' will change for Silverlogic development
-    register_devices(devices_file: "./devices.txt")
+    #register_devices(devices_file: "./devices.txt")
     match(type: "adhoc",
           force_for_new_devices: true,
           app_identifier: "com.silverlogic.BaseAppV2")
