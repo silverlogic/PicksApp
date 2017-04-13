@@ -21,7 +21,14 @@ final class ConfigurationManager {
     // MARK: - Public Instance Attributes
     
     /// The current environment mode of the application.
-    var environmentMode = EnvironmentMode.staging
+    lazy var environmentMode: EnvironmentMode = {
+        guard let infoDictionary = Bundle.main.infoDictionary,
+              let environmentType = infoDictionary["Environment_Type"] as? Int,
+              let environment = EnvironmentMode(rawValue: environmentType) else { return .production }
+        return environment
+    }()
+    
+    /// The version number of the application.
     lazy var versionNumber: String = {
         guard let infoDictionary = Bundle.main.infoDictionary,
               let shortVersionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "" }
@@ -158,7 +165,7 @@ fileprivate extension ConfigurationManager {
 
 
 // MARK: - Environment Mode
-enum EnvironmentMode {
+enum EnvironmentMode: Int {
     case local
     case staging
     case stable
