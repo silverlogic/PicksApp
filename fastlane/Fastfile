@@ -28,7 +28,7 @@ platform :ios do
   lane :fabric do
 
     # Set password not store in keychain
-    ENV["FASTLANE_DONT_STORE_PASSWORD"] = "silver123"
+    ENV["FASTLANE_DONT_STORE_PASSWORD"] = "appTsl04."
 
     # Create the application on Apple Developer Portal
     # Values 'app_identifier' and 'app_name' will change for Silverlogic development
@@ -76,7 +76,7 @@ platform :ios do
 
     # Set password not store in keychain
     # Value will need to change for the client
-    ENV["FASTLANE_DONT_STORE_PASSWORD"] = "silver123"
+    ENV["FASTLANE_DONT_STORE_PASSWORD"] = "appTsl04."
 
     # Create the application on iTunes Connect and Apple Developer Portal
     # Values will need to change for the client
