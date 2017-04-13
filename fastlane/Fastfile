@@ -35,18 +35,12 @@ platform :ios do
             team_id: "4SB3F2S2K3",
             skip_itc: true)
 
-    # Generate signing certificate
-    cert()
-    cert(development: true)
-
     # Generate provisioning profiles
     # Value 'app_identifier' will change for Silverlogic development
-    sigh(force: true,
-         adhoc: true,
-         app_identifier: "com.silverlogic.BaseAppV2")
-    sigh(force: true,
-         development: true,
-         app_identifier: "com.silverlogic.BaseAppV2")
+    register_devices(devices_file: "./devices.txt")
+    match(type: "adhoc",
+          force_for_new_devices: true,
+          app_identifier: "com.silverlogic.BaseAppV2")
 
     # Generate archive
     # Value 'scheme' will need to change for the client
