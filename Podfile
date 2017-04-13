@@ -17,7 +17,7 @@ target 'BaseAppV2' do
     pod 'KYNavigationProgress'
     pod 'Onboard'
     pod 'Raccoon'
-    pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
+    pod 'SCLAlertView'
     pod 'SVProgressHUD'
     pod 'SwiftyBeaver'
     pod 'UITextField+Shake', '~> 1.1'
