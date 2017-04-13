@@ -86,5 +86,7 @@
 		<key>test</key>
 		<string>key_test_pmEf8Pqmg05t4N1MamZw4egeyxahRfTj</string>
 	</dict>
+	<key>Environment_Type</key>
+	<integer>1</integer>
 </dict>
 </plist>
