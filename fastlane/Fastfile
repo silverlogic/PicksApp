@@ -37,6 +37,7 @@ platform :ios do
 
     # Generate signing certificate
     cert(force: true)
+    cert(force: true, development: true)
 
     # Generate provisioning profiles
     # Value 'app_identifier' will change for Silverlogic development
@@ -81,6 +82,10 @@ platform :ios do
     # Generate signing certificate
     # Values will need to change for the client
     cert(force: true,
+         username: "apple@tsl.io",
+         team_id: "4SB3F2S2K3")
+    cert(force: true,
+         development: true,
          username: "apple@tsl.io",
          team_id: "4SB3F2S2K3")
 
