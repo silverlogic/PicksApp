@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.26.1"
+fastlane_version "2.27.0"
 
 default_platform :ios
 
@@ -35,21 +35,20 @@ platform :ios do
             team_id: "4SB3F2S2K3",
             skip_itc: true)
 
-    # Generate signing certificate
-    cert
-    cert(development: true)
-
-    # Generate provisioning profiles
-    # Value 'app_identifier' will change for Silverlogic development
-    sigh(force: true,
-         app_identifier: "com.silverlogic.BaseAppV2",
-         username: "apple@tsl.io",
-         team_id: "4SB3F2S2K3")
-    sigh(force: true,
-         adhoc: true,
-         app_identifier: "com.silverlogic.BaseAppV2",
-         username: "apple@tsl.io",
-         team_id: "4SB3F2S2K3")
+    # Generate provisioning profiles and certificates
+    # Value `app_identifier` and `git_branch` will change for Silverlogic development
+    # For parameter `git_branch` it would be '<NameOfApp>-development'
+    match(type: "adhoc",
+          app_identifier: "com.silverlogic.BaseAppV2",
+          git_branch: "BaseAppV2-development",
+          username: "apple@tsl.io",
+          force_for_new_devices: true,
+          readonly: true)
+    match(app_identifier: "com.silverlogic.BaseAppV2",
+          git_branch: "BaseAppV2-development",
+          username: "apple@tsl.io",
+          force_for_new_devices: true,
+          readonly: true)
 
 
     # Generate archive
@@ -83,20 +82,14 @@ platform :ios do
             app_name: "BaseAppV2",
             team_id: "4SB3F2S2K3")
 
-    # Generate signing certificate
-    # Values will need to change for the client
-    cert(username: "apple@tsl.io",
-         team_id: "4SB3F2S2K3")
-    cert(development: true,
-         username: "apple@tsl.io",
-         team_id: "4SB3F2S2K3")
-
-    # Generate provisioning profile
-    # Values will need to change for the client
-    sigh(force: true,
-         app_identifier: "com.silverlogic.BaseAppV2",
-         username: "apple@tsl.io",
-         team_id: "4SB3F2S2K3")
+    # Generate provisioning profiles and certificates
+    # Value `app_identifier`, `branch`, and `username` will change for client
+    # For parameter `git_branch` it would be '<NameOfApp>-production'
+    match(git_branch: "BaseAppV2-development",
+          app_identifier: "com.silverlogic.BaseAppV2",
+          username: "apple@tsl.io",
+          force_for_new_devices: true,
+          readonly: true)
 
     # Generate screenshots
     # UITest will need to change for screenshots the client wants
