@@ -1,7 +1,5 @@
 git_url "ssh://git@bitbucket.org/silverlogic/baseapp-ios-provisioning-profiles-certificates.git"
 
-type "development" # The default type, can be: appstore, adhoc, enterprise or development
-
 app_identifier "com.silverlogic.BaseAppV2"
 username "apple@tsl.io" # Your Apple Developer Portal username
 
