@@ -42,6 +42,7 @@ platform :ios do
           git_branch: "BaseAppV2-development",
           username: "apple@tsl.io",
           force_for_new_devices: true,
+          type: "adhoc",
           readonly: true)
 
 
