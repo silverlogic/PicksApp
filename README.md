@@ -50,6 +50,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * CocoaPods 1.2.1
 * Swift 3.1+
 * Ruby 2.3.1
+* Fastlane 2.27+
 
 ## **Communication** ##
 
@@ -59,7 +60,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 ## **Installation** ##
 
 ### Ruby ###
-Before installing CocoaPods, you will need the correct version of Ruby. For installing and managing different versions of Ruby on your local machine, we recommend using [Ruby Version Manager (RVM)](https://rvm.io/). Begin with the following command:
+Before installing Fastlane and CocoaPods, you will need the correct version of Ruby. For installing and managing different versions of Ruby on your local machine, we recommend using [Ruby Version Manager (RVM)](https://rvm.io/). Begin with the following command:
 ```
 $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 ```
@@ -78,6 +79,12 @@ $ ruby -v
 The version reported should look like this:
 ```
 ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]
+```
+
+### Fastlane ###
+You will need Fastlane installed in order to test sending out builds locally and generating push certificates. You can install it with the following command:
+```
+$ gem install fastlane
 ```
 
 ### CocoaPods ###
