@@ -1,4 +1,4 @@
-# BaseApp iOS V2 #
+# **BaseApp iOS V2** #
 
 ![BaseApp.png](https://bitbucket.org/repo/b8rny4/images/460357771-BaseApp.png)
 
@@ -13,7 +13,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * [Installation](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-installation)
 * [Authors](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-authors)
 
-## Features ##
+## **Features** ##
 
 * Networking with [Raccoon](https://github.com/ManueGE/Raccoon)
 * Auto mapping to Core Data with [Groot](https://github.com/gonzalezreal/Groot)
@@ -43,7 +43,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * MVVM (Model-View-View Model) Architecture for easy maintenance, scalability, and testing
 * Auto deployment to [Fabric](https://fabric.io/) and iTunes Connect using [Fastlane](https://fastlane.tools/)
 
-## Requirements ##
+## **Requirements** ##
 
 * iOS 9.0+
 * Xcode 8.3+
@@ -51,12 +51,12 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 * Swift 3.1+
 * Ruby 2.3.1
 
-## Communication ##
+## **Communication** ##
 
 * If you have general questions, use [Slack](https://silverlogic.slack.com/messages/C4AE7FTPV)
 * For immediate help, contact one of our [Authors](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-authors)
 
-## Installation ##
+## **Installation** ##
 
 ### Ruby ###
 Before installing CocoaPods, you will need the correct version of Ruby. For installing and managing different versions of Ruby on your local machine, we recommend using [Ruby Version Manager (RVM)](https://rvm.io/). Begin with the following command:
@@ -100,7 +100,7 @@ Then run the following command to open the project and start coding:
 $ open BaseAppV2.xcworkspace
 ```
 
-## Authors ##
+## **Authors** ##
 
 * [Manny Guerrero](https://silverlogic.slack.com/team/eg)
 * [David Hartmann](https://silverlogic.slack.com/messages/@dh)
