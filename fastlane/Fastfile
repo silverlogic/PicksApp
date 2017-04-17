@@ -41,10 +41,13 @@ platform :ios do
     match(app_identifier: "com.silverlogic.BaseAppV2",
           git_branch: "BaseAppV2-development",
           username: "apple@tsl.io",
-          force_for_new_devices: true,
-          type: "adhoc",
-          readonly: true)
+          force_for_new_devices: true
+          readonly: true,
+          type: "adhoc")
 
+    # Disable automatic code signing
+    # Value `path` will change
+    disable_automatic_code_signing(path: "BaseAppV2.xcodeproj")
 
     # Generate archive
     # Value 'scheme' will need to change for the client
@@ -84,7 +87,12 @@ platform :ios do
           app_identifier: "com.silverlogic.BaseAppV2",
           username: "apple@tsl.io",
           force_for_new_devices: true,
-          readonly: true)
+          readonly: true,
+          type: "appstore")
+
+    # Disable automatic code signing
+    # Value `path` will change
+    disable_automatic_code_signing(path: "BaseAppV2.xcodeproj")
 
     # Generate screenshots
     # UITest will need to change for screenshots the client wants
