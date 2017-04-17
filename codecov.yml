@@ -1,0 +1,5 @@
+ignore:
+  - "Pods/*"
+  - "fastlane/*"
+  - "bitrise.yml"
+  - "get_latest_release_notes.sh"
