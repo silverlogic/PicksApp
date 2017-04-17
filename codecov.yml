@@ -3,3 +3,5 @@ ignore:
   - "fastlane/*"
   - "bitrise.yml"
   - "get_latest_release_notes.sh"
+  - "BaseAppV2Tests/*"
+  - "BaseAppV2UITests/*"
