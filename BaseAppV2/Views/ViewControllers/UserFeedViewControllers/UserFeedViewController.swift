@@ -30,6 +30,15 @@ final class UserFeedViewController: BaseViewController {
 }
 
 
+// MARK: - IBActions
+fileprivate extension UserFeedViewController {
+    @IBAction private func infoButtonTapped(_ sender: UIBarButtonItem) {
+        let popup = ExamplePopupViewController(nibName: ExamplePopupViewController.storyboardIdentifier, bundle: nil)
+        showCustomPopup(popup)
+    }
+}
+
+
 // MARK: - UICollectionViewDataSource
 extension UserFeedViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -73,6 +82,7 @@ fileprivate extension UserFeedViewController {
         userFeedViewModel.fetchUsersError.bind { [weak self] (error: BaseError?) in
             guard let strongSelf = self,
                   let userFeedError = error else { return }
+            strongSelf.dismissActivityIndicator()
             strongSelf.showDodoAlert(message: userFeedError.errorDescription, alertType: .error)
             strongSelf.collectionView.bottomRefreshControl?.endRefreshing()
         }

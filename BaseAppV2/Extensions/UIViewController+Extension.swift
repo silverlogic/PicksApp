@@ -12,6 +12,7 @@ import IQKeyboardManager
 import Dodo
 import KYNavigationProgress
 import ImagePicker
+import PopupDialog
 
 // MARK: - Public Instance Methods For SVProgressHUD
 extension UIViewController {
@@ -323,6 +324,23 @@ extension UIViewController {
         guard let activityIndicatorView = view.subviews.filter({ $0.tag == 99 }).first else { return }
         activityIndicatorView.animateHide()
         activityIndicatorView.removeFromSuperview()
+    }
+}
+
+
+// MARK: - Public Instance Methods For PopupDialog
+extension UIViewController {
+    
+    /**
+        Displays a custom popup in the main window of the
+        application.
+     
+        - Parameter popup: A `BasePopupViewController` representing the
+                           popup to display.
+    */
+    func showCustomPopup(_ popup: BasePopupViewController) {
+        let popupViewController = PopupDialog(viewController: popup, transitionStyle: .bounceUp, gestureDismissal: true, completion: nil)
+        present(popupViewController, animated: true, completion: nil)
     }
 }
 

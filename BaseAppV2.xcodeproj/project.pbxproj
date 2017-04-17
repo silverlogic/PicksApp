@@ -54,6 +54,9 @@
 		88226DD01E9C0A5B00C6BA85 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */; };
 		88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */; };
 		88226DD51E9C508500C6BA85 /* ChangePasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */; };
+		882304F41EA56DCF008D6957 /* ExamplePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882304F31EA56DCF008D6957 /* ExamplePopupViewController.xib */; };
+		882304F61EA5729D008D6957 /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882304F51EA5729D008D6957 /* BasePopupViewController.swift */; };
+		882304FA1EA576E9008D6957 /* ExamplePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882304F91EA576E9008D6957 /* ExamplePopupViewController.swift */; };
 		8823A1CA1E9835B300060EDB /* DynamicBinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */; };
 		882760391E9E8060000E4098 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882760381E9E8060000E4098 /* SnapshotHelper.swift */; };
 		882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */; };
@@ -214,6 +217,9 @@
 		88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-1.xcdatamodel"; sourceTree = "<group>"; };
 		88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModel.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModelTests.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModelTests.swift; sourceTree = "<group>"; };
+		882304F31EA56DCF008D6957 /* ExamplePopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExamplePopupViewController.xib; path = Views/SubViews/UINibs/Popups/ExamplePopupViewController.xib; sourceTree = "<group>"; };
+		882304F51EA5729D008D6957 /* BasePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasePopupViewController.swift; path = Views/ViewControllers/BasePopupViewController.swift; sourceTree = "<group>"; };
+		882304F91EA576E9008D6957 /* ExamplePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplePopupViewController.swift; path = Views/ViewControllers/UserFeedViewControllers/ExamplePopupViewControllers/ExamplePopupViewController.swift; sourceTree = "<group>"; };
 		8823A1C91E9835B300060EDB /* DynamicBinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicBinderTests.swift; path = Helpers/DynamicBinderTests.swift; sourceTree = "<group>"; };
 		882760381E9E8060000E4098 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/ViewControllers/SettingViewControllers/ChangePasswordViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 				8817FC491E78BA3C007697DF /* BaseNavigationController.swift */,
 				8817FC4B1E78C59F007697DF /* BaseViewController.swift */,
 				889AA30E1E853533005100EE /* BaseTabBarController.swift */,
+				882304F51EA5729D008D6957 /* BasePopupViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -391,6 +398,7 @@
 		8801FDEA1E71F12C00F54932 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				882304F11EA56D6A008D6957 /* UINibs */,
 				885514E21E8DBB1F008A82CC /* UICollectionViewFlowLayouts */,
 				885514DC1E8DB54B008A82CC /* UICollectionViewCells */,
 				88AF2E211E7C3C5200F93A50 /* UIImageViews */,
@@ -834,6 +842,30 @@
 			name = EntityModels;
 			sourceTree = "<group>";
 		};
+		882304F11EA56D6A008D6957 /* UINibs */ = {
+			isa = PBXGroup;
+			children = (
+				882304F21EA56D88008D6957 /* Popups */,
+			);
+			name = UINibs;
+			sourceTree = "<group>";
+		};
+		882304F21EA56D88008D6957 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				882304F31EA56DCF008D6957 /* ExamplePopupViewController.xib */,
+			);
+			name = Popups;
+			sourceTree = "<group>";
+		};
+		882304F81EA57697008D6957 /* ExamplePopupViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				882304F91EA576E9008D6957 /* ExamplePopupViewController.swift */,
+			);
+			name = ExamplePopupViewControllers;
+			sourceTree = "<group>";
+		};
 		8823A1C61E98352F00060EDB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +968,7 @@
 		885514E71E8DBD4B008A82CC /* UserFeedViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				882304F81EA57697008D6957 /* ExamplePopupViewControllers */,
 				885514E81E8DBDBE008A82CC /* UserFeedViewController.swift */,
 			);
 			name = UserFeedViewControllers;
@@ -1253,6 +1286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F5BBA31E92B10900B79683 /* Authentication.storyboard in Resources */,
+				882304F41EA56DCF008D6957 /* ExamplePopupViewController.xib in Resources */,
 				88FBC2871E6E84E1003AEEC4 /* Localizable.strings in Resources */,
 				880455001E66325F00D4A499 /* globalconfiguration.plist in Resources */,
 				880454D11E65E32C00D4A499 /* LaunchScreen.storyboard in Resources */,
@@ -1496,6 +1530,7 @@
 				8878617A1E68CC2000C931FC /* User.swift in Sources */,
 				8801FDFF1E723DD900F54932 /* UIStoryboard+Extension.swift in Sources */,
 				8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */,
+				882304F61EA5729D008D6957 /* BasePopupViewController.swift in Sources */,
 				88F3FE181E740741003162F8 /* UIView+Extension.swift in Sources */,
 				88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */,
 				88AF2E0B1E7B9B0300F93A50 /* NibLoadableView.swift in Sources */,
@@ -1514,6 +1549,7 @@
 				8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */,
 				880414091E8C5EF300ABF4D4 /* Pagination.swift in Sources */,
 				885514D61E8DA124008A82CC /* UserFeedViewModel.swift in Sources */,
+				882304FA1EA576E9008D6957 /* ExamplePopupViewController.swift in Sources */,
 				8801FDED1E71F17300F54932 /* BaseView.swift in Sources */,
 				8801FDE51E71E2E800F54932 /* Notification+Extension.swift in Sources */,
 				88FD2CE61E89CCDE002D1D00 /* UpdateProfileViewController.swift in Sources */,

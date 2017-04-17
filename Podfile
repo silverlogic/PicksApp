@@ -16,6 +16,7 @@ target 'BaseAppV2' do
     pod 'Kingfisher', '~> 3.0'
     pod 'KYNavigationProgress'
     pod 'Onboard'
+    pod 'PopupDialog', '~> 0.5.4'
     pod 'Raccoon'
     pod 'SCLAlertView'
     pod 'SVProgressHUD'
