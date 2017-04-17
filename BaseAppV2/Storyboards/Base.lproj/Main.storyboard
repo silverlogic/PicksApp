@@ -374,7 +374,14 @@
                             <constraint firstAttribute="trailing" secondItem="xxh-lC-4jl" secondAttribute="trailing" id="frS-hq-cVE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oKk-7K-YGS"/>
+                    <navigationItem key="navigationItem" id="joU-3A-5MW">
+                        <barButtonItem key="rightBarButtonItem" title="Show Popup" id="Try-WJ-FRp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="infoButtonTapped:" destination="8rJ-Kc-sve" id="FtZ-jW-6GK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="xxh-lC-4jl" id="Yya-VZ-YlY"/>
                     </connections>
