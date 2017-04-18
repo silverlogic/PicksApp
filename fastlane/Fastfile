@@ -70,7 +70,7 @@ platform :ios do
     # crashlytics(api_token: "ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748",
     #             build_secret: "07b07385e052fb585322f9720d20640fb02764329cf8a6da6f325bdb56e9a254",
     #             notes: release_notes,
-    #             groups: "FAVIO", "LOKI", "SPARKLE")
+    #             groups: ["fav","loki","sparkle"])
 
   end
 
@@ -87,7 +87,7 @@ platform :ios do
     # Generate provisioning profiles and certificates
     # Value `app_identifier`, `branch`, and `username` will change for client
     # For parameter `git_branch` it would be '<NameOfApp>-production'
-    match(git_branch: "BaseAppV2-development",
+    match(git_branch: "BaseAppV2-production",
           app_identifier: "com.silverlogic.BaseAppV2",
           username: "apple@tsl.io",
           force_for_new_devices: true,
