@@ -57,7 +57,8 @@ extension SessionManager {
         }
         set {
             _authorizationToken = newValue
-            UserDefaults.standard.set(newValue, forKey: SessionConstants.authorizationToken)
+            guard let string = newValue else { return }
+            KeychainManager.shared.insertItem(string, for: SessionConstants.authorizationToken)
         }
     }
 }
@@ -95,17 +96,14 @@ extension SessionManager {
         }
     }
     
-    /**
-        Logs out the current user and terminates their
-        session.
-    */
+    /// Logs out the current user and terminates their session.
     func logout() {
         guard let user = _currentUser.value else { return }
         CoreDataStack.shared.deleteObject(user, success: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf._currentUser.value = nil
             strongSelf._authorizationToken = nil
-            UserDefaults.standard.removeObject(forKey: SessionConstants.authorizationToken)
+            KeychainManager.shared.removeItemForKey(SessionConstants.authorizationToken)
             UserDefaults.standard.removeObject(forKey: SessionConstants.userId)
             NotificationCenter.default.post(name: .UserLoggedOut, object: nil)
         }, failure: {
@@ -124,7 +122,7 @@ fileprivate extension SessionManager {
         for the current session.
     */
     fileprivate func loadSession() {
-        guard let token = UserDefaults.standard.value(forKey: SessionConstants.authorizationToken) as? String,
+        guard let token = KeychainManager.shared.stringForKey(SessionConstants.authorizationToken),
               let userId = UserDefaults.standard.value(forKey: SessionConstants.userId) as? Int else { return }
         _authorizationToken = token
         let predicate = NSPredicate(format: "userId == %d", userId)
@@ -140,17 +138,22 @@ fileprivate extension SessionManager {
         })
     }
     
-    /**
-        Loads the current user from the API.
-    */
+    /// Loads the current user from the API.
     fileprivate func loadUser() {
         DispatchQueue.global(qos: .userInitiated).async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.currentUser)
-            .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                self._currentUser.value = user
+            .then(on: DispatchQueue.main, execute: { [weak self] (user: User) -> Void in
+                guard let strongSelf = self else { return }
+                strongSelf._currentUser.value = user
             })
-            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { [weak self] (error: BaseError) in
+                guard let strongSelf = self else { return }
+                strongSelf._currentUser.value = nil
+                strongSelf._authorizationToken = nil
+                KeychainManager.shared.removeItemForKey(SessionConstants.authorizationToken)
+                UserDefaults.standard.removeObject(forKey: SessionConstants.userId)
+                NotificationCenter.default.post(name: .UserLoggedOut, object: nil)
             })
         }
     }
