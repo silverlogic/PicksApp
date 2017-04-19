@@ -16,6 +16,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 ## **Features** ##
 
 * Networking with [Raccoon](https://github.com/ManueGE/Raccoon)
+* Keychain support with [Keychain Access](https://github.com/kishikawakatsumi/KeychainAccess)
 * Auto mapping to Core Data with [Groot](https://github.com/gonzalezreal/Groot)
 * Local storage with Core Data
 * App logging with [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver)
