@@ -6,18 +6,18 @@
 //  Copyright © 2017 SilverLogic. All rights reserved.
 //
 
+// MARK: - Typealias
+typealias Listener<T> = (T) -> Void
+
+
 /**
     Generic class for binding values and listening
     for value changes. This uses a single listener.
 */
 class DynamicBinder<T> {
     
-    // MARK: - Typealias
-    typealias Listener = (T) -> Void
-    
-    
     // MARK: - Public Instance Attributes
-    var listener: Listener?
+    var listener: Listener<T>?
     var value: T {
         didSet {
             listener?(value)
@@ -48,7 +48,7 @@ class DynamicBinder<T> {
                               closure that gets invoked when
                               the value changes.
     */
-    func bind(_ listener: Listener?) {
+    func bind(_ listener: Listener<T>?) {
         self.listener = listener
     }
     
@@ -60,7 +60,7 @@ class DynamicBinder<T> {
                               closure that gets invoked when
                               the value changes.
     */
-    func bindAndFire(_ listener: Listener?) {
+    func bindAndFire(_ listener: Listener<T>?) {
         self.listener = listener
         listener?(value)
     }
@@ -73,22 +73,8 @@ class DynamicBinder<T> {
 */
 class MultiDynamicBinder<T> {
     
-    // MARK: - Typealias
-    typealias Listener = (T) -> Void
-    
-    
-    /**
-        A struct representing an observer
-        and their registered listener.
-    */
-    struct Observer {
-        var observer: Any
-        var listener: Listener?
-    }
-    
-    
     // MARK: - Public Instance Attributes
-    var observers: [Observer]
+    var observers: [Observer<T>]
     var value: T {
         didSet {
             observers.forEach({ $0.listener?(value) })
@@ -123,7 +109,7 @@ class MultiDynamicBinder<T> {
             - observer: An `Any` representing the object
                         that registered the listener.
     */
-    func bind(_ listener: Listener?, for observer: Any) {
+    func bind(_ listener: Listener<T>?, for observer: Any) {
         let observe = Observer(observer: observer, listener: listener)
         observers.append(observe)
     }
@@ -139,7 +125,7 @@ class MultiDynamicBinder<T> {
             - observer: An `Any` representing the object
                         that registered the listener.
     */
-    func bindAndFire(_ listener: Listener?, for observer: Any) {
+    func bindAndFire(_ listener: Listener<T>?, for observer: Any) {
         let observe = Observer(observer: observer, listener: listener)
         observers.append(observe)
         listener?(value)
@@ -157,5 +143,26 @@ class MultiDynamicBinder<T> {
             let object2 = observe.observer as AnyObject
             return object1 !== object2
         })
+    }
+}
+
+
+/**
+    A struct representing an observer
+    and their registered listener.
+*/
+struct Observer<T> {
+    
+    // MARK: - Public Instance Attributes
+    var observer: Any
+    var listener: Listener<T>?
+    
+    
+    // MARK: - Initializers
+    
+    /// Initializers an instance of `Observer`.
+    init(observer: Any, listener: Listener<T>?) {
+        self.observer = observer
+        self.listener = listener
     }
 }
