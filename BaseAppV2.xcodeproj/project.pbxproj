@@ -51,6 +51,7 @@
 		8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC451E782C63007697DF /* BaseAlertViewController.swift */; };
 		8817FC4A1E78BA3C007697DF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC491E78BA3C007697DF /* BaseNavigationController.swift */; };
 		8817FC4C1E78C59F007697DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC4B1E78C59F007697DF /* BaseViewController.swift */; };
+		881FE1C81EA67065009E8DB1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FE1C71EA67065009E8DB1 /* KeychainManager.swift */; };
 		88226DD01E9C0A5B00C6BA85 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */; };
 		88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */; };
 		88226DD51E9C508500C6BA85 /* ChangePasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88226DD41E9C508500C6BA85 /* ChangePasswordViewModelTests.swift */; };
@@ -104,6 +105,7 @@
 		88BFD8DC1E842A9D000C8A61 /* ImageAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFD8DB1E842A9D000C8A61 /* ImageAccess.swift */; };
 		88BFD8DE1E842E74000C8A61 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFD8DD1E842E74000C8A61 /* ProfileInfoTableViewCell.swift */; };
 		88BFD8E01E845746000C8A61 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFD8DF1E845746000C8A61 /* ProfileViewModel.swift */; };
+		88F135051EA7E2D700924B65 /* KeychainManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F135041EA7E2D700924B65 /* KeychainManagerTests.swift */; };
 		88F3FE091E7311B7003162F8 /* AuthenticationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */; };
 		88F3FE0B1E7316CC003162F8 /* CaseCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0A1E7316CC003162F8 /* CaseCount.swift */; };
 		88F3FE0D1E732A21003162F8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */; };
@@ -213,6 +215,7 @@
 		8817FC451E782C63007697DF /* BaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAlertViewController.swift; path = Views/SubViews/UIAlertViewControllers/BaseAlertViewController.swift; sourceTree = "<group>"; };
 		8817FC491E78BA3C007697DF /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = Views/ViewControllers/BaseNavigationController.swift; sourceTree = "<group>"; };
 		8817FC4B1E78C59F007697DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Views/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
+		881FE1C71EA67065009E8DB1 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainManager.swift; path = Models/CoreServices/Keychain/KeychainManager.swift; sourceTree = "<group>"; };
 		88226DCF1E9C0A5B00C6BA85 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-1.xcdatamodel"; sourceTree = "<group>"; };
 		88226DD21E9C4D7100C6BA85 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewModel.swift; path = ViewModels/SettingViewModels/ChangePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 		88BFD8DB1E842A9D000C8A61 /* ImageAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageAccess.swift; path = Protocols/ImageAccess.swift; sourceTree = "<group>"; };
 		88BFD8DD1E842E74000C8A61 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileInfoTableViewCell.swift; path = Views/SubViews/UITableViewCells/ProfileTableViewCells/ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		88BFD8DF1E845746000C8A61 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewModel.swift; path = ViewModels/ProfileViewModels/ProfileViewModel.swift; sourceTree = "<group>"; };
+		88F135041EA7E2D700924B65 /* KeychainManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainManagerTests.swift; path = Models/CoreServices/Keychain/KeychainManagerTests.swift; sourceTree = "<group>"; };
 		88F3FE081E7311B7003162F8 /* AuthenticationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationNavigationController.swift; path = Views/ViewControllers/AuthenticationViewControllers/AuthenticationNavigationController.swift; sourceTree = "<group>"; };
 		88F3FE0A1E7316CC003162F8 /* CaseCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaseCount.swift; path = Protocols/CaseCount.swift; sourceTree = "<group>"; };
 		88F3FE0C1E732A21003162F8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModels/AuthenticationViewModels/SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -590,6 +594,7 @@
 				8802C2A01E8B215D00600EB1 /* DeepLinking */,
 				880455071E663E0000D4A499 /* Configuration */,
 				88FBC29E1E6F1C7F003AEEC4 /* Logging */,
+				881FE1C61EA67028009E8DB1 /* Keychain */,
 			);
 			name = CoreServices;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 				880455131E66721800D4A499 /* LocalStorage */,
 				88F5BBAC1E93056300B79683 /* PushNotification */,
 				880455141E66722B00D4A499 /* Configuration */,
+				88F135031EA7E2AF00924B65 /* Keychain */,
 			);
 			name = CoreServices;
 			sourceTree = "<group>";
@@ -789,6 +795,14 @@
 				8817FC451E782C63007697DF /* BaseAlertViewController.swift */,
 			);
 			name = UIAlertControllers;
+			sourceTree = "<group>";
+		};
+		881FE1C61EA67028009E8DB1 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				881FE1C71EA67065009E8DB1 /* KeychainManager.swift */,
+			);
+			name = Keychain;
 			sourceTree = "<group>";
 		};
 		88226DC71E9C049100C6BA85 /* BusinessClasses */ = {
@@ -1045,6 +1059,14 @@
 				88BFD8DD1E842E74000C8A61 /* ProfileInfoTableViewCell.swift */,
 			);
 			name = ProfileTableViewCells;
+			sourceTree = "<group>";
+		};
+		88F135031EA7E2AF00924B65 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				88F135041EA7E2D700924B65 /* KeychainManagerTests.swift */,
+			);
+			name = Keychain;
 			sourceTree = "<group>";
 		};
 		88F3FE141E735FE7003162F8 /* SettingViewControllers */ = {
@@ -1534,6 +1556,7 @@
 				88F3FE181E740741003162F8 /* UIView+Extension.swift in Sources */,
 				88226DD31E9C4D7100C6BA85 /* ChangePasswordViewModel.swift in Sources */,
 				88AF2E0B1E7B9B0300F93A50 /* NibLoadableView.swift in Sources */,
+				881FE1C81EA67065009E8DB1 /* KeychainManager.swift in Sources */,
 				8817FC141E76874C007697DF /* SignupPasswordViewController.swift in Sources */,
 				88F8C9631E69F926006D6BC9 /* CoreDataStack.swift in Sources */,
 				8802C2A21E8B21AE00600EB1 /* DeepLinkManager.swift in Sources */,
@@ -1591,6 +1614,7 @@
 				8817FC181E769C1B007697DF /* CoreDataStackTests.swift in Sources */,
 				884851381E9456440088A3C2 /* ChangeEmailVerifyViewModelTests.swift in Sources */,
 				88BFD8D51E8320D3000C8A61 /* ArrayExtensionTests.swift in Sources */,
+				88F135051EA7E2D700924B65 /* KeychainManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

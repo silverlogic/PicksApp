@@ -13,6 +13,7 @@ target 'BaseAppV2' do
     pod 'Dodo', '~> 7.0'
     pod 'ImagePicker', :git => 'https://github.com/hyperoslo/ImagePicker'
     pod 'IQKeyboardManager'
+    pod 'KeychainAccess', '~> 3.0.2'
     pod 'Kingfisher', '~> 3.0'
     pod 'KYNavigationProgress'
     pod 'Onboard'
