@@ -5,7 +5,7 @@
 [![Build Status](https://www.bitrise.io/app/3bcc27059d1191f9.svg?token=HNXmVRGxQUKeosWxMx6fmA&branch=master)](https://www.bitrise.io/app/3bcc27059d1191f9)
 [![codecov](https://codecov.io/bb/silverlogic/baseapp-ios-v2/branch/master/graph/badge.svg?token=ViORN1O4IA)](https://codecov.io/bb/silverlogic/baseapp-ios-v2)
 
-BaseApp iOS V2 is a template app that has all the necessary features needed for rapid app development. 
+BaseApp iOS V2 is a template app that has all the necessary features needed for rapid app development.
 
 * [Features](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-features)
 * [Requirements](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-requirements)
@@ -17,6 +17,7 @@ BaseApp iOS V2 is a template app that has all the necessary features needed for 
 
 * Networking with [Raccoon](https://github.com/ManueGE/Raccoon)
 * Keychain support with [Keychain Access](https://github.com/kishikawakatsumi/KeychainAccess)
+* Reachability status for checking network connectivity
 * Auto mapping to Core Data with [Groot](https://github.com/gonzalezreal/Groot)
 * Local storage with Core Data
 * App logging with [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver)
