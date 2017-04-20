@@ -5,3 +5,11 @@ ignore:
   - "get_latest_release_notes.sh"
   - "BaseAppV2Tests/*"
   - "BaseAppV2UITests/*"
+
+comment:
+  layout: "header, diff, changes"
+  behavior: default
+  require_changes: false
+  require_base: no
+  require_head: yes
+  branches: null
