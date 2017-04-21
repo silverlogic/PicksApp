@@ -59,13 +59,15 @@ final class UserPaginator {
             .then(on: dispatchQueue, execute: { [weak self] (response: PaginatedResponse<User>) -> Void in
                 if clean {
                     let predicate = NSPredicate(format: "NOT self in %@ && userId != %d", response.results.array, (SessionManager.shared.currentUser.value?.userId)!)
-                    CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in
+                    let fetchRequest = User.allUsersFetchRequest()
+                    fetchRequest.predicate = predicate
+                    CoreDataStack.shared.fetchObjects(fetchRequest: fetchRequest, success: { (users: [User]) in
                         let dispatchGroup = DispatchGroup()
                         users.forEach({ (user: User) in
                             dispatchGroup.enter()
-                            CoreDataStack.shared.deleteObject(user, success: { 
+                            CoreDataStack.shared.deleteObject(user, success: {
                                 dispatchGroup.leave()
-                            }, failure: { 
+                            }, failure: {
                                 dispatchGroup.leave()
                             })
                         })

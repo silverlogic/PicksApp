@@ -62,6 +62,8 @@
 		882760391E9E8060000E4098 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882760381E9E8060000E4098 /* SnapshotHelper.swift */; };
 		882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */; };
 		882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */; };
+		88324C7F1EA9411600867EEA /* FetchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88324C7E1EA9411600867EEA /* FetchResults.swift */; };
+		88324C821EA9B1D700867EEA /* FetchResultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88324C811EA9B1D700867EEA /* FetchResultsTests.swift */; };
 		88332DF81E94116C00B4D74F /* SettingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */; };
 		8833F63C1E827D990035975C /* loginuseroauth.json in Resources */ = {isa = PBXBuildFile; fileRef = 8833F63B1E827D990035975C /* loginuseroauth.json */; };
 		8833F6411E8290EB0035975C /* SocialAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */; };
@@ -204,7 +206,7 @@
 		8804551B1E667CCC00D4A499 /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManagerTests.swift; path = Models/CoreServices/Configuration/ConfigurationManagerTests.swift; sourceTree = "<group>"; };
 		8817FC131E76874C007697DF /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupPasswordViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupPasswordViewController.swift; sourceTree = "<group>"; };
 		8817FC151E768CF2007697DF /* SignupOptionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupOptionalInfoViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupOptionalInfoViewController.swift; sourceTree = "<group>"; };
-		8817FC171E769C1B007697DF /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStackTests.swift; path = Models/CoreServices/LocalStorage/CoreDataStackTests.swift; sourceTree = "<group>"; };
+		8817FC171E769C1B007697DF /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStackTests.swift; path = Models/CoreServices/LocalStorage/CoreDataStack/CoreDataStackTests.swift; sourceTree = "<group>"; };
 		8817FC1A1E76A2CA007697DF /* NetworkClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClientTests.swift; path = Models/CoreServices/Networking/NetworkClient/NetworkClientTests.swift; sourceTree = "<group>"; };
 		8817FC1E1E76A541007697DF /* BaseEndpointInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEndpointInfoTests.swift; path = Models/CoreServices/Networking/Endpoints/BaseEndpointInfoTests.swift; sourceTree = "<group>"; };
 		8817FC231E76FE9A007697DF /* currentuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currentuser.json; path = Resources/TestJSON/currentuser.json; sourceTree = "<group>"; };
@@ -229,6 +231,8 @@
 		882760381E9E8060000E4098 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/ViewControllers/SettingViewControllers/ChangePasswordViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Extensions/UIFont+Extension.swift"; sourceTree = "<group>"; };
+		88324C7E1EA9411600867EEA /* FetchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchResults.swift; path = Models/CoreServices/LocalStorage/FetchResults/FetchResults.swift; sourceTree = "<group>"; };
+		88324C811EA9B1D700867EEA /* FetchResultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchResultsTests.swift; path = Models/CoreServices/LocalStorage/FetchResults/FetchResultsTests.swift; sourceTree = "<group>"; };
 		88332DF71E94116C00B4D74F /* SettingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModelTests.swift; path = ViewModels/SettingViewModels/SettingViewModelTests.swift; sourceTree = "<group>"; };
 		8833F63B1E827D990035975C /* loginuseroauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginuseroauth.json; path = Resources/TestJSON/loginuseroauth.json; sourceTree = "<group>"; };
 		8833F6401E8290EB0035975C /* SocialAuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialAuthWebViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SocialAuthWebViewControllers/SocialAuthWebViewController.swift; sourceTree = "<group>"; };
@@ -286,7 +290,7 @@
 		88F5BBA41E92C56D00B79683 /* UIStoryboardExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStoryboardExtensionTests.swift; path = Extensions/UIStoryboardExtensionTests.swift; sourceTree = "<group>"; };
 		88F5BBAA1E92E78D00B79683 /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotificationManager.swift; path = Models/CoreServices/PushNotification/PushNotificationManager.swift; sourceTree = "<group>"; };
 		88F5BBAD1E93058E00B79683 /* PushNotificationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotificationManagerTests.swift; path = Models/CoreServices/PushNotification/PushNotificationManagerTests.swift; sourceTree = "<group>"; };
-		88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Models/CoreServices/LocalStorage/CoreDataStack.swift; sourceTree = "<group>"; };
+		88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Models/CoreServices/LocalStorage/CoreDataStack/CoreDataStack.swift; sourceTree = "<group>"; };
 		88F8C9661E6A4C45006D6BC9 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = Models/CoreServices/Networking/NetworkClient/NetworkClient.swift; sourceTree = "<group>"; };
 		88FB72421E8180B00056BCDF /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Extensions/String+Extension.swift"; sourceTree = "<group>"; };
 		88FB72441E8183780056BCDF /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensionTests.swift; path = Extensions/StringExtensionTests.swift; sourceTree = "<group>"; };
@@ -644,7 +648,8 @@
 		880455031E663D8500D4A499 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
-				88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */,
+				88324C7B1EA93EE000867EEA /* CoreDataStack */,
+				88324C7D1EA93F7F00867EEA /* FetchResults */,
 			);
 			name = LocalStorage;
 			sourceTree = "<group>";
@@ -730,7 +735,8 @@
 		880455131E66721800D4A499 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
-				8817FC171E769C1B007697DF /* CoreDataStackTests.swift */,
+				88324C7C1EA93F4A00867EEA /* CoreDataStack */,
+				88324C801EA9B1B500867EEA /* FetchResults */,
 			);
 			name = LocalStorage;
 			sourceTree = "<group>";
@@ -900,6 +906,38 @@
 				882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */,
 			);
 			name = ChangePasswordViewControllers;
+			sourceTree = "<group>";
+		};
+		88324C7B1EA93EE000867EEA /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				88F8C9621E69F926006D6BC9 /* CoreDataStack.swift */,
+			);
+			name = CoreDataStack;
+			sourceTree = "<group>";
+		};
+		88324C7C1EA93F4A00867EEA /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				8817FC171E769C1B007697DF /* CoreDataStackTests.swift */,
+			);
+			name = CoreDataStack;
+			sourceTree = "<group>";
+		};
+		88324C7D1EA93F7F00867EEA /* FetchResults */ = {
+			isa = PBXGroup;
+			children = (
+				88324C7E1EA9411600867EEA /* FetchResults.swift */,
+			);
+			name = FetchResults;
+			sourceTree = "<group>";
+		};
+		88324C801EA9B1B500867EEA /* FetchResults */ = {
+			isa = PBXGroup;
+			children = (
+				88324C811EA9B1D700867EEA /* FetchResultsTests.swift */,
+			);
+			name = FetchResults;
 			sourceTree = "<group>";
 		};
 		8833F63D1E8290290035975C /* SocialAuthWebViewControllers */ = {
@@ -1561,6 +1599,7 @@
 				8801FDF71E720F4900F54932 /* BaseButton.swift in Sources */,
 				88FBC2A81E70099A003AEEC4 /* BaseEndpoint.swift in Sources */,
 				88F3FE131E734C94003162F8 /* UIStoryboardSegue+Extension.swift in Sources */,
+				88324C7F1EA9411600867EEA /* FetchResults.swift in Sources */,
 				88AF2E091E7B972900F93A50 /* ReuseableView.swift in Sources */,
 				8817FC161E768CF2007697DF /* SignupOptionalInfoViewController.swift in Sources */,
 				88FBC2AD1E7022F4003AEEC4 /* AuthenticationEndpoint.swift in Sources */,
@@ -1633,6 +1672,7 @@
 				88AF2E281E7C5E2D00F93A50 /* SessionManagerTests.swift in Sources */,
 				88FBC2971E6EADD7003AEEC4 /* NSManagedObjectExtensionTests.swift in Sources */,
 				88F5BBA51E92C56D00B79683 /* UIStoryboardExtensionTests.swift in Sources */,
+				88324C821EA9B1D700867EEA /* FetchResultsTests.swift in Sources */,
 				88F1350B1EA832A400924B65 /* ReachabilityTests.swift in Sources */,
 				8817FC301E7707BB007697DF /* AuthenticationManagerTests.swift in Sources */,
 				8817FC181E769C1B007697DF /* CoreDataStackTests.swift in Sources */,

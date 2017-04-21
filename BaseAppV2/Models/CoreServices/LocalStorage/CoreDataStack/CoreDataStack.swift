@@ -52,43 +52,22 @@ extension CoreDataStack {
                 a background thread for fetching.
      
         - Parameters:
-            - predicate: A `NSPredicate` that indicates
-                         how objects should be filtered.
-                         `nil` can be passed if no filtering
-                         is necessary.
-            - sortDescriptors: An `[NSSortDescriptor]` indicate how
-                               the objects returned should be sorted
-                               by. `nil` can be passed if the objects
-                               do not need to be sorted.
-            - entityType: A `T.Type` indicating the entity type.
+            - fetchRequest: A `NSFetchRequest<T>` representing how the objects
+                            should be fetched from the object store.
             - success: A closure that gets invoked when retreiving the objects
                        was successful. Passes an `[T]` representing
                        the results of the fetch.
             - failure: A closure that gets invoked when retreving the objects failed.
     */
-    func fetchObjects<T: NSManagedObject>(predicate: NSPredicate?,
-                                          sortDescriptors: [NSSortDescriptor]?,
-                                          entityType: T.Type,
-                                          success: @escaping (_ objects: [T]) -> Void,
-                                          failure: @escaping () -> Void) {
-        let objectFetchRequest: NSFetchRequest<NSFetchRequestResult>
-        if #available(iOS 10.0, *) {
-            objectFetchRequest = T.fetchRequest()
-        } else {
-            objectFetchRequest = NSFetchRequest(entityName: T.entityName)
-        }
-        if let queryPredicate = predicate {
-            objectFetchRequest.predicate = queryPredicate
-        }
-        if let descriptors = sortDescriptors {
-            objectFetchRequest.sortDescriptors = descriptors
-        }
-        let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: objectFetchRequest as! NSFetchRequest<T>) { (result: NSAsynchronousFetchResult<T>) in
-            guard let objects = result.finalResult else {
-                failure()
-                return
+    func fetchObjects<T: NSManagedObject>(fetchRequest: NSFetchRequest<T>, success: @escaping (_ objects: [T]) -> Void, failure: @escaping () -> Void) {
+        let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (result: NSAsynchronousFetchResult<T>) in
+            DispatchQueue.main.async {
+                guard let objects = result.finalResult else {
+                    failure()
+                    return
+                }
+                success(objects)
             }
-            success(objects)
         }
         do {
             try _managedObjectContext.execute(asyncFetchRequest)
@@ -135,6 +114,31 @@ extension CoreDataStack {
                     closure()
                 }
             }
+        }
+    }
+    
+    /**
+        Generic method for inserting an object into the current
+        object space.
+     
+        - Paremeters:
+            - entityModel: A `T.Type` representing the type of
+                           entity model to insert.
+            - success: A closure that gets invoked when inserting the
+                       object and saving was successful. Passes the newly
+                       created object for use.
+            - failure: A closure that gets invoked when inserting failed.
+    */
+    func insertObject<T: NSManagedObject>(for entityModel: T.Type, success: @escaping (_ object: T) -> Void, failure: @escaping () -> Void) {
+        guard let entityDescripion = NSEntityDescription.entity(forEntityName: T.entityName, in: _managedObjectContext),
+              let model = NSManagedObject(entity: entityDescripion, insertInto: _managedObjectContext) as? T else {
+                failure()
+                return
+        }
+        saveCurrentState(success: { 
+            success(model)
+        }) { 
+            failure()
         }
     }
     

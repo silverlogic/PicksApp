@@ -171,4 +171,8 @@ extension BaseError {
     static var newEmailConfirmed: BaseError {
         return BaseError(statusCode: 110, errorDescription: NSLocalizedString("BaseError.NewEmailConfirmed", comment: "Default Error"))
     }
+    
+    static var fetchResultsError: BaseError {
+        return BaseError(statusCode: 111, errorDescription: NSLocalizedString("BaseError.FetchResultsError", comment: "Default Error"))
+    }
 }

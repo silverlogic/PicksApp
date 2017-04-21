@@ -72,9 +72,64 @@ extension User {
 }
 
 
-// MARK: - Public Instance Methods
+// MARK: - Public Class Methods
 extension User {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
-        return NSFetchRequest<User>(entityName: "User");
+    
+    /**
+        Gets a fetch request for all `User` entity objects.
+     
+        - Returns: A `NSFetchRequest<User>` representing a fetch request
+                   for all `User` objects
+    */
+    @nonobjc public class func allUsersFetchRequest() -> NSFetchRequest<User> {
+        return NSFetchRequest<User>(entityName: User.entityName)
+    }
+    
+    /**
+        Gets a fetch request for a specific `User` entity object.
+     
+        - Parameter userId: An `Int` representing the Id of the user
+                            to retrieve.
+     
+        - Returns: A `NSFetchRequest<User>` encapsulating all the information
+                   needed for fetching a specific user.
+    */
+    @nonobjc public class func specificUserFetchRequest(userId: Int) -> NSFetchRequest<User> {
+        let fetchRequest = NSFetchRequest<User>(entityName: User.entityName)
+        fetchRequest.predicate = NSPredicate(format: "userId == %d", userId)
+        return fetchRequest
+    }
+    
+    /**
+        Gets a fetch request for all `User` entity objects that will be
+        sorted.
+     
+        - Parameters: 
+            - keyPath: A `String` representing the key path or property
+                       name to sort by. The key path given needs to be
+                       an existing property name of `User`.
+            - ascending: A `Bool` indicating if the objects needed to be
+                         in ascending order or not.
+     
+        - Returns: A `NSFetchRequest<User>` encapsulating all the information
+                   needed for fetching `User` objects. If an invalid key path
+                   was given to `keyPath`, `nil` will be returned.
+    */
+    @nonobjc public class func allUsersFetchRequest(keyPath: String, ascending: Bool) -> NSFetchRequest<User>? {
+        let fetchRequest = NSFetchRequest<User>(entityName: User.entityName)
+        if keyPath == #keyPath(User.userId) ||
+           keyPath == #keyPath(User.email) ||
+           keyPath == #keyPath(User.emailConfirmed) ||
+           keyPath == #keyPath(User.newEmail) ||
+           keyPath == #keyPath(User.newEmailConfirmed) ||
+           keyPath == #keyPath(User.referralCode) ||
+           keyPath == #keyPath(User.firstName) ||
+           keyPath == #keyPath(User.lastName) ||
+           keyPath == #keyPath(User.avatar) {
+            let sortDescriptor = NSSortDescriptor(key: keyPath, ascending: ascending)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            return fetchRequest
+        }
+        return nil
     }
 }

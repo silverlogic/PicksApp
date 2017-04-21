@@ -19,10 +19,8 @@ final class CoreDataStackTests: BaseAppV2Tests {
             return
         }
         user.userId = 1
-        
-        let predicate = NSPredicate(format: "userId == %d", user.userId)
         let fetchExpectation = expectation(description: "Test Fetching Objects")
-        CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in
+        CoreDataStack.shared.fetchObjects(fetchRequest: User.specificUserFetchRequest(userId: 1), success: { (users: [User]) in
             XCTAssertTrue(users.count == 1, "Incorrect amount of objects retrieved!")
             guard let fetchedUser = users.first else {
                 XCTFail("Error Getting Fetched User!")
@@ -31,7 +29,7 @@ final class CoreDataStackTests: BaseAppV2Tests {
             }
             XCTAssertEqual(user.userId, fetchedUser.userId, "Incorrect user fetched!")
             fetchExpectation.fulfill()
-        }) {
+        }) { 
             XCTFail("Error Fetching User")
             fetchExpectation.fulfill()
         }
@@ -47,18 +45,53 @@ final class CoreDataStackTests: BaseAppV2Tests {
         let deletetionExpectation = expectation(description: "Test Deleting Object")
         let fetchExpectation = expectation(description: "Test Fetching Objects")
         CoreDataStack.shared.deleteObject(user, success: {
-            let predicate = NSPredicate(format: "userId == %d", user.userId)
-            CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in
+            CoreDataStack.shared.fetchObjects(fetchRequest: User.specificUserFetchRequest(userId: 2), success: { (users: [User]) in
                 XCTAssertTrue(users.isEmpty, "Incorrect amount of objects retrieved!")
                 fetchExpectation.fulfill()
-            }) {
+            }, failure: { 
                 XCTFail("Error Fetching User")
                 fetchExpectation.fulfill()
-            }
+            })
             deletetionExpectation.fulfill()
         }) {
             XCTFail("Error Deleting Object!")
             deletetionExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testInsertObject() {
+        let insertExpectation = expectation(description: "Test Inserting Object")
+        let fetchExpectation = expectation(description: "Test Fetching Inserted Object")
+        let updateExpectation = expectation(description: "Test Updating Object")
+        CoreDataStack.shared.insertObject(for: User.self, success: { (user: User) in
+            user.userId = 3
+            CoreDataStack.shared.saveCurrentState(success: {
+                CoreDataStack.shared.fetchObjects(fetchRequest: User.specificUserFetchRequest(userId: 3), success: { (users: [User]) in
+                    XCTAssertTrue(users.count == 1, "Object Never Inserted!")
+                    guard let user2 = users.first else {
+                        XCTFail("Error Getting Object From Array!")
+                        fetchExpectation.fulfill()
+                        return
+                    }
+                    XCTAssertEqual(user.userId, user2.userId, "These Should Be The Same!")
+                    fetchExpectation.fulfill()
+                }, failure: { 
+                    XCTFail("Error Fetching Object!")
+                    fetchExpectation.fulfill()
+                })
+                updateExpectation.fulfill()
+            }, failure: { 
+                XCTFail("Error Updating Object!")
+                fetchExpectation.fulfill()
+                updateExpectation.fulfill()
+            })
+            insertExpectation.fulfill()
+        }) { 
+            XCTFail("Error Inserting Object!")
+            insertExpectation.fulfill()
+            fetchExpectation.fulfill()
+            updateExpectation.fulfill()
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
