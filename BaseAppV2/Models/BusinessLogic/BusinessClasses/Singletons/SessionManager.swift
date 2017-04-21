@@ -125,17 +125,17 @@ fileprivate extension SessionManager {
         guard let token = KeychainManager.shared.stringForKey(SessionConstants.authorizationToken),
               let userId = UserDefaults.standard.value(forKey: SessionConstants.userId) as? Int else { return }
         _authorizationToken = token
-        let predicate = NSPredicate(format: "userId == %d", userId)
-        CoreDataStack.shared.fetchObjects(predicate: predicate, sortDescriptors: nil, entityType: User.self, success: { (users: [User]) in
+        CoreDataStack.shared.fetchObjects(fetchRequest: User.specificUserFetchRequest(userId: userId), success: { [weak self] (users: [User]) in
+            guard let strongSelf = self else { return }
             if users.count != 1 {
-                self.loadUser()
+                strongSelf.loadUser()
             } else {
                 guard let user = users.first else { return }
-                self._currentUser.value = user
+                strongSelf._currentUser.value = user
             }
-        }, failure: {
+        }) { 
             self.loadUser()
-        })
+        }
     }
     
     /// Loads the current user from the API.

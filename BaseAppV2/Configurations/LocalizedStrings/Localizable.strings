@@ -15,6 +15,7 @@
 "BaseError.EndOfPagination" = "Looks like there aren't anymore. 😜";
 "BaseError.StillLoadingResults" = "Results Are Still Loading. 😜";
 "BaseError.NewEmailConfirmed" = "You need to check your email. 😜";
+"BaseError.FetchResultsError" = "Error fetching objects from store. 😞";
 
 // Settings View Controller
 "SettingsViewController.InviteCode" = "Invite Code";
