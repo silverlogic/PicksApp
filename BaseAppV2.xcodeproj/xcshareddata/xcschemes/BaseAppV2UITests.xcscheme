@@ -22,16 +22,17 @@
                ReferencedContainer = "container:BaseAppV2.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "882CEAA71EAE90C800AE8D24"
+               BuildableName = "BaseAppV2UnitTests.xctest"
+               BlueprintName = "BaseAppV2UnitTests"
+               ReferencedContainer = "container:BaseAppV2.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "880454C01E65E32C00D4A499"
-            BuildableName = "BaseAppV2.app"
-            BlueprintName = "BaseAppV2"
-            ReferencedContainer = "container:BaseAppV2.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "RUNNING_UI_TESTS"

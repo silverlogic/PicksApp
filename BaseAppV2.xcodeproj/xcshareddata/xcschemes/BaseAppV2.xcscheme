@@ -28,20 +28,6 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "880454D61E65E32C00D4A499"
-               BuildableName = "BaseAppV2Tests.xctest"
-               BlueprintName = "BaseAppV2Tests"
-               ReferencedContainer = "container:BaseAppV2.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "880454E11E65E32C00D4A499"
                BuildableName = "BaseAppV2UITests.xctest"
                BlueprintName = "BaseAppV2UITests"
@@ -61,9 +47,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "880454D61E65E32C00D4A499"
-               BuildableName = "BaseAppV2Tests.xctest"
-               BlueprintName = "BaseAppV2Tests"
+               BlueprintIdentifier = "882CEAA71EAE90C800AE8D24"
+               BuildableName = "BaseAppV2UnitTests.xctest"
+               BlueprintName = "BaseAppV2UnitTests"
                ReferencedContainer = "container:BaseAppV2.xcodeproj">
             </BuildableReference>
          </TestableReference>
