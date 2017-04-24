@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vE5-VU-BYM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vE5-VU-BYM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -77,6 +77,7 @@
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00W-u1-OhO" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="123" width="359" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" label="createAnAccountButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="wIv-OX-X9z">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="44"/>
@@ -95,6 +96,7 @@
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfk-9A-XQx" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="159" width="359" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" label="forgotPasswordButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="hFL-n9-aIk">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="44"/>
@@ -152,7 +154,7 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CWh-9U-s3J" customClass="BaseTextField" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="307" height="63"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                        <accessibility key="accessibilityConfiguration" label="emailTextField"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="next"/>
@@ -162,7 +164,7 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Pa-aC-rf9" customClass="BaseTextField" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="84" width="307" height="64"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
+                                        <accessibility key="accessibilityConfiguration" label="passwordTextField"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="go" secureTextEntry="YES"/>
@@ -187,7 +189,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oir-SK-Gxx" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
                                         <rect key="frame" x="18" y="164" width="287" height="63.5"/>
                                         <color key="backgroundColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
+                                        <accessibility key="accessibilityConfiguration" label="loginButton"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Log On">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

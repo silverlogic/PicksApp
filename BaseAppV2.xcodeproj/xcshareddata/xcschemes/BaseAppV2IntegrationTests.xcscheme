@@ -10,28 +10,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "NO">
+      shouldUseLaunchSchemeArgsEnv = "NO"
+      codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "880454E11E65E32C00D4A499"
-               BuildableName = "BaseAppV2UITests.xctest"
-               BlueprintName = "BaseAppV2UITests"
-               ReferencedContainer = "container:BaseAppV2.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "882CEAA71EAE90C800AE8D24"
-               BuildableName = "BaseAppV2UnitTests.xctest"
-               BlueprintName = "BaseAppV2UnitTests"
-               ReferencedContainer = "container:BaseAppV2.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -50,13 +31,13 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "RUNNING_INTEGRATION_TESTS"
+            key = "RUNNING_UNIT_TESTS"
             value = "FALSE"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "RUNNING_UNIT_TESTS"
-            value = "FALSE"
+            key = "RUNNING_INTEGRATION_TESTS"
+            value = "TRUE"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -73,16 +54,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "880454C01E65E32C00D4A499"
-            BuildableName = "BaseAppV2.app"
-            BlueprintName = "BaseAppV2"
-            ReferencedContainer = "container:BaseAppV2.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "RUNNING_UI_TESTS"
@@ -90,12 +61,12 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "RUNNING_INTEGRATION_TESTS"
+            key = "RUNNING_UNIT_TESTS"
             value = "FALSE"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "RUNNING_UNIT_TESTS"
+            key = "RUNNING_INTEGRATION_TESTS"
             value = "FALSE"
             isEnabled = "YES">
          </EnvironmentVariable>

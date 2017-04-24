@@ -28,7 +28,7 @@ final class SessionManager {
     private init() {
         _currentUser = MultiDynamicBinder(nil)
         // Check if running in Unit Tests
-        if ProcessInfo.isRunningUnitTests {
+        if ProcessInfo.isRunningUnitTests || ProcessInfo.isRunningIntegrationTests {
             return
         }
         loadSession()

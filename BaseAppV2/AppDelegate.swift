@@ -103,6 +103,11 @@ fileprivate extension AppDelegate {
         with based on their current session.
     */
     fileprivate func setInitialFlow() {
+        // Check if running integration tests
+        if ProcessInfo.isRunningIntegrationTests {
+            loadAuthenticationFlow()
+            return
+        }
         guard let _ = SessionManager.shared.authorizationToken else {
             loadAuthenticationFlow()
             return
