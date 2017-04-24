@@ -24,7 +24,7 @@ target 'BaseAppV2' do
     pod 'SwiftyBeaver'
     pod 'UITextField+Shake', '~> 1.1'
     
-    target 'BaseAppV2Tests' do
+    target 'BaseAppV2UnitTests' do
         inherit! :search_paths
         pod 'OHHTTPStubs'
         pod 'OHHTTPStubs/Swift'
