@@ -19,7 +19,7 @@ platform :ios do
 
   # Called before requested lane runs
   before_all do
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
     cocoapods
   end
 
@@ -30,16 +30,16 @@ platform :ios do
     # Create the application on Apple Developer Portal
     # Values 'app_identifier' and 'app_name' will change for Silverlogic development
     produce(username: "apple@tsl.io",
-            app_identifier: "com.silverlogic.BaseAppV2",
-            app_name: "BaseAppV2",
+            app_identifier: "com.silverlogic.PicksApp",
+            app_name: "PicksApp",
             team_id: "4SB3F2S2K3",
             skip_itc: true)
 
     # Generate provisioning profiles and certificates
     # Value `app_identifier` and `git_branch` will change for Silverlogic development
     # For parameter `git_branch` it would be '<NameOfApp>-development'
-    match(app_identifier: "com.silverlogic.BaseAppV2",
-          git_branch: "BaseAppV2-development",
+    match(app_identifier: "com.silverlogic.PicksApp",
+          git_branch: "PicksApp-development",
           username: "apple@tsl.io",
           force_for_new_devices: true,
           readonly: true,
@@ -52,25 +52,22 @@ platform :ios do
     # Generate archive
     # Value 'scheme' will need to change for the client
     # Change key for `ENV`
-    provisioning_profile_specifier = ENV["sigh_com.silverlogic.BaseAppV2_adhoc"]
+    provisioning_profile_specifier = ENV["sigh_com.silverlogic.PicksApp_adhoc"]
     gym(scheme: "BaseAppV2",
         export_method: "ad-hoc",
         xcargs: "PROVISIONING_PROFILE_SPECIFIER=#{provisioning_profile_specifier}")
 
     # Get release notes
     # Uncomment line bellow for forks
-    # release_notes = sh("get_latest_release_notes.sh")
+    release_notes = sh("get_latest_release_notes.sh")
 
     # Upload to Fabric
     # Uncomment block bellow to insert release notes
     # Value `groups` would change for client using alias
     crashlytics(api_token: "ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748",
                 build_secret: "07b07385e052fb585322f9720d20640fb02764329cf8a6da6f325bdb56e9a254",
+                notes: release_notes,
                 groups: ["fav","loki","sparkle"])
-    # crashlytics(api_token: "ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748",
-    #             build_secret: "07b07385e052fb585322f9720d20640fb02764329cf8a6da6f325bdb56e9a254",
-    #             notes: release_notes,
-    #             groups: ["fav","loki","sparkle"])
 
   end
 

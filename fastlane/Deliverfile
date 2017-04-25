@@ -8,7 +8,7 @@
 apple_id ENV['PRODUCE_APPLE_ID']
 
 # Information bellow needs to change for the client
-app_identifier "com.silverlogic.BaseAppV2" # The bundle identifier of your app
+app_identifier "com.silverlogic.PicksApp" # The bundle identifier of your app
 username "apple@tsl.io" # your Apple ID user
 
 price_tier 0

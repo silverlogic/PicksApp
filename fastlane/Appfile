@@ -1,4 +1,4 @@
-app_identifier "com.silverlogic.BaseAppV2" # The bundle identifier of your app
+app_identifier "com.silverlogic.PicksApp" # The bundle identifier of your app
 apple_id "apple@tsl.io" # Your Apple email address
 
 team_id "4SB3F2S2K3"  # Developer Portal Team ID

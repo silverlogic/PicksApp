@@ -1,11 +1,11 @@
-# **BaseApp iOS V2** #
+# **PicksApp iOS** #
 
 ![BaseApp.png](https://bitbucket.org/repo/b8rny4/images/460357771-BaseApp.png)
 
 [![Build Status](https://www.bitrise.io/app/3bcc27059d1191f9.svg?token=HNXmVRGxQUKeosWxMx6fmA&branch=master)](https://www.bitrise.io/app/3bcc27059d1191f9)
 [![codecov](https://codecov.io/bb/silverlogic/baseapp-ios-v2/branch/master/graph/badge.svg?token=ViORN1O4IA)](https://codecov.io/bb/silverlogic/baseapp-ios-v2)
 
-BaseApp iOS V2 is a template app that has all the necessary features needed for rapid app development.
+Picks iOS is a fork off of BaseApp iOS V2 that has all the necessary features needed for rapid app development.
 
 * [Features](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-features)
 * [Requirements](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-requirements)

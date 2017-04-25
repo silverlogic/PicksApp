@@ -1,6 +1,6 @@
 git_url "ssh://git@bitbucket.org/silverlogic/baseapp-ios-provisioning-profiles-certificates.git"
 
-app_identifier "com.silverlogic.BaseAppV2"
+app_identifier "com.silverlogic.PicksApp"
 username "apple@tsl.io" # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
