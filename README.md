@@ -42,6 +42,7 @@ Picks iOS is a fork off of BaseApp iOS V2 that has all the necessary features ne
 * Keyboard management with [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
 * Dynamic binding of values for real time updates without the need for using `Notification` or KVO
 * Unit tests for app logic used
+* Integration tests for testing view controllers using [KIF](https://github.com/kif-framework/KIF) (Still in progress...)
 * MVVM (Model-View-View Model) Architecture for easy maintenance, scalability, and testing
 * Auto deployment to [Fabric](https://fabric.io/) and iTunes Connect using [Fastlane](https://fastlane.tools/)
 

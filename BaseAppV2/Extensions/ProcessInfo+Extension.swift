@@ -15,4 +15,10 @@ extension ProcessInfo {
         let environmentDictionary = processInfo.environment
         return environmentDictionary["RUNNING_UNIT_TESTS"] == "TRUE"
     }
+    
+    /// Determines if the application is running integration tests.
+    static var isRunningIntegrationTests: Bool {
+        let environmentDictionary = processInfo.environment
+        return environmentDictionary["RUNNING_INTEGRATION_TESTS"] == "TRUE"
+    }
 }

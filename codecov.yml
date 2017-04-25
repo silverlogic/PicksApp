@@ -5,6 +5,7 @@ ignore:
   - "get_latest_release_notes.sh"
   - "BaseAppV2UnitTests/*"
   - "BaseAppV2UITests/*"
+  - "BaseAppV2IntegrationTests/*"
 
 comment:
   layout: "header, diff, changes"

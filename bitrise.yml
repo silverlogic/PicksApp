@@ -6,12 +6,19 @@ workflows:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@3.4.2: {}
+    - git-clone: {}
     - cache-pull@0.9.2: {}
     - cocoapods-install@1.6.1: {}
-    - xcode-test@1.18.2:
+    - xcode-test:
         inputs:
         - scheme: BaseAppV2
+        - simulator_device: iPhone 6
+        - output_tool: xcodebuild
+        - xcodebuild_test_options: "-enableCodeCoverage YES"
+        - should_build_before_test: 'no'
+    - xcode-test:
+        inputs:
+        - scheme: BaseAppV2IntegrationTests
         - simulator_device: iPhone 6
         - output_tool: xcodebuild
         - xcodebuild_test_options: "-enableCodeCoverage YES"
@@ -37,18 +44,25 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
-    before_run: 
-    after_run: 
+    before_run:
+    after_run:
   master-integration:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@3.4.2: {}
+    - git-clone: {}
     - cache-pull@0.9.2: {}
     - cocoapods-install@1.6.1: {}
-    - xcode-test@1.18.2:
+    - xcode-test:
         inputs:
         - scheme: BaseAppV2
+        - simulator_device: iPhone 6
+        - output_tool: xcodebuild
+        - xcodebuild_test_options: "-enableCodeCoverage YES"
+        - should_build_before_test: 'no'
+    - xcode-test@1.18.3:
+        inputs:
+        - scheme: BaseAppV2IntegrationTests
         - simulator_device: iPhone 6
         - output_tool: xcodebuild
         - xcodebuild_test_options: "-enableCodeCoverage YES"
@@ -74,8 +88,8 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
-    before_run: 
-    after_run: 
+    before_run:
+    after_run:
   staging:
     steps:
     - slack@2.3.0:
@@ -114,8 +128,8 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
-    before_run: 
-    after_run: 
+    before_run:
+    after_run:
   staging-production:
     steps:
     - slack@2.3.0:
@@ -154,8 +168,8 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
-    before_run: 
-    after_run: 
+    before_run:
+    after_run:
   production:
     steps:
     - slack@2.3.0:
@@ -197,8 +211,8 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
-    before_run: 
-    after_run: 
+    before_run:
+    after_run:
 app:
   envs:
   - opts:

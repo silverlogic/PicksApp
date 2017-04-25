@@ -70,6 +70,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "RUNNING_INTEGRATION_TESTS"
+            value = "FALSE"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "RUNNING_UI_TESTS"
             value = "FALSE"
             isEnabled = "YES">
@@ -101,6 +106,11 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "RUNNING_UNIT_TESTS"
+            value = "FALSE"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "RUNNING_INTEGRATION_TESTS"
             value = "FALSE"
             isEnabled = "YES">
          </EnvironmentVariable>
