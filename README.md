@@ -2,8 +2,8 @@
 
 ![BaseApp.png](https://bitbucket.org/repo/b8rny4/images/460357771-BaseApp.png)
 
-[![Build Status](https://www.bitrise.io/app/3bcc27059d1191f9.svg?token=HNXmVRGxQUKeosWxMx6fmA&branch=master)](https://www.bitrise.io/app/3bcc27059d1191f9)
-[![codecov](https://codecov.io/bb/silverlogic/baseapp-ios-v2/branch/master/graph/badge.svg?token=ViORN1O4IA)](https://codecov.io/bb/silverlogic/baseapp-ios-v2)
+[![Build Status](https://www.bitrise.io/app/a037eabb6e35a90f.svg?token=2aNO4w3qO3JDdJgD_WbhCA&branch=master)](https://www.bitrise.io/app/a037eabb6e35a90f)
+[![codecov](https://codecov.io/bb/silverlogic/picks-ios/branch/master/graph/badge.svg?token=2VzkUcNZRw)](https://codecov.io/bb/silverlogic/picks-ios)
 
 Picks iOS is a fork off of BaseApp iOS V2 that has all the necessary features needed for rapid app development.
 
