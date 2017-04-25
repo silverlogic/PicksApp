@@ -30,6 +30,13 @@ target 'BaseAppV2' do
         pod 'OHHTTPStubs/Swift'
     end
     
+    target 'BaseAppV2IntegrationTests' do
+        inherit! :search_paths
+        pod 'OHHTTPStubs'
+        pod 'OHHTTPStubs/Swift'
+        pod 'KIF'
+    end
+    
     target 'BaseAppV2UITests' do
         inherit! :search_paths
         pod 'OHHTTPStubs'
