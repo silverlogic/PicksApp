@@ -58,7 +58,12 @@ final class UserPaginator {
             networkClient.enqueue(UserEndpoint.users(pagination: strongSelf.nextPagination))
             .then(on: dispatchQueue, execute: { [weak self] (response: PaginatedResponse<User>) -> Void in
                 if clean {
-                    let predicate = NSPredicate(format: "NOT self in %@ && userId != %d", response.results.array, (SessionManager.shared.currentUser.value?.userId)!)
+                    let predicate: NSPredicate
+                    if let userId = SessionManager.shared.currentUser.value?.userId {
+                        predicate = NSPredicate(format: "NOT self in %@ && userId != %d", response.results.array, userId)
+                    } else {
+                        predicate = NSPredicate(format: "NOT self in %@", response.results.array)
+                    }
                     let fetchRequest = User.allUsersFetchRequest()
                     fetchRequest.predicate = predicate
                     CoreDataStack.shared.fetchObjects(fetchRequest: fetchRequest, success: { (users: [User]) in
