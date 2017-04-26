@@ -33,4 +33,10 @@ import UIKit
             layer.borderColor = borderColor.cgColor
         }
     }
+    
+    @IBInspectable var colorBackground: UIColor = .main {
+        didSet {
+            backgroundColor = colorBackground
+        }
+    }
 }

@@ -94,9 +94,7 @@ extension BaseTextField {
         return textRect(forBounds: bounds)
     }
     
-    /**
-        Performs a shake animation on the current instance.
-    */
+    /// Performs a shake animation on the current instance.
     func performShakeAnimation() {
         shake(_amountOfShakes, withDelta: _amountOfPointsWide)
     }
