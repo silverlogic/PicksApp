@@ -14,6 +14,8 @@ import UIKit
     sets default attributes for an instance.
 */
 @IBDesignable class BaseView: UIView {
+    
+    // MARK: - Lifecycle
     override func draw(_ rect: CGRect) {
         super.draw(rect)
     }
@@ -32,7 +34,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var borderColor: UIColor = UIColor.clear {
+    @IBInspectable var borderColor: UIColor = .clear {
         didSet {
             layer.borderColor = borderColor.cgColor
         }
@@ -41,6 +43,12 @@ import UIKit
     @IBInspectable var clipToBounds: Bool = true {
         didSet {
             clipsToBounds = clipToBounds
+        }
+    }
+    
+    @IBInspectable var colorBackground: UIColor = .main {
+        didSet {
+            backgroundColor = colorBackground
         }
     }
 }

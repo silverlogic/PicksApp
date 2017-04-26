@@ -136,6 +136,9 @@ fileprivate extension AppDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                             NSFontAttributeName: font]
         UINavigationBar.appearance().tintColor = .white
+        // Uncomment if solid color is desired
+        // For image background, change in BaseNavigationController
+//        UINavigationBar.appearance().backgroundColor = .main
         UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white,
                                                              NSFontAttributeName: font], for: .normal)
     }
