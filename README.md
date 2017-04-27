@@ -59,6 +59,7 @@ Picks iOS is a fork off of BaseApp iOS V2 that has all the necessary features ne
 
 * If you have general questions, use [Slack](https://silverlogic.slack.com/messages/C4AE7FTPV)
 * For immediate help, contact one of our [Authors](https://bitbucket.org/silverlogic/baseapp-ios-v2/overview#markdown-header-authors)
+* Please read the contribution guidelines located in `Sources` to see how to contribute correctly
 
 ## **Installation** ##
 
