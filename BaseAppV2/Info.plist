@@ -5,7 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
+<<<<<<< HEAD
 	<string>PicksApp</string>
+=======
+	<string>${DISPLAY_NAME}</string>
+>>>>>>> 65e588c3f37a4ad35274decaeac43b88693c1159
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -52,9 +56,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME:rfc1034identifier) uses the photo library for quick, easy selection</string>
+	<string>${DISPLAY_NAME} uses the photo library for quick, easy selection</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME:rfc1034identifier) uses the camera for in app picture taking</string>
+	<string>${DISPLAY_NAME} uses the camera for in app picture taking</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
