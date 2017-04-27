@@ -66,11 +66,11 @@ extension BaseError {
            let userIdError = userIdErrors.first {
             return userIdError + " 😞"
         }
-        if let firstNameErrors = errorDictionary["first_name"] as? [String],
+        if let firstNameErrors = errorDictionary["firstName"] as? [String],
            let firstNameError = firstNameErrors.first {
             return firstNameError + " 😞"
         }
-        if let lastNameErrors = errorDictionary["last_name"] as? [String],
+        if let lastNameErrors = errorDictionary["lastName"] as? [String],
            let lastNameError = lastNameErrors.first {
             return lastNameError + " 😞"
         }

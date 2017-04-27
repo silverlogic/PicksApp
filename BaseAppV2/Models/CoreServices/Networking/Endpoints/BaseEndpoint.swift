@@ -25,7 +25,7 @@ extension BaseEndpoint {
         let url = URL(base: baseURL, path: endpointInfo.path)!
         let headers: HTTPHeaders?
         if endpointInfo.requiresAuthorization, let token = SessionManager.shared.authorizationToken {
-            headers = ["Authorization": "Token \(token)"]
+            headers = ["Authorization": token]
         } else {
             headers = nil
         }

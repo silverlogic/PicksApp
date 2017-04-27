@@ -72,7 +72,7 @@ extension ConfigurationManagerTests {
             XCTFail("Error Getting Api Url From Global Configuration!")
             return
         }
-        XCTAssertEqual(stagingApiUrl, "https://api.baseapp.tsl.io/v1/", "Wrong Value Retrived!")
+        XCTAssertEqual(stagingApiUrl, "https://picksapp-api-staging.mybluemix.net/api/", "Wrong Value Retrived!")
         _sharedInstance.environmentMode = .stable
         guard let stableApiUrl = _sharedInstance.apiUrl else {
             XCTFail("Error Getting Api Url From Global Configuration!")

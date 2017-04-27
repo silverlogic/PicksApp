@@ -96,7 +96,7 @@ extension SessionManager {
         }
     }
     
-    /// Logs out the current user and terminates their session.
+    // Logs out the current user and terminates their session.
     func logout() {
         guard let user = _currentUser.value else { return }
         CoreDataStack.shared.deleteObject(user, success: { [weak self] in
@@ -106,6 +106,7 @@ extension SessionManager {
             KeychainManager.shared.removeItemForKey(SessionConstants.authorizationToken)
             UserDefaults.standard.removeObject(forKey: SessionConstants.userId)
             NotificationCenter.default.post(name: .UserLoggedOut, object: nil)
+            FacebookManager.shared.logout()
         }, failure: {
             AppLogger.shared.logMessage("Error Logging Out User!", for: .error)
         })

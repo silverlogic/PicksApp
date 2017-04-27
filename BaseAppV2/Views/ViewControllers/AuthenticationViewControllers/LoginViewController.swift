@@ -13,11 +13,16 @@ import Foundation
     from the login view.
 */
 final class LoginViewController: BaseViewController {
-    
+
+
     // MARK: - IBOutlets
     @IBOutlet fileprivate weak var emailTextField: BaseTextField!
     @IBOutlet fileprivate weak var passwordTextField: BaseTextField!
-    
+    @IBOutlet fileprivate weak var twitterButton: BaseButton!
+    @IBOutlet fileprivate weak var facebookButton: BaseButton!
+    @IBOutlet fileprivate weak var baseAppLoginView: BaseView!
+    @IBOutlet fileprivate weak var facebookButtonTrailing: NSLayoutConstraint!
+
     
     // MARK: - Public Instance Attributes
     var loginViewModel: LoginViewModelProtocol? {
@@ -36,7 +41,7 @@ final class LoginViewController: BaseViewController {
         case forgotPassword
         static let caseCount = LoginButtons.numberOfCases()
     }
-    
+
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -77,15 +82,7 @@ fileprivate extension LoginViewController {
             loginWithEmail()
             break
         case .facebook:
-            let socialAuthWebViewController = SocialAuthWebViewController(redirectUri: (loginViewModel?.facebookRedirectUri)!, oauthUrl: (loginViewModel?.facebookOAuthUrl)!)
-            socialAuthWebViewController.redirectUrlWithQueryParametersRecievedClosure = { [weak self] (redirectUrlWithQueryParameters: URL) in
-                guard let strongSelf = self else { return }
-                strongSelf.loginViewModel?.redirectUrlWithQueryParameters = redirectUrlWithQueryParameters
-                strongSelf.showProgresHud()
-                strongSelf.loginViewModel?.loginWithFacebook(email: nil)
-            }
-            let baseNavigationController = BaseNavigationController(rootViewController: socialAuthWebViewController)
-            present(baseNavigationController, animated: true, completion: nil)
+            loginWithFacebook()
             break
         case .twitter:
             showProgresHud()
@@ -138,6 +135,9 @@ fileprivate extension LoginViewController {
     /// Sets up the default logic for the view.
     fileprivate func setup() {
         if !isViewLoaded { return }
+        twitterButton.isHidden = true
+        baseAppLoginView.isHidden = true
+        facebookButtonTrailing.constant = -(35)
         guard let viewModel = loginViewModel else { return }
         viewModel.loginError.bind { [weak self] (error: BaseError?) in
             guard let strongSelf = self,
@@ -193,6 +193,14 @@ fileprivate extension LoginViewController {
             let baseNavigationController = BaseNavigationController(rootViewController: socialAuthWebViewController)
             strongSelf.present(baseNavigationController, animated: true, completion: nil)
         }
+        viewModel.loginBegan.bind { [weak self] (began) in
+            guard let strongSelf = self else { return }
+            strongSelf.showProgresHud()
+        }
+        viewModel.facebookPermissionsDenied.bind { [weak self] (denied) in
+            guard let strongSelf = self else { return }
+            strongSelf.showErrorAlert(title: NSLocalizedString("Miscellaneous.FacebookError", comment: "get string for title"), subTitle: NSLocalizedString("Miscellaneous.FacebookErrorBody", comment: "get string for body"))
+        }
         emailTextField.delegate = self
         passwordTextField.delegate = self
         enableKeyboardManagement(true)
@@ -203,5 +211,10 @@ fileprivate extension LoginViewController {
         view.endEditing(true)
         showProgresHud()
         loginViewModel?.loginWithEmail()
+    }
+
+    fileprivate func loginWithFacebook() {
+        view.endEditing(true)
+        loginViewModel?.loginToFacebook(viewController: self)
     }
 }

@@ -4,7 +4,7 @@
     "previous": "https://api.baseapp.tsl.io/v1/users",
     "results": [
                 {
-                "first_name": "J",
+                "firstName": "J",
                 "id": 6,
                 "last_name": "K",
                 "avatar": {
@@ -13,7 +13,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 1,
                 "last_name": "",
                 "avatar": {
@@ -22,7 +22,7 @@
                 }
                 },
                 {
-                "first_name": "Sha",
+                "firstName": "Sha",
                 "id": 73,
                 "last_name": "Test",
                 "avatar": {
@@ -31,7 +31,7 @@
                 }
                 },
                 {
-                "first_name": "Ryan",
+                "firstName": "Ryan",
                 "id": 106,
                 "last_name": "Pineo",
                 "avatar": {
@@ -40,7 +40,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 108,
                 "last_name": "",
                 "avatar": {
@@ -49,7 +49,7 @@
                 }
                 },
                 {
-                "first_name": "David",
+                "firstName": "David",
                 "id": 109,
                 "last_name": "Hartmann",
                 "avatar": {
@@ -58,7 +58,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 115,
                 "last_name": "",
                 "avatar": {
@@ -67,7 +67,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 122,
                 "last_name": "",
                 "avatar": {
@@ -76,7 +76,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 123,
                 "last_name": "",
                 "avatar": {
@@ -85,7 +85,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 125,
                 "last_name": "",
                 "avatar": {
@@ -94,7 +94,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 124,
                 "last_name": "",
                 "avatar": {
@@ -103,7 +103,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 62,
                 "last_name": "",
                 "avatar": {
@@ -112,7 +112,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 96,
                 "last_name": "",
                 "avatar": {
@@ -121,7 +121,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 128,
                 "last_name": "",
                 "avatar": {
@@ -130,7 +130,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 130,
                 "last_name": "",
                 "avatar": {
@@ -139,7 +139,7 @@
                 }
                 },
                 {
-                "first_name": "Dog",
+                "firstName": "Dog",
                 "id": 132,
                 "last_name": "",
                 "avatar": {
@@ -148,7 +148,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 189,
                 "last_name": "",
                 "avatar": {
@@ -157,7 +157,7 @@
                 }
                 },
                 {
-                "first_name": "first name",
+                "firstName": "first name",
                 "id": 155,
                 "last_name": "last name",
                 "avatar": {
@@ -166,7 +166,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 160,
                 "last_name": "",
                 "avatar": {
@@ -175,7 +175,7 @@
                 }
                 },
                 {
-                "first_name": "Seven",
+                "firstName": "Seven",
                 "id": 204,
                 "last_name": "Escalante",
                 "avatar": {
@@ -184,7 +184,7 @@
                 }
                 },
                 {
-                "first_name": "GT",
+                "firstName": "GT",
                 "id": 167,
                 "last_name": "R",
                 "avatar": {
@@ -193,7 +193,7 @@
                 }
                 },
                 {
-                "first_name": "Beast",
+                "firstName": "Beast",
                 "id": 148,
                 "last_name": "Meister",
                 "avatar": {
@@ -202,7 +202,7 @@
                 }
                 },
                 {
-                "first_name": "test",
+                "firstName": "test",
                 "id": 8,
                 "last_name": "",
                 "avatar": {
@@ -211,7 +211,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 199,
                 "last_name": "",
                 "avatar": {
@@ -220,7 +220,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 153,
                 "last_name": "",
                 "avatar": {
@@ -229,7 +229,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 183,
                 "last_name": "",
                 "avatar": {
@@ -238,7 +238,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 173,
                 "last_name": "",
                 "avatar": {
@@ -247,7 +247,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 174,
                 "last_name": "",
                 "avatar": {
@@ -256,7 +256,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 179,
                 "last_name": "",
                 "avatar": {
@@ -265,7 +265,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 180,
                 "last_name": "",
                 "avatar": {

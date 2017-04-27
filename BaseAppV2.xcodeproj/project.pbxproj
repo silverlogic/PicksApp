@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0CBC17FBE57C2AEF634B3419 /* Pods_BaseAppV2IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53237DDD29BF2B0B73AE20E /* Pods_BaseAppV2IntegrationTests.framework */; };
 		23C149158B8B6DD8E44DD46E /* Pods_BaseAppV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9254900A7A6393B88B1D07F /* Pods_BaseAppV2.framework */; };
+		26218EDD1EB2935D00C2BFF9 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */; };
 		323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323127DA1E74A642007BE4C3 /* Promise+Extension.swift */; };
 		4D7425651EB781B600107859 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425641EB781B600107859 /* Weak.swift */; };
 		4D7425671EB79E7400107859 /* ViewModelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425661EB79E7400107859 /* ViewModelsManager.swift */; };
@@ -189,6 +190,8 @@
 /* Begin PBXFileReference section */
 		16D12F5DEE6DAEDF367F64C1 /* Pods-BaseAppV2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		16EB33E337672860FA736C21 /* Pods-BaseAppV2UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2UnitTests/Pods-BaseAppV2UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/FacebookManager.swift; sourceTree = "<group>"; };
+		2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-2.xcdatamodel"; sourceTree = "<group>"; };
 		323127DA1E74A642007BE4C3 /* Promise+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Promise+Extension.swift"; path = "Extensions/Promise+Extension.swift"; sourceTree = "<group>"; };
 		4D7425641EB781B600107859 /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weak.swift; path = Helpers/Weak.swift; sourceTree = "<group>"; };
 		4D7425661EB79E7400107859 /* ViewModelsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelsManager.swift; path = ViewModels/ViewModelsManager.swift; sourceTree = "<group>"; };
@@ -1340,6 +1343,7 @@
 			children = (
 				88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */,
 				88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */,
+				26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -1447,6 +1451,9 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
@@ -1800,6 +1807,7 @@
 				88BFD8D31E831FC9000C8A61 /* Array+Extension.swift in Sources */,
 				885514E11E8DB872008A82CC /* UserCollectionViewCell.swift in Sources */,
 				88F3FE0B1E7316CC003162F8 /* CaseCount.swift in Sources */,
+				26218EDD1EB2935D00C2BFF9 /* FacebookManager.swift in Sources */,
 				88FBC2941E6EAB4B003AEEC4 /* NSManagedObject+Extension.swift in Sources */,
 				8801FDFD1E72357500F54932 /* UIViewController+Extension.swift in Sources */,
 				88F8C9671E6A4C45006D6BC9 /* NetworkClient.swift in Sources */,
@@ -2058,6 +2066,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Fabric",
+					"~/Documents/FacebookSDK",
 					"$(PROJECT_DIR)/Pods/Crashlytics",
 				);
 				INFOPLIST_FILE = BaseAppV2/Info.plist;
@@ -2088,6 +2097,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Fabric",
+					"~/Documents/FacebookSDK",
 					"$(PROJECT_DIR)/Pods/Crashlytics",
 				);
 				INFOPLIST_FILE = BaseAppV2/Info.plist;
@@ -2262,10 +2272,11 @@
 		88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */,
 				88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */,
 				88226DCF1E9C0A5B00C6BA85 /* Model.xcdatamodel */,
 			);
-			currentVersion = 88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */;
+			currentVersion = 2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = Models/BusinessLogic/EntityModels/Model.xcdatamodeld;
 			sourceTree = "<group>";

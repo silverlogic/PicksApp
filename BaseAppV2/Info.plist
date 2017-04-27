@@ -21,13 +21,14 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>io.branch.sdk</string>
+            <key>CFBundleTypeRole</key>
+                <string>Editor</string>
+                <key>CFBundleURLName</key>
+                <string>io.branch.sdk</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>baseappv2-deeplinking</string>
+                <string>baseappv2-deeplinking</string>
+                <string>fb1403638353031095</string>
 			</array>
 		</dict>
 	</array>
@@ -88,5 +89,16 @@
 		<key>test</key>
 		<string>key_test_pmEf8Pqmg05t4N1MamZw4egeyxahRfTj</string>
 	</dict>
+	<key>FacebookAppID</key>
+	<string>1403638353031095</string>
+	<key>FacebookDisplayName</key>
+	<string>PicksApp</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>

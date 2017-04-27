@@ -4,7 +4,7 @@
     "previous": null,
     "results": [
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 27,
                 "last_name": "",
                 "avatar": {
@@ -13,7 +13,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 11,
                 "last_name": "",
                 "avatar": {
@@ -22,7 +22,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 30,
                 "last_name": "",
                 "avatar": {
@@ -31,7 +31,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 12,
                 "last_name": "",
                 "avatar": {
@@ -40,7 +40,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 13,
                 "last_name": "",
                 "avatar": {
@@ -49,7 +49,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 14,
                 "last_name": "",
                 "avatar": {
@@ -58,7 +58,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 16,
                 "last_name": "",
                 "avatar": {
@@ -67,7 +67,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 17,
                 "last_name": "",
                 "avatar": {
@@ -76,7 +76,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 18,
                 "last_name": "",
                 "avatar": {
@@ -85,7 +85,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 20,
                 "last_name": "",
                 "avatar": {
@@ -94,7 +94,7 @@
                 }
                 },
                 {
-                "first_name": "Kevin",
+                "firstName": "Kevin",
                 "id": 116,
                 "last_name": "Kl",
                 "avatar": {
@@ -103,7 +103,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 22,
                 "last_name": "",
                 "avatar": {
@@ -112,7 +112,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 31,
                 "last_name": "",
                 "avatar": {
@@ -121,7 +121,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 29,
                 "last_name": "",
                 "avatar": {
@@ -130,7 +130,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 119,
                 "last_name": "",
                 "avatar": {
@@ -139,7 +139,7 @@
                 }
                 },
                 {
-                "first_name": "Johnny",
+                "firstName": "Johnny",
                 "id": 57,
                 "last_name": "Kay",
                 "avatar": {
@@ -148,7 +148,7 @@
                 }
                 },
                 {
-                "first_name": "Pink Blob",
+                "firstName": "Pink Blob",
                 "id": 81,
                 "last_name": "Thing",
                 "avatar": {
@@ -157,7 +157,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 63,
                 "last_name": "",
                 "avatar": {
@@ -166,7 +166,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 64,
                 "last_name": "",
                 "avatar": {
@@ -175,7 +175,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 65,
                 "last_name": "",
                 "avatar": {
@@ -184,7 +184,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 66,
                 "last_name": "",
                 "avatar": {
@@ -193,7 +193,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 67,
                 "last_name": "",
                 "avatar": {
@@ -202,7 +202,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 68,
                 "last_name": "",
                 "avatar": {
@@ -211,7 +211,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 69,
                 "last_name": "",
                 "avatar": {
@@ -220,7 +220,7 @@
                 }
                 },
                 {
-                "first_name": "Seven",
+                "firstName": "Seven",
                 "id": 71,
                 "last_name": "Escalante",
                 "avatar": {
@@ -229,7 +229,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 80,
                 "last_name": "",
                 "avatar": {
@@ -238,7 +238,7 @@
                 }
                 },
                 {
-                "first_name": "Kevin",
+                "firstName": "Kevin",
                 "id": 117,
                 "last_name": "L",
                 "avatar": {
@@ -247,7 +247,7 @@
                 }
                 },
                 {
-                "first_name": "",
+                "firstName": "",
                 "id": 85,
                 "last_name": "",
                 "avatar": {
@@ -256,7 +256,7 @@
                 }
                 },
                 {
-                "first_name": "Cristina",
+                "firstName": "Cristina",
                 "id": 86,
                 "last_name": "Phon",
                 "avatar": {
@@ -265,7 +265,7 @@
                 }
                 },
                 {
-                "first_name": "Ryan",
+                "firstName": "Ryan",
                 "id": 93,
                 "last_name": "Pineo",
                 "avatar": {

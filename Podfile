@@ -11,6 +11,8 @@ target 'BaseAppV2' do
     pod 'CCBottomRefreshControl'
     pod 'Crashlytics', '~> 3.8'
     pod 'Dodo', '~> 7.0'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
     pod 'ImagePicker', :git => 'https://github.com/hyperoslo/ImagePicker'
     pod 'IQKeyboardManager'
     pod 'KeychainAccess', '~> 3.0.2'
