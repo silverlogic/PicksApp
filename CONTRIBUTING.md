@@ -12,8 +12,7 @@
 Tests are written using XCTest, KIF, and OHHTTPStubs. Unit tests can be found in
 the `BaseAppV2UnitTests` directory. Integration tests can be found in the
 `BaseAppV2IntegrationTests` directory.
-
-All for all new features added and implemented, all code **must** be accompanied by
+For all new features added and implemented, all code **must** be accompanied by
 unit tests, integration tests or both depending on the type of feature being implemented.
 
 #### Definitions
