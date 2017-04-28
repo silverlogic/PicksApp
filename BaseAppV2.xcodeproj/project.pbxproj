@@ -2030,6 +2030,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				DISPLAY_NAME = PicksApp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Fabric",
@@ -2059,6 +2060,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				DISPLAY_NAME = PicksApp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Fabric",
