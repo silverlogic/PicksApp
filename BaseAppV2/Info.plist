@@ -5,11 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-<<<<<<< HEAD
 	<string>PicksApp</string>
-=======
-	<string>${DISPLAY_NAME}</string>
->>>>>>> 65e588c3f37a4ad35274decaeac43b88693c1159
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
