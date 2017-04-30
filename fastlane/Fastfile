@@ -37,9 +37,8 @@ platform :ios do
 
     # Generate provisioning profiles and certificates
     # Value `app_identifier` and `git_branch` will change for Silverlogic development
-    # For parameter `git_branch` it would be '<NameOfApp>-development'
+    # When running locally, remove parameter `readonly`
     match(app_identifier: "com.silverlogic.BaseAppV2",
-          git_branch: "BaseAppV2-development",
           username: "apple@tsl.io",
           force_for_new_devices: true,
           readonly: true,
@@ -59,7 +58,7 @@ platform :ios do
 
     # Get release notes
     # Uncomment line bellow for forks
-    # release_notes = sh("get_latest_release_notes.sh")
+    # release_notes = sh "cd .. && ./get_latest_release_notes.sh"
 
     # Upload to Fabric
     # Uncomment block bellow to insert release notes
