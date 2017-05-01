@@ -16,12 +16,12 @@ import CoreData
 protocol FetchResultsProtocol: class {
     
     // MARK: - Instance Attributes
-    var itemInserted: DynamicBinder<IndexPath?> { get }
-    var itemDeleted: DynamicBinder<IndexPath?> { get }
-    var itemUpdated: DynamicBinder<IndexPath?> { get }
-    var resultsBeganUpdate: DynamicBinder<Void> { get }
-    var resultsFinishedUpdate: DynamicBinder<Void> { get }
-    var fetchError: DynamicBinder<BaseError?> { get }
+    var itemInserted: DynamicBinderInterface<IndexPath?> { get }
+    var itemDeleted: DynamicBinderInterface<IndexPath?> { get }
+    var itemUpdated: DynamicBinderInterface<IndexPath?> { get }
+    var resultsBeganUpdate: DynamicBinderInterface<Void> { get }
+    var resultsFinishedUpdate: DynamicBinderInterface<Void> { get }
+    var fetchError: DynamicBinderInterface<BaseError?> { get }
 }
 
 
@@ -34,16 +34,34 @@ protocol FetchResultsProtocol: class {
 final class FetchResults: NSObject, FetchResultsProtocol {
     
     // MARK: - FetchResultsProtocol Attributes
-    var itemInserted: DynamicBinder<IndexPath?>
-    var itemDeleted: DynamicBinder<IndexPath?>
-    var itemUpdated: DynamicBinder<IndexPath?>
-    var resultsBeganUpdate: DynamicBinder<Void>
-    var resultsFinishedUpdate: DynamicBinder<Void>
-    var fetchError: DynamicBinder<BaseError?>
+    var itemInserted: DynamicBinderInterface<IndexPath?> {
+        return itemInsertedBinder.interface
+    }
+    var itemDeleted: DynamicBinderInterface<IndexPath?> {
+        return itemDeletedBinder.interface
+    }
+    var itemUpdated: DynamicBinderInterface<IndexPath?> {
+        return itemUpdatedBinder.interface
+    }
+    var resultsBeganUpdate: DynamicBinderInterface<Void> {
+        return resultsBeganUpdateBinder.interface
+    }
+    var resultsFinishedUpdate: DynamicBinderInterface<Void> {
+        return resultsFinishedUpdateBinder.interface
+    }
+    var fetchError: DynamicBinderInterface<BaseError?> {
+        return fetchErrorBinder.interface
+    }
     
     
     // MARK: - Private Instance Attributes
     fileprivate let fetchResultsController: NSFetchedResultsController<NSFetchRequestResult>
+    fileprivate var itemInsertedBinder: DynamicBinder<IndexPath?>
+    fileprivate var itemDeletedBinder: DynamicBinder<IndexPath?>
+    fileprivate var itemUpdatedBinder: DynamicBinder<IndexPath?>
+    fileprivate var resultsBeganUpdateBinder: DynamicBinder<Void>
+    fileprivate var resultsFinishedUpdateBinder: DynamicBinder<Void>
+    fileprivate var fetchErrorBinder: DynamicBinder<BaseError?>
     
     
     // MARK: - Initializers
@@ -66,12 +84,12 @@ final class FetchResults: NSObject, FetchResultsProtocol {
     */
     init?(with fetchRequest: NSFetchRequest<NSFetchRequestResult>, sectionNameKeyPath: String?, cacheName: String?) {
         guard let sortDescriptors = fetchRequest.sortDescriptors, sortDescriptors.count >= 1 else { return nil }
-        itemInserted = DynamicBinder(nil)
-        itemDeleted = DynamicBinder(nil)
-        itemUpdated = DynamicBinder(nil)
-        resultsBeganUpdate = DynamicBinder()
-        resultsFinishedUpdate = DynamicBinder()
-        fetchError = DynamicBinder(nil)
+        itemInsertedBinder = DynamicBinder(nil)
+        itemDeletedBinder = DynamicBinder(nil)
+        itemUpdatedBinder = DynamicBinder(nil)
+        resultsBeganUpdateBinder = DynamicBinder()
+        resultsFinishedUpdateBinder = DynamicBinder()
+        fetchErrorBinder = DynamicBinder(nil)
         fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         super.init()
         fetchResultsController.delegate = self
@@ -82,34 +100,34 @@ final class FetchResults: NSObject, FetchResultsProtocol {
 // MARK: - NSFetchedResultsControllerDelegate
 extension FetchResults: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        resultsBeganUpdate.value = ()
+        resultsBeganUpdateBinder.value = ()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        resultsFinishedUpdate.value = ()
+        resultsFinishedUpdateBinder.value = ()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             guard let path = newIndexPath else { return }
-            itemInserted.value = path
+            itemInsertedBinder.value = path
             break
         case .delete:
             guard let path = indexPath else { return }
-            itemDeleted.value = path
+            itemDeletedBinder.value = path
             break
         case .move:
             if let path = indexPath {
-                itemDeleted.value = path
+                itemDeletedBinder.value = path
             }
             if let path = newIndexPath {
-                itemInserted.value = path
+                itemInsertedBinder.value = path
             }
             break
         case .update:
             guard let path = indexPath else { return }
-            itemUpdated.value = path
+            itemUpdatedBinder.value = path
             break
         }
     }
@@ -130,7 +148,7 @@ extension FetchResults {
             try fetchResultsController.performFetch()
         } catch {
             AppLogger.shared.logMessage(error.localizedDescription, for: .error)
-            fetchError.value = BaseError.fetchResultsError
+            fetchErrorBinder.value = BaseError.fetchResultsError
         }
     }
     

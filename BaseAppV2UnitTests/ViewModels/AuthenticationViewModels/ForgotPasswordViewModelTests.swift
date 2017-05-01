@@ -13,7 +13,7 @@ final class ForgotPasswordViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Initialization Tests
     func testInit() {
-        let forgotPasswordViewModel = ForgotPasswordViewModel(token: nil)
+        let forgotPasswordViewModel = ViewModelsManager.forgotPasswordViewModel(token: nil)
         XCTAssertNotNil(forgotPasswordViewModel, "Value Should Not Be Nil!")
         XCTAssertEqual(forgotPasswordViewModel.email, "", "Initialization Failed!")
         XCTAssertEqual(forgotPasswordViewModel.newPassword, "", "Initialization Failed!")
@@ -25,7 +25,7 @@ final class ForgotPasswordViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Functional Tests
     func testForgotPasswordRequest() {
-        let forgotPasswordViewModel = ForgotPasswordViewModel(token: nil)
+        let forgotPasswordViewModel = ViewModelsManager.forgotPasswordViewModel(token: nil)
         let forgotPasswordRequestExpectation = expectation(description: "Test Forgot Password Expectation")
         let forgotPasswordRequestErrorExpectation = expectation(description: "Test Forgot Password Error Expectation")
         forgotPasswordViewModel.forgotPasswordError.bind { (error: BaseError?) in
@@ -41,7 +41,7 @@ final class ForgotPasswordViewModelTests: BaseAppV2UnitTests {
     }
     
     func testForgotPasswordReset() {
-        let forgotPasswordViewModel = ForgotPasswordViewModel(token: "AAADCC32jjsxndiehroens38er8f8wyq3rg32")
+        let forgotPasswordViewModel = ViewModelsManager.forgotPasswordViewModel(token: "AAADCC32jjsxndiehroens38er8f8wyq3rg32")
         let forgotPasswordResetExpectation = expectation(description: "Test Forgot Password Expectation")
         let forgotPasswordResetErrorExpectation = expectation(description: "Test Forgot Password Error Expectation")
         forgotPasswordViewModel.forgotPasswordError.bind { (error: BaseError?) in
@@ -57,7 +57,7 @@ final class ForgotPasswordViewModelTests: BaseAppV2UnitTests {
     }
     
     func testCancelResetPassword() {
-        let forgotPasswordViewModel = ForgotPasswordViewModel(token: "AAADCC32jjsxndiehroens38er8f8wyq3rg32")
+        let forgotPasswordViewModel = ViewModelsManager.forgotPasswordViewModel(token: "AAADCC32jjsxndiehroens38er8f8wyq3rg32")
         forgotPasswordViewModel.cancelResetPassword()
     }
 }

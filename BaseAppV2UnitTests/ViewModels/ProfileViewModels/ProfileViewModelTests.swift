@@ -22,7 +22,7 @@ final class ProfileViewModelTests: BaseAppV2UnitTests {
         SessionManager.shared.currentUser.value?.userId = 210
         let updateProfileErrorExpectation = expectation(description: "Test Update Profile Error")
         let updateProfileSuccessExpectation = expectation(description: "Tests Update Profile")
-        let profileViewModel = ProfileViewModel(user: SessionManager.shared.currentUser)
+        let profileViewModel = ViewModelsManager.profileViewModel(user: SessionManager.shared.currentUser)
         profileViewModel.updateProfileError.bind { (error: BaseError?) in
             profileViewModel.firstName = "Bob"
             profileViewModel.lastName = "Saget"

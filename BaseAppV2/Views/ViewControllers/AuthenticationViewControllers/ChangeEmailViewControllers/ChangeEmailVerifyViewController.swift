@@ -15,7 +15,7 @@ import Foundation
 final class ChangeEmailVerifyViewController: BaseViewController {
     
     // MARK: - Public Instance Attributes
-    var changeEmailVerifyViewModel: ChangeEmailVerifyViewModel? {
+    var changeEmailVerifyViewModel: ChangeEmailVerifyViewModelProtocol? {
         didSet {
             setup()
         }

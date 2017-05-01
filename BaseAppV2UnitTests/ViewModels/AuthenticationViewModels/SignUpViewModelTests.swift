@@ -13,7 +13,7 @@ final class SignUpViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Initialization Tests
     func testInit() {
-        let signUpViewModel = SignUpViewModel()
+        let signUpViewModel = ViewModelsManager.signUpViewModel()
         XCTAssertNotNil(signUpViewModel, "Value Should Not Be Nil!")
         XCTAssertEqual(signUpViewModel.email, "", "Initialization Failed!")
         XCTAssertEqual(signUpViewModel.password, "", "Initialization Failed!")
@@ -29,7 +29,7 @@ final class SignUpViewModelTests: BaseAppV2UnitTests {
     func testSignup() {
         let signUpErrorExpectation = expectation(description: "Test Signup Error")
         let signupSuccessExpectation = expectation(description: "Test Signup")
-        let signupViewModel = SignUpViewModel()
+        let signupViewModel = ViewModelsManager.signUpViewModel()
         signupViewModel.email = "testuser@tsl.io"
         signupViewModel.password = "1234"
         signupViewModel.confirmPassword = "1234"
@@ -49,7 +49,7 @@ final class SignUpViewModelTests: BaseAppV2UnitTests {
     func testValidateEmail() {
         let signUpErrorExpectation = expectation(description: "Test Signup Error")
         let signupSuccessExpectation = expectation(description: "Test Signup")
-        let signupViewModel = SignUpViewModel()
+        let signupViewModel = ViewModelsManager.signUpViewModel()
         signupViewModel.signUpError.bind { (error: BaseError?) in
             signupViewModel.email = "testuser@tsl.io"
             signupViewModel.validateEmail()
@@ -65,7 +65,7 @@ final class SignUpViewModelTests: BaseAppV2UnitTests {
     func testValidatePassword() {
         let signUpErrorExpectation = expectation(description: "Test Signup Error")
         let signupSuccessExpectation = expectation(description: "Test Signup")
-        let signupViewModel = SignUpViewModel()
+        let signupViewModel = ViewModelsManager.signUpViewModel()
         signupViewModel.signUpError.bind { (error: BaseError?) in
             signupViewModel.password = "1234"
             signupViewModel.confirmPassword = "1234"
@@ -78,7 +78,7 @@ final class SignUpViewModelTests: BaseAppV2UnitTests {
         signupViewModel.validatePassword()
         let signUpMismatchErrorExpectation = expectation(description: "Test Signup Error Mismatch")
         let signupMismatchSuccessExpectation = expectation(description: "Test Signup Mismatch")
-        let signupViewModelTwo = SignUpViewModel()
+        let signupViewModelTwo = ViewModelsManager.signUpViewModel()
         signupViewModelTwo.password = "1234"
         signupViewModelTwo.confirmPassword = "1235"
         signupViewModelTwo.signUpError.bind { (error: BaseError?) in

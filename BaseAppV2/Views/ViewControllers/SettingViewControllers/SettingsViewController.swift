@@ -19,7 +19,7 @@ final class SettingsViewController: BaseViewController {
     
     
     // MARK: - Private Instance Attributes
-    fileprivate var settingViewModel = SettingViewModel()
+    fileprivate var settingViewModel = ViewModelsManager.settingViewModel()
     fileprivate enum Settings: Int, CaseCount {
         case inviteCode
         case versionNumber
@@ -45,7 +45,7 @@ final class SettingsViewController: BaseViewController {
 extension SettingsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let changePasswordViewController = segue.destination as? ChangePasswordViewController else { return }
-        changePasswordViewController.changePasswordViewModel = ChangePasswordViewModel()
+        changePasswordViewController.changePasswordViewModel = ViewModelsManager.changePasswordViewModel()
     }
 }
 
@@ -71,22 +71,22 @@ extension SettingsViewController: UITableViewDataSource {
             settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-version"), settingName: NSLocalizedString("SettingsViewController.Version", comment: "Setting Label"), optionalInfo: settingViewModel.applicationVersion)
             break
         case .termsOfUse:
-            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-termsofuse"), settingName: NSLocalizedString("SettingsViewController.TermsOfUse", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-termsofuse"), settingName: NSLocalizedString("SettingsViewController.TermsOfUse", comment: "Setting Label"), optionalInfo: DynamicBinder("").interface)
             break
         case .privacyPolicy:
-            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-privacypolicy"), settingName: NSLocalizedString("SettingsViewController.PrivacyPolicy", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-privacypolicy"), settingName: NSLocalizedString("SettingsViewController.PrivacyPolicy", comment: "Setting Label"), optionalInfo: DynamicBinder("").interface)
             break
         case .sendFeedback:
-            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-sendfeedback"), settingName: NSLocalizedString("SettingsViewController.SendFeedback", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-sendfeedback"), settingName: NSLocalizedString("SettingsViewController.SendFeedback", comment: "Setting Label"), optionalInfo: DynamicBinder("").interface)
             break
         case .changePassword:
-            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-changepassword"), settingName: NSLocalizedString("SettingsViewController.ChangePassword", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-changepassword"), settingName: NSLocalizedString("SettingsViewController.ChangePassword", comment: "Setting Label"), optionalInfo: DynamicBinder("").interface)
             break
         case .changeEmail:
-            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-sendfeedback"), settingName: NSLocalizedString("SettingsViewController.ChangeEmail", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-sendfeedback"), settingName: NSLocalizedString("SettingsViewController.ChangeEmail", comment: "Setting Label"), optionalInfo: DynamicBinder("").interface)
             break
         case .logout:
-            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-logout"), settingName: NSLocalizedString("SettingsViewController.Logout", comment: "Setting Label"), optionalInfo: DynamicBinder(""))
+            settingCell.configure(settingImage: #imageLiteral(resourceName: "icon-logout"), settingName: NSLocalizedString("SettingsViewController.Logout", comment: "Setting Label"), optionalInfo: DynamicBinder("").interface)
             break
         }
         return settingCell

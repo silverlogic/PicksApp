@@ -20,7 +20,7 @@ final class SignupEmailViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var signUpViewModel: SignUpViewModel? {
+    var signUpViewModel: SignUpViewModelProtocol? {
         didSet {
             setup()
         }

@@ -21,7 +21,7 @@ final class SettingsTableViewCell: BaseTableViewCell {
     
     
     // MARK: - Private Instance Methods
-    fileprivate var optionalInfo: DynamicBinder<String>!
+    fileprivate var optionalInfo: DynamicBinderInterface<String>!
     
     
     // MARK: - Private Class Attributes
@@ -47,7 +47,7 @@ extension SettingsTableViewCell {
                             version of the app. When changes to this
                             value happen, the UI updates accordingly.
     */
-    func configure(settingImage: UIImage, settingName: String, optionalInfo: DynamicBinder<String>) {
+    func configure(settingImage: UIImage, settingName: String, optionalInfo: DynamicBinderInterface<String>) {
         settingsImageView.image = settingImage
         settingsTypeLabel.text = settingName
         settingsOptionalInfoLabel.text = optionalInfo.value
