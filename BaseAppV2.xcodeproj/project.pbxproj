@@ -10,6 +10,9 @@
 		0CBC17FBE57C2AEF634B3419 /* Pods_BaseAppV2IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53237DDD29BF2B0B73AE20E /* Pods_BaseAppV2IntegrationTests.framework */; };
 		23C149158B8B6DD8E44DD46E /* Pods_BaseAppV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9254900A7A6393B88B1D07F /* Pods_BaseAppV2.framework */; };
 		323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323127DA1E74A642007BE4C3 /* Promise+Extension.swift */; };
+		4D7425651EB781B600107859 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425641EB781B600107859 /* Weak.swift */; };
+		4D7425671EB79E7400107859 /* ViewModelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425661EB79E7400107859 /* ViewModelsManager.swift */; };
+		4D7425691EB7D9E600107859 /* WeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425681EB7D9E600107859 /* WeakTests.swift */; };
 		8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDDB1E71BD7900F54932 /* DynamicBinder.swift */; };
 		8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDE01E71C79C00F54932 /* LoginViewModel.swift */; };
 		8801FDE51E71E2E800F54932 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801FDE41E71E2E800F54932 /* Notification+Extension.swift */; };
@@ -186,6 +189,9 @@
 		16D12F5DEE6DAEDF367F64C1 /* Pods-BaseAppV2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2Tests/Pods-BaseAppV2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		16EB33E337672860FA736C21 /* Pods-BaseAppV2UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2UnitTests/Pods-BaseAppV2UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		323127DA1E74A642007BE4C3 /* Promise+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Promise+Extension.swift"; path = "Extensions/Promise+Extension.swift"; sourceTree = "<group>"; };
+		4D7425641EB781B600107859 /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weak.swift; path = Helpers/Weak.swift; sourceTree = "<group>"; };
+		4D7425661EB79E7400107859 /* ViewModelsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelsManager.swift; path = ViewModels/ViewModelsManager.swift; sourceTree = "<group>"; };
+		4D7425681EB7D9E600107859 /* WeakTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakTests.swift; sourceTree = "<group>"; };
 		51ABEBDC8331E8FB42BAC172 /* Pods-BaseAppV2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2UITests/Pods-BaseAppV2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		539FF4664170FC811BC71781 /* Pods_BaseAppV2UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseAppV2UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67EC820F267DA34D42E76BFA /* Pods-BaseAppV2IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2IntegrationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2IntegrationTests/Pods-BaseAppV2IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -622,6 +628,7 @@
 				88AF2E141E7BBA2A00F93A50 /* SettingViewModels */,
 				8801FDDA1E71BC6800F54932 /* ProfileViewModels */,
 				8801FDD91E71BC5A00F54932 /* AuthenticationViewModels */,
+				4D7425661EB79E7400107859 /* ViewModelsManager.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -809,6 +816,7 @@
 			isa = PBXGroup;
 			children = (
 				882CEAB91EAE90F300AE8D24 /* DynamicBinderTests.swift */,
+				4D7425681EB7D9E600107859 /* WeakTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1195,6 +1203,7 @@
 			isa = PBXGroup;
 			children = (
 				8801FDDB1E71BD7900F54932 /* DynamicBinder.swift */,
+				4D7425641EB781B600107859 /* Weak.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1739,6 +1748,7 @@
 				88AF2E231E7C3CA100F93A50 /* BaseImageView.swift in Sources */,
 				88BFD8E01E845746000C8A61 /* ProfileViewModel.swift in Sources */,
 				885514DB1E8DB1B3008A82CC /* UICollectionView+Extension.swift in Sources */,
+				4D7425671EB79E7400107859 /* ViewModelsManager.swift in Sources */,
 				882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */,
 				880414061E8C412900ABF4D4 /* ForgotPasswordResetViewController.swift in Sources */,
 				88FBC29B1E6EC0BF003AEEC4 /* main.swift in Sources */,
@@ -1767,6 +1777,7 @@
 				880413FF1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
 				88AF2E0D1E7B9CFD00F93A50 /* UITableView+Extension.swift in Sources */,
+				4D7425651EB781B600107859 /* Weak.swift in Sources */,
 				8833F6411E8290EB0035975C /* SocialAuthWebViewController.swift in Sources */,
 				8801FDF71E720F4900F54932 /* BaseButton.swift in Sources */,
 				88FBC2A81E70099A003AEEC4 /* BaseEndpoint.swift in Sources */,
@@ -1850,6 +1861,7 @@
 				882CEAF61EAE90F400AE8D24 /* UIViewControllerExtensionTests.swift in Sources */,
 				882CEB061EAE90F400AE8D24 /* PushNotificationManagerTests.swift in Sources */,
 				882CEB151EAE90F400AE8D24 /* SettingViewModelTests.swift in Sources */,
+				4D7425691EB7D9E600107859 /* WeakTests.swift in Sources */,
 				882CEAAB1EAE90C800AE8D24 /* BaseAppV2UnitTests.swift in Sources */,
 				882CEB101EAE90F400AE8D24 /* ForgotPasswordViewModelTests.swift in Sources */,
 				882CEAF31EAE90F400AE8D24 /* NSManagedObjectExtensionTests.swift in Sources */,

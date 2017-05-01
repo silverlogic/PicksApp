@@ -20,8 +20,8 @@ protocol SignUpViewModelProtocol: class {
     var confirmPassword: String { get set }
     var firstName: String { get set }
     var lastName: String { get set }
-    var signUpError: DynamicBinder<BaseError?> { get }
-    var signUpSuccess: DynamicBinder<Bool> { get }
+    var signUpError: DynamicBinderInterface<BaseError?> { get }
+    var signUpSuccess: DynamicBinderInterface<Bool> { get }
     
     
     // MARK: - Instance Methods
@@ -32,10 +32,26 @@ protocol SignUpViewModelProtocol: class {
 
 
 /**
+    A `ViewModelsManager` class extension for `SignUpViewModelProtocol`.
+ */
+extension ViewModelsManager {
+    
+    /**
+        Returns an instance conforming to `SignUpViewModelProtocol`.
+     
+        - Return: an instance conforming to `SignUpViewModelProtocol`.
+     */
+    class func signUpViewModel() -> SignUpViewModelProtocol {
+        return SignUpViewModel()
+    }
+}
+
+
+/**
     A class that conforms to `SignUpViewModelProtocol` and
     implements it.
 */
-final class SignUpViewModel: SignUpViewModelProtocol {
+fileprivate final class SignUpViewModel: SignUpViewModelProtocol {
     
     // MARK: - SignUpViewModelProtocol Attributes
     var email: String
@@ -43,8 +59,17 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     var confirmPassword: String
     var firstName: String
     var lastName: String
-    var signUpError: DynamicBinder<BaseError?>
-    var signUpSuccess: DynamicBinder<Bool>
+    var signUpError: DynamicBinderInterface<BaseError?> {
+        return signUpErrorBinder.interface
+    }
+    var signUpSuccess: DynamicBinderInterface<Bool> {
+        return signUpSuccessBinder.interface
+    }
+    
+    
+    // MARK: - Private Instance Attributes
+    fileprivate var signUpErrorBinder: DynamicBinder<BaseError?>
+    fileprivate var signUpSuccessBinder: DynamicBinder<Bool>
     
     
     // MARK: Initializers
@@ -56,46 +81,46 @@ final class SignUpViewModel: SignUpViewModelProtocol {
         confirmPassword = ""
         firstName = ""
         lastName = ""
-        signUpError = DynamicBinder(nil)
-        signUpSuccess = DynamicBinder(false)
+        signUpErrorBinder = DynamicBinder(nil)
+        signUpSuccessBinder = DynamicBinder(false)
     }
     
     
     // MARK: - SignUpViewModelProtocol Methods
     func signup() {
         if firstName.isEmpty || lastName.isEmpty {
-            signUpError.value = BaseError.fieldsEmpty
+            signUpErrorBinder.value = BaseError.fieldsEmpty
             return
         }
         let signupInfo = SignUpInfo(email: email, password: password, referralCodeOfReferrer: nil)
         let updateInfo = UpdateInfo(referralCodeOfReferrer: nil, avatarBaseString: nil, firstName: firstName, lastName: lastName)
         AuthenticationManager.shared.signup(signupInfo, updateInfo: updateInfo, success: { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.signUpSuccess.value = true
+            strongSelf.signUpSuccessBinder.value = true
             NotificationCenter.default.post(name: .ShowTutorial, object: nil)
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
-            strongSelf.signUpError.value = error
+            strongSelf.signUpErrorBinder.value = error
         }
     }
     
     func validateEmail() {
         if email.isEmpty {
-            signUpError.value = BaseError.fieldsEmpty
+            signUpErrorBinder.value = BaseError.fieldsEmpty
             return
         }
-        signUpSuccess.value = true
+        signUpSuccessBinder.value = true
     }
     
     func validatePassword() {
         if password.isEmpty || confirmPassword.isEmpty {
-            signUpError.value = BaseError.fieldsEmpty
+            signUpErrorBinder.value = BaseError.fieldsEmpty
             return
         }
         if password != confirmPassword {
-            signUpError.value = BaseError.passwordsDoNotMatch
+            signUpErrorBinder.value = BaseError.passwordsDoNotMatch
             return
         }
-        signUpSuccess.value = true
+        signUpSuccessBinder.value = true
     }
 }

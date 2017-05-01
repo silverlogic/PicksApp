@@ -20,7 +20,7 @@ final class LoginViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var loginViewModel: LoginViewModel? {
+    var loginViewModel: LoginViewModelProtocol? {
         didSet {
             setup()
         }
@@ -59,10 +59,10 @@ extension LoginViewController {
         guard let segueIdentifier = segue.identifier else { return }
         if segueIdentifier == UIStoryboardSegue.goToSignupEmailSegue {
             guard let signupEmailViewController = segue.destination as? SignupEmailViewController else { return }
-            signupEmailViewController.signUpViewModel = SignUpViewModel()
+            signupEmailViewController.signUpViewModel =  ViewModelsManager.signUpViewModel()
         } else {
             guard let forgotPasswordRequestViewController = segue.destination as? ForgotPasswordRequestViewController else { return }
-            forgotPasswordRequestViewController.forgotPasswordViewModel = ForgotPasswordViewModel(token: nil)
+            forgotPasswordRequestViewController.forgotPasswordViewModel = ViewModelsManager.forgotPasswordViewModel(token: nil)
         }
     }
 }

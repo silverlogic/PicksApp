@@ -15,11 +15,11 @@ import Foundation
 protocol ProfileViewModelProtocol: class {
     
     // MARK: - Instance Attributes
-    var fullName: DynamicBinder<String> { get }
-    var email: DynamicBinder<String> { get }
-    var avatar: DynamicBinder<URL?> { get }
-    var updateProfileError: DynamicBinder<BaseError?> { get }
-    var updateProfileSuccess: DynamicBinder<Bool> { get }
+    var fullName: DynamicBinderInterface<String> { get }
+    var email: DynamicBinderInterface<String> { get }
+    var avatar: DynamicBinderInterface<URL?> { get }
+    var updateProfileError: DynamicBinderInterface<BaseError?> { get }
+    var updateProfileSuccess: DynamicBinderInterface<Bool> { get }
     var firstName: String { get set }
     var lastName: String { get set }
     var profileImage: UIImage? { get set }
@@ -35,21 +35,55 @@ protocol ProfileViewModelProtocol: class {
 
 
 /**
+    A `ViewModelsManager` class extension for `ProfileViewModelProtocol`.
+ */
+extension ViewModelsManager {
+    
+    /**
+        Returns an instance conforming to `ProfileViewModelProtocol`.
+     
+        - Parameter user: A `MultiDynamicBinder<User?>` representing the
+                          multi dynamic binder containing `current user` value.
+     
+        - Return: an instance conforming to `ProfileViewModelProtocol`.
+     */
+    class func profileViewModel(user: MultiDynamicBinder<User?>) -> ProfileViewModelProtocol {
+        return ProfileViewModel(user: user)
+    }
+}
+
+
+/**
     A class that conforms to `ProfileViewModelProtocol`
     and implements it.
 */
-final class ProfileViewModel: ProfileViewModelProtocol {
+fileprivate final class ProfileViewModel: ProfileViewModelProtocol {
     
     // MARK: - Private Instance Attributes
     fileprivate var user: MultiDynamicBinder<User?>
+    fileprivate var fullNameBinder: DynamicBinder<String>
+    fileprivate var emailBinder: DynamicBinder<String>
+    fileprivate var avatarBinder: DynamicBinder<URL?>
+    fileprivate var updateProfileErrorBinder: DynamicBinder<BaseError?>
+    fileprivate var updateProfileSuccessBinder: DynamicBinder<Bool>
     
     
     // MARK: - ProfileViewModelProtocol Attributes
-    var fullName: DynamicBinder<String>
-    var email: DynamicBinder<String>
-    var avatar: DynamicBinder<URL?>
-    var updateProfileError: DynamicBinder<BaseError?>
-    var updateProfileSuccess: DynamicBinder<Bool>
+    var fullName: DynamicBinderInterface<String> {
+        return fullNameBinder.interface
+    }
+    var email: DynamicBinderInterface<String> {
+        return emailBinder.interface
+    }
+    var avatar: DynamicBinderInterface<URL?> {
+        return avatarBinder.interface
+    }
+    var updateProfileError: DynamicBinderInterface<BaseError?> {
+        return updateProfileErrorBinder.interface
+    }
+    var updateProfileSuccess: DynamicBinderInterface<Bool> {
+        return updateProfileSuccessBinder.interface
+    }
     var firstName: String
     var lastName: String
     var profileImage: UIImage?
@@ -59,22 +93,22 @@ final class ProfileViewModel: ProfileViewModelProtocol {
     init(user: MultiDynamicBinder<User?>) {
         self.user = user
         if let name = self.user.value?.fullName {
-            fullName = DynamicBinder(name)
+            fullNameBinder = DynamicBinder(name)
         } else {
-            fullName = DynamicBinder("")
+            fullNameBinder = DynamicBinder("")
         }
         if let userEmail = self.user.value?.email {
-            email = DynamicBinder(userEmail)
+            emailBinder = DynamicBinder(userEmail)
         } else {
-            email = DynamicBinder("")
+            emailBinder = DynamicBinder("")
         }
         if let userAvatar = self.user.value?.avatarUrl {
-            avatar = DynamicBinder(userAvatar)
+            avatarBinder = DynamicBinder(userAvatar)
         } else {
-            avatar = DynamicBinder(nil)
+            avatarBinder = DynamicBinder(nil)
         }
-        updateProfileError = DynamicBinder(nil)
-        updateProfileSuccess = DynamicBinder(false)
+        updateProfileErrorBinder = DynamicBinder(nil)
+        updateProfileSuccessBinder = DynamicBinder(false)
         if let userFirstName = self.user.value?.firstName {
             firstName = userFirstName
         } else {
@@ -86,19 +120,19 @@ final class ProfileViewModel: ProfileViewModelProtocol {
             lastName = ""
         }
         profileImage = nil
-        user.bind({ [weak self] (user: User?) in
+        user.interface.bind({ [weak self] (user: User?) in
             guard let strongSelf = self,
                   let newUser = user else { return }
-            strongSelf.fullName.value = newUser.fullName
+            strongSelf.fullNameBinder.value = newUser.fullName
             if let userEmail = newUser.email {
-                strongSelf.email.value = userEmail
+                strongSelf.emailBinder.value = userEmail
             } else {
-                strongSelf.email.value = ""
+                strongSelf.emailBinder.value = ""
             }
             if let userAvatar = newUser.avatarUrl {
-                strongSelf.avatar.value = userAvatar
+                strongSelf.avatarBinder.value = userAvatar
             } else {
-                strongSelf.avatar.value = nil
+                strongSelf.avatarBinder.value = nil
             }
             if let userFirstName = newUser.firstName {
                 strongSelf.firstName = userFirstName
@@ -119,14 +153,14 @@ final class ProfileViewModel: ProfileViewModelProtocol {
     
     /// Deinitializes an instance of `ProfileViewModel`.
     deinit {
-        user.removeListeners(for: self)
+        user.interface.unbind(for: self)
     }
     
     
     // MARK: - ProfileViewModelProtocol Methods
     func updateProfile() {
         if firstName.isEmpty || lastName.isEmpty {
-            updateProfileError.value = BaseError.fieldsEmpty
+            updateProfileErrorBinder.value = BaseError.fieldsEmpty
             if let userFirstName = user.value?.firstName {
                 firstName = userFirstName
             }
@@ -138,7 +172,7 @@ final class ProfileViewModel: ProfileViewModelProtocol {
         let baseString: String?
         if let image = profileImage {
             guard let imageData = UIImageJPEGRepresentation(image, 0.7) else {
-                updateProfileError.value = BaseError.generic
+                updateProfileErrorBinder.value = BaseError.generic
                 return
             }
             baseString = imageData.base64EncodedString(options: .lineLength64Characters)
@@ -148,10 +182,10 @@ final class ProfileViewModel: ProfileViewModelProtocol {
         let updateInfo = UpdateInfo(referralCodeOfReferrer: nil, avatarBaseString: baseString, firstName: firstName, lastName: lastName)
         SessionManager.shared.update(updateInfo, success: { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.updateProfileSuccess.value = true
+            strongSelf.updateProfileSuccessBinder.value = true
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
-            strongSelf.updateProfileError.value = error
+            strongSelf.updateProfileErrorBinder.value = error
         }
     }
 }
