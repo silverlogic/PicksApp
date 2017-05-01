@@ -20,7 +20,7 @@ final class ForgotPasswordResetViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var forgotPasswordViewModel: ForgotPasswordViewModel? {
+    var forgotPasswordViewModel: ForgotPasswordViewModelProtocol? {
         didSet {
             setup()
         }

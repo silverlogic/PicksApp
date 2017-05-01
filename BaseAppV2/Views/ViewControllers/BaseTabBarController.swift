@@ -25,6 +25,6 @@ class BaseTabBarController: UITabBarController {
         }).first else {
             return
         }
-        profileViewController.profileViewModel = ProfileViewModel(user: SessionManager.shared.currentUser)
+        profileViewController.profileViewModel = ViewModelsManager.profileViewModel(user: SessionManager.shared.currentUser)
     }
 }

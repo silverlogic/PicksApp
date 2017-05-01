@@ -18,8 +18,8 @@ import SCLAlertView
 class BaseAlertViewController: SCLAlertView {
     
     // MARK: - Attributes
-    fileprivate let titleFont: UIFont = .mainMedium
-    fileprivate let defaultFont: UIFont = .mainSmall
+    fileprivate let titleFont: UIFont = .mainRegularMedium
+    fileprivate let defaultFont: UIFont = .mainRegularSmall
     fileprivate let cornerRadius: CGFloat = 3.0
     fileprivate let borderColor = UIColor.lightGray.cgColor
     fileprivate let borderWidth: CGFloat = 1.0

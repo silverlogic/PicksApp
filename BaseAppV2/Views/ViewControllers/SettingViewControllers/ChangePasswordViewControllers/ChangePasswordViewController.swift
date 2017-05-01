@@ -20,7 +20,7 @@ final class ChangePasswordViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var changePasswordViewModel: ChangePasswordViewModel? {
+    var changePasswordViewModel: ChangePasswordViewModelProtocol? {
         didSet {
             setup()
         }

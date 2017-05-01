@@ -117,9 +117,9 @@ fileprivate extension AppDelegate {
     
     /// Configures default UI components used universally.
     fileprivate func configureUIComponents() {
-        var font = UIFont.mainMedium
+        var font = UIFont.mainRegularMedium
         if UIDevice.current.userInterfaceIdiom == .pad {
-            font = .mainLarge
+            font = .mainRegularLarge
         }
         SVProgressHUD.setFont(font)
         SVProgressHUD.setDefaultStyle(.custom)
@@ -170,7 +170,7 @@ fileprivate extension AppDelegate {
     /// Loads the authentication flow.
     @objc fileprivate func loadAuthenticationFlow() {
         let loginViewController = UIStoryboard.loadLoginViewController()
-        loginViewController.loginViewModel = LoginViewModel()
+        loginViewController.loginViewModel = ViewModelsManager.loginViewModel()
         let navigationController = AuthenticationNavigationController(rootViewController: loginViewController)
         let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
         navigationController.view.addSubview(snapshot)
@@ -202,7 +202,7 @@ fileprivate extension AppDelegate {
     @objc fileprivate func loadForgotPasswordResetFlow(notification: Notification) {
         guard let token = notification.object as? String else { return }
         let rootViewController = UIStoryboard.loadForgotPasswordResetViewController()
-        let forgotPasswordViewModel = ForgotPasswordViewModel(token: token)
+        let forgotPasswordViewModel = ViewModelsManager.forgotPasswordViewModel(token: token)
         rootViewController.forgotPasswordViewModel = forgotPasswordViewModel
         let navigationController = AuthenticationNavigationController(rootViewController: rootViewController)
         let snapshot = (window?.snapshotView(afterScreenUpdates: true))!
@@ -273,7 +273,7 @@ fileprivate extension AppDelegate {
               let token = parameters["token"] as? String,
               let userId = parameters["userId"] as? Int else { return }
         let rootViewController = UIStoryboard.loadChangeEmailVerifyViewController()
-        let changeEmailVerifyViewModel = ChangeEmailVerifyViewModel(token: token, userId: userId)
+        let changeEmailVerifyViewModel = ViewModelsManager.changeEmailVerifyViewModel(token: token, userId: userId)
         rootViewController.changeEmailVerifyViewModel = changeEmailVerifyViewModel
         let navigationController = AuthenticationNavigationController(rootViewController: rootViewController)
         let snapshot = (window?.snapshotView(afterScreenUpdates: true))!

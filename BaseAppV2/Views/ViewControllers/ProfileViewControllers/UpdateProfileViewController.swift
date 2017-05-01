@@ -21,7 +21,7 @@ final class UpdateProfileViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var profileViewModel: ProfileViewModel? {
+    var profileViewModel: ProfileViewModelProtocol? {
         didSet {
             setup()
         }

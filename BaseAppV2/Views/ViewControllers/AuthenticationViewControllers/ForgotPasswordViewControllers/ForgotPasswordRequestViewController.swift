@@ -19,7 +19,7 @@ final class ForgotPasswordRequestViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var forgotPasswordViewModel: ForgotPasswordViewModel? {
+    var forgotPasswordViewModel: ForgotPasswordViewModelProtocol? {
         didSet {
             setup()
         }
