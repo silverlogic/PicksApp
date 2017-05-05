@@ -122,7 +122,10 @@ extension SettingsViewController: UITableViewDelegate {
             // @TODO: Call method on view model for privacy policy
             break
         case .sendFeedback:
-            // @TODO: Call method on view model for sending feedback
+            showMailComposeView(emails: settingViewModel.sendFeedbackEmailAddresses, subject: settingViewModel.sendFeedbackEmailSubject, message: settingViewModel.sendFeedbackEmailMessageBody, isHTML: true, failure: { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.showErrorAlert(title: NSLocalizedString("Mail.Error.Title", comment: "error title"), subTitle: NSLocalizedString("Mail.Error.Message", comment: "error title"))
+            })
             break
         case .changePassword:
             performSegue(withIdentifier: UIStoryboardSegue.goToChangePasswordSegue, sender: nil)

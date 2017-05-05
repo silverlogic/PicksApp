@@ -65,9 +65,31 @@ final class ConfigurationManager {
         return redirectUri
     }()
     
+    /// The email address to send feedback of the application to.
+    lazy var feedbackEmailAddress: String = { [weak self] in
+        guard let strongSelf = self,
+              let feedbackEmail = strongSelf.configurationValueForKey(ConfigurationConstants.feedbackEmailAddress) as? String else { return "" }
+        return feedbackEmail
+    }()
+    
+    /// The subject line to use for sending feedback email.
+    lazy var feedbackEmailSubject: String = { [weak self] in
+        guard let strongSelf = self else { return "" }
+        let displayName = strongSelf.displayName
+        let subject = String(format: NSLocalizedString("Mail.Subject", comment: "email subject"), displayName,  Date() as CVarArg)
+        return subject
+    }()
+    
+    /// The display name of the application.
+    lazy var displayName: String = {
+        guard let infoDictionary = Bundle.main.infoDictionary,
+            let displayName = infoDictionary["CFBundleDisplayName"] as? String else { return "" }
+        return displayName
+    }()
+    
     
     // MARK: - Private Instance Attributes
-    fileprivate lazy var _globalConfigurationDictionary: [String: Any] = {
+    fileprivate lazy var globalConfigurationDictionary: [String: Any] = {
         guard let localizedFilePath = Bundle.main.path(forResource: ConfigurationConstants.globalConfiguration, ofType: ConfigurationConstants.propertyListType),
               let propertyListDictionary = NSDictionary(contentsOfFile: localizedFilePath) as? [String: Any] else {
                 return [String: Any]()
@@ -130,7 +152,7 @@ fileprivate extension ConfigurationManager {
                    retrieved, `nil` will be returned.
     */
     fileprivate func configurationValueForKey(_ key: String) -> Any? {
-        return _globalConfigurationDictionary[key]
+        return globalConfigurationDictionary[key]
     }
     
     /**

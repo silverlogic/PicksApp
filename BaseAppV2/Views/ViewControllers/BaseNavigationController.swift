@@ -19,8 +19,10 @@ class BaseNavigationController: UINavigationController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-        let navigationBarBackgroundImage = #imageLiteral(resourceName: "background-baseapp")
-        navigationBar.setBackgroundImage(navigationBarBackgroundImage, for: .default)
+        // @TODO: - Uncomment when wanting a image as the background.
+//        let navigationBarBackgroundImage = #imageLiteral(resourceName: "background-baseapp")
+//        navigationBar.setBackgroundImage(navigationBarBackgroundImage, for: .default)
+        navigationBar.barTintColor = .main
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
         imageView.image = #imageLiteral(resourceName: "icon-baseappnavigationbar")
         imageView.contentMode = .scaleAspectFit

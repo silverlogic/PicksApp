@@ -13,6 +13,7 @@ import Dodo
 import KYNavigationProgress
 import ImagePicker
 import PopupDialog
+import MessageUI
 
 // MARK: - Public Instance Methods For SVProgressHUD
 extension UIViewController {
@@ -341,6 +342,47 @@ extension UIViewController {
     func showCustomPopup(_ popup: BasePopupViewController) {
         let popupViewController = PopupDialog(viewController: popup, transitionStyle: .bounceUp, gestureDismissal: true, completion: nil)
         present(popupViewController, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - Public Instance Methods For MFMailComposeViewController
+extension UIViewController {
+    
+    /**
+        Displays a `MFMailComposeViewController` for sending an email.
+     
+        - Parameters:
+            - emails: A `[String]` representing the email address to
+                            send the message to.
+            - subject: A `String` representing the subject of the email.
+            - message: A `String` representing the message to place in
+                           the email.
+            - isHTML: A `Bool` indicating if `message` contains HTML
+                      content.
+            - failure: A failure that gets invoked when email can't be
+                       sent.
+    */
+    func showMailComposeView(emails: [String], subject: String, message: String, isHTML: Bool, failure: @escaping () -> Void) {
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposeController = MFMailComposeViewController()
+            mailComposeController.setToRecipients(emails)
+            mailComposeController.setSubject(subject)
+            mailComposeController.setMessageBody(message, isHTML: isHTML)
+            mailComposeController.mailComposeDelegate = self
+            mailComposeController.navigationController?.navigationBar.barTintColor = .main
+            present(mailComposeController, animated: true, completion: nil)
+        } else {
+            failure()
+        }
+    }
+}
+
+
+// MARK: - MFMailComposeViewControllerDelegate
+extension UIViewController: MFMailComposeViewControllerDelegate {
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
