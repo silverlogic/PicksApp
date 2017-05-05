@@ -19,6 +19,9 @@ protocol SettingViewModelProtocol: class {
     var inviteCode: DynamicBinderInterface<String> { get }
     var changeEmailRequestError: DynamicBinderInterface<BaseError?> { get }
     var changeEmailRequestSuccess: DynamicBinderInterface<Bool> { get }
+    var sendFeedbackEmailAddresses: [String] { get }
+    var sendFeedbackEmailSubject: String { get }
+    var sendFeedbackEmailMessageBody: String { get }
     
     
     // MARK: - Instance Methods
@@ -62,6 +65,9 @@ fileprivate final class SettingViewModel: SettingViewModelProtocol {
     var changeEmailRequestSuccess: DynamicBinderInterface<Bool> {
         return changeEmailRequestSuccessBinder.interface
     }
+    var sendFeedbackEmailAddresses: [String]
+    var sendFeedbackEmailSubject: String
+    var sendFeedbackEmailMessageBody: String
     
     
     // MARK: - Private Instance Attributes
@@ -83,11 +89,15 @@ fileprivate final class SettingViewModel: SettingViewModelProtocol {
         }
         changeEmailRequestErrorBinder = DynamicBinder(nil)
         changeEmailRequestSuccessBinder = DynamicBinder(false)
+        sendFeedbackEmailSubject = ConfigurationManager.shared.feedbackEmailSubject
+        sendFeedbackEmailAddresses = [ConfigurationManager.shared.feedbackEmailAddress]
+        sendFeedbackEmailMessageBody = String(format: NSLocalizedString("Mail.MessageBody", comment: "email message"), ConfigurationManager.shared.displayName, ConfigurationManager.shared.versionNumber, SessionManager.shared.currentUser.value?.userId ?? "", SessionManager.shared.currentUser.value?.fullName ?? "")
         SessionManager.shared.currentUser.interface.bindAndFire({ [weak self] (user: User?) in
             guard let strongSelf = self,
                   let currentUser = user,
                   let referralCode = currentUser.referralCode else { return }
             strongSelf.inviteCodeBinder.value = referralCode
+            strongSelf.sendFeedbackEmailMessageBody = String(format: NSLocalizedString("Mail.MessageBody", comment: "email message"), ConfigurationManager.shared.displayName, ConfigurationManager.shared.versionNumber, SessionManager.shared.currentUser.value?.userId ?? "", SessionManager.shared.currentUser.value?.fullName ?? "")
         }, for: self)
     }
     
