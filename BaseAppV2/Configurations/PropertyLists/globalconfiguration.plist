@@ -98,5 +98,7 @@
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>
 	</dict>
+	<key>FeedbackEmailAddress</key>
+	<string>info@tsl.io</string>
 </dict>
 </plist>
