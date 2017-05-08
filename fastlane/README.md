@@ -40,6 +40,11 @@ Deploy Staging Build To Fabric
 fastlane ios itunes_connect
 ```
 Deploy Production Build To iTunes Connect
+### ios update_test_devices
+```
+fastlane ios update_test_devices
+```
+Update current provisioning profile with test devices
 
 ----
 
