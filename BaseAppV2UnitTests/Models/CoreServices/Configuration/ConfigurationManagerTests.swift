@@ -108,6 +108,6 @@ extension ConfigurationManagerTests {
     func testDisplayName() {
         let displayName = _sharedInstance.displayName
         XCTAssertNotNil(displayName, "Value Should Not Be Nil!")
-        XCTAssertEqual(displayName, "BaseAppV2", "Getting Display Name Failed!")
+        XCTAssertEqual(displayName, "PicksApp", "Getting Display Name Failed!")
     }
 }

@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.27.0"
+fastlane_version "2.28.9"
 
 default_platform :ios
 
@@ -112,10 +112,26 @@ platform :ios do
 
   end
 
+  desc "Update current provisioning profile with test devices"
+  lane :update_test_devices do
+
+    # Register devices for the provisiong profile to use
+    register_devices(devices_file: "fastlane/devices.txt")
+
+    # Update the provisioning profile
+    # Value `app_identifier` will change for Silverlogic development
+    match(app_identifier: "com.silverlogic.BaseAppV2",
+          username: "apple@tsl.io",
+          force_for_new_devices: true,
+          type: "adhoc")
+  end
+
   # Called if requested lane runs successfully
   after_all do |lane|
     if lane == :fabric
       slack(message: "Successfully deployed to Fabric! 🎉")
+    elsif lane == :update_test_devices
+      slack(message: "Successfully updated provisiong profile! 🎉")
     else
       slack(message: "Successfully deployed to iTunes Connect and in review! 🎉")
     end
