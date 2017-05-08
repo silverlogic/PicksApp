@@ -20,7 +20,7 @@ final class ProfileViewController: BaseViewController {
     
     // MARK: - Public Instance Attributes
     var hideEditButton = false
-    var profileViewModel: ProfileViewModel? {
+    var profileViewModel: ProfileViewModelProtocol? {
         didSet {
             setup()
         }

@@ -21,7 +21,7 @@ final class SignupOptionalInfoViewController: BaseViewController {
     
     
     // MARK: - Public Instance Attributes
-    var signUpViewModel: SignUpViewModel? {
+    var signUpViewModel: SignUpViewModelProtocol? {
         didSet {
             setup()
         }

@@ -15,10 +15,13 @@ import Foundation
 protocol SettingViewModelProtocol: class {
     
     // MARK: - Instance Attributes
-    var applicationVersion: DynamicBinder<String> { get }
-    var inviteCode: DynamicBinder<String> { get }
-    var changeEmailRequestError: DynamicBinder<BaseError?> { get }
-    var changeEmailRequestSuccess: DynamicBinder<Bool> { get }
+    var applicationVersion: DynamicBinderInterface<String> { get }
+    var inviteCode: DynamicBinderInterface<String> { get }
+    var changeEmailRequestError: DynamicBinderInterface<BaseError?> { get }
+    var changeEmailRequestSuccess: DynamicBinderInterface<Bool> { get }
+    var sendFeedbackEmailAddresses: [String] { get }
+    var sendFeedbackEmailSubject: String { get }
+    var sendFeedbackEmailMessageBody: String { get }
     
     
     // MARK: - Instance Methods
@@ -28,35 +31,73 @@ protocol SettingViewModelProtocol: class {
 
 
 /**
+    A `ViewModelsManager` class extension for `SettingViewModelProtocol`.
+ */
+extension ViewModelsManager {
+    
+    /**
+        Returns an instance conforming to `SettingViewModelProtocol`.
+     
+        - Return: an instance conforming to `SettingViewModelProtocol`.
+     */
+    class func settingViewModel() -> SettingViewModelProtocol {
+        return SettingViewModel()
+    }
+}
+
+
+/**
     A class that conforms to `SettingViewModelProtocol`
     and implements it.
 */
-final class SettingViewModel: SettingViewModelProtocol {
+fileprivate final class SettingViewModel: SettingViewModelProtocol {
     
     // MARK: - SettingViewModelProtocol Attributes
-    var applicationVersion: DynamicBinder<String>
-    var inviteCode: DynamicBinder<String>
-    var changeEmailRequestError: DynamicBinder<BaseError?>
-    var changeEmailRequestSuccess: DynamicBinder<Bool>
+    var applicationVersion: DynamicBinderInterface<String> {
+        return applicationVersionBinder.interface
+    }
+    var inviteCode: DynamicBinderInterface<String> {
+        return inviteCodeBinder.interface
+    }
+    var changeEmailRequestError: DynamicBinderInterface<BaseError?> {
+        return changeEmailRequestErrorBinder.interface
+    }
+    var changeEmailRequestSuccess: DynamicBinderInterface<Bool> {
+        return changeEmailRequestSuccessBinder.interface
+    }
+    var sendFeedbackEmailAddresses: [String]
+    var sendFeedbackEmailSubject: String
+    var sendFeedbackEmailMessageBody: String
+    
+    
+    // MARK: - Private Instance Attributes
+    fileprivate var applicationVersionBinder: DynamicBinder<String>
+    fileprivate var inviteCodeBinder: DynamicBinder<String>
+    fileprivate var changeEmailRequestErrorBinder: DynamicBinder<BaseError?>
+    fileprivate var changeEmailRequestSuccessBinder: DynamicBinder<Bool>
     
     
     // MARK: - Initializers
     
     /// Initializes an instance of `SettingViewModel`.
     init() {
-        applicationVersion = DynamicBinder(ConfigurationManager.shared.versionNumber)
+        applicationVersionBinder = DynamicBinder(ConfigurationManager.shared.versionNumber)
         if let referralCode = SessionManager.shared.currentUser.value?.referralCode {
-            inviteCode = DynamicBinder(referralCode)
+            inviteCodeBinder = DynamicBinder(referralCode)
         } else {
-            inviteCode = DynamicBinder("")
+            inviteCodeBinder = DynamicBinder("")
         }
-        changeEmailRequestError = DynamicBinder(nil)
-        changeEmailRequestSuccess = DynamicBinder(false)
-        SessionManager.shared.currentUser.bindAndFire({ [weak self] (user: User?) in
+        changeEmailRequestErrorBinder = DynamicBinder(nil)
+        changeEmailRequestSuccessBinder = DynamicBinder(false)
+        sendFeedbackEmailSubject = ConfigurationManager.shared.feedbackEmailSubject
+        sendFeedbackEmailAddresses = [ConfigurationManager.shared.feedbackEmailAddress]
+        sendFeedbackEmailMessageBody = String(format: NSLocalizedString("Mail.MessageBody", comment: "email message"), ConfigurationManager.shared.displayName, ConfigurationManager.shared.versionNumber, SessionManager.shared.currentUser.value?.userId ?? "", SessionManager.shared.currentUser.value?.fullName ?? "")
+        SessionManager.shared.currentUser.interface.bindAndFire({ [weak self] (user: User?) in
             guard let strongSelf = self,
                   let currentUser = user,
                   let referralCode = currentUser.referralCode else { return }
-            strongSelf.inviteCode.value = referralCode
+            strongSelf.inviteCodeBinder.value = referralCode
+            strongSelf.sendFeedbackEmailMessageBody = String(format: NSLocalizedString("Mail.MessageBody", comment: "email message"), ConfigurationManager.shared.displayName, ConfigurationManager.shared.versionNumber, SessionManager.shared.currentUser.value?.userId ?? "", SessionManager.shared.currentUser.value?.fullName ?? "")
         }, for: self)
     }
     
@@ -65,7 +106,7 @@ final class SettingViewModel: SettingViewModelProtocol {
     
     /// Deinitializes an instance of `SettingViewModel`.
     deinit {
-        SessionManager.shared.currentUser.removeListeners(for: self)
+        SessionManager.shared.currentUser.interface.unbind(for: self)
     }
     
     
@@ -77,15 +118,15 @@ final class SettingViewModel: SettingViewModelProtocol {
     
     func changeEmailRequest(newEmail: String) {
         if newEmail.isEmpty {
-            changeEmailRequestError.value = BaseError.fieldsEmpty
+            changeEmailRequestErrorBinder.value = BaseError.fieldsEmpty
             return
         }
         AuthenticationManager.shared.changeEmailRequest(newEmail: newEmail, success: { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.changeEmailRequestSuccess.value = true
+            strongSelf.changeEmailRequestSuccessBinder.value = true
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
-            strongSelf.changeEmailRequestError.value = error
+            strongSelf.changeEmailRequestErrorBinder.value = error
         }
     }
 }

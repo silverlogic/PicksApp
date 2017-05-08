@@ -13,7 +13,7 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Initialization Tests
     func testInit() {
-        let loginViewModel = LoginViewModel()
+        let loginViewModel = ViewModelsManager.loginViewModel()
         XCTAssertNotNil(loginViewModel, "Value Should Not Be Nil!")
         XCTAssertEqual(loginViewModel.email, "", "Initialization Falied")
         XCTAssertEqual(loginViewModel.password, "", "Initialization Falied")
@@ -26,7 +26,7 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
     func testLoginWithEmail() {
         let loginErrorExpectation = expectation(description: "Test Login Error")
         let loginExpectation = expectation(description: "Test Login")
-        let loginViewModel = LoginViewModel()
+        let loginViewModel = ViewModelsManager.loginViewModel()
         loginViewModel.loginError.bind { (error: BaseError?) in
             loginViewModel.email = "testuser@tsl.io"
             loginViewModel.password = "1234"
@@ -42,7 +42,7 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
     
     func testLoginWithFacebook() {
         let loginWithFacebookExpectation = expectation(description: "Test Login With Facebook")
-        let loginViewModel = LoginViewModel()
+        let loginViewModel = ViewModelsManager.loginViewModel()
         loginViewModel.loginError.bind { (error: BaseError?) in
             XCTFail("Error Logging In With Facebook!")
             loginWithFacebookExpectation.fulfill()
@@ -58,7 +58,7 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
     
     func testLoginWithLinkedIn() {
         let loginWithLinkedInExpectation = expectation(description: "Test Login With LinkedIn")
-        let loginViewModel = LoginViewModel()
+        let loginViewModel = ViewModelsManager.loginViewModel()
         loginViewModel.loginError.bind { (error: BaseError?) in
             XCTFail("Error Logging In With LinkedIn!")
             loginWithLinkedInExpectation.fulfill()
@@ -74,7 +74,7 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
     
     func testOauth1InfoForTwitter() {
         let oauth1InfoForTwitterExpectation = expectation(description: "Test OAuth1 Info Twitter")
-        let loginViewModel = LoginViewModel()
+        let loginViewModel = ViewModelsManager.loginViewModel()
         loginViewModel.oauthStep1Error.bind { (error: BaseError?) in
             XCTFail("Error Getting OAuth1 Info!")
             oauth1InfoForTwitterExpectation.fulfill()
@@ -89,7 +89,7 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
     func testLoginWithTwitter() {
         let oauth1InfoForTwitterExpectation = expectation(description: "Test OAuth1 Info Twitter")
         let loginWithTwitterExpectation = expectation(description: "Test Login With Twitter")
-        let loginViewModel = LoginViewModel()
+        let loginViewModel = ViewModelsManager.loginViewModel()
         loginViewModel.oauthStep1Error.bind { (error: BaseError?) in
             XCTFail("Error Getting OAuth1 Info!")
             oauth1InfoForTwitterExpectation.fulfill()

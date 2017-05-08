@@ -21,8 +21,8 @@ final class ProfileInfoTableViewCell: BaseTableViewCell {
     
     
     // MARK: - Private Instance Attributes
-    fileprivate var name: DynamicBinder<String>!
-    fileprivate var email: DynamicBinder<String>!
+    fileprivate var name: DynamicBinderInterface<String>!
+    fileprivate var email: DynamicBinderInterface<String>!
     
     
     // MARK: - Private Class Attributes
@@ -44,7 +44,7 @@ extension ProfileInfoTableViewCell {
                      the user. When changes to this value happen, the UI
                      updates accordingly.
     */
-    func configure(fullName: DynamicBinder<String>, email: DynamicBinder<String>) {
+    func configure(fullName: DynamicBinderInterface<String>, email: DynamicBinderInterface<String>) {
         name = fullName
         self.email = email
         name.bind { [weak self] (name: String) in

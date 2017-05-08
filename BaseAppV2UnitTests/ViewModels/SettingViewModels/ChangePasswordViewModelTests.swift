@@ -13,7 +13,7 @@ final class ChangePasswordViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Initialization Tests
     func testInit() {
-        let changePasswordViewModel = ChangePasswordViewModel()
+        let changePasswordViewModel = ViewModelsManager.changePasswordViewModel()
         XCTAssertNotNil(changePasswordViewModel, "Value Should Not Be Nil!")
         XCTAssertEqual(changePasswordViewModel.currentPassword, "", "Initialization Failed!")
         XCTAssertEqual(changePasswordViewModel.newPassword, "", "Initialization Failed!")
@@ -22,7 +22,7 @@ final class ChangePasswordViewModelTests: BaseAppV2UnitTests {
     }
     
     func testChangePassword() {
-        let changePasswordViewModel = ChangePasswordViewModel()
+        let changePasswordViewModel = ViewModelsManager.changePasswordViewModel()
         let changePasswordErrorExpectation = expectation(description: "Test Change Password Error Expectation!")
         let changePasswordSuccessExpectation = expectation(description: "Test Change Password Success Expectation!")
         changePasswordViewModel.changePasswordError.bind { (error: BaseError?) in

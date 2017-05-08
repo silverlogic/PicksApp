@@ -40,6 +40,7 @@ enum ConfigurationConstants {
     static let facebook = "Facebook"
     static let linkedIn = "LinkedIn"
     static let twitter = "Twitter"
+    static let feedbackEmailAddress = "FeedbackEmailAddress"
 }
 
 

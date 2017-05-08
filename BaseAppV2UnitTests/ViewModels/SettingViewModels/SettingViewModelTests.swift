@@ -13,12 +13,12 @@ final class SettingViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Functional Tests
     func testLogout() {
-        let settingViewModel = SettingViewModel()
+        let settingViewModel = ViewModelsManager.settingViewModel()
         settingViewModel.logout()
     }
     
     func testChangeEmailRequest() {
-        let settingViewModel = SettingViewModel()
+        let settingViewModel = ViewModelsManager.settingViewModel()
         let changeEmailRequestErrorExpectation = expectation(description: "Test Change Email Request Error")
         let changeEmailRequestSuccessExpectation = expectation(description: "Test Change Email Request Success")
         settingViewModel.changeEmailRequestError.bind { (error: BaseError?) in

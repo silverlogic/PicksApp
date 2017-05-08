@@ -58,3 +58,9 @@
 
 // Confirm Email
 "ConfirmEmail.EmailConfirmed" = "Your email is now confirmed. 🎉";
+
+// Mail
+"Mail.Subject" = "%@ | Feedback | %@";
+"Mail.MessageBody" = "Dear %@, <br><br><br>Version: %@<br>User ID: %d<br>Name: %@";
+"Mail.Error.Title" = "Email Disabled";
+"Mail.Error.Message" = "Ooops, looks like you disabled your email in your settings. 😜";

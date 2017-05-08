@@ -6,6 +6,8 @@ ignore:
   - "BaseAppV2UnitTests/*"
   - "BaseAppV2UITests/*"
   - "BaseAppV2IntegrationTests/*"
+  - "CONTRIBUTING.md"
+  - "PULL_REQUEST_TEMPLATE.md"
 
 comment:
   layout: "header, diff, changes"

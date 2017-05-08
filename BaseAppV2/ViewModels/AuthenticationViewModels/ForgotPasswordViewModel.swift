@@ -17,9 +17,9 @@ protocol ForgotPasswordViewModelProtocol: class {
     // MARK: - Instance Attributes
     var email: String { get set }
     var newPassword: String { get set }
-    var forgotPasswordError: DynamicBinder<BaseError?> { get }
-    var forgotPasswordRequestSuccess: DynamicBinder<Bool> { get }
-    var forgotPasswordResetSuccess: DynamicBinder<Bool> { get }
+    var forgotPasswordError: DynamicBinderInterface<BaseError?> { get }
+    var forgotPasswordRequestSuccess: DynamicBinderInterface<Bool> { get }
+    var forgotPasswordResetSuccess: DynamicBinderInterface<Bool> { get }
     
     
     // MARK: - Instance Methods
@@ -30,21 +30,51 @@ protocol ForgotPasswordViewModelProtocol: class {
 
 
 /**
+    A `ViewModelsManager` class extension for `ForgotPasswordViewModelProtocol`.
+ */
+extension ViewModelsManager {
+
+    /**
+        Returns an instance conforming to `ForgotPasswordViewModelProtocol`.
+     
+        - Parameter token: A `String` representing the
+                           verification token received
+                           from a forgot password deep link.
+                           `nil` can be passed as a parameter.
+     
+        - Return: an instance conforming to `ForgotPasswordViewModelProtocol`.
+     */
+    class func forgotPasswordViewModel(token: String?) -> ForgotPasswordViewModelProtocol {
+        return ForgotPasswordViewModel(token: token)
+    }
+}
+
+
+/**
     A class that conforms to `ForgotPasswordViewModelProtocol`
     and implements it.
 */
-final class ForgotPasswordViewModel: ForgotPasswordViewModelProtocol {
+fileprivate final class ForgotPasswordViewModel: ForgotPasswordViewModelProtocol {
     
     // MARK: - ForgotPasswordViewModelProtocol Attributes
     var email: String
     var newPassword: String
-    var forgotPasswordError: DynamicBinder<BaseError?>
-    var forgotPasswordRequestSuccess: DynamicBinder<Bool>
-    var forgotPasswordResetSuccess: DynamicBinder<Bool>
+    var forgotPasswordError: DynamicBinderInterface<BaseError?> {
+        return forgotPasswordErrorBinder.interface
+    }
+    var forgotPasswordRequestSuccess: DynamicBinderInterface<Bool> {
+        return forgotPasswordRequestSuccessBinder.interface
+    }
+    var forgotPasswordResetSuccess: DynamicBinderInterface<Bool> {
+        return forgotPasswordResetSuccessBinder.interface
+    }
     
     
     // MARK: - Private Instance Methods
     private var token: String?
+    private var forgotPasswordErrorBinder: DynamicBinder<BaseError?>
+    private var forgotPasswordRequestSuccessBinder: DynamicBinder<Bool>
+    private var forgotPasswordResetSuccessBinder: DynamicBinder<Bool>
     
     
     // MARK: - Initializers
@@ -60,9 +90,9 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModelProtocol {
     init(token: String?) {
         email = ""
         newPassword = ""
-        forgotPasswordError = DynamicBinder(nil)
-        forgotPasswordRequestSuccess = DynamicBinder(false)
-        forgotPasswordResetSuccess = DynamicBinder(false)
+        forgotPasswordErrorBinder = DynamicBinder(nil)
+        forgotPasswordRequestSuccessBinder = DynamicBinder(false)
+        forgotPasswordResetSuccessBinder = DynamicBinder(false)
         self.token = token
     }
     
@@ -70,31 +100,31 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModelProtocol {
     // MARK: - ForgotPasswordViewModelProtocol Methods
     func forgotPasswordRequest() {
         if email.isEmpty {
-            forgotPasswordError.value = BaseError.fieldsEmpty
+            forgotPasswordErrorBinder.value = BaseError.fieldsEmpty
             return
         }
         AuthenticationManager.shared.forgotPasswordRequest(email: email, success: { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.forgotPasswordRequestSuccess.value = true
+            strongSelf.forgotPasswordRequestSuccessBinder.value = true
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
-            strongSelf.forgotPasswordError.value = error
+            strongSelf.forgotPasswordErrorBinder.value = error
         }
     }
     
     func forgotPasswordReset() {
         guard let verificationToken = token else { return }
         if newPassword.isEmpty {
-            forgotPasswordError.value = BaseError.fieldsEmpty
+            forgotPasswordErrorBinder.value = BaseError.fieldsEmpty
             return
         }
         AuthenticationManager.shared.forgotPasswordReset(token: verificationToken, newPassword: newPassword, success: { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.forgotPasswordResetSuccess.value = true
+            strongSelf.forgotPasswordResetSuccessBinder.value = true
             NotificationCenter.default.post(name: .UserLoggedOut, object: nil)
         }) { [weak self] (error: BaseError) in
             guard let strongSelf = self else { return }
-            strongSelf.forgotPasswordError.value = error
+            strongSelf.forgotPasswordErrorBinder.value = error
         }
     }
     

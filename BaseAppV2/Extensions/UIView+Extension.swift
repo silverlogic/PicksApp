@@ -48,3 +48,27 @@ extension UIView {
         }
     }
 }
+
+
+// MARK: - Nib Loader
+extension UIView {
+    
+    /**
+        Returns the `UIView` from xib file, with same name as view class name.
+     
+        - Parameter xibFrame: A `CGRect` representing the frame of a new view.
+     
+        - Returns: A `UIView` representing xib file of the view.
+    */
+    func loadXibView(with xibFrame: CGRect) -> UIView {
+        let className = String(describing: type(of: self))
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: className, bundle: bundle)
+        guard let xibView = nib.instantiate(withOwner: self, options: nil)[0] as? UIView else {
+            return UIView()
+        }
+        xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        xibView.frame = xibFrame
+        return xibView
+    }
+}

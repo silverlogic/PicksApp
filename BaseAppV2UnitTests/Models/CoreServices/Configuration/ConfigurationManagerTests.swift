@@ -98,4 +98,16 @@ extension ConfigurationManagerTests {
         XCTAssertNotNil(url, "Value Should Not Be Nil!")
         XCTAssertEqual(url, URL(string: "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781ehwqhni34oe&redirect_uri=https://app.baseapp.tsl.io/&scope=r_basicprofile%20r_emailaddress"), "Getting Url Falied!")
     }
+    
+    func testFeedbackEmailAddress() {
+        let feedbackEmailAddress = _sharedInstance.feedbackEmailAddress
+        XCTAssertNotNil(feedbackEmailAddress, "Value Should Not Be Nil!")
+        XCTAssertEqual(feedbackEmailAddress, "info@tsl.io", "Getting Email Address Failed!")
+    }
+    
+    func testDisplayName() {
+        let displayName = _sharedInstance.displayName
+        XCTAssertNotNil(displayName, "Value Should Not Be Nil!")
+        XCTAssertEqual(displayName, "PicksApp", "Getting Display Name Failed!")
+    }
 }

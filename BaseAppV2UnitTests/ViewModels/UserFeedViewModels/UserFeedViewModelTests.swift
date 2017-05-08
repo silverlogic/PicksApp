@@ -13,7 +13,7 @@ final class UserFeedViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Initialization Tests
     func testInit() {
-        let userFeedViewModel = UserFeedViewModel()
+        let userFeedViewModel = ViewModelsManager.userFeedViewModel()
         XCTAssertNotNil(userFeedViewModel, "Value Should Not Be Nil!")
         XCTAssertEqual(userFeedViewModel.numberOfUsers.value, 0, "Initialization Failed!")
         XCTAssertNil(userFeedViewModel.insertionPositions.value, "Initialization Failed!")
@@ -23,7 +23,7 @@ final class UserFeedViewModelTests: BaseAppV2UnitTests {
     
     // MARK: - Functional Tests
     func testFetchUsers() {
-        let userFeedViewModel = UserFeedViewModel()
+        let userFeedViewModel = ViewModelsManager.userFeedViewModel()
         let fetchUsersExpectation = expectation(description: "Test Fetch Users")
         userFeedViewModel.fetchUsersError.bind { (error: BaseError?) in
             XCTFail("Error Fetching Users!")
@@ -38,7 +38,7 @@ final class UserFeedViewModelTests: BaseAppV2UnitTests {
     }
     
     func testUserWithIndex() {
-        let userFeedViewModel = UserFeedViewModel()
+        let userFeedViewModel = ViewModelsManager.userFeedViewModel()
         let fetchUsersExpectation = expectation(description: "Test Fetch Users")
         userFeedViewModel.fetchUsersError.bind { (error: BaseError?) in
             XCTFail("Error Fetching Users!")

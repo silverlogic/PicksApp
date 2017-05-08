@@ -19,7 +19,7 @@ final class UserFeedViewController: BaseViewController {
     
     
     // MARK: - Pirvate Instance Attributes
-    fileprivate var userFeedViewModel = UserFeedViewModel()
+    fileprivate var userFeedViewModel = ViewModelsManager.userFeedViewModel()
     
     
     // MARK: - Lifecycle

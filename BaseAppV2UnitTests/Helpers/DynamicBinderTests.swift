@@ -14,7 +14,7 @@ final class DynamicBinderTests: BaseAppV2UnitTests {
     func testDynamicBinder() {
         let dynamicBinder = DynamicBinder(1)
         let bindExpectation = expectation(description: "Test Listener")
-        dynamicBinder.bind { (value: Int) in
+        dynamicBinder.interface.bind { (value: Int) in
             bindExpectation.fulfill()
         }
         dynamicBinder.value = 2
@@ -25,10 +25,10 @@ final class DynamicBinderTests: BaseAppV2UnitTests {
         let multiDynamicBinder = MultiDynamicBinder(1)
         let bindExpectation1 = expectation(description: "Test Listener 1")
         let bindExpectation2 = expectation(description: "Test Listener 2")
-        multiDynamicBinder.bind({ (value: Int) in
+        multiDynamicBinder.interface.bind({ (value: Int) in
             bindExpectation1.fulfill()
         }, for: self)
-        multiDynamicBinder.bind({ (value: Int) in
+        multiDynamicBinder.interface.bind({ (value: Int) in
             bindExpectation2.fulfill()
         }, for: self)
         XCTAssertTrue(multiDynamicBinder.observers.count == 2, "Wrong Count")
@@ -38,7 +38,7 @@ final class DynamicBinderTests: BaseAppV2UnitTests {
                 XCTFail("Bindings Failed!")
                 return
             }
-            multiDynamicBinder.removeListeners(for: self)
+            multiDynamicBinder.interface.unbind(for: self)
             XCTAssertTrue(multiDynamicBinder.observers.isEmpty, "Should Be Empty")
         }
     }

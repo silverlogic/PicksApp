@@ -14,16 +14,16 @@ final class ReachabilityTests: BaseAppV2UnitTests {
     // MARK: - Functional Tests
     func testConnectionStatusBinder() {
         let connectionStatusExpectation = expectation(description: "Test Connection Status Listener Being Fired")
-        Reachability.shared.connectionStatus.bindAndFire({ (status: ConnectionStatus) in
+        Reachability.shared.connectionStatus.interface.bindAndFire({ (status: ConnectionStatus) in
             connectionStatusExpectation.fulfill()
         }, for: self)
         waitForExpectations(timeout: 10) { (error: Error?) in
             if error != nil {
                 XCTFail("Error With Binder!")
-                Reachability.shared.connectionStatus.removeListeners(for: self)
+                Reachability.shared.connectionStatus.interface.unbind(for: self)
                 return
             }
-            Reachability.shared.connectionStatus.removeListeners(for: self)
+            Reachability.shared.connectionStatus.interface.unbind(for: self)
         }
     }
     

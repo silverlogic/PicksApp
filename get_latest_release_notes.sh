@@ -6,8 +6,8 @@ file="History.md"
 
 #Check if file exists.
 if [[ ! -e "$file" ]]; then
-  echo "$file does not exist"
-  exit 1
+  echo "Relase notes not available"
+  exit 0
 fi
 
 #Global variable for controlling which lines to use.
