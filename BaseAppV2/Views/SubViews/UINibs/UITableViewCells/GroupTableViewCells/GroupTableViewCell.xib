@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="proxima-nova-bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupTableViewCell" customModule="BaseAppV2" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GroupTableViewCell" customModule="BaseAppV2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49M-Bd-Ihp" customClass="BaseLabel" customModule="BaseAppV2" customModuleProvider="target">
+                    <rect key="frame" x="304" y="18" width="55" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="GuE-zR-4TD"/>
+                        <constraint firstAttribute="height" constant="30" id="XY4-ok-Aen"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biffs Bombers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDb-SZ-aQT" customClass="BaseLabel" customModule="BaseAppV2" customModuleProvider="target">
+                    <rect key="frame" x="8" y="18" width="288" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Rcx-ZD-lfH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uDb-SZ-aQT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="4oF-1J-n39"/>
+                <constraint firstItem="uDb-SZ-aQT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="681-WY-fpO"/>
+                <constraint firstItem="49M-Bd-Ihp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="bIY-ar-O5l"/>
+                <constraint firstAttribute="trailing" secondItem="49M-Bd-Ihp" secondAttribute="trailing" constant="16" id="q8Z-37-ydC"/>
+                <constraint firstItem="49M-Bd-Ihp" firstAttribute="leading" secondItem="uDb-SZ-aQT" secondAttribute="trailing" constant="8" id="xBQ-rK-wlu"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="nameLabel" destination="uDb-SZ-aQT" id="Qof-y9-RcY"/>
+                <outlet property="numberLabel" destination="49M-Bd-Ihp" id="dda-y9-cSh"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-247"/>
+        </view>
+    </objects>
+</document>

@@ -16,6 +16,7 @@
 "BaseError.StillLoadingResults" = "Results Are Still Loading. 😜";
 "BaseError.NewEmailConfirmed" = "You need to check your email. 😜";
 "BaseError.FetchResultsError" = "Error fetching objects from store. 😞";
+"BaseError.NumberOfCharactersExcxeed" = "The name can't be greater than twenty characters. 😜";
 
 // Settings View Controller
 "SettingsViewController.InviteCode" = "Invite Code";
@@ -66,3 +67,16 @@
 "Mail.MessageBody" = "Dear %@, <br><br><br>Version: %@<br>User ID: %d<br>Name: %@";
 "Mail.Error.Title" = "Email Disabled";
 "Mail.Error.Message" = "Ooops, looks like you disabled your email in your settings. 😜";
+
+// Group Paging
+"GroupPaging.MyGroups" = "My Groups";
+"GroupPaging.Public" = "Public";
+"GroupPaging.Groups" = "Groups";
+
+// Group List
+"GroupList.GroupName" = "Group Name";
+"GroupList.Members" = "Members";
+
+// Create Group
+"CreateGroup.NewGroup" = "New Group";
+"CreateGroup.NumberOfCharactersExceeded" = "Name Error";

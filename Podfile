@@ -11,6 +11,7 @@ target 'BaseAppV2' do
     pod 'CCBottomRefreshControl'
     pod 'Crashlytics', '~> 3.8'
     pod 'Dodo', '~> 7.0'
+    pod 'DZNEmptyDataSet', '~> 1.8.1'
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
     pod 'ImagePicker', :git => 'https://github.com/hyperoslo/ImagePicker'
@@ -24,6 +25,7 @@ target 'BaseAppV2' do
     pod 'SCLAlertView'
     pod 'SVProgressHUD'
     pod 'SwiftyBeaver'
+    pod 'Tabman', :git => 'https://github.com/uias/Tabman', :commit => '8bbd21b'
     pod 'UITextField+Shake', '~> 1.1'
     
     target 'BaseAppV2UnitTests' do
