@@ -36,6 +36,7 @@
 		880455001E66325F00D4A499 /* globalconfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880454FF1E66325F00D4A499 /* globalconfiguration.plist */; };
 		8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880455091E663F6100D4A499 /* ConfigurationManager.swift */; };
 		8804550C1E6641B900D4A499 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804550B1E6641B900D4A499 /* Constants.swift */; };
+		880EAE7E1EC221D40049C898 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880EAE7D1EC221D40049C898 /* BaseLabel.swift */; };
 		8817FC141E76874C007697DF /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC131E76874C007697DF /* SignupPasswordViewController.swift */; };
 		8817FC161E768CF2007697DF /* SignupOptionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC151E768CF2007697DF /* SignupOptionalInfoViewController.swift */; };
 		8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817FC451E782C63007697DF /* BaseAlertViewController.swift */; };
@@ -226,6 +227,7 @@
 		880454FF1E66325F00D4A499 /* globalconfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = globalconfiguration.plist; path = Configurations/PropertyLists/globalconfiguration.plist; sourceTree = "<group>"; };
 		880455091E663F6100D4A499 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = Models/CoreServices/Configuration/ConfigurationManager.swift; sourceTree = "<group>"; };
 		8804550B1E6641B900D4A499 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		880EAE7D1EC221D40049C898 /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseLabel.swift; path = Views/SubViews/UILabels/BaseLabel.swift; sourceTree = "<group>"; };
 		8817FC131E76874C007697DF /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupPasswordViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupPasswordViewController.swift; sourceTree = "<group>"; };
 		8817FC151E768CF2007697DF /* SignupOptionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupOptionalInfoViewController.swift; path = Views/ViewControllers/AuthenticationViewControllers/SignupViewControllers/SignupOptionalInfoViewController.swift; sourceTree = "<group>"; };
 		8817FC451E782C63007697DF /* BaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAlertViewController.swift; path = Views/SubViews/UIAlertViewControllers/BaseAlertViewController.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		8801FDEA1E71F12C00F54932 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				880EAE7C1EC221AC0049C898 /* UILabels */,
 				882304F11EA56D6A008D6957 /* UINibs */,
 				885514E21E8DBB1F008A82CC /* UICollectionViewFlowLayouts */,
 				885514DC1E8DB54B008A82CC /* UICollectionViewCells */,
@@ -710,6 +713,14 @@
 				88226DC81E9C049C00C6BA85 /* Utilities */,
 			);
 			name = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		880EAE7C1EC221AC0049C898 /* UILabels */ = {
+			isa = PBXGroup;
+			children = (
+				880EAE7D1EC221D40049C898 /* BaseLabel.swift */,
+			);
+			name = UILabels;
 			sourceTree = "<group>";
 		};
 		8817FC441E7829B8007697DF /* UIAlertControllers */ = {
@@ -1823,6 +1834,7 @@
 				88FD2CE61E89CCDE002D1D00 /* UpdateProfileViewController.swift in Sources */,
 				88FDF25E1E8D534C008F5395 /* UserEndpoint.swift in Sources */,
 				8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */,
+				880EAE7E1EC221D40049C898 /* BaseLabel.swift in Sources */,
 				882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */,
 				323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */,
 			);
