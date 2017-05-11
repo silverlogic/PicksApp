@@ -17,6 +17,7 @@
 "BaseError.NewEmailConfirmed" = "You need to check your email. 😜";
 "BaseError.FetchResultsError" = "Error fetching objects from store. 😞";
 "BaseError.NumberOfCharactersExcxeed" = "The name can't be greater than twenty characters. 😜";
+"BaseError.GroupIsPrivate" = "This Group is private, you must have the correct invitation code. 😞";
 
 // Settings View Controller
 "SettingsViewController.InviteCode" = "Invite Code";
@@ -38,6 +39,7 @@
 "Miscellaneous.NewEmail" = "New Email";
 "Miscellaneous.FacebookError" = "Facebook Error 🤔";
 "Miscellaneous.FacebookErrorBody" = "Please grant Picks App the proper permissions";
+"Miscellaneous.WelcomeToXtraPoints" = "Welcome\nto XtraPoints! 🏈";
 
 // ImagePicker
 "ImagePicker.NoImages" = "Looks like there aren't any images here. 😜";
@@ -80,3 +82,15 @@
 // Create Group
 "CreateGroup.NewGroup" = "New Group";
 "CreateGroup.NumberOfCharactersExceeded" = "Name Error";
+"CreateGroup.SpaceErrorTitle" = "Space Error";
+"CreateGroup.SpaceErrorBody" = "Please begin your group name without a space 😉";
+
+// Group Details
+"GroupDetails.MemberName" = "Member Name";
+"GroupDetails.Points" = "Points";
+
+// Empty State
+"EmptyState.GroupDetails.Title" = "Oops!";
+"EmptyState.GroupDetails.Body" = "This group is empty 😢";
+"EmptyState.GroupList.Body" = "Please join a list 😜";
+

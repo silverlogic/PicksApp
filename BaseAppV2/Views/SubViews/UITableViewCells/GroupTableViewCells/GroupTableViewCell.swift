@@ -41,9 +41,9 @@ extension GroupTableViewCell {
             - backgroundColor: A `UIColor` representing the color to set
                                to the background.
     */
-    func configure(groupName: String, numberOfMembers: Int, backgroundColor: UIColor) {
-        nameLabel.text = groupName
-        numberLabel.text = "\(numberOfMembers)"
+    func configure(name: String, number: Int, backgroundColor: UIColor) {
+        nameLabel.text = name
+        numberLabel.text = "\(number)"
         self.backgroundColor = backgroundColor
     }
 }

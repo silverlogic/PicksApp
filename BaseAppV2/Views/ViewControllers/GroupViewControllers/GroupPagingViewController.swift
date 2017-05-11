@@ -22,7 +22,8 @@ final class GroupPagingViewController: TabmanViewController {
     
     
     // MARK: - Private Instance Attributes
-    // @TODO: - Hold references to child views for responding to events
+    fileprivate var myGroupsViewController: GroupListViewController!
+    fileprivate var publicGroupsViewController: GroupListViewController!
     
     
     // MARK: - Lifecycle
@@ -36,14 +37,9 @@ final class GroupPagingViewController: TabmanViewController {
 // MARK: - Navigation
 extension GroupPagingViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let segueIdentifier = segue.identifier else { return }
-        if segueIdentifier == UIStoryboardSegue.goToNewGroupSegue {
-            guard let navigationController = segue.destination as? BaseNavigationController,
-                  let createGroupViewController = navigationController.topViewController as? GroupCreationViewController else { return }
-            createGroupViewController.groupCreationViewModel = ViewModelsManager.groupCreationViewModel()
-        } else {
-            // @TODO: - Go to group detail view. Pass view model for group.
-        }
+        guard let navigationController = segue.destination as? BaseNavigationController,
+              let createGroupViewController = navigationController.topViewController as? GroupCreationViewController else { return }
+        createGroupViewController.groupCreationViewModel = ViewModelsManager.groupCreationViewModel()
     }
 }
 
@@ -59,11 +55,10 @@ fileprivate extension GroupPagingViewController {
 // MARK: - PageboyViewControllerDataSource
 extension GroupPagingViewController: PageboyViewControllerDataSource {
     func viewControllers(forPageboyViewController pageboyViewController: PageboyViewController) -> [UIViewController]? {
-        // @TODO: - Add custom views from nib
-        let viewControllers = [GroupListViewController(), GroupListViewController()]
+        let viewControllers = [myGroupsViewController, publicGroupsViewController]
         bar.items = [TabmanBarItem(title: NSLocalizedString("GroupPaging.MyGroups", comment: "tab title").uppercased()),
                      TabmanBarItem(title: NSLocalizedString("GroupPaging.Public", comment: "tab title").uppercased())]
-        return viewControllers
+        return viewControllers as? [UIViewController]
     }
     
     func defaultPageIndex(forPageboyViewController pageboyViewController: PageboyViewController) -> PageboyViewController.PageIndex? {
@@ -77,7 +72,20 @@ fileprivate extension GroupPagingViewController {
     
     /// Sets up the default logic for the view.
     fileprivate func setup() {
-        // @TODO: - Initialize child views and view models
+        myGroupsViewController = GroupListViewController()
+        myGroupsViewController.groupQueryViewModel = ViewModelsManager.groupQueryForCurrentUserViewModel()
+        myGroupsViewController.groupSelected.bind { [weak self] (groupViewModel: GroupDetailViewModelProtocol?) in
+            guard let strongSelf = self,
+                  let viewModel = groupViewModel else { return }
+            strongSelf.goToGroupDetails(groupDetailViewModel: viewModel)
+        }
+        publicGroupsViewController = GroupListViewController()
+        publicGroupsViewController.groupQueryViewModel = ViewModelsManager.groupQueryForPublicGroupsViewModel()
+        publicGroupsViewController.groupSelected.bind { [weak self] (groupViewModel: GroupDetailViewModelProtocol?) in
+            guard let strongSelf = self,
+                  let viewModel = groupViewModel else { return }
+            strongSelf.goToGroupDetails(groupDetailViewModel: viewModel)
+        }
         dataSource = self
         bar.style = .blockTabBar
         bar.appearance = TabmanBar.Appearance({ (apperance) in
@@ -94,6 +102,18 @@ fileprivate extension GroupPagingViewController {
         embedBar(inView: tabmanView)
         let titleView = NavigationView.instantiate()
         titleView.titleText = NSLocalizedString("GroupPaging.Groups", comment: "navigation title")
-        navigationController?.navigationBar.topItem?.titleView = titleView
+        navigationItem.titleView = titleView
+    }
+    
+    /**
+        Goes to the group details view.
+     
+        - Parameter groupDetailViewModel: A `GroupDetailViewModelProtocol` representing
+                                          the view model that was selected.
+    */
+    fileprivate func goToGroupDetails(groupDetailViewModel: GroupDetailViewModelProtocol) {
+        let groupDetailViewController = GroupDetailViewController()
+        groupDetailViewController.groupDetailViewModel = groupDetailViewModel
+        navigationController?.pushViewController(groupDetailViewController, animated: true)
     }
 }

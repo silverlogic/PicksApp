@@ -18,5 +18,4 @@ extension UIStoryboardSegue {
     static let goToForgotPasswordRequestSegue = "goToForgotPasswordRequestSegue"
     static let goToChangePasswordSegue = "goToChangePasswordSegue"
     static let goToNewGroupSegue = "goToNewGroupSegue"
-    static let goToGroupDetailSegue = "goToGroupDetailSegue"
 }

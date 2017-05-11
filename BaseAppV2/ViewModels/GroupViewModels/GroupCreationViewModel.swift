@@ -19,10 +19,12 @@ protocol GroupCreationViewModelProtocol {
     var numberOfPeople: Int { get set }
     var creationError: DynamicBinderInterface<BaseError?> { get }
     var creationSuccess: DynamicBinderInterface<Bool> { get }
-    
-    
+    var joinError: DynamicBinderInterface<BaseError?> { get }
+    var joinSuccess: DynamicBinderInterface<Bool> { get }
+
+
     // MARK: - Instance Methods
-    func createGroup()
+    func createGroup(name: String)
 }
 
 
@@ -41,7 +43,6 @@ extension ViewModelsManager {
     }
 }
 
-
 /**
     A class that conforms to `GroupCreationViewModelProtocol`
     and implements it.
@@ -51,39 +52,55 @@ fileprivate final class GroupCreationViewModel: GroupCreationViewModelProtocol {
     // MARK: - GroupCreationViewModelProtocol Attributes
     var groupName: String
     var numberOfPeople: Int
+    var isPrivate: Bool
     var creationError: DynamicBinderInterface<BaseError?> {
         return creationErrorBinder.interface
     }
     var creationSuccess: DynamicBinderInterface<Bool> {
         return creationSuccessBinder.interface
     }
-    
+    var joinError: DynamicBinderInterface<BaseError?> {
+        return joinErrorBinder.interface
+    }
+    var joinSuccess: DynamicBinderInterface<Bool> {
+        return joinSuccessBinder.interface
+    }
     
     // MARK: - Private Instance Attributes
     private var creationErrorBinder: DynamicBinder<BaseError?>
     private var creationSuccessBinder: DynamicBinder<Bool>
-    
-    
-    // MARK: - Initializers
-    
+    private var joinErrorBinder: DynamicBinder<BaseError?>
+    private var joinSuccessBinder: DynamicBinder<Bool>
+
+
     /// Initializes an instance of `GroupCreationViewModel`.
     init() {
         groupName = ""
         numberOfPeople = 0
+        isPrivate = false
         creationErrorBinder = DynamicBinder(nil)
         creationSuccessBinder = DynamicBinder(false)
+        joinErrorBinder = DynamicBinder(nil)
+        joinSuccessBinder = DynamicBinder(false)
     }
     
     
     // MARK: - GroupCreationViewModelProtocol Methods
-    func createGroup() {
-        if groupName == "" || numberOfPeople == 0 {
+    func createGroup(name: String) {
+        if name == "" {
             creationErrorBinder.value = BaseError.fieldsEmpty
             return
         }
-        if groupName.characters.count > 20 {
+        if name.characters.count > 20 {
             creationErrorBinder.value = BaseError.numberOfCharactersExceeded
             return
+        }
+        GroupManager.shared.postGroup(groupName: name, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.creationSuccessBinder.value = true
+        }) { [weak self] (error: BaseError) in
+            guard let strongSelf = self else { return }
+            strongSelf.creationErrorBinder.value = error
         }
     }
 }

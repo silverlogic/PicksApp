@@ -20,20 +20,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9B-GT-D5e" customClass="BaseLabel" customModule="BaseAppV2" customModuleProvider="target">
-                    <rect key="frame" x="8" y="18" width="90" height="21"/>
+                    <rect key="frame" x="8" y="18" width="302" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="90" id="hcy-LZ-5ri"/>
                         <constraint firstAttribute="height" constant="21" id="i0K-c7-YqO"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="ProximaNovaCond-Extrabld" family="Proxima Nova Condensed" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmX-hv-wSU" customClass="BaseLabel" customModule="BaseAppV2" customModuleProvider="target">
-                    <rect key="frame" x="293" y="18" width="90" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmX-hv-wSU" customClass="BaseLabel" customModule="BaseAppV2" customModuleProvider="target">
+                    <rect key="frame" x="318" y="18" width="65" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="uHt-W0-wEi"/>
-                        <constraint firstAttribute="width" constant="90" id="ycd-MR-j0h"/>
+                        <constraint firstAttribute="width" constant="65" id="ycd-MR-j0h"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="ProximaNovaCond-Extrabld" family="Proxima Nova Condensed" pointSize="17"/>
                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,6 +43,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="kmX-hv-wSU" secondAttribute="trailing" constant="8" id="LD1-B7-yZh"/>
                 <constraint firstAttribute="bottom" secondItem="Y9B-GT-D5e" secondAttribute="bottom" constant="5" id="MZo-Nz-9db"/>
+                <constraint firstItem="kmX-hv-wSU" firstAttribute="leading" secondItem="Y9B-GT-D5e" secondAttribute="trailing" constant="8" id="QTo-qT-mol"/>
                 <constraint firstAttribute="bottom" secondItem="kmX-hv-wSU" secondAttribute="bottom" constant="5" id="TCD-iB-nq7"/>
                 <constraint firstItem="Y9B-GT-D5e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Uky-cL-gth"/>
             </constraints>

@@ -105,6 +105,24 @@ class BaseAppV2UnitTests: XCTestCase {
             }
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
         })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Groups") && isMethodPOST(), response: { _ in
+            return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Groups/1/join") && isMethodPOST(), response: { _ in
+            return OHHTTPStubsResponse(jsonObject: ["key":"value"], statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Groups/groupsForCreator") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("grouplistforuser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Groups/groupsForParticipants") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("grouplistparticipants.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
     }
     
     override func tearDown() {

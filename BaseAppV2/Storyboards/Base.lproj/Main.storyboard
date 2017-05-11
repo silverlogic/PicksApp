@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687.5" y="-751.25"/>
+            <point key="canvasLocation" x="1687" y="-709"/>
         </scene>
         <!--Update Profile View Controller-->
         <scene sceneID="tVj-Wn-xEu">
@@ -306,13 +306,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Lm-qC-2d0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2737.5" y="-752.5"/>
+            <point key="canvasLocation" x="2737" y="-709"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="pta-Yj-9v2">
             <objects>
                 <navigationController id="wgH-cq-kWK" customClass="BaseNavigationController" customModule="BaseAppV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Md2-Ip-dir">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Md2-Ip-dir">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -322,7 +322,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0jW-GO-Ycb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3751" y="-511"/>
+            <point key="canvasLocation" x="2737" y="8"/>
         </scene>
         <!--Base Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -342,6 +342,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
+                        <segue destination="NPu-F9-OAC" kind="relationship" relationship="viewControllers" id="uZs-3W-3YP"/>
                         <segue destination="GwR-13-ihU" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="fan-4W-3dN" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Acl-AO-885" kind="relationship" relationship="viewControllers" id="g3h-gz-z0Y"/>
@@ -351,13 +352,32 @@
             </objects>
             <point key="canvasLocation" x="-326" y="8"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ekm-5C-24o">
+            <objects>
+                <viewController id="so3-9O-7zI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B6V-u1-qtg"/>
+                        <viewControllerLayoutGuide type="bottom" id="0wj-fk-Ybq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GzX-W7-of2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WTX-Ra-Zqe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnr-1R-Mph" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="-1421"/>
+        </scene>
         <!--Schedule-->
         <scene sceneID="olo-Mu-iSD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GwR-13-ihU" customClass="BaseNavigationController" customModule="BaseAppV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Schedule" image="icon-scheduletabbar" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="tabbar-schedule" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zhm-NO-xPH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zhm-NO-xPH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -368,15 +388,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jB-x5-H0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692" y="-750"/>
+            <point key="canvasLocation" x="692" y="-709"/>
         </scene>
         <!--Groups-->
         <scene sceneID="7df-W6-Abu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fan-4W-3dN" customClass="BaseNavigationController" customModule="BaseAppV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="icon-groupstabbar" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="tabbar-groups" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ovQ-78-TKe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ovQ-78-TKe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -424,6 +444,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5eW-Wk-5ie">
+                        <barButtonItem key="backBarButtonItem" title="  " id="9MF-a1-qjB"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ag4-14-hki">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -435,7 +456,6 @@
                         <outlet property="searchBar" destination="g4g-KW-0Q1" id="MgU-Oi-nYt"/>
                         <outlet property="tabmanView" destination="DGr-7B-PUI" id="kof-YN-bsL"/>
                         <segue destination="wgH-cq-kWK" kind="presentation" identifier="goToNewGroupSegue" id="cW8-k5-yzv"/>
-                        <segue destination="o6c-WX-Ict" kind="show" identifier="goToGroupDetailSegue" id="qQL-Hn-gp4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pz4-al-gn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -446,8 +466,8 @@
         <scene sceneID="Dei-bO-va3">
             <objects>
                 <navigationController id="Acl-AO-885" customClass="BaseNavigationController" customModule="BaseAppV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="icon-settingstabbar" id="Gla-QA-Kw5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UEv-y5-tje">
+                    <tabBarItem key="tabBarItem" title="Settings" image="tabbar-settings" id="Gla-QA-Kw5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UEv-y5-tje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -663,24 +683,6 @@
             </objects>
             <point key="canvasLocation" x="2737" y="770"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="anA-Co-Mss">
-            <objects>
-                <viewController id="o6c-WX-Ict" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7Dh-i8-xzu"/>
-                        <viewControllerLayoutGuide type="bottom" id="yVT-cx-yfO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CvE-wV-pSY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5U0-aa-nKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3760" y="262"/>
-        </scene>
         <!--Group Creation View Controller-->
         <scene sceneID="7sU-Dx-2iS">
             <objects>
@@ -701,7 +703,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLg-yH-5Ce" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
-                                <rect key="frame" x="27" y="371" width="321" height="60"/>
+                                <rect key="frame" x="27" y="315" width="321" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Create Group">
@@ -722,32 +724,6 @@
                                     <action selector="createGroupButtonTappedWithSender:" destination="0cU-sa-Fnm" eventType="touchUpInside" id="LtX-WJ-p5t"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nq0-Nu-ttF" userLabel="Divider">
-                                <rect key="frame" x="27" y="349" width="321" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="fuk-JW-YNm"/>
-                                </constraints>
-                            </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Number of People" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="llS-6t-CTe" customClass="ToolBarTextField" customModule="BaseAppV2" customModuleProvider="target">
-                                <rect key="frame" x="16" y="289" width="343" height="60"/>
-                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="go"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="backButtonText" value="Cancel"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="nextButtonText" value="Go"/>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="30"/>
-                                </variation>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="c3A-jZ-yZ5" customClass="LimitTextField" customModule="BaseAppV2" customModuleProvider="target">
                                 <rect key="frame" x="16" y="220" width="343" height="60"/>
                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -781,26 +757,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="bLg-yH-5Ce" secondAttribute="trailing" constant="11" id="0kf-7y-10f"/>
-                            <constraint firstItem="llS-6t-CTe" firstAttribute="leading" secondItem="iYk-Be-QVp" secondAttribute="leadingMargin" id="1KZ-IA-G8a"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nq0-Nu-ttF" secondAttribute="trailing" constant="11" id="1NV-00-2hp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fe7-Wn-7rW" secondAttribute="trailing" constant="11" id="Bbl-aQ-t7m"/>
                             <constraint firstItem="c3A-jZ-yZ5" firstAttribute="top" secondItem="2yk-n6-h81" secondAttribute="bottom" constant="8" id="Dt6-rO-yaD"/>
                             <constraint firstItem="c3A-jZ-yZ5" firstAttribute="trailing" secondItem="iYk-Be-QVp" secondAttribute="trailingMargin" id="F4S-vt-Klb"/>
-                            <constraint firstItem="Nq0-Nu-ttF" firstAttribute="leading" secondItem="iYk-Be-QVp" secondAttribute="leadingMargin" constant="11" id="FKu-0O-qBM"/>
-                            <constraint firstItem="llS-6t-CTe" firstAttribute="top" secondItem="Fe7-Wn-7rW" secondAttribute="bottom" constant="8" id="GDr-3B-qk4"/>
                             <constraint firstItem="2yk-n6-h81" firstAttribute="top" secondItem="tmn-I2-Hk9" secondAttribute="bottom" constant="8" id="N3x-et-niM"/>
                             <constraint firstItem="2yk-n6-h81" firstAttribute="leading" secondItem="iYk-Be-QVp" secondAttribute="leadingMargin" id="NYP-lq-oEY"/>
                             <constraint firstItem="c3A-jZ-yZ5" firstAttribute="centerY" secondItem="iYk-Be-QVp" secondAttribute="centerY" multiplier="0.75" id="PjM-Re-94x"/>
                             <constraint firstItem="Fe7-Wn-7rW" firstAttribute="leading" secondItem="iYk-Be-QVp" secondAttribute="leadingMargin" constant="11" id="Qwa-xC-hAe"/>
                             <constraint firstItem="c3A-jZ-yZ5" firstAttribute="leading" secondItem="iYk-Be-QVp" secondAttribute="leadingMargin" id="Rh7-Rf-Z0Q"/>
                             <constraint firstItem="bLg-yH-5Ce" firstAttribute="height" secondItem="iYk-Be-QVp" secondAttribute="height" multiplier="0.09" id="SXb-Dh-F0A"/>
-                            <constraint firstItem="llS-6t-CTe" firstAttribute="height" secondItem="iYk-Be-QVp" secondAttribute="height" multiplier="0.09" id="WrY-Pw-99h"/>
+                            <constraint firstItem="bLg-yH-5Ce" firstAttribute="top" secondItem="c3A-jZ-yZ5" secondAttribute="bottom" constant="35" id="c1e-De-c6M"/>
                             <constraint firstItem="c3A-jZ-yZ5" firstAttribute="height" secondItem="iYk-Be-QVp" secondAttribute="height" multiplier="0.09" id="ekV-Wt-waO"/>
                             <constraint firstItem="Fe7-Wn-7rW" firstAttribute="top" secondItem="c3A-jZ-yZ5" secondAttribute="bottom" id="iDf-dA-JgK"/>
                             <constraint firstItem="2yk-n6-h81" firstAttribute="trailing" secondItem="iYk-Be-QVp" secondAttribute="trailingMargin" id="jJp-fs-cGG"/>
-                            <constraint firstItem="bLg-yH-5Ce" firstAttribute="top" secondItem="Nq0-Nu-ttF" secondAttribute="bottom" constant="21" id="saC-S2-CO7"/>
-                            <constraint firstItem="llS-6t-CTe" firstAttribute="trailing" secondItem="iYk-Be-QVp" secondAttribute="trailingMargin" id="tKY-PE-MMu"/>
-                            <constraint firstItem="Nq0-Nu-ttF" firstAttribute="top" secondItem="llS-6t-CTe" secondAttribute="bottom" id="tmb-Uz-maY"/>
                             <constraint firstItem="bLg-yH-5Ce" firstAttribute="leading" secondItem="iYk-Be-QVp" secondAttribute="leadingMargin" constant="11" id="vEG-eV-BDr"/>
                         </constraints>
                     </view>
@@ -814,21 +783,40 @@
                     </navigationItem>
                     <connections>
                         <outlet property="groupNameTextField" destination="c3A-jZ-yZ5" id="uHR-eB-KjV"/>
-                        <outlet property="numberOfPeopleTextField" destination="llS-6t-CTe" id="0wE-jY-NX1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssg-OO-XrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4852" y="-511.39430284857576"/>
+            <point key="canvasLocation" x="3836" y="8"/>
+        </scene>
+        <!--Play-->
+        <scene sceneID="TID-f2-Vy6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NPu-F9-OAC" customClass="BaseNavigationController" customModule="BaseAppV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Play" image="tabbar-filled-football" id="dng-wk-564"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ukb-Cd-se2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="so3-9O-7zI" kind="relationship" relationship="rootViewController" id="wAh-qn-XYL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C7U-gD-mko" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="692" y="-1420.8395802098951"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon-editimage" width="25" height="25"/>
         <image name="icon-editprofilebutton" width="25" height="25"/>
-        <image name="icon-groupstabbar" width="37" height="25"/>
         <image name="icon-imageplaceholder-blue" width="37" height="40"/>
         <image name="icon-invitecode" width="27" height="25"/>
-        <image name="icon-scheduletabbar" width="25" height="25"/>
-        <image name="icon-settingstabbar" width="24" height="24"/>
+        <image name="tabbar-filled-football" width="24" height="24"/>
+        <image name="tabbar-groups" width="37" height="25"/>
+        <image name="tabbar-schedule" width="25" height="25"/>
+        <image name="tabbar-settings" width="24" height="24"/>
     </resources>
 </document>

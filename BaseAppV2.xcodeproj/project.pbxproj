@@ -10,6 +10,19 @@
 		0CBC17FBE57C2AEF634B3419 /* Pods_BaseAppV2IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53237DDD29BF2B0B73AE20E /* Pods_BaseAppV2IntegrationTests.framework */; };
 		23C149158B8B6DD8E44DD46E /* Pods_BaseAppV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9254900A7A6393B88B1D07F /* Pods_BaseAppV2.framework */; };
 		26218EDD1EB2935D00C2BFF9 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */; };
+		2647D0DC1ECA3DA400B6B4C4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0DB1ECA3DA400B6B4C4 /* Group.swift */; };
+		2647D0DE1ECA55C200B6B4C4 /* GroupEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0DD1ECA55C200B6B4C4 /* GroupEndpoint.swift */; };
+		2647D0EE1ECB38D400B6B4C4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */; };
+		2647D0F01ECB569F00B6B4C4 /* GroupQueryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0EF1ECB569F00B6B4C4 /* GroupQueryViewModel.swift */; };
+		26678CC71ECE329400CBA471 /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CC61ECE329400CBA471 /* GroupTests.swift */; };
+		26678CC91ECE384200CBA471 /* GroupEndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CC81ECE384200CBA471 /* GroupEndpointTest.swift */; };
+		26678CCB1ECE406700CBA471 /* GroupManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CCA1ECE406700CBA471 /* GroupManagerTests.swift */; };
+		26678CCD1ECE502B00CBA471 /* creategroup.json in Resources */ = {isa = PBXBuildFile; fileRef = 26678CCC1ECE502B00CBA471 /* creategroup.json */; };
+		26678CCF1ECE510300CBA471 /* grouplistparticipants.json in Resources */ = {isa = PBXBuildFile; fileRef = 26678CCE1ECE510300CBA471 /* grouplistparticipants.json */; };
+		26678CD11ECE523500CBA471 /* grouplistforuser.json in Resources */ = {isa = PBXBuildFile; fileRef = 26678CD01ECE523500CBA471 /* grouplistforuser.json */; };
+		26678CD31ECE5BED00CBA471 /* GroupCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */; };
+		26678CD61ECE5F8900CBA471 /* GroupQueryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */; };
+		2679295B1ECE1E9200C701CB /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */; };
 		323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323127DA1E74A642007BE4C3 /* Promise+Extension.swift */; };
 		4D7425651EB781B600107859 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425641EB781B600107859 /* Weak.swift */; };
 		4D7425671EB79E7400107859 /* ViewModelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425661EB79E7400107859 /* ViewModelsManager.swift */; };
@@ -62,6 +75,7 @@
 		882493F71EC3927800C20C81 /* GroupCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882493F61EC3927800C20C81 /* GroupCreationViewController.swift */; };
 		882760391E9E8060000E4098 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882760381E9E8060000E4098 /* SnapshotHelper.swift */; };
 		882807311EC4DB80006720BF /* LimitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882807301EC4DB80006720BF /* LimitTextField.swift */; };
+		882807331EC4EE83006720BF /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882807321EC4EE83006720BF /* GroupDetailViewController.swift */; };
 		882AC6721E9D3390004F85C2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */; };
 		882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */; };
 		882B98881EC3C0E800E7A186 /* GroupCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B98871EC3C0E800E7A186 /* GroupCreationViewModel.swift */; };
@@ -208,6 +222,20 @@
 		16EB33E337672860FA736C21 /* Pods-BaseAppV2UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseAppV2UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseAppV2UnitTests/Pods-BaseAppV2UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/FacebookManager.swift; sourceTree = "<group>"; };
 		2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-2.xcdatamodel"; sourceTree = "<group>"; };
+		2647D0D61ECA393700B6B4C4 /* Model_v0-1-0-3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-3.xcdatamodel"; sourceTree = "<group>"; };
+		2647D0DB1ECA3DA400B6B4C4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = Models/BusinessLogic/EntityModels/Group.swift; sourceTree = "<group>"; };
+		2647D0DD1ECA55C200B6B4C4 /* GroupEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEndpoint.swift; path = Models/CoreServices/Networking/Endpoints/GroupEndpoint.swift; sourceTree = "<group>"; };
+		2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/GroupManager.swift; sourceTree = "<group>"; };
+		2647D0EF1ECB569F00B6B4C4 /* GroupQueryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupQueryViewModel.swift; path = ViewModels/GroupViewModels/GroupQueryViewModel.swift; sourceTree = "<group>"; };
+		26678CC61ECE329400CBA471 /* GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
+		26678CC81ECE384200CBA471 /* GroupEndpointTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEndpointTest.swift; sourceTree = "<group>"; };
+		26678CCA1ECE406700CBA471 /* GroupManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManagerTests.swift; sourceTree = "<group>"; };
+		26678CCC1ECE502B00CBA471 /* creategroup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = creategroup.json; sourceTree = "<group>"; };
+		26678CCE1ECE510300CBA471 /* grouplistparticipants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = grouplistparticipants.json; sourceTree = "<group>"; };
+		26678CD01ECE523500CBA471 /* grouplistforuser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = grouplistforuser.json; sourceTree = "<group>"; };
+		26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCreationViewModelTests.swift; path = GroupViewModels/GroupCreationViewModelTests.swift; sourceTree = "<group>"; };
+		26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupQueryViewModelTests.swift; path = GroupViewModels/GroupQueryViewModelTests.swift; sourceTree = "<group>"; };
+		2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupDetailViewModel.swift; path = ViewModels/GroupViewModels/GroupDetailViewModel.swift; sourceTree = "<group>"; };
 		323127DA1E74A642007BE4C3 /* Promise+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Promise+Extension.swift"; path = "Extensions/Promise+Extension.swift"; sourceTree = "<group>"; };
 		4D7425641EB781B600107859 /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weak.swift; path = Helpers/Weak.swift; sourceTree = "<group>"; };
 		4D7425661EB79E7400107859 /* ViewModelsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelsManager.swift; path = ViewModels/ViewModelsManager.swift; sourceTree = "<group>"; };
@@ -272,6 +300,7 @@
 		882493F61EC3927800C20C81 /* GroupCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCreationViewController.swift; path = Views/ViewControllers/GroupViewControllers/GroupCreationViewController.swift; sourceTree = "<group>"; };
 		882760381E9E8060000E4098 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		882807301EC4DB80006720BF /* LimitTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LimitTextField.swift; path = Views/SubViews/UITextFields/LimitTextField.swift; sourceTree = "<group>"; };
+		882807321EC4EE83006720BF /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupDetailViewController.swift; path = Views/ViewControllers/GroupViewControllers/GroupDetailViewController.swift; sourceTree = "<group>"; };
 		882AC6711E9D3390004F85C2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/ViewControllers/SettingViewControllers/ChangePasswordViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		882AC6731E9D5603004F85C2 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Extensions/UIFont+Extension.swift"; sourceTree = "<group>"; };
 		882B98871EC3C0E800E7A186 /* GroupCreationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCreationViewModel.swift; path = ViewModels/GroupViewModels/GroupCreationViewModel.swift; sourceTree = "<group>"; };
@@ -459,6 +488,15 @@
 				67EC820F267DA34D42E76BFA /* Pods-BaseAppV2IntegrationTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		26678CD41ECE5BF300CBA471 /* GroupViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */,
+				26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */,
+			);
+			name = GroupViewModels;
 			sourceTree = "<group>";
 		};
 		8801FDD91E71BC5A00F54932 /* AuthenticationViewModels */ = {
@@ -837,6 +875,7 @@
 			children = (
 				88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */,
 				887861791E68CC2000C931FC /* User.swift */,
+				2647D0DB1ECA3DA400B6B4C4 /* Group.swift */,
 				88FBC27B1E6DE36D003AEEC4 /* BaseError.swift */,
 			);
 			name = EntityModels;
@@ -880,6 +919,8 @@
 			isa = PBXGroup;
 			children = (
 				882B98871EC3C0E800E7A186 /* GroupCreationViewModel.swift */,
+				2647D0EF1ECB569F00B6B4C4 /* GroupQueryViewModel.swift */,
+				2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */,
 			);
 			name = GroupViewModels;
 			sourceTree = "<group>";
@@ -951,6 +992,7 @@
 			children = (
 				882CEABE1EAE90F300AE8D24 /* AuthenticationManagerTests.swift */,
 				882CEABF1EAE90F300AE8D24 /* SessionManagerTests.swift */,
+				26678CCA1ECE406700CBA471 /* GroupManagerTests.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -960,6 +1002,7 @@
 			children = (
 				882CEAC11EAE90F300AE8D24 /* BaseErrorTests.swift */,
 				882CEAC21EAE90F300AE8D24 /* UserTests.swift */,
+				26678CC61ECE329400CBA471 /* GroupTests.swift */,
 			);
 			path = EntityModels;
 			sourceTree = "<group>";
@@ -1047,6 +1090,7 @@
 			isa = PBXGroup;
 			children = (
 				882CEAD21EAE90F300AE8D24 /* AuthenticationEndpointTests.swift */,
+				26678CC81ECE384200CBA471 /* GroupEndpointTest.swift */,
 				882CEAD31EAE90F400AE8D24 /* BaseEndpointInfoTests.swift */,
 				882CEAD41EAE90F400AE8D24 /* UserEndpointTests.swift */,
 			);
@@ -1089,6 +1133,7 @@
 			isa = PBXGroup;
 			children = (
 				882CEADD1EAE90F400AE8D24 /* currentuser.json */,
+				26678CCC1ECE502B00CBA471 /* creategroup.json */,
 				882CEADE1EAE90F400AE8D24 /* loginuser.json */,
 				882CEADF1EAE90F400AE8D24 /* loginuseroauth.json */,
 				882CEAE01EAE90F400AE8D24 /* oauth1response.json */,
@@ -1096,6 +1141,8 @@
 				882CEAE21EAE90F400AE8D24 /* updateuser.json */,
 				882CEAE31EAE90F400AE8D24 /* userlistpage1.json */,
 				882CEAE41EAE90F400AE8D24 /* userlistpage2.json */,
+				26678CCE1ECE510300CBA471 /* grouplistparticipants.json */,
+				26678CD01ECE523500CBA471 /* grouplistforuser.json */,
 			);
 			path = TestJSON;
 			sourceTree = "<group>";
@@ -1107,6 +1154,7 @@
 				882CEAEB1EAE90F400AE8D24 /* ProfileViewModels */,
 				882CEAED1EAE90F400AE8D24 /* SettingViewModels */,
 				882CEAF01EAE90F400AE8D24 /* UserFeedViewModels */,
+				26678CD41ECE5BF300CBA471 /* GroupViewModels */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1338,6 +1386,7 @@
 				88ECC27D1EC10DF900F7DAC2 /* GroupPagingViewController.swift */,
 				880EAE921EC25CF90049C898 /* GroupListViewController.swift */,
 				882493F61EC3927800C20C81 /* GroupCreationViewController.swift */,
+				882807321EC4EE83006720BF /* GroupDetailViewController.swift */,
 			);
 			name = GroupViewControllers;
 			sourceTree = "<group>";
@@ -1400,6 +1449,7 @@
 				88FBC2A71E70099A003AEEC4 /* BaseEndpoint.swift */,
 				88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */,
 				88FDF25D1E8D534C008F5395 /* UserEndpoint.swift */,
+				2647D0DD1ECA55C200B6B4C4 /* GroupEndpoint.swift */,
 			);
 			name = Endpoints;
 			sourceTree = "<group>";
@@ -1448,6 +1498,7 @@
 				88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */,
 				88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */,
 				26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */,
+				2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -1639,6 +1690,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				882CEB0A1EAE90F400AE8D24 /* oauth1response.json in Resources */,
+				26678CD11ECE523500CBA471 /* grouplistforuser.json in Resources */,
+				26678CCF1ECE510300CBA471 /* grouplistparticipants.json in Resources */,
 				882CEB0C1EAE90F400AE8D24 /* updateuser.json in Resources */,
 				882CEB091EAE90F400AE8D24 /* loginuseroauth.json in Resources */,
 				882CEB081EAE90F400AE8D24 /* loginuser.json in Resources */,
@@ -1646,6 +1699,7 @@
 				882CEB0B1EAE90F400AE8D24 /* registeruser.json in Resources */,
 				882CEB0D1EAE90F400AE8D24 /* userlistpage1.json in Resources */,
 				882CEB071EAE90F400AE8D24 /* currentuser.json in Resources */,
+				26678CCD1ECE502B00CBA471 /* creategroup.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1679,7 +1733,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0596C08C61F2219C4881FA41 /* [CP] Embed Pods Frameworks */ = {
@@ -1739,7 +1793,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6D9CED46181C29485EF81F85 /* [CP] Check Pods Manifest.lock */ = {
@@ -1754,7 +1808,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		88AF2E1A1E7C110E00F93A50 /* ShellScript */ = {
@@ -1842,7 +1896,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DA35148113932E18EFD8A1E7 /* [CP] Copy Pods Resources */ = {
@@ -1870,6 +1924,7 @@
 				8801FE011E72418E00F54932 /* LoginViewController.swift in Sources */,
 				8804550C1E6641B900D4A499 /* Constants.swift in Sources */,
 				88F3FE161E736118003162F8 /* SettingsViewController.swift in Sources */,
+				2647D0DC1ECA3DA400B6B4C4 /* Group.swift in Sources */,
 				88BFD8DA1E84292E000C8A61 /* ProfileImageTableViewCell.swift in Sources */,
 				885514CB1E8D822C008A82CC /* UserPaginator.swift in Sources */,
 				882B98881EC3C0E800E7A186 /* GroupCreationViewModel.swift in Sources */,
@@ -1896,6 +1951,7 @@
 				88BFD8D71E83B04A000C8A61 /* ProcessInfo+Extension.swift in Sources */,
 				88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */,
 				88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */,
+				882807331EC4EE83006720BF /* GroupDetailViewController.swift in Sources */,
 				88AF2E131E7BB2D000F93A50 /* BaseTableViewCell.swift in Sources */,
 				88FBC2A01E6F1D15003AEEC4 /* AppLogger.swift in Sources */,
 				885514E61E8DBC65008A82CC /* BaseCollectionViewHorizontalFlowLayout.swift in Sources */,
@@ -1904,7 +1960,9 @@
 				88AF2E251E7C3E3F00F93A50 /* CircleImageView.swift in Sources */,
 				88226DD01E9C0A5B00C6BA85 /* Model.xcdatamodeld in Sources */,
 				88AF2E161E7BBA7C00F93A50 /* SettingViewModel.swift in Sources */,
+				2647D0F01ECB569F00B6B4C4 /* GroupQueryViewModel.swift in Sources */,
 				880413FF1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift in Sources */,
+				2679295B1ECE1E9200C701CB /* GroupDetailViewModel.swift in Sources */,
 				880454C51E65E32C00D4A499 /* AppDelegate.swift in Sources */,
 				88AF2E0D1E7B9CFD00F93A50 /* UITableView+Extension.swift in Sources */,
 				4D7425651EB781B600107859 /* Weak.swift in Sources */,
@@ -1918,6 +1976,7 @@
 				88AF2E091E7B972900F93A50 /* ReuseableView.swift in Sources */,
 				8817FC161E768CF2007697DF /* SignupOptionalInfoViewController.swift in Sources */,
 				88FBC2AD1E7022F4003AEEC4 /* AuthenticationEndpoint.swift in Sources */,
+				2647D0EE1ECB38D400B6B4C4 /* GroupManager.swift in Sources */,
 				88BFD8D31E831FC9000C8A61 /* Array+Extension.swift in Sources */,
 				885514E11E8DB872008A82CC /* UserCollectionViewCell.swift in Sources */,
 				88F3FE0B1E7316CC003162F8 /* CaseCount.swift in Sources */,
@@ -1964,6 +2023,7 @@
 				8801FDDC1E71BD7900F54932 /* DynamicBinder.swift in Sources */,
 				880EAE7E1EC221D40049C898 /* BaseLabel.swift in Sources */,
 				882AC6741E9D5603004F85C2 /* UIFont+Extension.swift in Sources */,
+				2647D0DE1ECA55C200B6B4C4 /* GroupEndpoint.swift in Sources */,
 				323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1982,6 +2042,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				882CEAF41EAE90F400AE8D24 /* StringExtensionTests.swift in Sources */,
+				26678CCB1ECE406700CBA471 /* GroupManagerTests.swift in Sources */,
 				882CEB001EAE90F400AE8D24 /* FetchResultsTests.swift in Sources */,
 				882CEAFA1EAE90F400AE8D24 /* BaseErrorTests.swift in Sources */,
 				882CEAF51EAE90F400AE8D24 /* UIStoryboardExtensionTests.swift in Sources */,
@@ -1992,6 +2053,7 @@
 				882CEAF71EAE90F400AE8D24 /* DynamicBinderTests.swift in Sources */,
 				882CEAFB1EAE90F400AE8D24 /* UserTests.swift in Sources */,
 				882CEAF91EAE90F400AE8D24 /* SessionManagerTests.swift in Sources */,
+				26678CC71ECE329400CBA471 /* GroupTests.swift in Sources */,
 				882CEB011EAE90F400AE8D24 /* AuthenticationEndpointTests.swift in Sources */,
 				882CEB111EAE90F400AE8D24 /* LoginViewModelTests.swift in Sources */,
 				882CEB161EAE90F400AE8D24 /* UserFeedViewModelTests.swift in Sources */,
@@ -2005,9 +2067,12 @@
 				882CEAAB1EAE90C800AE8D24 /* BaseAppV2UnitTests.swift in Sources */,
 				882CEB101EAE90F400AE8D24 /* ForgotPasswordViewModelTests.swift in Sources */,
 				882CEAF31EAE90F400AE8D24 /* NSManagedObjectExtensionTests.swift in Sources */,
+				26678CD31ECE5BED00CBA471 /* GroupCreationViewModelTests.swift in Sources */,
+				26678CD61ECE5F8900CBA471 /* GroupQueryViewModelTests.swift in Sources */,
 				882CEB041EAE90F400AE8D24 /* NetworkClientTests.swift in Sources */,
 				882CEAFC1EAE90F400AE8D24 /* UserPaginatorTests.swift in Sources */,
 				882CEAFD1EAE90F400AE8D24 /* ConfigurationManagerTests.swift in Sources */,
+				26678CC91ECE384200CBA471 /* GroupEndpointTest.swift in Sources */,
 				882CEAF21EAE90F400AE8D24 /* ArrayExtensionTests.swift in Sources */,
 				882CEB141EAE90F400AE8D24 /* ChangePasswordViewModelTests.swift in Sources */,
 				882CEB0F1EAE90F400AE8D24 /* ChangeEmailVerifyViewModelTests.swift in Sources */,
@@ -2392,11 +2457,12 @@
 		88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2647D0D61ECA393700B6B4C4 /* Model_v0-1-0-3.xcdatamodel */,
 				2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */,
 				88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */,
 				88226DCF1E9C0A5B00C6BA85 /* Model.xcdatamodel */,
 			);
-			currentVersion = 2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */;
+			currentVersion = 2647D0D61ECA393700B6B4C4 /* Model_v0-1-0-3.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = Models/BusinessLogic/EntityModels/Model.xcdatamodeld;
 			sourceTree = "<group>";

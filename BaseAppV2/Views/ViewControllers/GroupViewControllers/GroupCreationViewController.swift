@@ -16,8 +16,7 @@ final class GroupCreationViewController: BaseViewController {
     
     // MARK: - IBOutlets
     @IBOutlet fileprivate weak var groupNameTextField: LimitTextField!
-    @IBOutlet fileprivate weak var numberOfPeopleTextField: ToolBarTextField!
-    
+
     
     // MARK: - Public Instance Attributes
     var groupCreationViewModel: GroupCreationViewModelProtocol? {
@@ -43,21 +42,16 @@ final class GroupCreationViewController: BaseViewController {
 // MARK: - IBActions
 fileprivate extension GroupCreationViewController {
     @IBAction private func createGroupButtonTapped(sender: BaseButton) {
+        if (groupNameTextField.text?.hasPrefix(" "))! {
+            showInfoAlert(title:NSLocalizedString("CreateGroup.SpaceErrorTitle", comment: "get string for spacing error"), subTitle:NSLocalizedString("CreateGroup.SpaceErrorBody", comment: "get body string for spacinf error"))
+            groupNameTextField.text = ""
+            return
+        }
         createGroup()
     }
-    
+
     @IBAction private func cancelButtonTapped(sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-
-// MARK: - UITextFieldDelegate
-extension GroupCreationViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text,
-              let number = Int(text) else { return }
-        groupCreationViewModel?.numberOfPeople = number
     }
 }
 
@@ -85,10 +79,6 @@ fileprivate extension GroupCreationViewController {
                 if strongSelf.groupNameTextField.text == "" {
                     strongSelf.groupNameTextField.performShakeAnimation()
                 }
-                if strongSelf.numberOfPeopleTextField.text == "" {
-                    strongSelf.dismissProgressHud()
-                    strongSelf.numberOfPeopleTextField.performShakeAnimation()
-                }
             } else if creationError.statusCode == 112 {
                 strongSelf.showErrorAlert(title: NSLocalizedString("CreateGroup.NumberOfCharactersExceeded", comment: "alert title"), subTitle: creationError.errorDescription)
             } else {
@@ -97,21 +87,12 @@ fileprivate extension GroupCreationViewController {
         }
         viewModel.creationSuccess.bind { [weak self] (success) in
             guard let strongSelf = self else { return }
+            strongSelf.dismissProgressHud()
             strongSelf.dismiss(animated: true, completion: nil)
         }
         groupNameTextField.didReturn = { [weak self] (text) in
             guard let strongSelf = self else { return }
             strongSelf.groupCreationViewModel?.groupName = text
-            strongSelf.numberOfPeopleTextField.becomeFirstResponder()
-        }
-        numberOfPeopleTextField.delegate = self
-        numberOfPeopleTextField.nextButtonTapped = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.createGroup()
-        }
-        numberOfPeopleTextField.previousButtonTapped = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.view.endEditing(true)
         }
         let titleView = NavigationView.instantiate()
         titleView.titleText = NSLocalizedString("CreateGroup.NewGroup", comment: "navigation title")
@@ -123,6 +104,6 @@ fileprivate extension GroupCreationViewController {
     fileprivate func createGroup() {
         view.endEditing(true)
         showProgresHud()
-        groupCreationViewModel?.createGroup()
+        groupCreationViewModel?.createGroup(name: groupNameTextField.text!)
     }
 }

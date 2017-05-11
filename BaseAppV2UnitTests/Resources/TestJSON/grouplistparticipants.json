@@ -1,0 +1,25 @@
+ [
+  {
+  "name": "My Group",
+  "isPrivate": false,
+  "creator": 18,
+  "participants": [
+                   17,
+                   12,
+                   13,
+                   15
+                   ],
+  "id": 4
+  },
+  {
+  "name": "QA",
+  "isPrivate": false,
+  "creator": 17,
+  "participants": [
+                   18,
+                   12,
+                   14
+                   ],
+  "id": 6
+  }
+  ]

@@ -179,4 +179,8 @@ extension BaseError {
     static var numberOfCharactersExceeded: BaseError {
         return BaseError(statusCode: 112, errorDescription: NSLocalizedString("BaseError.NumberOfCharactersExcxeed", comment: "Default Error"))
     }
+
+    static var isPrivate: BaseError {
+        return BaseError(statusCode: 113, errorDescription: NSLocalizedString("BaseError.GroupIsPrivate", comment: "Default Error"))
+    }
 }
