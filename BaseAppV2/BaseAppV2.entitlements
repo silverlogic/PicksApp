@@ -7,5 +7,9 @@
 		<string>applinks:p1pj.app.link</string>
 		<string>applinks:p1pj-alternate.app.link</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.silverlogic.PicksApp</string>
+	</array>
 </dict>
 </plist>

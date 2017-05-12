@@ -7,7 +7,7 @@
 		<key>Local</key>
 		<string>https://api.baseapp.tsl.io/v2/</string>
 		<key>Staging</key>
-		<string>https://api.baseapp.tsl.io/v1/</string>
+		<string>https://picksapp-api-staging.mybluemix.net/api/</string>
 		<key>Stable</key>
 		<string>https://api.baseapp.tsl.io/v3/</string>
 		<key>Production</key>

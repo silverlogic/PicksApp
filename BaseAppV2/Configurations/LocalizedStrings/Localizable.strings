@@ -35,6 +35,8 @@
 "Miscellaneous.Email" = "Email";
 "Miscellaneous.Finish" = "Finish";
 "Miscellaneous.NewEmail" = "New Email";
+"Miscellaneous.FacebookError" = "Facebook Error 🤔";
+"Miscellaneous.FacebookErrorBody" = "Please grant Picks App the proper permissions";
 
 // ImagePicker
 "ImagePicker.NoImages" = "Looks like there aren't any images here. 😜";

@@ -27,11 +27,15 @@ protocol LoginViewModelProtocol: class {
     var loginError: DynamicBinderInterface<BaseError?> { get }
     var loginSuccess: DynamicBinderInterface<Bool> { get }
     var oauthStep1Error: DynamicBinderInterface<BaseError?> { get }
-    
+    var loginBegan: DynamicBinderInterface<Bool> { get }
+    var facebookPermissionsDenied: DynamicBinderInterface<Bool> { get }
+
     
     // MARK: - Instance Methods
     func loginWithEmail()
     func loginWithFacebook(email: String?)
+    func loginWithFacebookSDK(facebookInfo: FacebookUserInfo)
+    func loginToFacebook(viewController: UIViewController)
     func loginWithLinkedIn(email: String?)
     func oauth1InfoForTwitter()
     func loginWithTwitter(email: String?)
@@ -81,7 +85,12 @@ fileprivate final class LoginViewModel: LoginViewModelProtocol {
     var oauthStep1Error: DynamicBinderInterface<BaseError?> {
         return oauthStep1ErrorBinder.interface
     }
-    
+    var loginBegan: DynamicBinderInterface<Bool> {
+        return loginBeganBinder.interface
+    }
+    var facebookPermissionsDenied: DynamicBinderInterface<Bool> {
+        return permissionsDeniedBinder.interface
+    }
     
     // MARK: - Private Instance Attributes
     private var twitterOAuth1Step1Resonse: OAuth1Step1Response?
@@ -89,7 +98,9 @@ fileprivate final class LoginViewModel: LoginViewModelProtocol {
     private var loginErrorBinder: DynamicBinder<BaseError?>
     private var loginSuccessBinder: DynamicBinder<Bool>
     private var oauthStep1ErrorBinder: DynamicBinder<BaseError?>
-    
+    private var loginBeganBinder: DynamicBinder<Bool>
+    private var permissionsDeniedBinder: DynamicBinder<Bool>
+
     
     // MARK: - Initializers
     
@@ -107,6 +118,8 @@ fileprivate final class LoginViewModel: LoginViewModelProtocol {
         loginErrorBinder = DynamicBinder(nil)
         loginSuccessBinder = DynamicBinder(false)
         oauthStep1ErrorBinder = DynamicBinder(nil)
+        loginBeganBinder = DynamicBinder(false)
+        permissionsDeniedBinder = DynamicBinder(false)
     }
     
     
@@ -125,7 +138,7 @@ fileprivate final class LoginViewModel: LoginViewModelProtocol {
             strongSelf.loginErrorBinder.value = error
         }
     }
-    
+
     func loginWithFacebook(email: String?) {
         guard let urlWithQueryParameters = redirectUrlWithQueryParameters else {
             loginErrorBinder.value = BaseError.generic
@@ -144,7 +157,25 @@ fileprivate final class LoginViewModel: LoginViewModelProtocol {
             strongSelf.loginErrorBinder.value = error
         }
     }
-    
+
+    func loginWithFacebookSDK(facebookInfo: FacebookUserInfo) {
+        AuthenticationManager.shared.loginWithFacebookToken(facebookInfo.facebookAccessToken, success: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.loginSuccessBinder.value = true
+        }) { [weak self] (error: BaseError) in
+            if error.statusCode == 404 {
+                AuthenticationManager.shared.signupForFacebook(facebookInfo, success: { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.loginSuccessBinder.value = true
+                    NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
+                }) { [weak self] (error: BaseError) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.loginSuccessBinder.value = false
+                }
+            }
+        }
+    }
+
     func loginWithLinkedIn(email: String?) {
         guard let urlWithQueryParameters = redirectUrlWithQueryParameters else {
             loginErrorBinder.value = BaseError.generic
@@ -195,5 +226,19 @@ fileprivate final class LoginViewModel: LoginViewModelProtocol {
             }
             strongSelf.loginErrorBinder.value = error
         }
+    }
+
+    func loginToFacebook(viewController: UIViewController) {
+        FacebookManager.shared.loginToFacebookForPermissions(viewController: viewController, { [weak self] (facebookUserInfo: FacebookUserInfo) in
+            guard let strongSelf = self else { return }
+            strongSelf.loginWithFacebookSDK(facebookInfo: facebookUserInfo)
+            strongSelf.loginSuccessBinder.value = true
+            strongSelf.loginBeganBinder.value = true
+            }, failure: { [weak self] (error: BaseError) in
+                guard let strongSelf = self else {return}
+                strongSelf.loginSuccessBinder.value = false
+                strongSelf.loginBeganBinder.value = false
+                strongSelf.permissionsDeniedBinder.value = true
+        })
     }
 }

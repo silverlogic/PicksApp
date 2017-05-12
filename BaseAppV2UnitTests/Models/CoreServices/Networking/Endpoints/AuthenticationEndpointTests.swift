@@ -22,7 +22,28 @@ final class AuthenticationEndpointTests: BaseAppV2UnitTests {
         XCTAssertTrue(loginEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
         XCTAssertFalse(loginEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
     }
-    
+
+    func testLoginFacebookEndpoint() {
+        let loginFacebookEndpoint = AuthenticationEndpoint.loginFacebook(facebookAccessToken: "ABCD1234")
+        XCTAssertNotNil(loginFacebookEndpoint, "Value Should Not Be Nil!")
+        XCTAssertEqual(loginFacebookEndpoint.endpointInfo.path, "PicksUsers/login-facebook", "Path Not Correct!")
+        XCTAssertEqual(loginFacebookEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(loginFacebookEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(loginFacebookEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
+        XCTAssertFalse(loginFacebookEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
+    }
+
+    func testSignupFacebookEndpoint() {
+        let facebookInfo = FacebookUserInfo(email: "testUser@tsl.io", facebookAccessToken: "ABCD1234", firstName: "test", lastName: "user", avatar: nil)
+        let signupFacebookEndpoint = AuthenticationEndpoint.signupFacebook(facebookInfo: facebookInfo)
+        XCTAssertNotNil(signupFacebookEndpoint, "Value Should Not Be Nil!")
+        XCTAssertEqual(signupFacebookEndpoint.endpointInfo.path, "PicksUsers/signup-facebook", "Path Not Correct!")
+        XCTAssertEqual(signupFacebookEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")
+        XCTAssertNotNil(signupFacebookEndpoint.endpointInfo.parameters, "Value Should Not Be Nil!")
+        XCTAssertTrue(signupFacebookEndpoint.endpointInfo.parameterEncoding is JSONEncoding, "Encoding Not Correct!")
+        XCTAssertFalse(signupFacebookEndpoint.endpointInfo.requiresAuthorization, "Value Should Be False!")
+    }
+
     func testSignUpEndpoint() {
         let signupInfo = SignUpInfo(email: "testuser@tsl.io", password: "1234", referralCodeOfReferrer: nil)
         let signupEndpoint = AuthenticationEndpoint.signUp(signUpInfo: signupInfo)
@@ -48,7 +69,7 @@ final class AuthenticationEndpointTests: BaseAppV2UnitTests {
     func testCurrentUserEndpoint() {
         let currentUserEndpoint = AuthenticationEndpoint.currentUser
         XCTAssertNotNil(currentUserEndpoint, "Value Should Not Be Nil!")
-        XCTAssertEqual(currentUserEndpoint.endpointInfo.path, "users/me", "Path Not Correct!")
+        XCTAssertEqual(currentUserEndpoint.endpointInfo.path, "PicksUsers/me", "Path Not Correct!")
         XCTAssertEqual(currentUserEndpoint.endpointInfo.requestMethod, .get, "Request Method Not Correct!")
         XCTAssertNil(currentUserEndpoint.endpointInfo.parameters, "Value Should Be Nil")
         XCTAssertTrue(currentUserEndpoint.endpointInfo.parameterEncoding is URLEncoding, "Encoding Not Correct!")

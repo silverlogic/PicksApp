@@ -16,6 +16,8 @@ import AlamofireCoreData
 */
 enum AuthenticationEndpoint: BaseEndpoint {
     case login(email: String, password: String)
+    case loginFacebook(facebookAccessToken: String)
+    case signupFacebook(facebookInfo: FacebookUserInfo)
     case signUp(signUpInfo: SignUpInfo)
     case update(updateInfo: UpdateInfo, userId: Int)
     case currentUser
@@ -44,6 +46,20 @@ enum AuthenticationEndpoint: BaseEndpoint {
             parameterEncoding = JSONEncoding()
             requiresAuthorization = false
             break
+        case let .loginFacebook(facebookAccessToken):
+            path = "PicksUsers/login-facebook"
+            requestMethod = .post
+            parameters = ["facebookAccessToken": facebookAccessToken];
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
+            break
+        case let .signupFacebook(facebookInfo):
+            path = "PicksUsers/signup-facebook"
+            requestMethod = .post
+            parameters = facebookInfo.parameters
+            parameterEncoding = JSONEncoding()
+            requiresAuthorization = false
+            break
         case let .signUp(signUpInfo):
             path = "register"
             requestMethod = .post
@@ -59,7 +75,7 @@ enum AuthenticationEndpoint: BaseEndpoint {
             requiresAuthorization = true
             break
         case .currentUser:
-            path = "users/me"
+            path = "PicksUsers/me"
             requestMethod = .get
             parameters = nil
             parameterEncoding = nil
@@ -190,6 +206,62 @@ struct SignUpInfo {
 
 /**
     A struct encapsulating what information is needed
+    when logging in a user via Facebook login.
+ */
+struct FacebookUserInfo {
+
+    // MARK: - Public Instance Attributes
+    let email: String
+    let facebookAccessToken: String
+    let firstName: String
+    let lastName: String
+    let avatar: String?
+
+
+    // MARK: - Getters & Setters
+    var parameters: Alamofire.Parameters {
+        var params: Parameters = [
+            "email": email,
+            "facebookAccessToken": facebookAccessToken,
+            "firstName": firstName,
+            "lastName": lastName
+        ]
+        if let avatarURLForUser = avatar {
+            params["avatarUrl"] = avatarURLForUser
+        }
+        return params
+    }
+
+
+    // MARK: - Initializers
+
+    /**
+        Initializes an instance of `LoginFBUserInfo`.
+
+        - Parameters:
+            - email: A `String` representing the email of the user, 
+                     which represents their FB username/email.
+            - password: A `String` representing the authToken received 
+                        from a successfull FB login.
+            - firstName: A `String` representing the first name of 
+                        ther user from their FB public profile.
+            - lastName: A `String` representing the last name of 
+                        the user from their FB public profile.
+            - avatarURL: A `String` representing the url of the user's 
+                         avatar from their FB public profile.
+     */
+    init(email: String, facebookAccessToken: String, firstName: String, lastName: String, avatar: String?) {
+        self.email = email
+        self.facebookAccessToken = facebookAccessToken
+        self.firstName = firstName
+        self.lastName = lastName
+        self.avatar = avatar
+    }
+}
+
+
+/**
+    A struct encapsulating what information is needed
     when updating a user.
 */
 struct UpdateInfo {
@@ -204,11 +276,11 @@ struct UpdateInfo {
     // MARK: - Getters & Setters
     var parameters: Alamofire.Parameters {
         var params: Parameters = [
-            "first_name": firstName,
-            "last_name": lastName
+            "firstName": firstName,
+            "lastName": lastName
         ]
         if let baseString = avatarBaseString {
-            params["avatar"] = baseString
+            params["avatarUrl"] = baseString
         }
         if let referralCode = referralCodeOfReferrer {
             params["referral_code"] = referralCode
@@ -444,7 +516,7 @@ struct LoginResponse: Wrapper {
     
     // MARK: - Wrapper
     mutating func map(_ map: Map) {
-        token <- map["token"]
+        token <- map["id"]
     }
 }
 

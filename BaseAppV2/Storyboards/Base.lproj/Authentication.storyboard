@@ -61,8 +61,12 @@
                                             <constraint firstAttribute="width" constant="1" id="zef-th-JiV"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-fU-FFR" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
-                                        <rect key="frame" x="102" y="50.5" width="55.5" height="64.5"/>
+                                    <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-fU-FFR" customClass="BaseButton" customModule="BaseAppV2" customModuleProvider="target">
+                                        <rect key="frame" x="92.5" y="50.5" width="65" height="64.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="9hw-yU-2Qx"/>
+                                            <constraint firstAttribute="height" constant="65" id="gnT-aD-4Zq"/>
+                                        </constraints>
                                         <state key="normal" backgroundImage="icon-facebookloginbutton"/>
                                         <connections>
                                             <action selector="baseButtonTapped:" destination="73G-au-cez" eventType="touchUpInside" id="LUi-FW-zAi"/>
@@ -127,14 +131,10 @@
                                     <constraint firstItem="Zfk-9A-XQx" firstAttribute="top" secondItem="00W-u1-OhO" secondAttribute="bottom" constant="3" id="GIs-Mh-P6h">
                                         <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                     </constraint>
-                                    <constraint firstItem="x7e-fU-FFR" firstAttribute="height" secondItem="xWh-bR-Hod" secondAttribute="height" multiplier="0.28" id="HPV-Aw-ddS">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="10"/>
-                                    </constraint>
                                     <constraint firstAttribute="trailing" secondItem="00W-u1-OhO" secondAttribute="trailing" constant="8" id="JFF-QJ-hQn"/>
                                     <constraint firstItem="hM4-zv-Cu7" firstAttribute="leading" secondItem="x7e-fU-FFR" secondAttribute="trailing" constant="30" id="Rcy-ZP-Uxa"/>
                                     <constraint firstItem="hM4-zv-Cu7" firstAttribute="top" secondItem="nW4-qg-fia" secondAttribute="bottom" id="Sh3-fo-PY4"/>
                                     <constraint firstAttribute="trailing" secondItem="Zfk-9A-XQx" secondAttribute="trailing" constant="8" id="VdY-qb-UA4"/>
-                                    <constraint firstItem="x7e-fU-FFR" firstAttribute="width" secondItem="xWh-bR-Hod" secondAttribute="width" multiplier="0.15" id="WK6-D5-nP1"/>
                                     <constraint firstItem="Zfk-9A-XQx" firstAttribute="leading" secondItem="xWh-bR-Hod" secondAttribute="leading" constant="8" id="WoS-4c-4Ch"/>
                                     <constraint firstAttribute="trailing" secondItem="nW4-qg-fia" secondAttribute="trailing" id="Xt3-Uc-6ow"/>
                                     <constraint firstItem="nW4-qg-fia" firstAttribute="leading" secondItem="xWh-bR-Hod" secondAttribute="leading" id="c8N-lJ-gYW"/>
@@ -275,8 +275,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="ttH-lg-OJt"/>
                     <connections>
+                        <outlet property="baseAppLoginView" destination="cn8-HW-U2u" id="lzR-ak-Epc"/>
                         <outlet property="emailTextField" destination="CWh-9U-s3J" id="S1L-zf-Tkb"/>
+                        <outlet property="facebookButton" destination="x7e-fU-FFR" id="yfF-sM-9J2"/>
+                        <outlet property="facebookButtonTrailing" destination="Rcy-ZP-Uxa" id="P6X-3q-ALe"/>
                         <outlet property="passwordTextField" destination="5Pa-aC-rf9" id="sJJ-nf-Bkr"/>
+                        <outlet property="twitterButton" destination="pUl-em-MOp" id="0fd-sd-tvm"/>
                         <segue destination="009-BF-4Tz" kind="show" identifier="goToSignupEmailSegue" id="hZZ-f1-gY4">
                             <nil key="action"/>
                         </segue>
@@ -287,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssd-Ou-j7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1685.625" y="-1510"/>
+            <point key="canvasLocation" x="1685.5999999999999" y="-1510.7946026986508"/>
         </scene>
         <!--Signup Email View Controller-->
         <scene sceneID="bKy-og-Q4a">
