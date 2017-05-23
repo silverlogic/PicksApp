@@ -18,7 +18,9 @@ final class GroupDetailViewController: BaseViewController {
     
     // MARK: - Private Instance Attributes
     fileprivate var tableView: UITableView!
+    fileprivate var refreshControl: UIRefreshControl!
     fileprivate var joinedGroupBinder = DynamicBinder(false)
+    fileprivate var currentUser: User?
 
     // MARK: - Public Instance Attributes
     var joinedGroup: DynamicBinderInterface<Bool> {
@@ -37,6 +39,16 @@ final class GroupDetailViewController: BaseViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let user = SessionManager.shared.currentUser.value {
+            currentUser = user
+        } else {
+            showInfoAlert(title: NSLocalizedString("User.NoLogIn.Title", comment: "get string for no user title"), subTitle: NSLocalizedString("User.NoLogIn.Body", comment: "get string for no log in body"))
+        }
+        view.backgroundColor = .white
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        tableView = UITableView(frame: frame, style: .plain)
+        view.addSubview(tableView)
+        tableView.alpha = 0
         setup()
     }
 }
@@ -62,10 +74,12 @@ extension GroupDetailViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension GroupDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let listCell = cell as? GroupTableViewCell,
-              let participant = groupDetailViewModel?.participantForIndex(indexPath.row) else { return }
         let color = indexPath.row % 2 == 0 ? UIColor.lightGreenField : UIColor.darkGreenField
-        listCell.configure(name: participant.name, number: participant.score, backgroundColor: color)
+        guard let listCell = cell as? GroupTableViewCell,
+              let participant = groupDetailViewModel?.participantForIndex(indexPath.row),
+              let participantName = participant.name,
+              let participantScore = participant.score else { return }
+        listCell.configure(name: participantName, number: participantScore, backgroundColor: color)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -111,9 +125,6 @@ fileprivate extension GroupDetailViewController {
     fileprivate func setup() {
         if !isViewLoaded { return }
         guard let viewModel = groupDetailViewModel else { return }
-        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        tableView = UITableView(frame: frame, style: .plain)
-        view.addSubview(tableView)
         tableView.autoPinEdgesToSuperviewEdges()
         tableView.register(GroupTableViewCell.self)
         tableView.separatorStyle = .none
@@ -122,23 +133,20 @@ fileprivate extension GroupDetailViewController {
         tableView.delegate = self
         tableView.emptyDataSetSource = self
         tableView.tableFooterView = UIView()
-        addNavBarTitle(viewModel: viewModel)
-        tableView.reloadData()
-        if viewModel.isUserMember() {
-            let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-join-button"), style: .plain, target: self, action: #selector(joinGroup))
-            barButton.tintColor = .clear
-            barButton.isEnabled = false
-            navigationItem.setRightBarButton(barButton, animated: false)
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .teritary
+        refreshControl.addTarget(self, action: #selector(fetchGroupDetails), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
         } else {
-            let image = UIImage(named: "icon-join-button")?.withRenderingMode(.alwaysOriginal)
-            let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(joinGroup))
-            navigationItem.setRightBarButton(barButton, animated: true)
+            tableView.addSubview(refreshControl)
         }
+        let navigationTitleLabel = NavigationBarLabel()
+        navigationItem.titleView = navigationTitleLabel.label(viewModel: viewModel, viewController: self)
+        setRightBarButtonItem(viewModel: viewModel)
         viewModel.joinSuccess.bind { [weak self] (success) in
             guard let strongSelf = self else { return }
-            strongSelf.tableView.reloadData()
-            strongSelf.dismissActivityIndicator()
-            strongSelf.tableView.animateShow()
+            strongSelf.fetchGroupDetails()
             strongSelf.dismissProgressHudWithMessage(NSLocalizedString("GroupDetails.JoinedGroup", comment: "get string for joined group success"), iconType: .success, duration: nil)
         }
         viewModel.joinError.bind { [weak self] (error) in
@@ -150,30 +158,54 @@ fileprivate extension GroupDetailViewController {
             } else {
                 strongSelf.dismissProgressHudWithMessage(joinError.errorDescription, iconType: .error, duration: nil)
             }
+            strongSelf.refreshControl.endRefreshing()
         }
-    }
-
-    private func addNavBarTitle(viewModel: GroupDetailViewModelProtocol) {
-        let navBarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 77.0))
-        navBarTitle.font = UIFont.main(DefaultFonts.bold, DefaultFontSizes.large)
-        navBarTitle.textColor = UIColor.white
-        let title = NSMutableAttributedString()
-        let starAttachment = NSTextAttachment()
-        starAttachment.image = #imageLiteral(resourceName: "icon-star")
-        let starImage = NSAttributedString(attachment: starAttachment)
-        title.append(starImage)
-        title.append(NSAttributedString(string: " "))
-        title.append(NSAttributedString(string: viewModel.name))
-        title.append(NSAttributedString(string: " "))
-        title.append(starImage)
-        navBarTitle.textAlignment = .center
-        navBarTitle.attributedText = title
-        navigationItem.titleView = navBarTitle
+        viewModel.fetchedParticipantsSuccess.bind { [weak self] (success) in
+            guard let strongSelf = self else { return }
+            strongSelf.dismissActivityIndicator()
+            strongSelf.tableView.reloadData()
+            //@TODO insert the newly created group at the appropriate row
+            //let indexPath = IndexPath(item: , section: 0)
+            //tableView.reloadRows(at: [indexPath], with: .top)
+            strongSelf.refreshControl.endRefreshing()
+            strongSelf.tableView.animateShow()
+            strongSelf.setRightBarButtonItem(viewModel: viewModel)
+        }
+        viewModel.fetchedParticipantsError.bind { [weak self] (error) in
+            guard let strongSelf = self,
+                let error = error else { return }
+            if error.statusCode == 400 {
+                strongSelf.dismissProgressHud()
+            } else {
+                strongSelf.dismissProgressHudWithMessage(error.errorDescription, iconType: .error, duration: nil)
+            }
+            strongSelf.refreshControl.endRefreshing()
+        }
+        fetchGroupDetails()
     }
 
     @objc fileprivate func joinGroup() {
         view.endEditing(true)
         showProgresHud()
-        groupDetailViewModel?.joinGroup(groupId: (groupDetailViewModel?.groupId)!)
+        guard let viewModel = groupDetailViewModel else { return }
+        viewModel.joinGroup(currentUserId: SessionManager.shared.currentUser.value!.userId, groupId: viewModel.groupId)
+    }
+
+    @objc fileprivate func fetchGroupDetails() {
+        guard let viewModel = groupDetailViewModel else { return }
+        viewModel.fetchParticipantsFor(currentUser: currentUser!, groupId: viewModel.groupId, currentSeason: viewModel.currentSeason)
+    }
+
+    fileprivate func setRightBarButtonItem(viewModel: GroupDetailViewModelProtocol) {
+        if viewModel.isUserMember() {
+            let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-join-button"), style: .plain, target: self, action: #selector(joinGroup))
+            barButton.tintColor = .clear
+            barButton.isEnabled = false
+            navigationItem.setRightBarButton(barButton, animated: false)
+        } else {
+            let image = UIImage(named: "icon-join-button")?.withRenderingMode(.alwaysOriginal)
+            let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(joinGroup))
+            navigationItem.setRightBarButton(barButton, animated: true)
+        }
     }
 }

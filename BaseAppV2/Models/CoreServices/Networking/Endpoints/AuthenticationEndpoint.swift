@@ -21,6 +21,7 @@ enum AuthenticationEndpoint: BaseEndpoint {
     case signUp(signUpInfo: SignUpInfo)
     case update(updateInfo: UpdateInfo, userId: Int)
     case currentUser
+    case otherUser(userId: Int)
     case oauth2(oauth2Info: OAuth2Info)
     case oauth1Step1(oauth1Step1Info: OAuth1Step1Info)
     case oauth1Step2(oauth1Step2Info: OAuth1Step2Info)
@@ -76,6 +77,13 @@ enum AuthenticationEndpoint: BaseEndpoint {
             break
         case .currentUser:
             path = "PicksUsers/me"
+            requestMethod = .get
+            parameters = nil
+            parameterEncoding = nil
+            requiresAuthorization = true
+            break
+        case let .otherUser(userId):
+            path = "PicksUsers/\(userId)"
             requestMethod = .get
             parameters = nil
             parameterEncoding = nil

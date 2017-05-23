@@ -21,6 +21,12 @@ class BaseAppV2UnitTests: XCTestCase {
             }
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
         })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/PicksUsers/15") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("otheruser.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
         stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/users/210") && isMethodPATCH(), response: { _ in
             guard let path = OHPathForFile("updateuser.json", type(of: self)) else {
                 preconditionFailure("Could Not Find Test File!")
@@ -119,6 +125,18 @@ class BaseAppV2UnitTests: XCTestCase {
         })
         stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Groups/groupsForParticipants") && isMethodGET(), response: { _ in
             guard let path = OHPathForFile("grouplistparticipants.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Groups/11/participants") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("grouplistparticipants.json", type(of: self)) else {
+                preconditionFailure("Could Not Find Test File!")
+            }
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])
+        })
+        stub(condition: isHost((URL(string: ConfigurationManager.shared.apiUrl!)?.host)!) && isPath("/api/Seasons/117/scores") && isMethodGET(), response: { _ in
+            guard let path = OHPathForFile("scores.json", type(of: self)) else {
                 preconditionFailure("Could Not Find Test File!")
             }
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type":"application/json"])

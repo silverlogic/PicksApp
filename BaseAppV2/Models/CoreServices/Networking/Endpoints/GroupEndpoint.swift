@@ -16,9 +16,10 @@ import AlamofireCoreData
  */
 enum GroupEndpoint: BaseEndpoint {
     case post(groupName: String, creator: User, isPrivate: Bool)
-    case join(groupId: Int16, user: User)
+    case join(groupId: Int16, userId: Int16)
     case groupsCreator(creatorId: Int16, isPrivate: Bool)
     case groupsParticipant(participantId: Int16?, isPrivate: Bool)
+    case participantsInGroup(groupId: Int16)
 
     var endpointInfo: BaseEndpointInfo {
         let path: String
@@ -34,10 +35,10 @@ enum GroupEndpoint: BaseEndpoint {
             parameterEncoding = JSONEncoding()
             requiresAuthorization = true
             break
-        case let .join(groupId, user):
+        case let .join(groupId, userId):
             path = "Groups/\(groupId)/join"
             requestMethod = .post
-            parameters = ["userId": user.userId];
+            parameters = ["userId": userId];
             parameterEncoding = JSONEncoding()
             requiresAuthorization = true
             break
@@ -52,6 +53,13 @@ enum GroupEndpoint: BaseEndpoint {
             path = "Groups/groupsForParticipants"
             requestMethod = .get
             parameters = ["participantId": participantId ?? 0, "isPrivate": isPrivate]
+            parameterEncoding = URLEncoding()
+            requiresAuthorization = true
+            break
+        case let .participantsInGroup(groupId):
+            path = "Groups/\(groupId)/participants"
+            requestMethod = .get
+            parameters = ["groupId": groupId]
             parameterEncoding = URLEncoding()
             requiresAuthorization = true
             break

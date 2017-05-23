@@ -9,6 +9,7 @@
 import Foundation
 import PureLayout
 import DZNEmptyDataSet
+import SwipeCellKit
 
 /**
     A `BaseViewController` responsible for
@@ -54,7 +55,7 @@ final class GroupListViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        initialFetch()
+        fetchGroups()
     }
 }
 
@@ -87,6 +88,7 @@ extension GroupListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let groupCell = cell as? GroupTableViewCell,
               let groupViewModel = groupQueryViewModel?.groupForIndex(indexPath.row) else { return }
+        groupCell.delegate = self
         let color = indexPath.row % 2 == 0 ? UIColor.lightGreenField : UIColor.darkGreenField
         groupCell.configure(name: groupViewModel.name, number: groupViewModel.numberOfParticipants(), backgroundColor: color)
     }
@@ -96,7 +98,7 @@ extension GroupListViewController: UITableViewDelegate {
         sectionHeader.configure(columnOneText: NSLocalizedString("GroupList.GroupName", comment: "column text"), columnTwoText: NSLocalizedString("GroupList.Members", comment: "column text"))
         return sectionHeader
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return GroupTableViewCell.height()
     }
@@ -107,6 +109,21 @@ extension GroupListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
+    }
+}
+
+
+// MARK: - SwipeTableViewCellDelegate
+extension GroupListViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard let viewModel = groupQueryViewModel?.groupForIndex(indexPath.row),
+                  orientation == .right else { return nil }
+        let joinAction = SwipeAction(style: .default, title:NSLocalizedString("SwipeCell.Join", comment: "get strig for swipe action")) { [weak self] action, indexPath in
+            guard let strongSelf = self else { return }
+            strongSelf.joinGroup(groupId: viewModel.groupId)
+        }
+        joinAction.backgroundColor = .teritary
+        return [joinAction]
     }
 }
 
@@ -149,7 +166,7 @@ fileprivate extension GroupListViewController {
         automaticallyAdjustsScrollViewInsets = false
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = .teritary
-        refreshControl.addTarget(self, action: #selector(initialFetch), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(fetchGroups), for: .valueChanged)
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
@@ -159,6 +176,9 @@ fileprivate extension GroupListViewController {
             guard let strongSelf = self else { return }
             strongSelf.dismissActivityIndicator()
             strongSelf.tableView.reloadData()
+            //@TODO insert the newly created group at the appropriate row
+            //let indexPath = IndexPath(item: , section: 0)
+            //tableView.reloadRows(at: [indexPath], with: .top)
             strongSelf.refreshControl.endRefreshing()
             strongSelf.tableView.animateShow()
         }
@@ -167,12 +187,33 @@ fileprivate extension GroupListViewController {
             strongSelf.refreshControl.endRefreshing()
             strongSelf.dismissActivityIndicator()
         }
+        viewModel.joinSuccess.bind { [weak self] (success) in
+            guard let strongSelf = self else { return }
+            strongSelf.fetchGroups()
+            strongSelf.dismissProgressHudWithMessage(NSLocalizedString("GroupDetails.JoinedGroup", comment: "get string for joined group success"), iconType: .success, duration: nil)
+        }
+        viewModel.joinError.bind { [weak self] (error) in
+            guard let strongSelf = self,
+                let joinError = error else { return }
+            if joinError.statusCode == 400 {
+                strongSelf.dismissProgressHud()
+                strongSelf.showErrorAlert(title:NSLocalizedString("GroupDetails.AlreadyInErrorTitle", comment: "get string for already joined"), subTitle:NSLocalizedString("GroupDetails.AlreadyInErrorBody", comment: "get string for error body"))
+            } else {
+                strongSelf.dismissProgressHudWithMessage(joinError.errorDescription, iconType: .error, duration: nil)
+            }
+        }
         showActivityIndicator()
-        initialFetch()
+        fetchGroups()
     }
 
-    /// Performs intial fetch of results.
-    @objc fileprivate func initialFetch() {
-        groupQueryViewModel?.fetchGroups()
+    @objc fileprivate func fetchGroups() {
+        groupQueryViewModel?.fetchAllGroups()
+    }
+
+    @objc fileprivate func joinGroup(groupId: Int16) {
+        view.endEditing(true)
+        showProgresHud()
+        guard let viewModel = groupQueryViewModel else { return }
+        viewModel.joinGroup(currentUserId: SessionManager.shared.currentUser.value!.userId, groupId: groupId)
     }
 }
