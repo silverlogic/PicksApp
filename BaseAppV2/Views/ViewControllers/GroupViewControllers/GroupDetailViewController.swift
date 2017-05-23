@@ -122,9 +122,58 @@ fileprivate extension GroupDetailViewController {
         tableView.delegate = self
         tableView.emptyDataSetSource = self
         tableView.tableFooterView = UIView()
-        let titleView = NavigationView.instantiate()
-        titleView.titleText = viewModel.name
+        addNavBarTitle(viewModel: viewModel)
         tableView.reloadData()
-        navigationItem.titleView = titleView
+        if viewModel.isUserMember() {
+            let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-join-button"), style: .plain, target: self, action: #selector(joinGroup))
+            barButton.tintColor = .clear
+            barButton.isEnabled = false
+            navigationItem.setRightBarButton(barButton, animated: false)
+        } else {
+            let image = UIImage(named: "icon-join-button")?.withRenderingMode(.alwaysOriginal)
+            let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(joinGroup))
+            navigationItem.setRightBarButton(barButton, animated: true)
+        }
+        viewModel.joinSuccess.bind { [weak self] (success) in
+            guard let strongSelf = self else { return }
+            strongSelf.tableView.reloadData()
+            strongSelf.dismissActivityIndicator()
+            strongSelf.tableView.animateShow()
+            strongSelf.dismissProgressHudWithMessage(NSLocalizedString("GroupDetails.JoinedGroup", comment: "get string for joined group success"), iconType: .success, duration: nil)
+        }
+        viewModel.joinError.bind { [weak self] (error) in
+            guard let strongSelf = self,
+            let joinError = error else { return }
+            if joinError.statusCode == 400 {
+                strongSelf.dismissProgressHud()
+                strongSelf.showErrorAlert(title:NSLocalizedString("GroupDetails.AlreadyInErrorTitle", comment: "get string for already joined"), subTitle:NSLocalizedString("GroupDetails.AlreadyInErrorBody", comment: "get string for error body"))
+            } else {
+                strongSelf.dismissProgressHudWithMessage(joinError.errorDescription, iconType: .error, duration: nil)
+            }
+        }
+    }
+
+    private func addNavBarTitle(viewModel: GroupDetailViewModelProtocol) {
+        let navBarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 77.0))
+        navBarTitle.font = UIFont.main(DefaultFonts.bold, DefaultFontSizes.large)
+        navBarTitle.textColor = UIColor.white
+        let title = NSMutableAttributedString()
+        let starAttachment = NSTextAttachment()
+        starAttachment.image = #imageLiteral(resourceName: "icon-star")
+        let starImage = NSAttributedString(attachment: starAttachment)
+        title.append(starImage)
+        title.append(NSAttributedString(string: " "))
+        title.append(NSAttributedString(string: viewModel.name))
+        title.append(NSAttributedString(string: " "))
+        title.append(starImage)
+        navBarTitle.textAlignment = .center
+        navBarTitle.attributedText = title
+        navigationItem.titleView = navBarTitle
+    }
+
+    @objc fileprivate func joinGroup() {
+        view.endEditing(true)
+        showProgresHud()
+        groupDetailViewModel?.joinGroup(groupId: (groupDetailViewModel?.groupId)!)
     }
 }

@@ -44,7 +44,7 @@ extension Group {
 extension Group {
 
     /**
-        Gets a fetch request for all `Groups` entity objects.
+        Gets a fetch request for all `Group` entity objects.
 
         - Returns: A `NSFetchRequest<Groups>` representing a fetch request
                    for all `Group` objects

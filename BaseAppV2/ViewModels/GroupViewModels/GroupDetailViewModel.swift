@@ -16,6 +16,8 @@ protocol GroupDetailViewModelProtocol {
 
     // MARK: - Instance Attributes
     var name: String { get }
+    var groupId: Int16 { get }
+    var participants: [Int16]? { get }
     var joinError: DynamicBinderInterface<BaseError?> { get }
     var joinSuccess: DynamicBinderInterface<Bool> { get }
 
@@ -25,6 +27,7 @@ protocol GroupDetailViewModelProtocol {
     func numberOfParticipants() -> Int
     func joinGroup(groupId: Int16)
     func joinPrivateGroup(groupId: Int16, code: String)
+    func isUserMember() -> Bool
 }
 
 
@@ -54,6 +57,8 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
 
     // MARK: - GroupDetailViewModelProtocol Attributes
     var name: String
+    var groupId: Int16
+    var participants: [Int16]?
     var joinError: DynamicBinderInterface<BaseError?> {
         return joinErrorBinder.interface
     }
@@ -79,6 +84,8 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
     init(group: Group) {
         self.group = group
         name = self.group.name
+        groupId = self.group.groupId
+        participants = self.group.participants
         joinErrorBinder = DynamicBinder(nil)
         joinSuccessBinder = DynamicBinder(false)
     }
@@ -92,6 +99,19 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
     func numberOfParticipants() -> Int {
         return group.numberOfParticipants()
     }
+
+    func isUserMember() -> Bool {
+        if SessionManager.shared.currentUser.value?.userId == group.creatorId {
+            return true
+        }
+            guard let participants = group.participants else { return false }
+            for memberId in participants {
+                if SessionManager.shared.currentUser.value?.userId == memberId {
+                    return true
+                }
+            }
+            return false
+        }
 
     func joinGroup(groupId: Int16) {
         GroupManager.shared.joinGroup(groupId: groupId, success: { [weak self] in

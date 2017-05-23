@@ -88,6 +88,9 @@
 // Group Details
 "GroupDetails.MemberName" = "Member Name";
 "GroupDetails.Points" = "Points";
+"GroupDetails.JoinedGroup" = "Joined 🎉";
+"GroupDetails.AlreadyInErrorTitle" = "Error!";
+"GroupDetails.AlreadyInErrorBody" = "You're already in this group 😉";
 
 // Empty State
 "EmptyState.GroupDetails.Title" = "Oops!";

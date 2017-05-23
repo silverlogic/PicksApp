@@ -95,7 +95,9 @@ fileprivate final class GroupQueryForCurrentUserViewModel: GroupQueryViewModelPr
             GroupManager.shared.fetchGroupsForUserAsParticipant(success: { [weak self] (participantGroups) in
                 guard let strongSelf = self else { return }
                 strongSelf.groups.removeAll()
-                for group in creatorGroups {
+                let allGroupsForUser = creatorGroups + participantGroups
+                let sortedGroup = allGroupsForUser.sorted(by: {$0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending })
+                for group in sortedGroup {
                     strongSelf.groups.append(ViewModelsManager.groupDetailViewModel(group: group))
                 }
                 strongSelf.groupsFetchedBinder.value = true
@@ -154,7 +156,9 @@ fileprivate final class GroupQueryForPublicGroupsViewModel: GroupQueryViewModelP
     func fetchGroups() {
         GroupManager.shared.fetchAllGroups(success: { [weak self] (fetchedGroups) in
             guard let strongSelf = self else { return }
-            for group in fetchedGroups {
+            strongSelf.groups.removeAll()
+            let sorted = fetchedGroups.sorted(by: {$0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending})
+            for group in sorted {
                 strongSelf.groups.append(ViewModelsManager.groupDetailViewModel(group: group))
             }
             strongSelf.groupsFetchedBinder.value = true
