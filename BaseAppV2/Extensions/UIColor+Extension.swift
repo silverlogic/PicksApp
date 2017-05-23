@@ -41,12 +41,27 @@ extension UIColor {
     
     /// Teritary color used in the application.
     static var teritary: UIColor { return colorFromHexValue(teritaryHexValue) }
+    
+    /// Color used for the tabbar in the application.
+    static var tabbar: UIColor { return colorFromHexValue(tabbarHexValue) }
+    
+    /// Color used for showing the light green field in the application.
+    static var lightGreenField: UIColor { return colorFromHexValue(fieldHexValue, alpha: 0.15) }
+    
+    /// Color used for showing the dark green field in the application.
+    static var darkGreenField: UIColor { return colorFromHexValue(fieldHexValue, alpha: 0.3) }
+    
+    /// Text color used in the application.
+    static var text: UIColor { return colorFromHexValue(textHexValue) }
 }
 
 
 // MARK: - Hex Value Constants
 extension UIColor {
-    @nonobjc static var mainHexValue: UInt = 0x3D8DD4
+    @nonobjc static var mainHexValue: UInt = 0x003399
     @nonobjc static var secondaryHexValue: UInt = 0xFFFFFF
-    @nonobjc static var teritaryHexValue: UInt = 0xFFFFFF
+    @nonobjc static var teritaryHexValue: UInt = 0x8B0F04
+    @nonobjc static var tabbarHexValue: UInt = 0xE8E8E8
+    @nonobjc static var fieldHexValue: UInt = 0x003300
+    @nonobjc static var textHexValue: UInt = 0x4A4A4A
 }

@@ -84,7 +84,7 @@ extension User {
     @nonobjc public class func allUsersFetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: User.entityName)
     }
-    
+
     /**
         Gets a fetch request for a specific `User` entity object.
      

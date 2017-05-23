@@ -111,4 +111,11 @@ final class BaseErrorTests: BaseAppV2UnitTests {
         XCTAssertEqual(fetchResultsError.statusCode, 111, "Getting Error Failed!")
         XCTAssertEqual(fetchResultsError.errorDescription, "Error fetching objects from store. 😞", "Getting Error Failed!")
     }
+    
+    func testNumberOfCharactersExceeded() {
+        let numberOfCharactersExceededError = BaseError.numberOfCharactersExceeded
+        XCTAssertNotNil(numberOfCharactersExceededError, "Value Shouldn't Be Nil!")
+        XCTAssertEqual(numberOfCharactersExceededError.statusCode, 112, "Getting Error Failed!")
+        XCTAssertEqual(numberOfCharactersExceededError.errorDescription, "The name can't be greater than twenty characters. 😜", "Getting Error Failed!")
+    }
 }

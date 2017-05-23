@@ -58,9 +58,9 @@ extension UIFont {
     An enum representing default app fonts.
  */
 enum DefaultFonts: String {
-    case light = "HelveticaNeue-Light"
-    case regular = "HelveticaNeue-Regular"
-    case bold = "HelveticaNeue-Bold"
+    case light = "ProximaNova-Semibold"
+    case regular = "ProximaNova-Bold"
+    case bold = "ProximaNovaCond-Extrabld"
     
     /**
      Gets the size and return the selected font.

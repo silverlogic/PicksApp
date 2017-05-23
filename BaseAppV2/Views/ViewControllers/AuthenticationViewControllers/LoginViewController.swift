@@ -16,12 +16,8 @@ final class LoginViewController: BaseViewController {
 
 
     // MARK: - IBOutlets
-    @IBOutlet fileprivate weak var emailTextField: BaseTextField!
-    @IBOutlet fileprivate weak var passwordTextField: BaseTextField!
-    @IBOutlet fileprivate weak var twitterButton: BaseButton!
     @IBOutlet fileprivate weak var facebookButton: BaseButton!
-    @IBOutlet fileprivate weak var baseAppLoginView: BaseView!
-    @IBOutlet fileprivate weak var facebookButtonTrailing: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var welcomeLabel: UILabel!
 
     
     // MARK: - Public Instance Attributes
@@ -29,17 +25,6 @@ final class LoginViewController: BaseViewController {
         didSet {
             setup()
         }
-    }
-    
-    
-    // MARK: - Private Instance Attributes
-    fileprivate enum LoginButtons: Int, CaseCount {
-        case login
-        case facebook
-        case twitter
-        case createAccount
-        case forgotPassword
-        static let caseCount = LoginButtons.numberOfCases()
     }
 
     
@@ -54,6 +39,12 @@ final class LoginViewController: BaseViewController {
         if (navigationController?.isBeingDismissed)! {
             enableKeyboardManagement(false)
         }
+    }
+
+
+    // MARK: - IBActions
+    @IBAction func facebookLoginTapped(_ sender: BaseButton) {
+        loginWithFacebook()
     }
 }
 
@@ -73,54 +64,6 @@ extension LoginViewController {
 }
 
 
-// MARK: - IBActions
-fileprivate extension LoginViewController {
-    @IBAction private func baseButtonTapped(_ sender: BaseButton) {
-        guard let tag = LoginButtons(rawValue: sender.tag) else { return }
-        switch tag {
-        case .login:
-            loginWithEmail()
-            break
-        case .facebook:
-            loginWithFacebook()
-            break
-        case .twitter:
-            showProgresHud()
-            loginViewModel?.oauth1InfoForTwitter()
-            break
-        case .createAccount:
-            performSegue(withIdentifier: UIStoryboardSegue.goToSignupEmailSegue, sender: nil)
-            break
-        case .forgotPassword:
-            performSegue(withIdentifier: UIStoryboardSegue.goToForgotPasswordRequestSegue, sender: nil)
-            break
-        }
-    }
-}
-
-
-// MARK: - UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else {
-            loginWithEmail()
-        }
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == emailTextField {
-            loginViewModel?.email = textField.text!
-        } else {
-            loginViewModel?.password = textField.text!
-        }
-    }
-}
-
-
 // MARK: - Public Instance Methods
 extension LoginViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -131,26 +74,15 @@ extension LoginViewController {
 
 // MARK: - Private Instance Methods
 fileprivate extension LoginViewController {
-    
     /// Sets up the default logic for the view.
     fileprivate func setup() {
         if !isViewLoaded { return }
-        twitterButton.isHidden = true
-        baseAppLoginView.isHidden = true
-        facebookButtonTrailing.constant = -(35)
+        welcomeLabel.text = NSLocalizedString("Miscellaneous.WelcomeToXtraPoints", comment: "get string for welcome label")
         guard let viewModel = loginViewModel else { return }
         viewModel.loginError.bind { [weak self] (error: BaseError?) in
             guard let strongSelf = self,
                   let loginError = error else { return }
-            if loginError.statusCode == 101 {
-                strongSelf.dismissProgressHud()
-                if (strongSelf.emailTextField.text?.isEmpty)! {
-                    strongSelf.emailTextField.performShakeAnimation()
-                }
-                if (strongSelf.passwordTextField.text?.isEmpty)! {
-                    strongSelf.passwordTextField.performShakeAnimation()
-                }
-            } else if loginError.statusCode == 105 {
+            if loginError.statusCode == 105 {
                 strongSelf.dismissProgressHud()
                 strongSelf.showEditAlert(title: NSLocalizedString("Miscellaneous.EmailMissing", comment: "alert title"), subtitle: loginError.errorDescription, textFieldAttributes: [AlertTextFieldAttributes(placeholder: NSLocalizedString("Miscellaneous.Email", comment: "placeholder"), isSecureTextEntry: false, keyboardType: .emailAddress, autocorrectionType: .no, autocapitalizationType: .none, spellCheckingType: .no, returnKeyType: .done)], submitButtonTapped: { [weak self] (enteredValues: [String : String]) in
                     guard let strongSelf = self else { return }
@@ -201,18 +133,10 @@ fileprivate extension LoginViewController {
             guard let strongSelf = self else { return }
             strongSelf.showErrorAlert(title: NSLocalizedString("Miscellaneous.FacebookError", comment: "get string for title"), subTitle: NSLocalizedString("Miscellaneous.FacebookErrorBody", comment: "get string for body"))
         }
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
         enableKeyboardManagement(true)
     }
-    
-    /// Logs in the user with email.
-    fileprivate func loginWithEmail() {
-        view.endEditing(true)
-        showProgresHud()
-        loginViewModel?.loginWithEmail()
-    }
 
+    /// Initiates the facebook login process
     fileprivate func loginWithFacebook() {
         view.endEditing(true)
         loginViewModel?.loginToFacebook(viewController: self)
