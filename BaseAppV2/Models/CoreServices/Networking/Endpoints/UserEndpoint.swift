@@ -17,7 +17,8 @@ import AlamofireCoreData
 enum UserEndpoint: BaseEndpoint {
     case user(userId: Int)
     case users(pagination: Pagination?)
-    
+    case retrieveUser(userId: Int)
+
     var endpointInfo: BaseEndpointInfo {
         let path: String
         let requestMethod: Alamofire.HTTPMethod
@@ -42,6 +43,13 @@ enum UserEndpoint: BaseEndpoint {
             }
             parameterEncoding = nil
             requiresAuthorization = false
+            break
+        case let .retrieveUser(userId):
+            path = "PicksUsers/\(userId)"
+            requestMethod = .get
+            parameters = nil
+            parameterEncoding = nil
+            requiresAuthorization = true
             break
         }
         return BaseEndpointInfo(path: path, requestMethod: requestMethod, parameters: parameters, parameterEncoding: parameterEncoding, requiresAuthorization: requiresAuthorization)

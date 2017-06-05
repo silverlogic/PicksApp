@@ -187,32 +187,6 @@ extension AuthenticationManager {
     }
 
     /**
-        Get the user associated with that users Id, mainly 
-        used to look up the user who creates a Group
-     
-        - Parameters:
-            - success: A closure that gets invoked when getting
-                       the requested user was successful
-            - failure: A closure that get invoked when getting
-                       the requested user fails. Passes a `BaseError`
-                       object containing that error.
-     */
-    func otherUser(userId: Int, success: @escaping (_ otherUser: User) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
-        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
-        dispatchQueue.async {
-            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-            networkClient.enqueue(AuthenticationEndpoint.otherUser(userId: userId))
-            .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                //SessionManager.shared.otherUser.value = user
-                success(user)
-            })
-            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
-                failure(error)
-            })
-        }
-    }
-
-    /**
         Logs in a user using OAuth2 authentication.
      
         ## Possible Errors

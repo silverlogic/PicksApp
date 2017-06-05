@@ -35,9 +35,9 @@ extension BaseTableViewCell {
     }
 
     /**
-     Initializes an instance of a swipable action array
+        Initializes an instance of a swipable action array
 
-     - Returns: A [SwipeAction] with a delete as a defulat
+            - Returns: A [SwipeAction] with a delete as a defulat
      */
     open class func swipeActions() -> [SwipeAction] {
         let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString("SwipeCell.Delete", comment: "string for delete action")) { action, indexPath in

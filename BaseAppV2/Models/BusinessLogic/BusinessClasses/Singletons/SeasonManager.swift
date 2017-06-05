@@ -26,16 +26,16 @@ final class SeasonManager {
 // MARK: - Public Instance Methods
 extension SeasonManager {
     /**
-    Gets the Scores for a seasonId
-     - Parameters: An `Int` respresenting a season of which
-                   is associated with a group object
-        - success: A closure that gets invoked when the getting the user's 
-                   score/s and returns an array of scores for that season.
-        - failure: A closure that gets invoked when getting the
-                   users's score/s fails. Passes a 'BaseError`
-                   object containing the error that occured.
+     Gets the Scores for a seasonId
+        - Parameters: An `Int` respresenting a season of which
+                      is associated with a group object
+            - success: A closure that gets invoked when the getting the user's
+                       score/s and returns an array of scores for that season.
+            - failure: A closure that gets invoked when getting the
+                       users's score/s fails. Passes a 'BaseError`
+                       object containing the error that occured.
      */
-    func fetchScoresForSeason(seasonId: Int16, success: @escaping (_ scores: [Score]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+    func scoresForSeason(seasonId: Int16, success: @escaping (_ scores: [Score]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
         let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)

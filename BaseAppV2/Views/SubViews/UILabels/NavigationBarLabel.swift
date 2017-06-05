@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+    A custom Navigation Bar Label with
+    images braketing a text string
+ */
 class NavigationBarLabel: BaseLabel {
 
     // Public Instance Methods

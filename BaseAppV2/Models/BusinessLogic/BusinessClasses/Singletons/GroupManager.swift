@@ -152,25 +152,25 @@ extension GroupManager {
     /**
      Fetches all participants(Users) in a Group.
 
-     - Parameters:
-        - groupId: A `Int16` representing the Id of the Group.
-        - success: A closure that gets invoked when sending the
-                   request was successful.
-        - failure: A closure that gets invoked when sending the
-                   request failed. Passes a `BaseError` object that
-                   contains the error that occured.
+        - Parameters:
+            - groupId: A `Int16` representing the Id of the Group.
+            - success: A closure that gets invoked when sending the
+                       request was successful.
+            - failure: A closure that gets invoked when sending the
+                       request failed. Passes a `BaseError` object that
+                       contains the error that occured.
      */
     func fetchParticipantsForGroup(groupId: Int16, success: @escaping (_ participants: [User]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
         let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(GroupEndpoint.participantsInGroup(groupId: groupId))
-                .then(on: DispatchQueue.main, execute: { (participants: Many<User>) -> Void in
-                    success(participants.array)
-                })
-                .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
-                    failure(error)
-                })
+            .then(on: DispatchQueue.main, execute: { (participants: Many<User>) -> Void in
+                success(participants.array)
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
         }
     }
 }

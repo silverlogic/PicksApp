@@ -28,10 +28,10 @@ protocol GroupDetailViewModelProtocol {
     // MARK: - Instance Methods
     func participantForIndex(_ index: Int) -> (name: String?, score: Int?)
     func numberOfParticipants() -> Int
-    func joinGroup(currentUserId: Int16, groupId: Int16)
+    func joinGroup(currentUserId: Int16)
     func joinPrivateGroup(groupId: Int16, code: String)
     func isUserMember() -> Bool
-    func fetchParticipantsFor(currentUser: User, groupId: Int16, currentSeason: Int16)
+    func retrieveDetails(currentUser: User)
 }
 
 
@@ -132,7 +132,7 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
         return false
     }
 
-    func joinGroup(currentUserId: Int16, groupId: Int16) {
+    func joinGroup(currentUserId: Int16) {
         GroupManager.shared.joinGroup(currentUserId: currentUserId, groupId: groupId, success: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.joinSuccessBinder.value = true
@@ -142,13 +142,10 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
         }
     }
 
-    func joinPrivateGroup(groupId: Int16, code: String) {
-        // @TODO add private code joining v2
-    }
-
-    func fetchParticipantsFor(currentUser: User, groupId: Int16, currentSeason: Int16) {
+    func retrieveDetails(currentUser: User) {
         GroupManager.shared.fetchParticipantsForGroup(groupId: groupId, success: { [weak self] (participants) in
-            SeasonManager.shared.fetchScoresForSeason(seasonId: currentSeason, success: { [weak self] (scores: [Score]) in
+            guard let strongSelf = self else { return }
+            SeasonManager.shared.scoresForSeason(seasonId: strongSelf.currentSeason, success: { [weak self] (scores: [Score]) in
                 guard let strongSelf = self else { return }
                 strongSelf.participantScores?.removeAll()
                 var participantsPlusCreator = participants
@@ -166,9 +163,9 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
                     strongSelf.participantScores = (strongSelf.participantScores?.sorted(by: { ($0.score < $1.score) }))
                     strongSelf.fetchedParticipantsSuccessBinder.value = true
                 } else {
-                    AuthenticationManager.shared.otherUser(userId: Int(strongSelf.group.creatorId), success: { [weak self] (otherUser) in
+                    UserManager.shared.retrieveUser(userId: Int(strongSelf.group.creatorId), success: { [weak self] (user) in
                         guard let strongSelf = self else { return }
-                        participantsPlusCreator.append(otherUser)
+                        participantsPlusCreator.append(user)
                         let sortedScores = scores.sorted(by: { ($0.participantId < $1.participantId) })
                         let sortedParticipants = participantsPlusCreator.sorted(by: { ($0.userId < $1.userId) })
                         for username in sortedParticipants {
@@ -193,5 +190,9 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
             guard let strongSelf = self else { return }
             strongSelf.fetchedParticipantsErrorBinder.value = error
         }
+    }
+
+    func joinPrivateGroup(groupId: Int16, code: String) {
+        // @TODO add private code joining v2
     }
 }

@@ -188,12 +188,12 @@ fileprivate extension GroupDetailViewController {
         view.endEditing(true)
         showProgresHud()
         guard let viewModel = groupDetailViewModel else { return }
-        viewModel.joinGroup(currentUserId: SessionManager.shared.currentUser.value!.userId, groupId: viewModel.groupId)
+        viewModel.joinGroup(currentUserId: SessionManager.shared.currentUser.value!.userId)
     }
 
     @objc fileprivate func fetchGroupDetails() {
         guard let viewModel = groupDetailViewModel else { return }
-        viewModel.fetchParticipantsFor(currentUser: currentUser!, groupId: viewModel.groupId, currentSeason: viewModel.currentSeason)
+        viewModel.retrieveDetails(currentUser: currentUser!)
     }
 
     fileprivate func setRightBarButtonItem(viewModel: GroupDetailViewModelProtocol) {

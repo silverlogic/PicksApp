@@ -30,6 +30,7 @@
 		26678CD31ECE5BED00CBA471 /* GroupCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */; };
 		26678CD61ECE5F8900CBA471 /* GroupQueryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */; };
 		2679295B1ECE1E9200C701CB /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */; };
+		26CBF1791EE5C0840006F084 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBF1781EE5C0840006F084 /* UserManager.swift */; };
 		26E0BFAB1ED5D01800370719 /* NavigationBarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0BFAA1ED5D01800370719 /* NavigationBarLabel.swift */; };
 		323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323127DA1E74A642007BE4C3 /* Promise+Extension.swift */; };
 		4D7425651EB781B600107859 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425641EB781B600107859 /* Weak.swift */; };
@@ -252,6 +253,7 @@
 		26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCreationViewModelTests.swift; path = GroupViewModels/GroupCreationViewModelTests.swift; sourceTree = "<group>"; };
 		26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupQueryViewModelTests.swift; path = GroupViewModels/GroupQueryViewModelTests.swift; sourceTree = "<group>"; };
 		2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupDetailViewModel.swift; path = ViewModels/GroupViewModels/GroupDetailViewModel.swift; sourceTree = "<group>"; };
+		26CBF1781EE5C0840006F084 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/UserManager.swift; sourceTree = "<group>"; };
 		26E0BFAA1ED5D01800370719 /* NavigationBarLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationBarLabel.swift; path = Views/SubViews/UILabels/NavigationBarLabel.swift; sourceTree = "<group>"; };
 		323127DA1E74A642007BE4C3 /* Promise+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Promise+Extension.swift"; path = "Extensions/Promise+Extension.swift"; sourceTree = "<group>"; };
 		4D7425641EB781B600107859 /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weak.swift; path = Helpers/Weak.swift; sourceTree = "<group>"; };
@@ -1521,6 +1523,7 @@
 			children = (
 				88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */,
 				88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */,
+				26CBF1781EE5C0840006F084 /* UserManager.swift */,
 				26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */,
 				2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */,
 				266766231EDE04D700914DFC /* SeasonManager.swift */,
@@ -1977,6 +1980,7 @@
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
 				8801FDF41E72016000F54932 /* BaseTextField.swift in Sources */,
 				88BFD8D71E83B04A000C8A61 /* ProcessInfo+Extension.swift in Sources */,
+				26CBF1791EE5C0840006F084 /* UserManager.swift in Sources */,
 				88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */,
 				88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */,
 				882807331EC4EE83006720BF /* GroupDetailViewController.swift in Sources */,

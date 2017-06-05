@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 /**
-    A class entity representing a Season in the application.
+    A class entity representing a Score in the application.
 */
 final class Score: NSManagedObject {
 
