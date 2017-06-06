@@ -45,7 +45,7 @@ final class GroupDetailViewModelTest: BaseAppV2UnitTests {
             XCTAssertNotNil(groupDetailViewModel.isUserMember(), "User Member is Not Nil!")
             groupDetailExpectation.fulfill()
         }
-        groupDetailViewModel.fetchParticipantsFor(currentUser: user, groupId: 11, currentSeason: 117)
+        groupDetailViewModel.retrieveDetails(currentUser: user)
         waitForExpectations(timeout: 10, handler: nil)
     }
 }
