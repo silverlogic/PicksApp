@@ -32,6 +32,8 @@ final class GroupDetailViewModelTest: BaseAppV2UnitTests {
             return
         }
         group.groupId = 4
+        group.currentSeason = 117
+        group.creatorId = 18
         guard let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: CoreDataStack.shared.managedObjectContext) as? User else {
             XCTFail("Failed to Initialize Group Object!")
             return
