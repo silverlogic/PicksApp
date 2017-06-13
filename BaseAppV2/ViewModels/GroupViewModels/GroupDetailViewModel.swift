@@ -186,10 +186,10 @@ fileprivate final class GroupDetailViewModel: GroupDetailViewModelProtocol {
                 guard let strongSelf = self else { return }
                 strongSelf.fetchedParticipantsErrorBinder.value = error
             })
-        }) { [weak self] (error) in
+        }, failure: { [weak self] (error) in
             guard let strongSelf = self else { return }
             strongSelf.fetchedParticipantsErrorBinder.value = error
-        }
+        })
     }
 
     func joinPrivateGroup(groupId: Int16, code: String) {

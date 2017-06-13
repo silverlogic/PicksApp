@@ -31,10 +31,12 @@ final class GroupDetailViewModelTest: BaseAppV2UnitTests {
             XCTFail("Failed to Initialize Group Object!")
             return
         }
+        group.groupId = 4
         guard let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: CoreDataStack.shared.managedObjectContext) as? User else {
             XCTFail("Failed to Initialize Group Object!")
             return
         }
+        user.userId = 11
         let groupDetailExpectation = expectation(description: "Test Fetching Group Details")
         let groupDetailViewModel = ViewModelsManager.groupDetailViewModel(group: group)
         groupDetailViewModel.fetchedParticipantsError.bind { (error) in
