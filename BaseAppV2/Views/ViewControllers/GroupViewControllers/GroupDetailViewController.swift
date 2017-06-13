@@ -141,8 +141,8 @@ fileprivate extension GroupDetailViewController {
         } else {
             tableView.addSubview(refreshControl)
         }
-        let navigationTitleLabel = NavigationBarLabel()
-        navigationItem.titleView = navigationTitleLabel.label(viewModel: viewModel, viewController: self)
+        let navBarLabel = navigationBarLabel(title: viewModel.name)
+        navigationItem.titleView = navBarLabel
         setRightBarButtonItem(viewModel: viewModel)
         viewModel.joinSuccess.bind { [weak self] (success) in
             guard let strongSelf = self else { return }
