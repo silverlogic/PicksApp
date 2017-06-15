@@ -36,11 +36,11 @@ extension GroupManager {
                        users's group/s fails. Passes a 'BaseError`
                        object containing the error that occured.
      */
-    func fetchGroupsForUserAsParticipant(success: @escaping (_ groups: [Group]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+    func fetchGroupsForParticipant(userId: Int16, success: @escaping (_ groups: [Group]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
         let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-            networkClient.enqueue(GroupEndpoint.groupsParticipant(participantId: (SessionManager.shared.currentUser.value?.userId)!, isPrivate: false))
+            networkClient.enqueue(GroupEndpoint.groupsParticipant(participantId: userId, isPrivate: false))
             .then(on: DispatchQueue.main, execute: { (groups: Many<Group>) -> Void in
                 success(groups.array)
             })
@@ -60,12 +60,11 @@ extension GroupManager {
                        creators's group/s fails. Passes a 'BaseError`
                        object containing the error that occured.
      */
-    func fetchGroupsForUserAsCreator(success: @escaping (_ groups: [Group]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+    func fetchGroupsForCreator(userId: Int16, success: @escaping (_ groups: [Group]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
         let dispathQueue = DispatchQueue.global(qos: .userInitiated)
         dispathQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-            guard let user = SessionManager.shared.currentUser.value else { return }
-            networkClient.enqueue(GroupEndpoint.groupsCreator(creatorId: user.userId, isPrivate: false))
+            networkClient.enqueue(GroupEndpoint.groupsCreator(creatorId: userId, isPrivate: false))
             .then(on: DispatchQueue.main, execute: { (groups: Many<Group>) -> Void in
                 success(groups.array)
             })
@@ -136,13 +135,38 @@ extension GroupManager {
                        request failed. Passes a `BaseError` object that
                        contains the error that occured.
      */
-    func joinGroup(groupId: Int16, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+    func joinGroup(currentUserId: Int16, groupId: Int16, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
         let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-            networkClient.enqueue(GroupEndpoint.join(groupId: groupId, user: SessionManager.shared.currentUser.value!))
+            networkClient.enqueue(GroupEndpoint.join(groupId: groupId, userId: currentUserId))
             .then(on: DispatchQueue.main, execute: { () -> Void in
                 success()
+            })
+            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
+                failure(error)
+            })
+        }
+    }
+
+    /**
+     Fetches all participants(Users) in a Group.
+
+        - Parameters:
+            - groupId: A `Int16` representing the Id of the Group.
+            - success: A closure that gets invoked when sending the
+                       request was successful.
+            - failure: A closure that gets invoked when sending the
+                       request failed. Passes a `BaseError` object that
+                       contains the error that occured.
+     */
+    func fetchParticipantsForGroup(groupId: Int16, success: @escaping (_ participants: [User]) -> Void, failure: @escaping (_ error: BaseError) -> Void) {
+        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
+        dispatchQueue.async {
+            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
+            networkClient.enqueue(GroupEndpoint.participantsInGroup(groupId: groupId))
+            .then(on: DispatchQueue.main, execute: { (participants: Many<User>) -> Void in
+                success(participants.array)
             })
             .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
                 failure(error)

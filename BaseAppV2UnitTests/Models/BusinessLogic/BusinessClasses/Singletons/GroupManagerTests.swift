@@ -33,8 +33,8 @@ final class GroupManagerTests: BaseAppV2UnitTests {
 extension GroupManagerTests {
     func testFetchGroupForUserAsParticipant() {
         let fetchGroupForParticipantExpectation = expectation(description: "Test Fetching Group For a Participant")
-        sharedManager.fetchGroupsForUserAsParticipant(success: { (groups) in
-            XCTAssertNotNil(self.sharedManager.fetchGroupsForUserAsParticipant, "Fetching Group Failed!")
+        sharedManager.fetchGroupsForParticipant(userId: 11, success: { (groups) in
+            XCTAssertNotNil(self.sharedManager.fetchGroupsForParticipant, "Fetching Group Failed!")
             XCTAssertEqual(groups.count, 2, "Incorrect Amount of Groups Retrieved")
             fetchGroupForParticipantExpectation.fulfill()
         }) { (error) in
@@ -46,8 +46,8 @@ extension GroupManagerTests {
 
     func testFetchGroupForUserAsCreator() {
         let fetchGroupForCreatorExpectation = expectation(description: "Test Fetching Group For A Creator")
-        sharedManager.fetchGroupsForUserAsCreator(success: { (groups) in
-            XCTAssertNotNil(self.sharedManager.fetchGroupsForUserAsCreator, "Fetching Group Failed!")
+        sharedManager.fetchGroupsForCreator(userId: 11, success: { (groups) in
+            XCTAssertNotNil(self.sharedManager.fetchGroupsForCreator, "Fetching Group Failed!")
             XCTAssertEqual(groups.count, 2, "Incorrect Amount of Groups Retrieved")
             fetchGroupForCreatorExpectation.fulfill()
         }) { (error) in

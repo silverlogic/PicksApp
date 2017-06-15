@@ -60,6 +60,8 @@
 // User
 "User.Unidentified" = "Unidentified";
 "User.Name" = "Name";
+"User.NoLogIn.Title" = "Not logged in";
+"User.NoLogIn.Body" = "Please log in 😉";
 
 // Confirm Email
 "ConfirmEmail.EmailConfirmed" = "Your email is now confirmed. 🎉";
@@ -88,9 +90,15 @@
 // Group Details
 "GroupDetails.MemberName" = "Member Name";
 "GroupDetails.Points" = "Points";
+"GroupDetails.JoinedGroup" = "Joined 🎉";
+"GroupDetails.AlreadyInErrorTitle" = "Error!";
+"GroupDetails.AlreadyInErrorBody" = "You're already in this group 😉";
 
 // Empty State
 "EmptyState.GroupDetails.Title" = "Oops!";
 "EmptyState.GroupDetails.Body" = "This group is empty 😢";
 "EmptyState.GroupList.Body" = "Please join a list 😜";
 
+//SwipableCellKit
+"SwipeCell.Delete" = "Delete";
+"SwipeCell.Join" = "Join";

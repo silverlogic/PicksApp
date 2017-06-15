@@ -387,6 +387,14 @@ extension UIViewController: MFMailComposeViewControllerDelegate {
 }
 
 
+// MARK: - NabigationBarLabel
+extension UIViewController {
+    func navigationBarLabel(title: String) -> NavigationBarLabel {
+        let frame = CGRect(x: 0, y: 0, width: (navigationController?.view.frame.width)!, height: 77.0)
+        return NavigationBarLabel(frame: frame, name: title)
+    }
+}
+
 // MARK: - Public Class Methods
 extension UIViewController {
     

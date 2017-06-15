@@ -185,7 +185,7 @@ extension AuthenticationManager {
             })
         }
     }
-    
+
     /**
         Logs in a user using OAuth2 authentication.
      

@@ -14,6 +14,13 @@
 		2647D0DE1ECA55C200B6B4C4 /* GroupEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0DD1ECA55C200B6B4C4 /* GroupEndpoint.swift */; };
 		2647D0EE1ECB38D400B6B4C4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */; };
 		2647D0F01ECB569F00B6B4C4 /* GroupQueryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647D0EF1ECB569F00B6B4C4 /* GroupQueryViewModel.swift */; };
+		266766221EDDFF3F00914DFC /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266766211EDDFF3F00914DFC /* Score.swift */; };
+		266766241EDE04D700914DFC /* SeasonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266766231EDE04D700914DFC /* SeasonManager.swift */; };
+		266766261EDE074600914DFC /* SeasonEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266766251EDE074600914DFC /* SeasonEndpoint.swift */; };
+		266766301EDF51B900914DFC /* GroupDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2667662F1EDF51B900914DFC /* GroupDetailViewModelTests.swift */; };
+		266766321EDF621C00914DFC /* scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 266766311EDF621C00914DFC /* scores.json */; };
+		266766341EE0B54D00914DFC /* otheruser.json in Resources */ = {isa = PBXBuildFile; fileRef = 266766331EE0B54D00914DFC /* otheruser.json */; };
+		266766361EE0BA9000914DFC /* SeasonEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266766351EE0BA9000914DFC /* SeasonEndpointTests.swift */; };
 		26678CC71ECE329400CBA471 /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CC61ECE329400CBA471 /* GroupTests.swift */; };
 		26678CC91ECE384200CBA471 /* GroupEndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CC81ECE384200CBA471 /* GroupEndpointTest.swift */; };
 		26678CCB1ECE406700CBA471 /* GroupManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CCA1ECE406700CBA471 /* GroupManagerTests.swift */; };
@@ -23,6 +30,8 @@
 		26678CD31ECE5BED00CBA471 /* GroupCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */; };
 		26678CD61ECE5F8900CBA471 /* GroupQueryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */; };
 		2679295B1ECE1E9200C701CB /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */; };
+		26CBF1791EE5C0840006F084 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBF1781EE5C0840006F084 /* UserManager.swift */; };
+		26E0BFAB1ED5D01800370719 /* NavigationBarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0BFAA1ED5D01800370719 /* NavigationBarLabel.swift */; };
 		323127DB1E74A642007BE4C3 /* Promise+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323127DA1E74A642007BE4C3 /* Promise+Extension.swift */; };
 		4D7425651EB781B600107859 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425641EB781B600107859 /* Weak.swift */; };
 		4D7425671EB79E7400107859 /* ViewModelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7425661EB79E7400107859 /* ViewModelsManager.swift */; };
@@ -227,6 +236,14 @@
 		2647D0DD1ECA55C200B6B4C4 /* GroupEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEndpoint.swift; path = Models/CoreServices/Networking/Endpoints/GroupEndpoint.swift; sourceTree = "<group>"; };
 		2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/GroupManager.swift; sourceTree = "<group>"; };
 		2647D0EF1ECB569F00B6B4C4 /* GroupQueryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupQueryViewModel.swift; path = ViewModels/GroupViewModels/GroupQueryViewModel.swift; sourceTree = "<group>"; };
+		266766201EDDFDD900914DFC /* Model_v0-1-0-4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_v0-1-0-4.xcdatamodel"; sourceTree = "<group>"; };
+		266766211EDDFF3F00914DFC /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Score.swift; path = Models/BusinessLogic/EntityModels/Score.swift; sourceTree = "<group>"; };
+		266766231EDE04D700914DFC /* SeasonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeasonManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/SeasonManager.swift; sourceTree = "<group>"; };
+		266766251EDE074600914DFC /* SeasonEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeasonEndpoint.swift; path = Models/CoreServices/Networking/Endpoints/SeasonEndpoint.swift; sourceTree = "<group>"; };
+		2667662F1EDF51B900914DFC /* GroupDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupDetailViewModelTests.swift; path = GroupViewModels/GroupDetailViewModelTests.swift; sourceTree = "<group>"; };
+		266766311EDF621C00914DFC /* scores.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scores.json; sourceTree = "<group>"; };
+		266766331EE0B54D00914DFC /* otheruser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = otheruser.json; sourceTree = "<group>"; };
+		266766351EE0BA9000914DFC /* SeasonEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonEndpointTests.swift; sourceTree = "<group>"; };
 		26678CC61ECE329400CBA471 /* GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		26678CC81ECE384200CBA471 /* GroupEndpointTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEndpointTest.swift; sourceTree = "<group>"; };
 		26678CCA1ECE406700CBA471 /* GroupManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupManagerTests.swift; sourceTree = "<group>"; };
@@ -236,6 +253,8 @@
 		26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCreationViewModelTests.swift; path = GroupViewModels/GroupCreationViewModelTests.swift; sourceTree = "<group>"; };
 		26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupQueryViewModelTests.swift; path = GroupViewModels/GroupQueryViewModelTests.swift; sourceTree = "<group>"; };
 		2679295A1ECE1E9200C701CB /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupDetailViewModel.swift; path = ViewModels/GroupViewModels/GroupDetailViewModel.swift; sourceTree = "<group>"; };
+		26CBF1781EE5C0840006F084 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Models/BusinessLogic/BusinessClasses/Singletons/UserManager.swift; sourceTree = "<group>"; };
+		26E0BFAA1ED5D01800370719 /* NavigationBarLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationBarLabel.swift; path = Views/SubViews/UILabels/NavigationBarLabel.swift; sourceTree = "<group>"; };
 		323127DA1E74A642007BE4C3 /* Promise+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Promise+Extension.swift"; path = "Extensions/Promise+Extension.swift"; sourceTree = "<group>"; };
 		4D7425641EB781B600107859 /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weak.swift; path = Helpers/Weak.swift; sourceTree = "<group>"; };
 		4D7425661EB79E7400107859 /* ViewModelsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelsManager.swift; path = ViewModels/ViewModelsManager.swift; sourceTree = "<group>"; };
@@ -495,6 +514,7 @@
 			children = (
 				26678CD21ECE5BED00CBA471 /* GroupCreationViewModelTests.swift */,
 				26678CD51ECE5F8900CBA471 /* GroupQueryViewModelTests.swift */,
+				2667662F1EDF51B900914DFC /* GroupDetailViewModelTests.swift */,
 			);
 			name = GroupViewModels;
 			sourceTree = "<group>";
@@ -799,6 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				880EAE7D1EC221D40049C898 /* BaseLabel.swift */,
+				26E0BFAA1ED5D01800370719 /* NavigationBarLabel.swift */,
 			);
 			name = UILabels;
 			sourceTree = "<group>";
@@ -877,6 +898,7 @@
 				887861791E68CC2000C931FC /* User.swift */,
 				2647D0DB1ECA3DA400B6B4C4 /* Group.swift */,
 				88FBC27B1E6DE36D003AEEC4 /* BaseError.swift */,
+				266766211EDDFF3F00914DFC /* Score.swift */,
 			);
 			name = EntityModels;
 			sourceTree = "<group>";
@@ -1093,6 +1115,7 @@
 				26678CC81ECE384200CBA471 /* GroupEndpointTest.swift */,
 				882CEAD31EAE90F400AE8D24 /* BaseEndpointInfoTests.swift */,
 				882CEAD41EAE90F400AE8D24 /* UserEndpointTests.swift */,
+				266766351EE0BA9000914DFC /* SeasonEndpointTests.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -1133,6 +1156,7 @@
 			isa = PBXGroup;
 			children = (
 				882CEADD1EAE90F400AE8D24 /* currentuser.json */,
+				266766331EE0B54D00914DFC /* otheruser.json */,
 				26678CCC1ECE502B00CBA471 /* creategroup.json */,
 				882CEADE1EAE90F400AE8D24 /* loginuser.json */,
 				882CEADF1EAE90F400AE8D24 /* loginuseroauth.json */,
@@ -1143,6 +1167,7 @@
 				882CEAE41EAE90F400AE8D24 /* userlistpage2.json */,
 				26678CCE1ECE510300CBA471 /* grouplistparticipants.json */,
 				26678CD01ECE523500CBA471 /* grouplistforuser.json */,
+				266766311EDF621C00914DFC /* scores.json */,
 			);
 			path = TestJSON;
 			sourceTree = "<group>";
@@ -1450,6 +1475,7 @@
 				88FBC2AC1E7022F4003AEEC4 /* AuthenticationEndpoint.swift */,
 				88FDF25D1E8D534C008F5395 /* UserEndpoint.swift */,
 				2647D0DD1ECA55C200B6B4C4 /* GroupEndpoint.swift */,
+				266766251EDE074600914DFC /* SeasonEndpoint.swift */,
 			);
 			name = Endpoints;
 			sourceTree = "<group>";
@@ -1497,8 +1523,10 @@
 			children = (
 				88FBC2AA1E701AE3003AEEC4 /* SessionManager.swift */,
 				88FBC2AE1E70DE42003AEEC4 /* AuthenticationManager.swift */,
+				26CBF1781EE5C0840006F084 /* UserManager.swift */,
 				26218EDC1EB2935D00C2BFF9 /* FacebookManager.swift */,
 				2647D0ED1ECB38D400B6B4C4 /* GroupManager.swift */,
+				266766231EDE04D700914DFC /* SeasonManager.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -1691,11 +1719,13 @@
 			files = (
 				882CEB0A1EAE90F400AE8D24 /* oauth1response.json in Resources */,
 				26678CD11ECE523500CBA471 /* grouplistforuser.json in Resources */,
+				266766321EDF621C00914DFC /* scores.json in Resources */,
 				26678CCF1ECE510300CBA471 /* grouplistparticipants.json in Resources */,
 				882CEB0C1EAE90F400AE8D24 /* updateuser.json in Resources */,
 				882CEB091EAE90F400AE8D24 /* loginuseroauth.json in Resources */,
 				882CEB081EAE90F400AE8D24 /* loginuser.json in Resources */,
 				882CEB0E1EAE90F400AE8D24 /* userlistpage2.json in Resources */,
+				266766341EE0B54D00914DFC /* otheruser.json in Resources */,
 				882CEB0B1EAE90F400AE8D24 /* registeruser.json in Resources */,
 				882CEB0D1EAE90F400AE8D24 /* userlistpage1.json in Resources */,
 				882CEB071EAE90F400AE8D24 /* currentuser.json in Resources */,
@@ -1942,6 +1972,7 @@
 				889AA30D1E852C1B005100EE /* ProfileViewController.swift in Sources */,
 				88AF2E111E7BB2A400F93A50 /* SettingsTableViewCell.swift in Sources */,
 				885514DE1E8DB57C008A82CC /* BaseCollectionViewCell.swift in Sources */,
+				26E0BFAB1ED5D01800370719 /* NavigationBarLabel.swift in Sources */,
 				8804550A1E663F6100D4A499 /* ConfigurationManager.swift in Sources */,
 				8848513B1E945A420088A3C2 /* ChangeEmailVerifyViewController.swift in Sources */,
 				8817FC461E782C63007697DF /* BaseAlertViewController.swift in Sources */,
@@ -1949,6 +1980,7 @@
 				88FBC2991E6EBF7A003AEEC4 /* TestAppDelegate.swift in Sources */,
 				8801FDF41E72016000F54932 /* BaseTextField.swift in Sources */,
 				88BFD8D71E83B04A000C8A61 /* ProcessInfo+Extension.swift in Sources */,
+				26CBF1791EE5C0840006F084 /* UserManager.swift in Sources */,
 				88FBC2AF1E70DE42003AEEC4 /* AuthenticationManager.swift in Sources */,
 				88FBC27C1E6DE36D003AEEC4 /* BaseError.swift in Sources */,
 				882807331EC4EE83006720BF /* GroupDetailViewController.swift in Sources */,
@@ -1957,8 +1989,10 @@
 				885514E61E8DBC65008A82CC /* BaseCollectionViewHorizontalFlowLayout.swift in Sources */,
 				88F5BBAB1E92E78D00B79683 /* PushNotificationManager.swift in Sources */,
 				880414041E8C0D1300ABF4D4 /* ForgotPasswordRequestViewController.swift in Sources */,
+				266766261EDE074600914DFC /* SeasonEndpoint.swift in Sources */,
 				88AF2E251E7C3E3F00F93A50 /* CircleImageView.swift in Sources */,
 				88226DD01E9C0A5B00C6BA85 /* Model.xcdatamodeld in Sources */,
+				266766241EDE04D700914DFC /* SeasonManager.swift in Sources */,
 				88AF2E161E7BBA7C00F93A50 /* SettingViewModel.swift in Sources */,
 				2647D0F01ECB569F00B6B4C4 /* GroupQueryViewModel.swift in Sources */,
 				880413FF1E8C065D00ABF4D4 /* ForgotPasswordViewModel.swift in Sources */,
@@ -2012,6 +2046,7 @@
 				88BFD8DE1E842E74000C8A61 /* ProfileInfoTableViewCell.swift in Sources */,
 				88ECC27E1EC10DF900F7DAC2 /* GroupPagingViewController.swift in Sources */,
 				8801FDE11E71C79C00F54932 /* LoginViewModel.swift in Sources */,
+				266766221EDDFF3F00914DFC /* Score.swift in Sources */,
 				880414091E8C5EF300ABF4D4 /* Pagination.swift in Sources */,
 				885514D61E8DA124008A82CC /* UserFeedViewModel.swift in Sources */,
 				882304FA1EA576E9008D6957 /* ExamplePopupViewController.swift in Sources */,
@@ -2044,6 +2079,7 @@
 				882CEAF41EAE90F400AE8D24 /* StringExtensionTests.swift in Sources */,
 				26678CCB1ECE406700CBA471 /* GroupManagerTests.swift in Sources */,
 				882CEB001EAE90F400AE8D24 /* FetchResultsTests.swift in Sources */,
+				266766301EDF51B900914DFC /* GroupDetailViewModelTests.swift in Sources */,
 				882CEAFA1EAE90F400AE8D24 /* BaseErrorTests.swift in Sources */,
 				882CEAF51EAE90F400AE8D24 /* UIStoryboardExtensionTests.swift in Sources */,
 				882CEB131EAE90F400AE8D24 /* ProfileViewModelTests.swift in Sources */,
@@ -2057,6 +2093,7 @@
 				882CEB011EAE90F400AE8D24 /* AuthenticationEndpointTests.swift in Sources */,
 				882CEB111EAE90F400AE8D24 /* LoginViewModelTests.swift in Sources */,
 				882CEB161EAE90F400AE8D24 /* UserFeedViewModelTests.swift in Sources */,
+				266766361EE0BA9000914DFC /* SeasonEndpointTests.swift in Sources */,
 				882CEB021EAE90F400AE8D24 /* BaseEndpointInfoTests.swift in Sources */,
 				882CEB031EAE90F400AE8D24 /* UserEndpointTests.swift in Sources */,
 				882CEAFF1EAE90F400AE8D24 /* CoreDataStackTests.swift in Sources */,
@@ -2457,12 +2494,13 @@
 		88226DCE1E9C0A5B00C6BA85 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				266766201EDDFDD900914DFC /* Model_v0-1-0-4.xcdatamodel */,
 				2647D0D61ECA393700B6B4C4 /* Model_v0-1-0-3.xcdatamodel */,
 				2647D0C71EC3B2CD00B6B4C4 /* Model_v0-1-0-2.xcdatamodel */,
 				88226DD11E9C11AA00C6BA85 /* Model_v0-1-0-1.xcdatamodel */,
 				88226DCF1E9C0A5B00C6BA85 /* Model.xcdatamodel */,
 			);
-			currentVersion = 2647D0D61ECA393700B6B4C4 /* Model_v0-1-0-3.xcdatamodel */;
+			currentVersion = 266766201EDDFDD900914DFC /* Model_v0-1-0-4.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = Models/BusinessLogic/EntityModels/Model.xcdatamodeld;
 			sourceTree = "<group>";

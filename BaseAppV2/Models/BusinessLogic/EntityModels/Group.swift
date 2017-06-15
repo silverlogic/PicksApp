@@ -20,6 +20,7 @@ final class Group: NSManagedObject {
     @NSManaged var creatorId: Int16
     @NSManaged var participants: [Int16]?
     @NSManaged var isPrivate: Bool
+    @NSManaged var currentSeason: Int16
 }
 
 
@@ -44,7 +45,7 @@ extension Group {
 extension Group {
 
     /**
-        Gets a fetch request for all `Groups` entity objects.
+        Gets a fetch request for all `Group` entity objects.
 
         - Returns: A `NSFetchRequest<Groups>` representing a fetch request
                    for all `Group` objects
@@ -85,11 +86,12 @@ extension Group {
      */
     @nonobjc public class func allGroupsFetchRequest(keyPath: String, ascending: Bool) -> NSFetchRequest<Group>? {
         let fetchRequest = NSFetchRequest<Group>(entityName: Group.entityName)
-        if keyPath == #keyPath(Group.groupId) ||
-            keyPath == #keyPath(Group.creatorId) ||
+        if keyPath == #keyPath(Group.groupId)       ||
+            keyPath == #keyPath(Group.creatorId)    ||
             keyPath == #keyPath(Group.participants) ||
-            keyPath == #keyPath(Group.isPrivate) ||
-            keyPath == #keyPath(Group.name) {
+            keyPath == #keyPath(Group.isPrivate)    ||
+            keyPath == #keyPath(Group.name)         ||
+            keyPath == #keyPath(Group.currentSeason) {
             let sortDescriptor = NSSortDescriptor(key: keyPath, ascending: ascending)
             fetchRequest.sortDescriptors = [sortDescriptor]
             return fetchRequest

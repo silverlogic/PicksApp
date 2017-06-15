@@ -25,8 +25,7 @@ final class GroupEndpointTests: BaseAppV2UnitTests {
     }
 
     func testJoinGroup() {
-        let user = SessionManager.shared.currentUser.value
-        let joinEndpoint = GroupEndpoint.join(groupId: 11, user: user!)
+        let joinEndpoint = GroupEndpoint.join(groupId: 11, userId: 11)
         XCTAssertNotNil(joinEndpoint, "Value Should Not Be Nil!")
         XCTAssertEqual(joinEndpoint.endpointInfo.path, "Groups/11/join", "Path Not Correct!")
         XCTAssertEqual(joinEndpoint.endpointInfo.requestMethod, .post, "Request Method Not Correct!")

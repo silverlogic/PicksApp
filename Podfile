@@ -25,6 +25,7 @@ target 'BaseAppV2' do
     pod 'SCLAlertView'
     pod 'SVProgressHUD'
     pod 'SwiftyBeaver'
+    pod 'SwipeCellKit'
     pod 'Tabman', :git => 'https://github.com/uias/Tabman', :commit => '8bbd21b'
     pod 'UITextField+Shake', '~> 1.1'
     
