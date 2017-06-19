@@ -44,7 +44,15 @@ final class LoginViewController: BaseViewController {
 
     // MARK: - IBActions
     @IBAction func facebookLoginTapped(_ sender: BaseButton) {
-        loginWithFacebook()
+        let socialAuthWebViewController = SocialAuthWebViewController(redirectUri: (loginViewModel?.facebookRedirectUri)!, oauthUrl: (loginViewModel?.facebookOAuthUrl)!)
+        socialAuthWebViewController.redirectUrlWithQueryParametersRecievedClosure = { [weak self] (redirectUrlWithQueryParameters: URL) in
+            guard let strongSelf = self else { return }
+            strongSelf.loginViewModel?.redirectUrlWithQueryParameters = redirectUrlWithQueryParameters
+            strongSelf.showProgresHud()
+            strongSelf.loginViewModel?.loginWithFacebook(email: nil)
+        }
+        let baseNavigationController = BaseNavigationController(rootViewController: socialAuthWebViewController)
+        present(baseNavigationController, animated: true, completion: nil)
     }
 }
 
@@ -74,6 +82,7 @@ extension LoginViewController {
 
 // MARK: - Private Instance Methods
 fileprivate extension LoginViewController {
+    
     /// Sets up the default logic for the view.
     fileprivate func setup() {
         if !isViewLoaded { return }
@@ -125,20 +134,6 @@ fileprivate extension LoginViewController {
             let baseNavigationController = BaseNavigationController(rootViewController: socialAuthWebViewController)
             strongSelf.present(baseNavigationController, animated: true, completion: nil)
         }
-        viewModel.loginBegan.bind { [weak self] (began) in
-            guard let strongSelf = self else { return }
-            strongSelf.showProgresHud()
-        }
-        viewModel.facebookPermissionsDenied.bind { [weak self] (denied) in
-            guard let strongSelf = self else { return }
-            strongSelf.showErrorAlert(title: NSLocalizedString("Miscellaneous.FacebookError", comment: "get string for title"), subTitle: NSLocalizedString("Miscellaneous.FacebookErrorBody", comment: "get string for body"))
-        }
         enableKeyboardManagement(true)
-    }
-
-    /// Initiates the facebook login process
-    fileprivate func loginWithFacebook() {
-        view.endEditing(true)
-        loginViewModel?.loginToFacebook(viewController: self)
     }
 }

@@ -5,7 +5,7 @@
 	<key>ApiUrl</key>
 	<dict>
 		<key>Local</key>
-		<string>https://api.baseapp.tsl.io/v2/</string>
+		<string>http://0.0.0.0:3000/api/</string>
 		<key>Staging</key>
 		<string>https://picksapp-api-staging.mybluemix.net/api/</string>
 		<key>Stable</key>
@@ -18,28 +18,30 @@
 		<key>Local</key>
 		<dict>
 			<key>AppId</key>
-			<string>973634146036464</string>
+			<string>688140104715165</string>
 			<key>RedirectUri</key>
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>
 		<key>Staging</key>
 		<dict>
 			<key>AppId</key>
-			<string>973634146036464</string>
+			<string>688140104715165</string>
 			<key>RedirectUri</key>
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>
 		<key>Stable</key>
 		<dict>
 			<key>AppId</key>
-			<string>973634146036464</string>
+			<string>688140104715165</string>
 			<key>RedirectUri</key>
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>
 		<key>Production</key>
 		<dict>
 			<key>AppId</key>
-			<string>973634146036464</string>
+			<string>1403638353031095
+1403638353031095
+1403638353031095</string>
 			<key>RedirectUri</key>
 			<string>https://app.baseapp.tsl.io/</string>
 		</dict>

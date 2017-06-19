@@ -6,7 +6,5 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <Branch/Branch.h>
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <PureLayout/PureLayout.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>

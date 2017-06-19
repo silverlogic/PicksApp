@@ -101,67 +101,6 @@ extension AuthenticationManager {
     }
 
     /**
-        Logs in a registered Facebook user into PicksApp.
-
-        - Parameters:
-            - accessToken: A Facebook current user's Access Token
-            - success: A closure that gets invoked when getting
-                       the current user was successful.
-            - failure: A closure that gets invoked when getting
-                       the current user failed. Passes a `BaseError`
-                       object containing the error that occured.
-     */
-    func loginWithFacebookToken(_ accessToken: String, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
-        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
-        dispatchQueue.async {
-            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-            networkClient.enqueue(AuthenticationEndpoint.loginFacebook(facebookAccessToken: accessToken))
-            .then(on: dispatchQueue, execute: { (loginResponse: LoginResponse) in
-                SessionManager.shared.authorizationToken = loginResponse.token
-                return networkClient.enqueue(AuthenticationEndpoint.currentUser)
-            })
-            .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = MultiDynamicBinder(user)
-                success()
-            })
-            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
-                failure(error)
-            })
-        }
-    }
-
-    /**
-        Logs in a first time Facebook user to Picks BE.
-
-        - Parameters:
-            - LoginFBUserInfo: data set containing a FB token needed
-                               to login to the FB endpoint
-            - success: A closure that gets invoked when getting
-                       the current user was successful.
-            - failure: A closure that gets invoked when getting
-                       the current user failed. Passes a `BaseError`
-                       object containing the error that occured.
-     */
-    func signupForFacebook(_ facebookUserInfo: FacebookUserInfo, success: @escaping () -> Void, failure: @escaping (_ error: BaseError) -> Void) {
-        let dispatchQueue = DispatchQueue.global(qos: .default)
-        dispatchQueue.async {
-            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-            networkClient.enqueue(AuthenticationEndpoint.signupFacebook(facebookInfo: facebookUserInfo))
-            .then(on: dispatchQueue, execute: { (loginResponse: LoginResponse) in
-                SessionManager.shared.authorizationToken = loginResponse.token
-                return networkClient.enqueue(AuthenticationEndpoint.currentUser)
-            })
-            .then(on: DispatchQueue.main, execute: { (user: User) -> Void in
-                SessionManager.shared.currentUser = MultiDynamicBinder(user)
-                success()
-            })
-            .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
-                failure(error)
-            })
-        }
-    }
-
-    /**
         Gets the current user.
         
         - Parameters:
@@ -241,7 +180,7 @@ extension AuthenticationManager {
         dispatchQueue.async {
             let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
             networkClient.enqueue(AuthenticationEndpoint.oauth2(oauth2Info: oauth2Info))
-            .then(on: dispatchQueue, execute: { (oauthResponse: OAuthResponse) in
+            .then(on: dispatchQueue, execute: { (oauthResponse: LoginResponse) in
                 SessionManager.shared.authorizationToken = oauthResponse.token
                 return networkClient.enqueue(AuthenticationEndpoint.currentUser)
             })

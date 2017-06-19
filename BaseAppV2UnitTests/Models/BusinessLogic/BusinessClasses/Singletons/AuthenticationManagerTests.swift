@@ -61,38 +61,6 @@ extension AuthenticationManagerTests {
         waitForExpectations(timeout: 10, handler: nil)
     }
 
-    func testLoginWithFacebookToken() {
-        let accessToken = "ABCD1234"
-        let loginWithFacebookExpetation = expectation(description: "Test Login")
-        sharedManager.loginWithFacebookToken(accessToken, success: {
-            XCTAssertNotNil(SessionManager.shared.authorizationToken, "Value should not be nil!")
-            XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
-            XCTAssertEqual(SessionManager.shared.currentUser.value?.userId, 210, "Signing Up User Failed!")
-            XCTAssertEqual(SessionManager.shared.currentUser.value?.email, "testuser@tsl.io", "Signing Up User Failed!")
-            XCTAssertEqual(SessionManager.shared.currentUser.value?.firstName, "Bob", "Signing Up User Failed!")
-            XCTAssertEqual(SessionManager.shared.currentUser.value?.lastName, "Saget", "Signing Up User Failed!")
-            loginWithFacebookExpetation.fulfill()
-        }) { (error: BaseError) in
-            XCTFail("Error Logging into Facebook")
-            loginWithFacebookExpetation.fulfill()
-        }
-        waitForExpectations(timeout: 10, handler: nil)
-    }
-
-    func testSignupForFacebook() {
-        let signupFacebookInfo = FacebookUserInfo(email: "testFacebookUser@tsl.io", facebookAccessToken: "ABCASD1234", firstName: "test", lastName: "user", avatar: nil)
-        let signupForFacebook = expectation(description: "Signing up for Facebook")
-        sharedManager.signupForFacebook(signupFacebookInfo, success: {
-            XCTAssertNotNil(SessionManager.shared.currentUser, "Value Should Not Be Nil!")
-            XCTAssertEqual(SessionManager.shared.currentUser.value?.userId, 210, "Signing Up User Failed!")
-            signupForFacebook.fulfill()
-        }) { (error: BaseError) in
-            XCTFail("Error signing up with facebook data")
-            signupForFacebook.fulfill()
-        }
-        waitForExpectations(timeout: 10, handler: nil)
-    }
-
     func testCurrentUser() {
         let currentUserExpectation = expectation(description: "Test Current User")
         sharedManager.currentUser(success: { 
