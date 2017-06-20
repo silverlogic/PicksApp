@@ -56,21 +56,6 @@ final class LoginViewModelTests: BaseAppV2UnitTests {
         waitForExpectations(timeout: 10, handler: nil)
     }
 
-    func testLoginWithFacebookSDK () {
-        let facebookInfo = FacebookUserInfo(email: "testFacebookUser@tsl.io", facebookAccessToken: "ABCASD1234", firstName: "test", lastName: "user", avatar: nil)
-        let loginWithFacebookExpectation = expectation(description: "Test login with facebook SDK")
-        let loginViewModel = ViewModelsManager.loginViewModel()
-        loginViewModel.loginError.bind { (error: BaseError?) in
-            XCTFail("Error Logging In With Facebook!")
-            loginWithFacebookExpectation.fulfill()
-        }
-        loginViewModel.loginSuccess.bind { (success: Bool) in
-            loginWithFacebookExpectation.fulfill()
-        }
-        loginViewModel.loginWithFacebookSDK(facebookInfo: facebookInfo)
-        waitForExpectations(timeout: 10, handler: nil)
-    }
-
     func testLoginWithLinkedIn() {
         let loginWithLinkedInExpectation = expectation(description: "Test Login With LinkedIn")
         let loginViewModel = ViewModelsManager.loginViewModel()

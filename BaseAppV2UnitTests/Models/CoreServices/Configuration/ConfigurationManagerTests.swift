@@ -66,7 +66,7 @@ extension ConfigurationManagerTests {
             XCTFail("Error Getting Api Url From Global Configuration!")
             return
         }
-        XCTAssertEqual(localApiUrl, "https://api.baseapp.tsl.io/v2/", "Wrong Value Retrived!")
+        XCTAssertEqual(localApiUrl, "http://0.0.0.0:3000/api/", "Wrong Value Retrived!")
         _sharedInstance.environmentMode = .staging
         guard let stagingApiUrl = _sharedInstance.apiUrl else {
             XCTFail("Error Getting Api Url From Global Configuration!")
@@ -90,7 +90,7 @@ extension ConfigurationManagerTests {
     func testFacebookOAuthUrl() {
         let url = _sharedInstance.facebookOAuthUrl
         XCTAssertNotNil(url, "Value Should Not Be Nil!")
-        XCTAssertEqual(url, URL(string:"https://www.facebook.com/dialog/oauth?client_id=973634146036464&redirect_uri=https://app.baseapp.tsl.io/&scope=email,public_profile"), "Getting Url Failed!")
+        XCTAssertEqual(url, URL(string:"https://www.facebook.com/dialog/oauth?client_id=688140104715165&redirect_uri=https://app.baseapp.tsl.io/&scope=email,public_profile"), "Getting Url Failed!")
     }
     
     func testLinkedInOAuthUrl() {

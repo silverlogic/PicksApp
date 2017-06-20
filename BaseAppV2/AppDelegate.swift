@@ -31,8 +31,6 @@ extension AppDelegate: UIApplicationDelegate {
         _ = SessionManager.shared
         _ = DeepLinkManager.shared
         _ = PushNotificationManager.shared
-        _ = FacebookManager.shared
-        _ = FacebookManager.shared.initializeDelegate(application: application, launchOptions: launchOptions)
         return true
     }
     
@@ -53,13 +51,8 @@ extension AppDelegate: UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let facebookURL = FacebookManager.shared.initializeURLDelegate(application: app, url: url, options: options)
         DeepLinkManager.shared.respondToUrlScheme(url)
-        return facebookURL
-    }
-
-    @nonobjc func application(application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: Any?) -> Bool {
-        return FacebookManager.shared.initializeSourceApplicationDelegate(application: application, url: url, sourceApplication: sourceApplication, annotation: annotation)
+        return true
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
@@ -69,10 +62,6 @@ extension AppDelegate: UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         NotificationCenter.default.removeObserver(self)
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        FacebookManager.shared.activate()
     }
 
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {

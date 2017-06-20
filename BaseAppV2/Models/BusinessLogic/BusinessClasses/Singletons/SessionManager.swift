@@ -106,7 +106,6 @@ extension SessionManager {
             KeychainManager.shared.removeItemForKey(SessionConstants.authorizationToken)
             UserDefaults.standard.removeObject(forKey: SessionConstants.userId)
             NotificationCenter.default.post(name: .UserLoggedOut, object: nil)
-            FacebookManager.shared.logout()
         }, failure: {
             AppLogger.shared.logMessage("Error Logging Out User!", for: .error)
         })
